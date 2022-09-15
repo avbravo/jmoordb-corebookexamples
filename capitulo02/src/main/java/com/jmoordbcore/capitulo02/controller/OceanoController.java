@@ -28,4 +28,9 @@ public class OceanoController {
     public List<Oceano> findAll(){
         return oceanoRepository.findAll();
     }
+    
+    @GET
+    public String sayHello() {
+        return "Hello World";
+    }
 }
