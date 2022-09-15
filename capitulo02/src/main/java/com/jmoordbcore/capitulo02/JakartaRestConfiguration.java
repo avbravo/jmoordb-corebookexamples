@@ -13,10 +13,10 @@ import org.eclipse.microprofile.openapi.annotations.servers.Server;
  * Configures Jakarta RESTful Web Services for the application.
  * @author Juneau
  */
-@ApplicationPath("resources")
+@ApplicationPath("api")
 @OpenAPIDefinition(info = @Info(
         title = "RESTful API",
-        description = "Backend REST API",
+        description = "capitulo 02",
         version = "1.0.0-Snapshot",
         contact = @Contact(
                 name = "AVbravo",
