@@ -56,11 +56,11 @@
             <artifactId>jmoordb-core-processor</artifactId>
             <version>1.0.1</version>
         </dependency>-->
-        <dependency>
+<!--        <dependency>
             <groupId>com.avbravo.jmoordb.core.processor</groupId>
             <artifactId>jmoordb-core-processor</artifactId>
-            <version>1.0.3</version>
-        </dependency>
+            <version>1.0.4</version>
+        </dependency>-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -85,6 +85,11 @@
             <version>${arquillian-payara.version}</version>
             <scope>test</scope>
         </dependency>-->
+        <dependency>
+            <groupId>com.avbravo.jmoordb.core.processor</groupId>
+            <artifactId>jmoordb-core-processor</artifactId>
+            <version>1.0.4</version>
+        </dependency>
     </dependencies>
     
     <build>
