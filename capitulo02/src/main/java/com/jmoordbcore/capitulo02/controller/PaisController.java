@@ -8,6 +8,7 @@ import com.jmoordb.core.util.JmoordbCoreUtil;
 import com.jmoordbcore.capitulo02.model.Pais;
 import com.jmoordbcore.capitulo02.repository.PaisRepository;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
@@ -74,6 +75,7 @@ public class PaisController {
     @Tag(name = "BETA", description = "Esta api esta en desarrollo")
     public Response save(
             @RequestBody(description = "Crea un nuevo pais.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Pais.class))) Pais pais) {
+        pais.setFecha(new Date());
         return Response.status(Response.Status.CREATED).entity(paisRepository.save(pais)).build();
     }
 
