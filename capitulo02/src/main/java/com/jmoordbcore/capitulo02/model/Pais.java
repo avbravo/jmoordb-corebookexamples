@@ -57,13 +57,10 @@ public class Pais {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Pais{");
-        sb.append("idpais=").append(idpais);
-        sb.append(", pais=").append(pais);
-        sb.append('}');
-        return sb.toString();
+        return "Pais{" + "idpais=" + idpais + ", pais=" + pais + ", fecha=" + fecha + '}';
     }
+
+   
     
     
     

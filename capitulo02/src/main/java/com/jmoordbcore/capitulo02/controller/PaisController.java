@@ -4,19 +4,22 @@
  */
 package com.jmoordbcore.capitulo02.controller;
 
-import com.jmoordb.core.util.JmoordbCoreUtil;
+import com.jmoordb.core.annotation.date.DateFormat;
+import com.jmoordb.core.annotation.date.DateTimeFormat;
 import com.jmoordbcore.capitulo02.model.Pais;
 import com.jmoordbcore.capitulo02.repository.PaisRepository;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.inject.Inject;
+import javax.ws.rs.BeanParam;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -42,6 +45,41 @@ public class PaisController {
     PaisRepository paisRepository;
 // </editor-fold>
 
+
+  @Path("fechagreaterthan")
+  @GET
+  public List<Pais> findByFechaGreaterThan(@QueryParam("fecha")  final Date fecha) {
+    return paisRepository.findByFechaGreaterThan(fecha);
+  }
+ 
+  @Path("test2")
+  @GET
+  public Date test2(@QueryParam("myDate")
+    @DateFormat("yyyy/MM/dd") final Date myDate) {
+    return myDate;
+  }
+ 
+  @Path("test3")
+  @GET
+  public Date test3(@QueryParam("myDate")
+    @DateTimeFormat final Date myDate) {
+    return myDate;
+  }
+ 
+  @Path("test4")
+  @GET
+  public Date test4(@QueryParam("myDate")
+    @DateTimeFormat("yyyy/MM/dd HH:mm") final Date myDate) {
+    return myDate;
+  }
+ 
+  @Path("test5")
+  @GET
+  public MyDateTest test5(@BeanParam final MyDateTest myDateTeste) {
+    return myDateTeste;
+  }
+ 
+    
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     @Operation(summary = "Obtiene todos los paises", description = "Retorna todos los paises disponibles")
@@ -90,4 +128,21 @@ public class PaisController {
         paisRepository.deleteByPk(idpais);
         return Response.status(Response.Status.NO_CONTENT).build();
     }
+    
+    
+    
+     public static class MyDateTest {
+ 
+    @QueryParam("myDate")
+    @DateTimeFormat("dd-MM-yyyy HH:mm")
+    private Date myDate;
+ 
+    public Date getMyDate() {
+      return myDate;
+    }
+ 
+    public void setMyDate(Date myDate) {
+      this.myDate = myDate;
+    }
+  }
 }
