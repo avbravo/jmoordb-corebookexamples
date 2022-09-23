@@ -8,6 +8,8 @@ package com.jmoordbcore.capitulo02.produces;
  *
  * @author avbravo
  */
+import com.jmoordb.core.annotation.DateSupport;
+import com.jmoordb.core.annotation.enumerations.JakartaSource;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import java.io.Serializable;
@@ -19,7 +21,8 @@ import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 @ApplicationScoped
-public class MongoDBManagerProducer implements Serializable {
+@DateSupport(jakartaSource = JakartaSource.JAVAEE_LEGACY)
+public class MongoDBProducer implements Serializable {
 
     @Inject
     private Config config;

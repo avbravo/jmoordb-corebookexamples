@@ -45,41 +45,39 @@ public class PaisController {
     PaisRepository paisRepository;
 // </editor-fold>
 
+    @Path("fechagreaterthan")
+    @GET
+    public List<Pais> findByFechaGreaterThan(@QueryParam("fecha") final Date fecha) {
+        return paisRepository.findByFechaGreaterThan(fecha);
+    }
 
-  @Path("fechagreaterthan")
-  @GET
-  public List<Pais> findByFechaGreaterThan(@QueryParam("fecha")  final Date fecha) {
-    return paisRepository.findByFechaGreaterThan(fecha);
-  }
- 
-  @Path("test2")
-  @GET
-  public Date test2(@QueryParam("myDate")
-    @DateFormat("yyyy/MM/dd") final Date myDate) {
-    return myDate;
-  }
- 
-  @Path("test3")
-  @GET
-  public Date test3(@QueryParam("myDate")
-    @DateTimeFormat final Date myDate) {
-    return myDate;
-  }
- 
-  @Path("test4")
-  @GET
-  public Date test4(@QueryParam("myDate")
-    @DateTimeFormat("yyyy/MM/dd HH:mm") final Date myDate) {
-    return myDate;
-  }
- 
-  @Path("test5")
-  @GET
-  public MyDateTest test5(@BeanParam final MyDateTest myDateTeste) {
-    return myDateTeste;
-  }
- 
-    
+    @Path("test2")
+    @GET
+    public Date test2(@QueryParam("myDate")
+            @DateFormat("yyyy/MM/dd") final Date myDate) {
+        return myDate;
+    }
+
+    @Path("test3")
+    @GET
+    public Date test3(@QueryParam("myDate")
+            @DateTimeFormat final Date myDate) {
+        return myDate;
+    }
+
+    @Path("test4")
+    @GET
+    public Date test4(@QueryParam("myDate")
+            @DateTimeFormat("yyyy/MM/dd HH:mm") final Date myDate) {
+        return myDate;
+    }
+
+    @Path("test5")
+    @GET
+    public MyDateTest test5(@BeanParam final MyDateTest myDateTeste) {
+        return myDateTeste;
+    }
+
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     @Operation(summary = "Obtiene todos los paises", description = "Retorna todos los paises disponibles")
@@ -128,21 +126,19 @@ public class PaisController {
         paisRepository.deleteByPk(idpais);
         return Response.status(Response.Status.NO_CONTENT).build();
     }
-    
-    
-    
-     public static class MyDateTest {
- 
-    @QueryParam("myDate")
-    @DateTimeFormat("dd-MM-yyyy HH:mm")
-    private Date myDate;
- 
-    public Date getMyDate() {
-      return myDate;
+
+    public static class MyDateTest {
+
+        @QueryParam("myDate")
+        @DateTimeFormat("dd-MM-yyyy HH:mm")
+        private Date myDate;
+
+        public Date getMyDate() {
+            return myDate;
+        }
+
+        public void setMyDate(Date myDate) {
+            this.myDate = myDate;
+        }
     }
- 
-    public void setMyDate(Date myDate) {
-      this.myDate = myDate;
-    }
-  }
 }
