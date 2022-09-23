@@ -47,17 +47,45 @@ public class PaisController {
 
     @Path("fechagreaterthan")
     @GET
-    public List<Pais> findByFechaGreaterThan(@QueryParam("fecha") final Date fecha) {
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Operation(summary = "Obtiene los paises con fecha mayor", description = "Retorna todos los paises con fechas mayor")
+    @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
+    @APIResponse(responseCode = "200", description = "Los paises")
+    @Tag(name = "BETA", description = "Esta api esta en desarrollo")
+    @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
+    public List<Pais> findByFechaGreaterThan(@QueryParam("fecha")  @DateFormat("dd-MM-yyyy") final Date fecha) {
         return paisRepository.findByFechaGreaterThan(fecha);
     }
-
-    @Path("test2")
+    
+    @Path("fecha")
     @GET
-    public Date test2(@QueryParam("myDate")
-            @DateFormat("yyyy/MM/dd") final Date myDate) {
-        return myDate;
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Operation(summary = "Obtiene los paises con fecha igual", description = "Retorna todos los paises con fechas mayor")
+    @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
+    @APIResponse(responseCode = "200", description = "Los paises")
+    @Tag(name = "BETA", description = "Esta api esta en desarrollo")
+    @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
+    public List<Pais> findByFecha(@QueryParam("fecha")  @DateTimeFormat final Date fecha) {
+        System.out.println(">>>>aaaaaaaaa  fecha "+fecha);
+        return paisRepository.findByFecha(fecha);
     }
+    
+//    @Path("fechahora")
+//    @GET
+//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    @Operation(summary = "Obtiene los paises con fecha igual", description = "Retorna todos los paises con fechas mayor")
+//    @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
+//    @APIResponse(responseCode = "200", description = "Los paises")
+//    @Tag(name = "BETA", description = "Esta api esta en desarrollo")
+//    @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
+//    public List<Pais> findByFecha(@QueryParam("fecha")  @DateTimeFormat final Date fecha) {
+//        return paisRepository.findByFecha(fecha);
+//    }
 
+    
+    
+    
+ 
     @Path("test3")
     @GET
     public Date test3(@QueryParam("myDate")
