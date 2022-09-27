@@ -15,11 +15,13 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 import javax.inject.Inject;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.DELETE;
@@ -133,25 +135,30 @@ public class PaisController {
  * 
  */
 
-                    Date startIsoDate = JmoordbCoreDateUtil.stringToISODate( JmoordbCoreDateUtil.isoDateToString(fecha));//dateString is query param.
-            Date endIsoDate = JmoordbCoreDateUtil.stringToISODate(JmoordbCoreDateUtil.isoDateToString(fecha));//dateString is query param.
+//                    Date startIsoDate = JmoordbCoreDateUtil.stringToISODate( JmoordbCoreDateUtil.isoDateToString(fecha));//dateString is query param.
+//            Date endIsoDate = JmoordbCoreDateUtil.stringToISODate(JmoordbCoreDateUtil.isoDateToString(fecha));//dateString is query param.
+//            
+         
+
+//Date dateStartOne = getCurrentUtcTime(fecha);
+          Date     dateStartOne =  JmoordbCoreDateUtil.restarDiaaFecha(fecha,1);
+    Date     dateEndOne =  JmoordbCoreDateUtil.sumarDiaaFecha(fecha,1);
+//        Date dateEndOne =getCurrentUtcTime(fecha);;
             
-              Date dateStartOne = JmoordbCoreDateUtil.setHourToDate(startIsoDate, 0, 0);
+//               dateStartOne = JmoordbCoreDateUtil.setHourToDate(dateStartOne, 0, 0);
+             //  dateStartOne = JmoordbCoreDateUtil.setHourToDate(dateStartOne, 23, 59,59);
               
-            Date dateEndOne = JmoordbCoreDateUtil.setHourToDate(endIsoDate, 23, 59);
-            dateStartOne =  JmoordbCoreDateUtil.restarDiaaFecha(dateStartOne,1);
-            dateEndOne =  JmoordbCoreDateUtil.restarDiaaFecha(dateEndOne,1);
-            
+         // dateEndOne = JmoordbCoreDateUtil.setHourToDate(dateEndOne, 23, 59);
         System.out.println("______________________________________________");
-        System.out.println("stringToISodate startIsoDat "+startIsoDate + "   endIsoDate "+endIsoDate);
+    //    System.out.println("stringToISodate startIsoDat "+startIsoDate + "   endIsoDate "+endIsoDate);
         System.out.println("[dateStartOne "+dateStartOne+ "] [dateEndOne "+dateEndOne+"]");
         
         System.out.println("______________________________________________");
     
-
+        System.out.println("***********************************");
             System.out.println("Incovcando findBy");
             findBy(dateStartOne, dateEndOne );
-            
+            System.out.println("***********************************");
         return paisRepository.findByFechaGreaterThanEqualAndFechaLessThanEqual(dateStartOne, dateEndOne);
 
           
@@ -293,5 +300,32 @@ public class PaisController {
          return list;
 
      }
+     
+       // create getCurrentUtcTime() method to get the current UTC time  
+    public static Date getCurrentUtcTime(Date date) {  // handling ParseException  
+            Date d1 = date;  
+         // create an instance of the SimpleDateFormat class  
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MMM-dd HH:mm:ss");  
+        // set UTC time zone by using SimpleDateFormat class  
+        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));  
+        //create another instance of the SimpleDateFormat class for local date format  
+        SimpleDateFormat ldf = new SimpleDateFormat("yyyy-MMM-dd HH:mm:ss");  
+        // declare and initialize a date variable which we return to the main method  
+    
+        // use try catch block to parse date in UTC time zone  
+        try {  
+            // parsing date using SimpleDateFormat class  
+            d1 = ldf.parse( sdf.format(new Date()) );  
+        }   
+        // catch block for handling ParseException  
+        catch (java.text.ParseException e) {  
+            // TODO Auto-generated catch block  
+            e.printStackTrace();  
+            System.out.println(e.getMessage());  
+        }  
+       
+        // pass UTC date to main method.  
+        return d1;  
+    }  
 
 }
