@@ -7,8 +7,16 @@ package com.jmoordbcore.capitulo02.controller;
 import com.jmoordb.core.annotation.date.DateFormat;
 import com.jmoordb.core.annotation.date.DateTimeFormat;
 import com.jmoordb.core.util.JmoordbCoreDateUtil;
+import com.jmoordb.core.util.MessagesUtil;
 import com.jmoordbcore.capitulo02.model.Pais;
 import com.jmoordbcore.capitulo02.repository.PaisRepository;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +32,10 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+import org.eclipse.microprofile.config.Config;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
@@ -41,6 +53,18 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 @Tag(name = "Información del pais", description = "End-point para entidad Pais")
 public class PaisController {
 
+    @Inject
+    MongoClient mongoClient;
+/**
+* Microprofile Config
+*/
+    @Inject
+    Config config;
+    @Inject
+    @ConfigProperty(name = "mongodb.database")
+    String mongodbDatabase;
+
+    String mongodbCollection = "pais";
     // <editor-fold defaultstate="collapsed" desc="Inject">
     @Inject
     PaisRepository paisRepository;
@@ -73,6 +97,7 @@ public class PaisController {
             
             System.out.println("fecha[" + fecha +"]  start [ "+dateStart + "] en dateEnd ["+dateEnd+"]");
         return paisRepository.findByFechaGreaterThanAndFechaLessThan(dateStart, dateEnd);
+
     }
     @Path("dategreaterthanandfechalessthanwithouthourstwodates")
     @GET
@@ -85,13 +110,14 @@ public class PaisController {
     public List<Pais> findByFechaGreaterThanAndFechaLessThanWithoutHours(@QueryParam("fecha")  @DateFormat final Date fecha, @QueryParam("fechafinal")  @DateFormat final Date fechafinal) {
         
        Date dateStart = JmoordbCoreDateUtil.setHourToDate(fecha, 0, 0);
-            Date dateEnd = JmoordbCoreDateUtil.setHourToDate(fecha, 23, 59);
+            Date dateEnd = JmoordbCoreDateUtil.setHourToDate(fechafinal, 23, 59);
             
             System.out.println("fecha[" + fecha +"]  start [ "+dateStart + "] en dateEnd ["+dateEnd+"]");
         return paisRepository.findByFechaGreaterThanAndFechaLessThan(dateStart, dateEnd);
+
     }
     
-    @Path("dateagreaterequalsthanandfechalessequalsthanwithouthours")
+    @Path("fechagreaterthanequalsandfechalesthanequalswithouthours")
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     @Operation(summary = "Obtiene los paises con fecha igual mayor o igual y menor o igual sin horas", description = "Retorna todos los paises con fechas mayor")
@@ -99,13 +125,43 @@ public class PaisController {
     @APIResponse(responseCode = "200", description = "Los paises")
     @Tag(name = "BETA", description = "Esta api esta en desarrollo")
     @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
-    public List<Pais> findByFechaGreaterEqualsThanAndFechaLessEqualsThanWithoutHours(@QueryParam("fecha")  @DateFormat final Date fecha) {
-        
-       Date dateStart = JmoordbCoreDateUtil.setHourToDate(fecha, 0, 0);
-            Date dateEnd = JmoordbCoreDateUtil.setHourToDate(fecha, 23, 59);
+    public List<Pais> findByFechaGreaterThanEqualsThanAndFechaLessEqualsThanWithoutHours(@QueryParam("fecha")  @DateFormat final Date fecha) {
+/**
+ * Cuando es rango de fecha asignar hora =0, minuto=0 a la fecha inicial
+ * Asignar un dia mas y hora 0 y minuto 0 a la fecha final
+ * https://www.mongodb.com/community/forums/t/i-want-data-between-two-dates-how-can-i-achieve-this/148777
+ * 
+ */
+
+                    Date startIsoDate = JmoordbCoreDateUtil.stringToISODate( JmoordbCoreDateUtil.isoDateToString(fecha));//dateString is query param.
+            Date endIsoDate = JmoordbCoreDateUtil.stringToISODate(JmoordbCoreDateUtil.isoDateToString(fecha));//dateString is query param.
             
-            System.out.println("fecha[" + fecha +"]  start [ "+dateStart + "] en dateEnd ["+dateEnd+"]");
-        return paisRepository.findByFechaGreaterEqualsThanAndFechaLessEqualsThan(dateStart, dateEnd);
+              Date dateStartOne = JmoordbCoreDateUtil.setHourToDate(startIsoDate, 0, 0);
+              
+            Date dateEndOne = JmoordbCoreDateUtil.setHourToDate(endIsoDate, 23, 59);
+            dateStartOne =  JmoordbCoreDateUtil.restarDiaaFecha(dateStartOne,1);
+            dateEndOne =  JmoordbCoreDateUtil.restarDiaaFecha(dateEndOne,1);
+            
+        System.out.println("______________________________________________");
+        System.out.println("stringToISodate startIsoDat "+startIsoDate + "   endIsoDate "+endIsoDate);
+        System.out.println("[dateStartOne "+dateStartOne+ "] [dateEndOne "+dateEndOne+"]");
+        
+        System.out.println("______________________________________________");
+    
+
+            System.out.println("Incovcando findBy");
+            findBy(dateStartOne, dateEndOne );
+            
+        return paisRepository.findByFechaGreaterThanEqualAndFechaLessThanEqual(dateStartOne, dateEndOne);
+
+          
+//
+//               Date dateStart = JmoordbCoreDateUtil.setHourToDate(fecha, 0, 0);
+//            Date dateEnd = JmoordbCoreDateUtil.sumarDiaaFecha(fecha,1);
+//            dateEnd = JmoordbCoreDateUtil.setHourToDate(dateEnd, 0, 0);
+//            System.out.println("fecha[" + fecha +"]  start [ "+dateStart + "] en dateEnd ["+dateEnd+"]");
+//
+//        return paisRepository.findByFechaGreaterThanEqualAndFechaLessThanEqual(dateStart, dateEnd);
     }
     
 //    @Path("fechahora")
@@ -207,4 +263,35 @@ public class PaisController {
             this.myDate = myDate;
         }
     }
+    
+     public java.util.List<com.jmoordbcore.capitulo02.model.Pais> findBy(java.util.Date start,java.util.Date end) {
+        List<Pais> list = new ArrayList<>();
+        try {
+               MongoDatabase database = mongoClient.getDatabase(mongodbDatabase);
+               MongoCollection<Document> collection = database.getCollection(mongodbCollection);
+               MongoCursor<Document> cursor;
+               Bson filter =Filters.and(
+			Filters.gte("fecha",start)
+			,Filters.lte("fecha",end)
+		);
+            System.out.println("[filter ] "+filter);
+		cursor = collection.find( filter )
+					.iterator();
+
+               try{
+                  while (cursor.hasNext()) {
+                      System.out.println("cursor.[ next ]"+cursor.next());
+                       //list.add(paisSupplier.get(Pais::new, cursor.next()));
+                  }
+                   System.out.println("[[[[ end ]]]]]");
+               } finally {
+                     cursor.close();
+               } 
+         } catch (Exception e) {
+              MessagesUtil.error(MessagesUtil.nameOfClassAndMethod() + " " + e.getLocalizedMessage());
+         }
+         return list;
+
+     }
+
 }
