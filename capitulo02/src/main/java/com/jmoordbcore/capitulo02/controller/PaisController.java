@@ -141,12 +141,12 @@ public class PaisController {
          
 
 //Date dateStartOne = getCurrentUtcTime(fecha);
-          Date     dateStartOne =  JmoordbCoreDateUtil.restarDiaaFecha(fecha,1);
+         Date     dateStartOne =  JmoordbCoreDateUtil.restarDiaaFecha(fecha,1);
     Date     dateEndOne =  JmoordbCoreDateUtil.sumarDiaaFecha(fecha,1);
-//        Date dateEndOne =getCurrentUtcTime(fecha);;
+//       Date dateEndOne =getCurrentUtcTime(fecha);;
             
-//               dateStartOne = JmoordbCoreDateUtil.setHourToDate(dateStartOne, 0, 0);
-             //  dateStartOne = JmoordbCoreDateUtil.setHourToDate(dateStartOne, 23, 59,59);
+               dateStartOne = JmoordbCoreDateUtil.setHourToDate(dateStartOne, 0, 0);
+               dateStartOne = JmoordbCoreDateUtil.setHourToDate(dateStartOne, 23, 59,59);
               
          // dateEndOne = JmoordbCoreDateUtil.setHourToDate(dateEndOne, 23, 59);
         System.out.println("______________________________________________");
