@@ -6,6 +6,7 @@ package com.jmoordbcore.capitulo02.controller;
 
 import com.jmoordb.core.annotation.date.DateFormat;
 import com.jmoordb.core.annotation.date.DateTimeFormat;
+import com.jmoordb.core.util.DocumentUtil;
 import com.jmoordb.core.util.JmoordbCoreDateUtil;
 import com.jmoordb.core.util.MessagesUtil;
 import com.jmoordbcore.capitulo02.model.Pais;
@@ -15,8 +16,8 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -138,8 +139,33 @@ public class PaisController {
 //                    Date startIsoDate = JmoordbCoreDateUtil.stringToISODate( JmoordbCoreDateUtil.isoDateToString(fecha));//dateString is query param.
 //            Date endIsoDate = JmoordbCoreDateUtil.stringToISODate(JmoordbCoreDateUtil.isoDateToString(fecha));//dateString is query param.
 //            
-         
+//         if (fecha instanceof Date) {
+//    Date d = (Date) fecha;
+//    SimpleDateFormat format = new SimpleDateFormat(ISO_8601_DATE_FORMAT);
+//    serialize(new BasicDBObject("$date", format.format(d)), buf);
+//    return;
+//}
 
+Integer anio =JmoordbCoreDateUtil.anioDeUnaFecha(fecha);
+Integer mes =JmoordbCoreDateUtil.mesDeUnaFecha(fecha);
+Integer dia =JmoordbCoreDateUtil.diaDeUnaFecha(fecha);
+Integer hora = JmoordbCoreDateUtil.horaDeUnaFecha(fecha);
+Integer minutos =JmoordbCoreDateUtil.minutosDeUnaFecha(fecha);
+Integer segundos =JmoordbCoreDateUtil.segundosDeUnaFecha(fecha);
+         LocalDateTime startTime = LocalDateTime.of(anio, mes, dia,0, 0, 0);
+         LocalDateTime endTime = LocalDateTime.of(anio, mes, dia,23, 59, 59);
+         System.out.println("LocalDateTime startTime==> "+startTime);
+         System.out.println("LocalDateTime endTime==> "+endTime);
+      Bson   filter0 = Filters.and(Filters.gte("fecha", startTime), Filters.lte("fecha", endTime));
+//Bson filter0   = DocumentUtil.createBsonBetweenDateWithoutHours("fecha", fecha, "fecha",fecha);
+//Bson filter0    = DocumentUtil.createBsonBetweenDateWithoutHoursIsoDate("fecha", fecha, "fecha",fecha);
+                 System.out.println("***********************************");
+            System.out.println("Incovcando findBy LocalDateTime ");
+            findBy(filter0 );
+           //  Bson filter = and(filter0, eq("departament.iddepartament", profile.getIddepartament()));
+            
+            System.out.println("*********************************************");
+             
 //Date dateStartOne = getCurrentUtcTime(fecha);
          Date     dateStartOne =  JmoordbCoreDateUtil.restarDiaaFecha(fecha,1);
     Date     dateEndOne =  JmoordbCoreDateUtil.sumarDiaaFecha(fecha,1);
@@ -155,9 +181,9 @@ public class PaisController {
         
         System.out.println("______________________________________________");
     
-        System.out.println("***********************************");
-            System.out.println("Incovcando findBy");
-            findBy(dateStartOne, dateEndOne );
+   
+            
+            
             System.out.println("***********************************");
         return paisRepository.findByFechaGreaterThanEqualAndFechaLessThanEqual(dateStartOne, dateEndOne);
 
@@ -240,7 +266,9 @@ public class PaisController {
     @Tag(name = "BETA", description = "Esta api esta en desarrollo")
     public Response save(
             @RequestBody(description = "Crea un nuevo pais.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Pais.class))) Pais pais) {
-        pais.setFecha(new Date());
+
+   
+       pais.setFecha(new Date());
         return Response.status(Response.Status.CREATED).entity(paisRepository.save(pais)).build();
     }
 
@@ -271,16 +299,17 @@ public class PaisController {
         }
     }
     
-     public java.util.List<com.jmoordbcore.capitulo02.model.Pais> findBy(java.util.Date start,java.util.Date end) {
+//     public java.util.List<com.jmoordbcore.capitulo02.model.Pais> findBy(java.util.Date start,java.util.Date end) {
+     public java.util.List<com.jmoordbcore.capitulo02.model.Pais> findBy(Bson filter) {
         List<Pais> list = new ArrayList<>();
         try {
                MongoDatabase database = mongoClient.getDatabase(mongodbDatabase);
                MongoCollection<Document> collection = database.getCollection(mongodbCollection);
                MongoCursor<Document> cursor;
-               Bson filter =Filters.and(
-			Filters.gte("fecha",start)
-			,Filters.lte("fecha",end)
-		);
+//               Bson filter =Filters.and(
+//			Filters.gte("fecha",start)
+//			,Filters.lte("fecha",end)
+//		);
             System.out.println("[filter ] "+filter);
 		cursor = collection.find( filter )
 					.iterator();
