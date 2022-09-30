@@ -24,9 +24,20 @@ public class Pais {
     private String pais;
     
     @Column
+    private LocalDateTime local;
+    
+    @Column
     private Date fecha;
 
     public Pais() {
+    }
+
+    public LocalDateTime getLocal() {
+        return local;
+    }
+
+    public void setLocal(LocalDateTime local) {
+        this.local = local;
     }
 
     public Date getFecha() {
