@@ -26,7 +26,12 @@ public interface PaisRepository extends CrudRepository<Pais, Long>{
     public List<Pais> findByFechaGreaterThan(Date fecha);
     
     @Find
-    public List<Pais> findByFecha(@IncludeTime Date fecha);    
+    public List<Pais> findByFecha(@IncludeTime Date fecha);  
+    
+    @Find
+    public List<Pais> findByFechaLessthan(@ExcludeTime Date fecha);    
+    
+    
     @Find
     public List<Pais> findByLocal(@ExcludeTime LocalDateTime local);
     
