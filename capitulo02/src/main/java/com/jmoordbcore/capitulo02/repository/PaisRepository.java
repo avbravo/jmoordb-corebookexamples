@@ -16,6 +16,7 @@ import com.jmoordbcore.capitulo02.model.Pais;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -23,6 +24,11 @@ import java.util.List;
  */
 @Repository(entity = Pais.class, jakartaSource = JakartaSource.JAVAEE_LEGACY)
 public interface PaisRepository extends CrudRepository<Pais, Long>{     
+    @Find
+    public Optional<Pais> findByFechaAndPais(@ExcludeTime Date fecha, String pais);
+    @Find
+    public List<Pais> findByPaisAndFechaLessThan(@ExcludeTime Date fecha, String pais);
+    
     @Find
     public List<Pais> findByFechaGreaterThan(Date fecha);
     @Find
