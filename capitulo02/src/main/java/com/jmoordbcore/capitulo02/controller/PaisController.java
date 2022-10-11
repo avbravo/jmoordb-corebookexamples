@@ -73,129 +73,122 @@ public class PaisController {
     PaisRepository paisRepository;
 // </editor-fold>
 
-    @Path("fechagreaterthan")
-    @GET
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @Operation(summary = "Obtiene los paises con fecha mayor", description = "Retorna todos los paises con fechas mayor")
-    @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
-    @APIResponse(responseCode = "200", description = "Los paises")
-    @Tag(name = "BETA", description = "Esta api esta en desarrollo")
-    @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
-    public List<Pais> findByFechaGreaterThan(@QueryParam("fecha")  @DateFormat("dd-MM-yyyy") final Date fecha) {
-        return paisRepository.findByFechaGreaterThan(fecha);
-    }
+//    @Path("fechagreaterthan")
+//    @GET
+//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    @Operation(summary = "Obtiene los paises con fecha mayor", description = "Retorna todos los paises con fechas mayor")
+//    @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
+//    @APIResponse(responseCode = "200", description = "Los paises")
+//    @Tag(name = "BETA", description = "Esta api esta en desarrollo")
+//    @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
+//    public List<Pais> findByFechaGreaterThan(@QueryParam("fecha")  @DateFormat("dd-MM-yyyy") final Date fecha) {
+//        return paisRepository.findByFechaGreaterThan(fecha);
+//    }
     
-    @Path("dategreaterthanandfechalessthanwithouthours")
-    @GET
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @Operation(summary = "Obtiene los paises con fecha ", description = "Retorna todos los paises con fechas mayor")
-    @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
-    @APIResponse(responseCode = "200", description = "Los paises")
-    @Tag(name = "BETA", description = "Esta api esta en desarrollo")
-    @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
-    public List<Pais> findByFechaGreaterThanAndFechaLessThanWithoutHours(@QueryParam("fecha")  @DateFormat final Date fecha) {
-        
-       Date dateStart = JmoordbCoreDateUtil.setHourToDate(fecha, 0, 0);
-            Date dateEnd = JmoordbCoreDateUtil.setHourToDate(fecha, 23, 59);
-            
-            System.out.println("fecha[" + fecha +"]  start [ "+dateStart + "] en dateEnd ["+dateEnd+"]");
-        return paisRepository.findByFechaGreaterThanAndFechaLessThan(dateStart, dateEnd);
-
-    }
-    @Path("dategreaterthanandfechalessthanwithouthourstwodates")
-    @GET
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @Operation(summary = "Obtiene los paises con fecha ", description = "Retorna todos los paises con fechas mayor")
-    @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
-    @APIResponse(responseCode = "200", description = "Los paises")
-    @Tag(name = "BETA", description = "Esta api esta en desarrollo")
-    @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
-    public List<Pais> findByFechaGreaterThanAndFechaLessThanWithoutHours(@QueryParam("fecha")  @DateFormat final Date fecha, @QueryParam("fechafinal")  @DateFormat final Date fechafinal) {
-        
-       Date dateStart = JmoordbCoreDateUtil.setHourToDate(fecha, 0, 0);
-            Date dateEnd = JmoordbCoreDateUtil.setHourToDate(fechafinal, 23, 59);
-            
-            System.out.println("fecha[" + fecha +"]  start [ "+dateStart + "] en dateEnd ["+dateEnd+"]");
-        return paisRepository.findByFechaGreaterThanAndFechaLessThan(dateStart, dateEnd);
-
-    }
-    
-    @Path("fechagreaterthanequalsandfechalesthanequalswithouthours")
-    @GET
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @Operation(summary = "Obtiene los paises con fecha igual mayor o igual y menor o igual sin horas", description = "Retorna todos los paises con fechas mayor")
-    @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
-    @APIResponse(responseCode = "200", description = "Los paises")
-    @Tag(name = "BETA", description = "Esta api esta en desarrollo")
-    @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
-    public List<Pais> findByFechaGreaterThanEqualsThanAndFechaLessEqualsThanWithoutHours(@QueryParam("fecha")  @DateFormat final Date fecha) {
-/**
- * Cuando es rango de fecha asignar hora =0, minuto=0 a la fecha inicial
- * Asignar un dia mas y hora 0 y minuto 0 a la fecha final
- * https://www.mongodb.com/community/forums/t/i-want-data-between-two-dates-how-can-i-achieve-this/148777
- * 
- */
-
-//                    Date startIsoDate = JmoordbCoreDateUtil.stringToISODate( JmoordbCoreDateUtil.isoDateToString(fecha));//dateString is query param.
-//            Date endIsoDate = JmoordbCoreDateUtil.stringToISODate(JmoordbCoreDateUtil.isoDateToString(fecha));//dateString is query param.
+//    @Path("dategreaterthanandfechalessthanwithouthours")
+//    @GET
+//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    @Operation(summary = "Obtiene los paises con fecha ", description = "Retorna todos los paises con fechas mayor")
+//    @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
+//    @APIResponse(responseCode = "200", description = "Los paises")
+//    @Tag(name = "BETA", description = "Esta api esta en desarrollo")
+//    @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
+//    public List<Pais> findByFechaGreaterThanAndFechaLessThanWithoutHours(@QueryParam("fecha")  @DateFormat final Date fecha) {
+//        
+//       Date dateStart = JmoordbCoreDateUtil.setHourToDate(fecha, 0, 0);
+//            Date dateEnd = JmoordbCoreDateUtil.setHourToDate(fecha, 23, 59);
 //            
-//         if (fecha instanceof Date) {
-//    Date d = (Date) fecha;
-//    SimpleDateFormat format = new SimpleDateFormat(ISO_8601_DATE_FORMAT);
-//    serialize(new BasicDBObject("$date", format.format(d)), buf);
-//    return;
-//}
-
-Integer anio =JmoordbCoreDateUtil.anioDeUnaFecha(fecha);
-Integer mes =JmoordbCoreDateUtil.mesDeUnaFecha(fecha);
-Integer dia =JmoordbCoreDateUtil.diaDeUnaFecha(fecha);
-Integer hora = JmoordbCoreDateUtil.horaDeUnaFecha(fecha);
-Integer minutos =JmoordbCoreDateUtil.minutosDeUnaFecha(fecha);
-Integer segundos =JmoordbCoreDateUtil.segundosDeUnaFecha(fecha);
-         LocalDateTime startTime = LocalDateTime.of(anio, mes, dia,0, 0, 0);
-         LocalDateTime endTime = LocalDateTime.of(anio, mes, dia,23, 59, 59);
-         System.out.println("LocalDateTime startTime==> "+startTime);
-         System.out.println("LocalDateTime endTime==> "+endTime);
-      Bson   filter0 = Filters.and(Filters.gte("fecha", startTime), Filters.lte("fecha", endTime));
-//Bson filter0   = DocumentUtil.createBsonBetweenDateWithoutHours("fecha", fecha, "fecha",fecha);
-//Bson filter0    = DocumentUtil.createBsonBetweenDateWithoutHoursIsoDate("fecha", fecha, "fecha",fecha);
-                 System.out.println("***********************************");
-            System.out.println("Incovcando findBy LocalDateTime ");
-            findBy(filter0 );
-           //  Bson filter = and(filter0, eq("departament.iddepartament", profile.getIddepartament()));
-            
-            System.out.println("*********************************************");
-             
-//Date dateStartOne = getCurrentUtcTime(fecha);
-         Date     dateStartOne =  JmoordbCoreDateUtil.restarDiaaFecha(fecha,1);
-    Date     dateEndOne =  JmoordbCoreDateUtil.sumarDiaaFecha(fecha,1);
-//       Date dateEndOne =getCurrentUtcTime(fecha);;
-            
-               dateStartOne = JmoordbCoreDateUtil.setHourToDate(dateStartOne, 0, 0);
-               dateStartOne = JmoordbCoreDateUtil.setHourToDate(dateStartOne, 23, 59,59);
-              
-         // dateEndOne = JmoordbCoreDateUtil.setHourToDate(dateEndOne, 23, 59);
-        System.out.println("______________________________________________");
-    //    System.out.println("stringToISodate startIsoDat "+startIsoDate + "   endIsoDate "+endIsoDate);
-        System.out.println("[dateStartOne "+dateStartOne+ "] [dateEndOne "+dateEndOne+"]");
-        
-        System.out.println("______________________________________________");
-    
-   
-            
-            
-            System.out.println("***********************************");
-        return paisRepository.findByFechaGreaterThanEqualAndFechaLessThanEqual(dateStartOne, dateEndOne);
-
-          
-//
-//               Date dateStart = JmoordbCoreDateUtil.setHourToDate(fecha, 0, 0);
-//            Date dateEnd = JmoordbCoreDateUtil.sumarDiaaFecha(fecha,1);
-//            dateEnd = JmoordbCoreDateUtil.setHourToDate(dateEnd, 0, 0);
 //            System.out.println("fecha[" + fecha +"]  start [ "+dateStart + "] en dateEnd ["+dateEnd+"]");
+//        return paisRepository.findByFechaGreaterThanAndFechaLessThan(dateStart, dateEnd);
 //
-//        return paisRepository.findByFechaGreaterThanEqualAndFechaLessThanEqual(dateStart, dateEnd);
-    }
+//    }
+//    @Path("dategreaterthanandfechalessthanwithouthourstwodates")
+//    @GET
+//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    @Operation(summary = "Obtiene los paises con fecha ", description = "Retorna todos los paises con fechas mayor")
+//    @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
+//    @APIResponse(responseCode = "200", description = "Los paises")
+//    @Tag(name = "BETA", description = "Esta api esta en desarrollo")
+//    @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
+//    public List<Pais> findByFechaGreaterThanAndFechaLessThanWithoutHours(@QueryParam("fecha")  @DateFormat final Date fecha, @QueryParam("fechafinal")  @DateFormat final Date fechafinal) {
+//        
+//       Date dateStart = JmoordbCoreDateUtil.setHourToDate(fecha, 0, 0);
+//            Date dateEnd = JmoordbCoreDateUtil.setHourToDate(fechafinal, 23, 59);
+//            
+//            System.out.println("fecha[" + fecha +"]  start [ "+dateStart + "] en dateEnd ["+dateEnd+"]");
+//        return paisRepository.findByFechaGreaterThanAndFechaLessThan(dateStart, dateEnd);
+//
+//    }
+    
+//    @Path("fechagreaterthanequalsandfechalesthanequalswithouthours")
+//    @GET
+//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    @Operation(summary = "Obtiene los paises con fecha igual mayor o igual y menor o igual sin horas", description = "Retorna todos los paises con fechas mayor")
+//    @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
+//    @APIResponse(responseCode = "200", description = "Los paises")
+//    @Tag(name = "BETA", description = "Esta api esta en desarrollo")
+//    @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
+//    public List<Pais> findByFechaGreaterThanEqualsThanAndFechaLessEqualsThanWithoutHours(@QueryParam("fecha")  @DateFormat final Date fecha) {
+///**
+// * Cuando es rango de fecha asignar hora =0, minuto=0 a la fecha inicial
+// * Asignar un dia mas y hora 0 y minuto 0 a la fecha final
+// * https://www.mongodb.com/community/forums/t/i-want-data-between-two-dates-how-can-i-achieve-this/148777
+// * 
+// */
+//
+////                    Date startIsoDate = JmoordbCoreDateUtil.stringToISODate( JmoordbCoreDateUtil.isoDateToString(fecha));//dateString is query param.
+////            Date endIsoDate = JmoordbCoreDateUtil.stringToISODate(JmoordbCoreDateUtil.isoDateToString(fecha));//dateString is query param.
+////            
+////         if (fecha instanceof Date) {
+////    Date d = (Date) fecha;
+////    SimpleDateFormat format = new SimpleDateFormat(ISO_8601_DATE_FORMAT);
+////    serialize(new BasicDBObject("$date", format.format(d)), buf);
+////    return;
+////}
+//
+//Integer anio =JmoordbCoreDateUtil.anioDeUnaFecha(fecha);
+//Integer mes =JmoordbCoreDateUtil.mesDeUnaFecha(fecha);
+//Integer dia =JmoordbCoreDateUtil.diaDeUnaFecha(fecha);
+//Integer hora = JmoordbCoreDateUtil.horaDeUnaFecha(fecha);
+//Integer minutos =JmoordbCoreDateUtil.minutosDeUnaFecha(fecha);
+//Integer segundos =JmoordbCoreDateUtil.segundosDeUnaFecha(fecha);
+//         LocalDateTime startTime = LocalDateTime.of(anio, mes, dia,0, 0, 0);
+//         LocalDateTime endTime = LocalDateTime.of(anio, mes, dia,23, 59, 59);
+//         System.out.println("LocalDateTime startTime==> "+startTime);
+//         System.out.println("LocalDateTime endTime==> "+endTime);
+//      Bson   filter0 = Filters.and(Filters.gte("fecha", startTime), Filters.lte("fecha", endTime));
+////Bson filter0   = DocumentUtil.createBsonBetweenDateWithoutHours("fecha", fecha, "fecha",fecha);
+////Bson filter0    = DocumentUtil.createBsonBetweenDateWithoutHoursIsoDate("fecha", fecha, "fecha",fecha);
+//                 System.out.println("***********************************");
+//            System.out.println("Incovcando findBy LocalDateTime ");
+//            findBy(filter0 );
+//           //  Bson filter = and(filter0, eq("departament.iddepartament", profile.getIddepartament()));
+//            
+//            System.out.println("*********************************************");
+//             
+////Date dateStartOne = getCurrentUtcTime(fecha);
+//         Date     dateStartOne =  JmoordbCoreDateUtil.restarDiaaFecha(fecha,1);
+//    Date     dateEndOne =  JmoordbCoreDateUtil.sumarDiaaFecha(fecha,1);
+//
+//            
+//               dateStartOne = JmoordbCoreDateUtil.setHourToDate(dateStartOne, 0, 0);
+//               dateStartOne = JmoordbCoreDateUtil.setHourToDate(dateStartOne, 23, 59,59);
+//              
+//
+//        System.out.println("______________________________________________");
+//
+//        System.out.println("[dateStartOne "+dateStartOne+ "] [dateEndOne "+dateEndOne+"]");
+//        
+//        System.out.println("______________________________________________");
+//    
+//   
+//            
+//            
+//            System.out.println("***********************************");
+//        return paisRepository.findByFechaGreaterThanEqualAndFechaLessThanEqual(dateStartOne, dateEndOne);
+//
+//          
+//    }
     
 //    @Path("fechahora")
 //    @GET

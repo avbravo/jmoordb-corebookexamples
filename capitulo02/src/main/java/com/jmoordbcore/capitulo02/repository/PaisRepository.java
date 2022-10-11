@@ -8,6 +8,7 @@ import com.jmoordb.core.annotation.date.ExcludeTime;
 import com.jmoordb.core.annotation.date.IncludeTime;
 import com.jmoordb.core.annotation.enumerations.JakartaSource;
 import com.jmoordb.core.annotation.repository.CountBy;
+import com.jmoordb.core.annotation.repository.DeleteBy;
 import com.jmoordb.core.annotation.repository.Find;
 import com.jmoordb.core.annotation.repository.Repository;
 import com.jmoordb.core.repository.CrudRepository;
@@ -24,20 +25,28 @@ import java.util.List;
 public interface PaisRepository extends CrudRepository<Pais, Long>{     
     @Find
     public List<Pais> findByFechaGreaterThan(Date fecha);
-    
     @Find
-    public List<Pais> findByFecha(@IncludeTime Date fecha);  
+    public List<Pais> findByFechaGreaterThanEqual(@IncludeTime Date fecha);
+    
+   @Find
+   public List<Pais> findByFecha(@ExcludeTime Date fecha);  
+   @Find
+   public List<Pais> findByFecha(@ExcludeTime LocalDateTime fecha);  
+
+   
+   @Find
+    public List<Pais> findByFechaLess(@ExcludeTime Date fecha);  
     
     @Find
     public List<Pais> findByFechaLessthan(@ExcludeTime Date fecha);    
-    
-    
+////    
+//    
     @Find
     public List<Pais> findByLocal(@ExcludeTime LocalDateTime local);
-    
+//    
     @CountBy
     public Long countByLocal(LocalDateTime local);
-    
+//    
     @Find
     public List<Pais> findByFechaGreaterThanAndFechaLessThan(@IncludeTime Date start, Date end);
 
@@ -45,13 +54,12 @@ public interface PaisRepository extends CrudRepository<Pais, Long>{
     public List<Pais> findByFechaGreaterThanEqualAndFechaLessThanEqual(@IncludeTime Date start,@ExcludeTime  Date end);
     @Find
     public List<Pais> findByFechaGreaterThanEqualAndFechaLessThanEqualAndPais(@ExcludeTime Date start,@ExcludeTime  Date end,String pais);
-   
-//    public List<Pais> findByFechaGreaterExcludeHourThanEqualAndFechaLessExcludeHourThanEqual(Date start, Date end);
-//    
-//    public List<Pais> findByFechaGreaterIncludeHourThanEqualAndFechaLessIncludeHourThanEqual(Date start, Date end);
-//    
+
+
     
-    
+     @DeleteBy
+    public Long deleteByFechaGreaterThan(Date fecha);
+
 
     
     
