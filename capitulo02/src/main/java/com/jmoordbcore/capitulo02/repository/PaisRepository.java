@@ -10,6 +10,7 @@ import com.jmoordb.core.annotation.enumerations.JakartaSource;
 import com.jmoordb.core.annotation.repository.CountBy;
 import com.jmoordb.core.annotation.repository.DeleteBy;
 import com.jmoordb.core.annotation.repository.Find;
+import com.jmoordb.core.annotation.repository.Query;
 import com.jmoordb.core.annotation.repository.Repository;
 import com.jmoordb.core.repository.CrudRepository;
 import com.jmoordbcore.capitulo02.model.Pais;
@@ -24,6 +25,10 @@ import java.util.Optional;
  */
 @Repository(entity = Pais.class, jakartaSource = JakartaSource.JAVAEE_LEGACY)
 public interface PaisRepository extends CrudRepository<Pais, Long>{     
+    
+    @Query(where ="fecha .eq. @fecha")
+    public List<Pais> queryByFecha(@ExcludeTime Date fecha);
+    
     @Find
     public Optional<Pais> findByFechaAndPais(@ExcludeTime Date fecha, String pais);
     @Find
