@@ -51,6 +51,9 @@ public interface PaisRepository extends CrudRepository<Pais, Long> {
 
     @Find
     public Optional<Pais> findByFechaAndPais(@ExcludeTime Date fecha, String pais);
+    
+    @Find    
+    public List<Pais> findByFechaLessThanAndPais(@ExcludeTime Date fecha, String pais);
 
     @Find
     public List<Pais> findByPaisAndFechaLessThan(@ExcludeTime Date fecha, String pais);
