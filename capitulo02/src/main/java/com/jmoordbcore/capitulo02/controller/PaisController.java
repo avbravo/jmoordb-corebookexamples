@@ -191,6 +191,41 @@ public class PaisController {
         return paisRepository.findByFechaGreaterThanEquals(fecha);
     }
 // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="List<Pais> findByFechaLessThan(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha)">
+
+    @Path("fechalessthan")
+    @GET
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Operation(summary = "Obtiene los paises con fecha mayor", description = "Retorna todos los paises con fechas mayor")
+    @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
+    @APIResponse(responseCode = "200", description = "Los paises")
+    @Tag(name = "BETA", description = "Esta api esta en desarrollo")
+    @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
+    public List<Pais> findByFechaLessThan(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha) {        
+        return paisRepository.findByFechaLessThan(fecha);
+    }
+// </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="List<Pais> findByFechaLessThanEquals(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha)">
+
+    @Path("fechalessthanequals")
+    @GET
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Operation(summary = "Obtiene los paises con fecha mayor", description = "Retorna todos los paises con fechas mayor")
+    @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
+    @APIResponse(responseCode = "200", description = "Los paises")
+    @Tag(name = "BETA", description = "Esta api esta en desarrollo")
+    @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
+    public List<Pais> findByFechaLessThanEquals(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha) {
+        
+        return paisRepository.findByFechaLessThanEquals(fecha);
+    }
+// </editor-fold>
+    
+    
+    
+    
+    
+    
     
     // <editor-fold defaultstate="collapsed" desc="List<Pais> findByFechaGreaterThanAndFechaLessThanWithoutHours(@QueryParam("fecha") @DateFormat final Date fecha)">
 

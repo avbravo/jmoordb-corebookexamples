@@ -24,38 +24,45 @@ import java.util.Optional;
  * @author avbravo
  */
 @Repository(entity = Pais.class, jakartaSource = JakartaSource.JAVAEE_LEGACY)
-public interface PaisRepository extends CrudRepository<Pais, Long>{     
-    
-    @Query(where ="fecha .eq. @fecha")
+public interface PaisRepository extends CrudRepository<Pais, Long> {
+
+    @Query(where = "fecha .eq. @fecha")
     public List<Pais> queryByFecha(@IncludeTime Date fecha);
+
+    @Find
+    public List<Pais> findByFecha(@IncludeTime Date fecha);
+
+    @Find
+    public List<Pais> findByFecha(@ExcludeTime LocalDateTime fecha);
     
-    @Find
-    public Optional<Pais> findByFechaAndPais(@ExcludeTime Date fecha,  String pais);
-    @Find
-    public List<Pais> findByPaisAndFechaLessThan(@ExcludeTime Date fecha, String pais);
     
     @Find
     public List<Pais> findByFechaGreaterThan(Date fecha);
-    
+
     @Find
     public List<Pais> findByFechaGreaterThanEquals(@ExcludeTime Date fecha);
-    
-   @Find
-   public List<Pais> findByFecha(@IncludeTime Date fecha);  
-   @Find
-   public List<Pais> findByFecha(@ExcludeTime LocalDateTime fecha);  
 
-   
-   @Find
-    public List<Pais> findByFechaLess(@ExcludeTime Date fecha);  
-    
     @Find
-    public List<Pais> findByFechaLessthan(@ExcludeTime Date fecha);    
+    public List<Pais> findByFechaLessThan(@ExcludeTime Date fecha);
+
+    @Find
+    public List<Pais> findByFechaLessThanEquals(@ExcludeTime Date fecha);
+    
+
+    @Find
+    public Optional<Pais> findByFechaAndPais(@ExcludeTime Date fecha, String pais);
+
+    @Find
+    public List<Pais> findByPaisAndFechaLessThan(@ExcludeTime Date fecha, String pais);
+
+    
 ////    
 //    
+
     @Find
     public List<Pais> findByLocal(@ExcludeTime LocalDateTime local);
 //    
+
     @CountBy
     public Long countByLocal(LocalDateTime local);
 
@@ -64,17 +71,12 @@ public interface PaisRepository extends CrudRepository<Pais, Long>{
     public List<Pais> findByFechaGreaterThanAndFechaLessThan(@IncludeTime Date start, Date end);
 
     @Find
-    public List<Pais> findByFechaGreaterThanEqualAndFechaLessThanEqual(@IncludeTime Date start,@ExcludeTime  Date end);
+    public List<Pais> findByFechaGreaterThanEqualAndFechaLessThanEqual(@IncludeTime Date start, @ExcludeTime Date end);
+
     @Find
-    public List<Pais> findByFechaGreaterThanEqualAndFechaLessThanEqualAndPais(@ExcludeTime Date start,@ExcludeTime  Date end,String pais);
+    public List<Pais> findByFechaGreaterThanEqualAndFechaLessThanEqualAndPais(@ExcludeTime Date start, @ExcludeTime Date end, String pais);
 
-
-    
-     @DeleteBy
+    @DeleteBy
     public Long deleteByFechaGreaterThan(Date fecha);
 
-
-    
-    
-    
 }
