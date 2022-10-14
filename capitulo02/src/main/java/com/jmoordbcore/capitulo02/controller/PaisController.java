@@ -146,8 +146,21 @@ public class PaisController {
         return Response.status(Response.Status.NO_CONTENT).build();
     }
     // </editor-fold>
-    
-    
+    // <editor-fold defaultstate="collapsed" desc="fechahora">
+
+      @Path("fechahora")
+    @GET
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Operation(summary = "Obtiene los paises con fecha igual", description = "Retorna todos los paises con fechas mayor")
+    @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
+    @APIResponse(responseCode = "200", description = "Los paises")
+    @Tag(name = "BETA", description = "Esta api esta en desarrollo")
+    @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
+    public List<Pais> findByFecha(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha) {
+          
+        return paisRepository.findByFecha(fecha);
+    }
+    // </editor-fold>
     
     // <editor-fold defaultstate="collapsed" desc="List<Pais> findByFechaGreaterThan(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha)">
 
@@ -159,8 +172,23 @@ public class PaisController {
     @APIResponse(responseCode = "200", description = "Los paises")
     @Tag(name = "BETA", description = "Esta api esta en desarrollo")
     @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
-    public List<Pais> findByFechaGreaterThan(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha) {
+    public List<Pais> findByFechaGreaterThan(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha) {        
         return paisRepository.findByFechaGreaterThan(fecha);
+    }
+// </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="List<Pais> findByFechaGreaterThan(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha)">
+
+    @Path("fechagreaterthanequals")
+    @GET
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Operation(summary = "Obtiene los paises con fecha mayor", description = "Retorna todos los paises con fechas mayor")
+    @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
+    @APIResponse(responseCode = "200", description = "Los paises")
+    @Tag(name = "BETA", description = "Esta api esta en desarrollo")
+    @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
+    public List<Pais> findByFechaGreaterThanEquals(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha) {
+        
+        return paisRepository.findByFechaGreaterThanEquals(fecha);
     }
 // </editor-fold>
     
@@ -205,173 +233,9 @@ public class PaisController {
 
     }
 
-    @Path("fechagreaterthanequalsandfechalesthanequalswithouthours")
-    @GET
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @Operation(summary = "Obtiene los paises con fecha igual mayor o igual y menor o igual sin horas", description = "Retorna todos los paises con fechas mayor")
-    @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
-    @APIResponse(responseCode = "200", description = "Los paises")
-    @Tag(name = "BETA", description = "Esta api esta en desarrollo")
-    @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
-    public List<Pais> findByFechaGreaterThanEqualsThanAndFechaLessEqualsThanWithoutHours(@QueryParam("fecha") @DateFormat final Date fecha) {
-        /**
-         * Cuando es rango de fecha asignar hora =0, minuto=0 a la fecha inicial
-         * Asignar un dia mas y hora 0 y minuto 0 a la fecha final
-         * https://www.mongodb.com/community/forums/t/i-want-data-between-two-dates-how-can-i-achieve-this/148777
-         *
-         */
-
-//                    Date startIsoDate = JmoordbCoreDateUtil.stringToISODate( JmoordbCoreDateUtil.isoDateToString(fecha));//dateString is query param.
-//            Date endIsoDate = JmoordbCoreDateUtil.stringToISODate(JmoordbCoreDateUtil.isoDateToString(fecha));//dateString is query param.
-//            
-//         if (fecha instanceof Date) {
-//    Date d = (Date) fecha;
-//    SimpleDateFormat format = new SimpleDateFormat(ISO_8601_DATE_FORMAT);
-//    serialize(new BasicDBObject("$date", format.format(d)), buf);
-//    return;
-//}
-        Integer anio = JmoordbCoreDateUtil.anioDeUnaFecha(fecha);
-        Integer mes = JmoordbCoreDateUtil.mesDeUnaFecha(fecha);
-        Integer dia = JmoordbCoreDateUtil.diaDeUnaFecha(fecha);
-        Integer hora = JmoordbCoreDateUtil.horaDeUnaFecha(fecha);
-        Integer minutos = JmoordbCoreDateUtil.minutosDeUnaFecha(fecha);
-        Integer segundos = JmoordbCoreDateUtil.segundosDeUnaFecha(fecha);
-        LocalDateTime startTime = LocalDateTime.of(anio, mes, dia, 0, 0, 0);
-        LocalDateTime endTime = LocalDateTime.of(anio, mes, dia, 23, 59, 59);
-        System.out.println("LocalDateTime startTime==> " + startTime);
-        System.out.println("LocalDateTime endTime==> " + endTime);
-        Bson filter0 = Filters.and(Filters.gte("fecha", startTime), Filters.lte("fecha", endTime));
-//Bson filter0   = DocumentUtil.createBsonBetweenDateWithoutHours("fecha", fecha, "fecha",fecha);
-//Bson filter0    = DocumentUtil.createBsonBetweenDateWithoutHoursIsoDate("fecha", fecha, "fecha",fecha);
-        System.out.println("***********************************");
-        System.out.println("Incovcando findBy LocalDateTime ");
-        findBy(filter0);
-        //  Bson filter = and(filter0, eq("departament.iddepartament", profile.getIddepartament()));
-
-        System.out.println("*********************************************");
-
-//Date dateStartOne = getCurrentUtcTime(fecha);
-        Date dateStartOne = JmoordbCoreDateUtil.restarDiaaFecha(fecha, 1);
-        Date dateEndOne = JmoordbCoreDateUtil.sumarDiaaFecha(fecha, 1);
-
-        dateStartOne = JmoordbCoreDateUtil.setHourToDate(dateStartOne, 0, 0);
-        dateStartOne = JmoordbCoreDateUtil.setHourToDate(dateStartOne, 23, 59, 59);
-
-        System.out.println("______________________________________________");
-
-        System.out.println("[dateStartOne " + dateStartOne + "] [dateEndOne " + dateEndOne + "]");
-
-        System.out.println("______________________________________________");
-
-        System.out.println("***********************************");
-        return paisRepository.findByFechaGreaterThanEqualAndFechaLessThanEqual(dateStartOne, dateEndOne);
-
-    }
-
-    @Path("fechahora")
-    @GET
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @Operation(summary = "Obtiene los paises con fecha igual", description = "Retorna todos los paises con fechas mayor")
-    @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
-    @APIResponse(responseCode = "200", description = "Los paises")
-    @Tag(name = "BETA", description = "Esta api esta en desarrollo")
-    @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
-    public List<Pais> findByFecha(@QueryParam("fecha") @DateTimeFormat final Date fecha) {
-        return paisRepository.findByFecha(fecha);
-    }
-
-//    @Path("test3")
-//    @GET
-//    public Date test3(@QueryParam("myDate")
-//            @DateTimeFormat final Date myDate) {
-//        return myDate;
-//    }
-
-//    @Path("test4")
-//    @GET
-//    public Date test4(@QueryParam("myDate")
-//            @DateTimeFormat("yyyy/MM/dd HH:mm") final Date myDate) {
-//        return myDate;
-//    }
-//
-//    @Path("test5")
-//    @GET
-//    public MyDateTest test5(@BeanParam final MyDateTest myDateTeste) {
-//        return myDateTeste;
-//    }
-
    
+  
 
-//    public static class MyDateTest {
-//
-//        @QueryParam("myDate")
-//        @DateTimeFormat("dd-MM-yyyy HH:mm")
-//        private Date myDate;
-//
-//        public Date getMyDate() {
-//            return myDate;
-//        }
-//
-//        public void setMyDate(Date myDate) {
-//            this.myDate = myDate;
-//        }
-//    }
-
-//     public java.util.List<com.jmoordbcore.capitulo02.model.Pais> findBy(java.util.Date start,java.util.Date end) {
-    public java.util.List<com.jmoordbcore.capitulo02.model.Pais> findBy(Bson filter) {
-        List<Pais> list = new ArrayList<>();
-        try {
-            MongoDatabase database = mongoClient.getDatabase(mongodbDatabase);
-            MongoCollection<Document> collection = database.getCollection(mongodbCollection);
-            MongoCursor<Document> cursor;
-//               Bson filter =Filters.and(
-//			Filters.gte("fecha",start)
-//			,Filters.lte("fecha",end)
-//		);
-            System.out.println("[filter ] " + filter);
-            cursor = collection.find(filter)
-                    .iterator();
-
-            try {
-                while (cursor.hasNext()) {
-                    System.out.println("cursor.[ next ]" + cursor.next());
-                    //list.add(paisSupplier.get(Pais::new, cursor.next()));
-                }
-                System.out.println("[[[[ end ]]]]]");
-            } finally {
-                cursor.close();
-            }
-        } catch (Exception e) {
-            MessagesUtil.error(MessagesUtil.nameOfClassAndMethod() + " " + e.getLocalizedMessage());
-        }
-        return list;
-
-    }
-
-//    // create getCurrentUtcTime() method to get the current UTC time  
-//    public static Date getCurrentUtcTime(Date date) {  // handling ParseException  
-//        Date d1 = date;
-//        // create an instance of the SimpleDateFormat class  
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MMM-dd HH:mm:ss");
-//        // set UTC time zone by using SimpleDateFormat class  
-//        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-//        //create another instance of the SimpleDateFormat class for local date format  
-//        SimpleDateFormat ldf = new SimpleDateFormat("yyyy-MMM-dd HH:mm:ss");
-//        // declare and initialize a date variable which we return to the main method  
-//
-//        // use try catch block to parse date in UTC time zone  
-//        try {
-//            // parsing date using SimpleDateFormat class  
-//            d1 = ldf.parse(sdf.format(new Date()));
-//        } // catch block for handling ParseException  
-//        catch (java.text.ParseException e) {
-//            // TODO Auto-generated catch block  
-//            e.printStackTrace();
-//            System.out.println(e.getMessage());
-//        }
-//
-//        // pass UTC date to main method.  
-//        return d1;
-//    }
+    
 
 }

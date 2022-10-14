@@ -7,7 +7,6 @@ package com.jmoordbcore.capitulo02.repository;
 import com.jmoordb.core.annotation.date.ExcludeTime;
 import com.jmoordb.core.annotation.date.IncludeTime;
 import com.jmoordb.core.annotation.enumerations.JakartaSource;
-import com.jmoordb.core.annotation.repository.Count;
 import com.jmoordb.core.annotation.repository.CountBy;
 import com.jmoordb.core.annotation.repository.DeleteBy;
 import com.jmoordb.core.annotation.repository.Find;
@@ -37,11 +36,12 @@ public interface PaisRepository extends CrudRepository<Pais, Long>{
     
     @Find
     public List<Pais> findByFechaGreaterThan(Date fecha);
+    
     @Find
-    public List<Pais> findByFechaGreaterThanEqual(@IncludeTime Date fecha);
+    public List<Pais> findByFechaGreaterThanEquals(@ExcludeTime Date fecha);
     
    @Find
-   public List<Pais> findByFecha(@ExcludeTime Date fecha);  
+   public List<Pais> findByFecha(@IncludeTime Date fecha);  
    @Find
    public List<Pais> findByFecha(@ExcludeTime LocalDateTime fecha);  
 
