@@ -34,8 +34,7 @@ public interface PaisRepository extends CrudRepository<Pais, Long> {
 
     @Find
     public List<Pais> findByFecha(@ExcludeTime LocalDateTime fecha);
-    
-    
+
     @Find
     public List<Pais> findByFechaGreaterThan(Date fecha);
 
@@ -47,21 +46,18 @@ public interface PaisRepository extends CrudRepository<Pais, Long> {
 
     @Find
     public List<Pais> findByFechaLessThanEquals(@ExcludeTime Date fecha);
-    
 
     @Find
     public Optional<Pais> findByFechaAndPais(@ExcludeTime Date fecha, String pais);
-    
-    @Find    
+
+    @Find
     public List<Pais> findByFechaLessThanAndPais(@ExcludeTime Date fecha, String pais);
 
     @Find
     public List<Pais> findByPaisAndFechaLessThan(@ExcludeTime Date fecha, String pais);
 
-    
 ////    
 //    
-
     @Find
     public List<Pais> findByLocal(@ExcludeTime LocalDateTime local);
 //    
