@@ -1,0 +1,3 @@
+{ "_id" : { "$oid" : "62c48c051165d83df8fde097" }, "idgrupoprofesion" : "informatica", "grupoprofesion" : "Informatica" }
+{ "_id" : { "$oid" : "62c48c171165d83df8fde098" }, "idgrupoprofesion" : "medicina", "grupoprofesion" : "Medicina" }
+{ "_id" : { "$oid" : "62c48c271165d83df8fde099" }, "idgrupoprofesion" : "educacion", "grupoprofesion" : "Educación" }

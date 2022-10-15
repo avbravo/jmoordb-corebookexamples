@@ -1,0 +1,2 @@
+{ "_id" : { "$oid" : "62c499f71165d852af05044a" }, "idcorregimiento" : "1", "corregimiento" : "Santa Ana", "provincia" : { "idprovincia" : "7" } }
+{ "_id" : { "$oid" : "62c49a051165d852af05044b" }, "idcorregimiento" : "2", "corregimiento" : "San Miguelito", "provincia" : { "idprovincia" : "8" } }

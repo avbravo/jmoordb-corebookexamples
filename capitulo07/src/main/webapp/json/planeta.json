@@ -1,0 +1,2 @@
+{ "_id" : { "$oid" : "62bdc837bd083f1d60193f15" }, "idplaneta" : "tr", "planeta" : "Tierra" }
+{ "_id" : { "$oid" : "62bdc86bbd083f1d60193f16" }, "idplaneta" : "ma", "planeta" : "Marte" }

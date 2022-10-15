@@ -1,0 +1,106 @@
+[
+    {
+        "corregimiento": {
+            "corregimiento": "Santa Ana",
+            "idcorregimiento": "1",
+            "provincia": {
+                "idprovincia": "7",
+                "pais": {
+                    "idioma": {
+                        "ididioma": "español",
+                        "idioma": "Español"
+                    },
+                    "idpais": "pa",
+                    "musica": [
+                        {
+                            "idmusica": "reggae",
+                            "musica": "Reggae"
+                        },
+                        {
+                            "idmusica": "tipico",
+                            "musica": "Tipico"
+                        }
+                    ],
+                    "oceano": [
+                        {
+                            "idoceano": "p",
+                            "oceano": "Pacífico"
+                        },
+                        {
+                            "idoceano": "a",
+                            "oceano": "Atlántico"
+                        }
+                    ],
+                    "pais": "Panama",
+                    "planeta": {
+                        "idplaneta": "tr",
+                        "planeta": "Tierra"
+                    }
+                },
+                "provincia": "Los Santos"
+            }
+        },
+        "idpersona": "1",
+        "nombre": "aris",
+        "profesion": {
+            "grupoprofesion": {
+                "grupoprofesion": "Informatica",
+                "idgrupoprofesion": "informatica"
+            },
+            "idprofesion": "1",
+            "profesion": "Desarrollador"
+        }
+    },
+    {
+        "corregimiento": {
+            "corregimiento": "San Miguelito",
+            "idcorregimiento": "2",
+            "provincia": {
+                "idprovincia": "8",
+                "pais": {
+                    "idioma": {
+                        "ididioma": "english",
+                        "idioma": "English"
+                    },
+                    "idpais": "usa",
+                    "musica": [
+                        {
+                            "idmusica": "rock",
+                            "musica": "Rock"
+                        },
+                        {
+                            "idmusica": "metal",
+                            "musica": "Metal"
+                        }
+                    ],
+                    "oceano": [
+                        {
+                            "idoceano": "gar",
+                            "oceano": "Oceano Glacial Artico"
+                        },
+                        {
+                            "idoceano": "a",
+                            "oceano": "Atlántico"
+                        }
+                    ],
+                    "pais": "Estados Unidos",
+                    "planeta": {
+                        "idplaneta": "tr",
+                        "planeta": "Tierra"
+                    }
+                },
+                "provincia": "Pensilvania"
+            }
+        },
+        "idpersona": "2",
+        "nombre": "maria",
+        "profesion": {
+            "grupoprofesion": {
+                "grupoprofesion": "Medicina",
+                "idgrupoprofesion": "medicina"
+            },
+            "idprofesion": "2",
+            "profesion": "Cirujano"
+        }
+    }
+]

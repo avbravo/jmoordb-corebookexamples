@@ -1,0 +1,2 @@
+{ "_id" : { "$oid" : "62c6ea0c217f3a2199d05dba" }, "idprofesion" : "1", "profesion" : "Desarrollador", "grupoprofesion" : { "idgrupoprofesion" : "informatica" } }
+{ "_id" : { "$oid" : "62c6ea21217f3a2199d05dbb" }, "idprofesion" : "2", "profesion" : "Cirujano", "grupoprofesion" : { "idgrupoprofesion" : "medicina" } }

@@ -1,0 +1,5 @@
+{ "_id" : { "$oid" : "62bf2b8a3f94281a78781f5e" }, "idoceano" : "p", "oceano" : "Pacífico" }
+{ "_id" : { "$oid" : "62bf2b9f3f94281a78781f5f" }, "idoceano" : "a", "oceano" : "Atlántico" }
+{ "_id" : { "$oid" : "62bf2c123f94281a78781f60" }, "idoceano" : "i", "oceano" : "Indico" }
+{ "_id" : { "$oid" : "62bf2c4c3f94281a78781f61" }, "idoceano" : "gar", "oceano" : "Oceano Glacial Artico" }
+{ "_id" : { "$oid" : "62bf2c6f3f94281a78781f62" }, "idoceano" : "gan", "oceano" : "Oceano Glacial Antártico" }

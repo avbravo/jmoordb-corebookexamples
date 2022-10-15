@@ -1,0 +1,2 @@
+{ "_id" : { "$oid" : "62c5caae034dac36b8fa9de8" }, "idpersona" : "1", "nombre" : "aris", "corregimiento" : { "idcorregimiento" : "1" }, "profesion" : { "idprofesion" : "1" } }
+{ "_id" : { "$oid" : "62c5caba034dac36b8fa9de9" }, "idpersona" : "2", "nombre" : "maria", "corregimiento" : { "idcorregimiento" : "2" }, "profesion" : { "idprofesion" : "2" } }
