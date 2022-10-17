@@ -236,8 +236,7 @@ public class PaisController {
     @APIResponse(responseCode = "200", description = "Los paises")
     @Tag(name = "BETA", description = "Esta api esta en desarrollo")
     @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
-    public List<Pais> findByFechaLessThanAndPais(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha, @QueryParam("pais") String pais) {
-        
+    public List<Pais> findByFechaLessThanAndPais(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha, @QueryParam("pais") String pais) {        
         return paisRepository.findByFechaLessThanAndPais(fecha, pais);
     }
 // </editor-fold>
@@ -248,9 +247,9 @@ public class PaisController {
     
     
     
-    // <editor-fold defaultstate="collapsed" desc="List<Pais> findByFechaGreaterThanAndFechaLessThanWithoutHours(@QueryParam("fecha") @DateFormat final Date fecha)">
+    // <editor-fold defaultstate="collapsed" desc="public List<Pais> findByFechaGreaterThanAndFechaLessThanWithoutHours(@QueryParam("fecha") @DateFormat final Date fecha)">
 
-    @Path("dategreaterthanandfechalessthanwithouthours")
+    @Path("fechagreaterthanandfechalessthanwithouthours")
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     @Operation(summary = "Obtiene los paises con fecha ", description = "Retorna todos los paises con fechas mayor")
@@ -260,11 +259,8 @@ public class PaisController {
     @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
     public List<Pais> findByFechaGreaterThanAndFechaLessThanWithoutHours(@QueryParam("fecha") @DateFormat final Date fecha) {
 
-        Date dateStart = JmoordbCoreDateUtil.setHourToDate(fecha, 0, 0);
-        Date dateEnd = JmoordbCoreDateUtil.setHourToDate(fecha, 23, 59);
-
-        System.out.println("fecha[" + fecha + "]  start [ " + dateStart + "] en dateEnd [" + dateEnd + "]");
-        return paisRepository.findByFechaGreaterThanAndFechaLessThan(dateStart, dateEnd);
+       Date dateStart = JmoordbCoreDateUtil.setHourToDate(fecha, 7, 0);
+       return paisRepository.findByFechaGreaterThanEqualsAndFechaLessThanEquals(dateStart, fecha);
 
     }
 
@@ -285,7 +281,7 @@ public class PaisController {
         Date dateEnd = JmoordbCoreDateUtil.setHourToDate(fechafinal, 23, 59);
 
         System.out.println("fecha[" + fecha + "]  start [ " + dateStart + "] en dateEnd [" + dateEnd + "]");
-        return paisRepository.findByFechaGreaterThanAndFechaLessThan(dateStart, dateEnd);
+        return paisRepository.findByFechaGreaterThanEqualsAndFechaLessThanEquals(dateStart, dateEnd);
 
     }
 
