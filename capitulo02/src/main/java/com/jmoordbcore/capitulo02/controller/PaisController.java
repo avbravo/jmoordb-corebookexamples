@@ -10,6 +10,7 @@ import com.jmoordb.core.util.JmoordbCoreUtil;
 import com.jmoordbcore.capitulo02.model.Pais;
 import com.jmoordbcore.capitulo02.repository.PaisRepository;
 import com.mongodb.client.MongoClient;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -76,15 +77,15 @@ public class PaisController {
         
 //       List<Pais> list = paisRepository.findAll();
 //       for(int i=4;i<=50000 ;i++){
-       for(int i=84451;i<=100000 ;i++){
-           Pais pais = new Pais();
-           pais.setIdpais(JmoordbCoreUtil.integerToLong(i));
-           pais.setPais("Pais - "+pais.getIdpais());
-           pais.setFecha(new Date());
-           paisRepository.save(pais);
-       }
-        
-        return paisRepository.findAll();
+//       for(int i=15550;i<=30000 ;i++){
+//           Pais pais = new Pais();
+//           pais.setIdpais(JmoordbCoreUtil.integerToLong(i));
+//           pais.setPais("Pais - "+pais.getIdpais());
+//           pais.setFecha(new Date());
+//           paisRepository.save(pais);
+//       }
+//        return new ArrayList<>();
+      return paisRepository.findAll();
     }
 // </editor-fold>
     
