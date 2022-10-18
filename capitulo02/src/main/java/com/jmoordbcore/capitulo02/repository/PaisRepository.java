@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 /**
  *
@@ -26,6 +27,9 @@ import java.util.Optional;
 @Repository(entity = Pais.class, jakartaSource = JakartaSource.JAVAEE_LEGACY)
 public interface PaisRepository extends CrudRepository<Pais, Long> {
 
+@Find
+    public Stream<Pais> findByNombreAndApellidoAndEdadLessThanEquals(String nombre, String apellido, Integer edad);
+    
     @Query(where = "fecha .eq. @fecha")
     public List<Pais> queryByFecha(@IncludeTime Date fecha);
 
