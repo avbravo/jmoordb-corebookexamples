@@ -1,4 +1,4 @@
-package com.jmoordbcore.capitulo02.microprofile;
+package com.jmoordbcore.capitulo02.microprofile.faulttolerance;
 
 import com.jmoordbcore.capitulo02.repository.PaisRepository;
 import java.util.Date;
