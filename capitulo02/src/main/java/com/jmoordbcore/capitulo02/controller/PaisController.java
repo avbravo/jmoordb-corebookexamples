@@ -5,7 +5,6 @@
 package com.jmoordbcore.capitulo02.controller;
 
 import com.jmoordb.core.annotation.date.DateFormat;
-import com.jmoordb.core.annotation.repository.Ping;
 import com.jmoordb.core.util.JmoordbCoreDateUtil;
 import com.jmoordb.core.util.JmoordbCoreUtil;
 import com.jmoordbcore.capitulo02.model.Pais;
@@ -30,6 +29,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.eclipse.microprofile.metrics.Counter;
+import org.eclipse.microprofile.metrics.MetricUnits;
+import org.eclipse.microprofile.metrics.annotation.Counted;
+import org.eclipse.microprofile.metrics.annotation.Gauge;
+import org.eclipse.microprofile.metrics.annotation.Metered;
+import org.eclipse.microprofile.metrics.annotation.Metric;
+import org.eclipse.microprofile.metrics.annotation.Timed;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
@@ -62,6 +68,10 @@ public class PaisController {
     // <editor-fold defaultstate="collapsed" desc="Inject">
     @Inject
     PaisRepository paisRepository;
+    
+     @Inject
+    @Metric(name = "counter")
+    private Counter counter;
 // </editor-fold>
 
     
@@ -89,20 +99,22 @@ Integer maximo = inicial +limiteFactor;
     }
 // </editor-fold>
     
-    // <editor-fold defaultstate="collapsed" desc="List<Pais> findAll()">
+    // <editor-fold defaultstate="collapsed" desc="findAll">
 
  
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Timed(name = "paisesFindAll",
+            description = "Monitorea el tiempo en que se obtiene la lista de todos los paises",
+            unit = MetricUnits.MILLISECONDS,  absolute = true)
     @Operation(summary = "Obtiene todos los paises", description = "Retorna todos los paises disponibles")
     @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
     @APIResponse(responseCode = "200", description = "Los paises")
     @Tag(name = "BETA", description = "Esta api esta en desarrollo")
     @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
-    public List<Pais> findAll() {
-        
+    public List<Pais> findAll() {      
 
-     return paisRepository.findAll();
+    return paisRepository.findAll();
     }
 // </editor-fold>
     
@@ -118,6 +130,8 @@ Integer maximo = inicial +limiteFactor;
     @APIResponse(description = "El pais", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Pais.class)))
     public Pais findByIdpais(
             @Parameter(description = "El idpais", required = true, example = "1", schema = @Schema(type = SchemaType.NUMBER)) @PathParam("idpais") Long idpais) {
+        
+                 counter.inc();                
         return paisRepository.findByPk(idpais).orElseThrow(
                 () -> new WebApplicationException("No hay pais con idpais " + idpais, Response.Status.NOT_FOUND));
 
@@ -127,6 +141,10 @@ Integer maximo = inicial +limiteFactor;
     // <editor-fold defaultstate="collapsed" desc="Response save">
 
     @POST
+    @Metered(name = "paisSave",
+            unit = MetricUnits.MILLISECONDS,
+            description = "Monitor la rata de eventos ocurridos al insertar pais",
+            absolute = true)
     @Operation(summary = "Inserta un nuevo pais", description = "Inserta un nuevo pais")
     @APIResponse(responseCode = "201", description = "Cuanoo se crea un  pais")
     @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
@@ -328,6 +346,11 @@ Integer maximo = inicial +limiteFactor;
     @Path("fechagreaterthanequalandfechalessthanequalandpais")
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Counted(unit = MetricUnits.NONE,
+            name = "findByEntreFechasAndPais",
+            absolute = true,
+            displayName = "obtiene lista de paises",
+            description = "Monitorea cuantas veces el método es invocado")
     @Operation(summary = "Obtiene los documentos entre fechas y pais ", description = "Retorna todos los paises con fechas mayor")
     @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
     @APIResponse(responseCode = "200", description = "Los paises")
@@ -340,7 +363,12 @@ Integer maximo = inicial +limiteFactor;
 
     // </editor-fold>
   
-
+// <editor-fold defaultstate="collapsed" desc="code">
+    @Gauge(name = "paisCountFindById", unit = MetricUnits.NONE)
+    private long count() {
+        return counter.getCount();
+    }
+// </editor-fold>
     
 
 }

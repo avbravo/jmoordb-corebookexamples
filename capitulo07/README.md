@@ -66,10 +66,10 @@ curl --location --request POST 'http://localhost:8080/api/oceano/' \
 
 ## Metrics
 ```
-http://localhost:8002/metrics
+http://localhost:8080/metrics
 
-http://localhost:8002/api/metric/increment
+http://localhost:8080/api/metric/increment
 
-http://localhost:8002/api/metric/timed
+http://localhost:8080/api/metric/timed
 
 ```
