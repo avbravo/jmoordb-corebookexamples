@@ -5,7 +5,6 @@
  */
 package com.jmoordbcore.capitulo02.microprofile.health;
 
-import java.io.File;
 import javax.enterprise.context.ApplicationScoped;
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
@@ -17,18 +16,16 @@ import org.eclipse.microprofile.health.Readiness;
  */
 @Readiness
 @ApplicationScoped
-public class CheckDiskspace implements HealthCheck {
-
-    private static final String readinessCheck = "@Readiness Disk Check";
-    File file = new File("/");
-    long freeSpace = file.getFreeSpace() / 1024 / 1024;
+public class AuthorCheck implements HealthCheck {
 
     @Override
     public HealthCheckResponse call() {
-        return HealthCheckResponse.named("@Readiness disk")
-                .withData("freeSpace", freeSpace)
+        return HealthCheckResponse.named("información")
                 .up()
+                .withData("Author", "Avbravo")
+                .withData("Website", "https://avbravo.blogspot.com")
+                .withData("Country", "Panamá")
                 .build();
-
     }
+
 }

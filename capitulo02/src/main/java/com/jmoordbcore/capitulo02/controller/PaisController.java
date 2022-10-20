@@ -5,6 +5,7 @@
 package com.jmoordbcore.capitulo02.controller;
 
 import com.jmoordb.core.annotation.date.DateFormat;
+import com.jmoordb.core.annotation.repository.Ping;
 import com.jmoordb.core.util.JmoordbCoreDateUtil;
 import com.jmoordb.core.util.JmoordbCoreUtil;
 import com.jmoordbcore.capitulo02.model.Pais;
@@ -63,6 +64,31 @@ public class PaisController {
     PaisRepository paisRepository;
 // </editor-fold>
 
+    
+    // <editor-fold defaultstate="collapsed" desc="  @Path("insert")">
+
+    @Path("insert")
+    @GET
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+  
+    public List<Pais> insert(@QueryParam("inicial")  final Integer inicial) {
+        
+      Integer limiteFactor =13545;
+
+Integer maximo = inicial +limiteFactor;
+       for(int i=inicial;i<=maximo ;i++){
+           
+  
+           Pais pais = new Pais();
+           pais.setIdpais(JmoordbCoreUtil.integerToLong(i));
+           pais.setPais("Pais - "+pais.getIdpais());
+           pais.setFecha(new Date());
+           paisRepository.save(pais);
+       }
+        return new ArrayList<>();
+    }
+// </editor-fold>
+    
     // <editor-fold defaultstate="collapsed" desc="List<Pais> findAll()">
 
  
@@ -75,17 +101,8 @@ public class PaisController {
     @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
     public List<Pais> findAll() {
         
-//       List<Pais> list = paisRepository.findAll();
-//       for(int i=4;i<=50000 ;i++){
-       for(int i=150001;i<=170000 ;i++){
-           Pais pais = new Pais();
-           pais.setIdpais(JmoordbCoreUtil.integerToLong(i));
-           pais.setPais("Pais - "+pais.getIdpais());
-           pais.setFecha(new Date());
-           paisRepository.save(pais);
-       }
-        return new ArrayList<>();
-//      return paisRepository.findAll();
+
+     return paisRepository.findAll();
     }
 // </editor-fold>
     

@@ -8,12 +8,11 @@ import javax.enterprise.context.ApplicationScoped;
 
 @Liveness
 @ApplicationScoped
-public class ServiceLiveHealthCheck implements HealthCheck {
+public class LiveHealthCheck implements HealthCheck {
 
     @Override
     public HealthCheckResponse call() {
-
-        return HealthCheckResponse.named(ServiceLiveHealthCheck.class.getSimpleName()).withData("live",true).up().build();
+        return HealthCheckResponse.named("live").up().build();
 
     }
 }

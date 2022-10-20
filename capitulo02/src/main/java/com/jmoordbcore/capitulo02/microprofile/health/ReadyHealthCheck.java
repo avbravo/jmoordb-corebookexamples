@@ -8,12 +8,12 @@ import javax.enterprise.context.ApplicationScoped;
 
 @Readiness
 @ApplicationScoped
-public class ServiceReadyHealthCheck implements HealthCheck {
+public class ReadyHealthCheck implements HealthCheck {
 
     @Override
     public HealthCheckResponse call() {
+return HealthCheckResponse.named("ready").up().build();
 
-        return HealthCheckResponse.named(ServiceReadyHealthCheck.class.getSimpleName()).withData("ready",true).up().build();
 
     }
 }

@@ -10,6 +10,7 @@ import com.jmoordb.core.annotation.enumerations.JakartaSource;
 import com.jmoordb.core.annotation.repository.CountBy;
 import com.jmoordb.core.annotation.repository.DeleteBy;
 import com.jmoordb.core.annotation.repository.Find;
+import com.jmoordb.core.annotation.repository.Ping;
 import com.jmoordb.core.annotation.repository.Query;
 import com.jmoordb.core.annotation.repository.Repository;
 import com.jmoordb.core.repository.CrudRepository;
@@ -82,5 +83,6 @@ public interface PaisRepository extends CrudRepository<Pais, Long> {
 
     @DeleteBy
     public Long deleteByFechaGreaterThan(Date fecha);
-
+@Ping
+public Boolean ping();
 }

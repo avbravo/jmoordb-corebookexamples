@@ -5,6 +5,8 @@
  */
 package com.jmoordbcore.capitulo02.microprofile.health;
 
+import com.jmoordb.core.util.JmoordbCoreUtil;
+import java.io.File;
 import javax.enterprise.context.ApplicationScoped;
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
@@ -16,15 +18,15 @@ import org.eclipse.microprofile.health.Readiness;
  */
 @Readiness
 @ApplicationScoped
-public class CheckAuthor implements HealthCheck {
+public class MemoryUsageCheck implements HealthCheck {
 
+       
     @Override
     public HealthCheckResponse call() {
-        return HealthCheckResponse.named("health")
+        return HealthCheckResponse.named("Uso de memoria")
+                .withData("gb", JmoordbCoreUtil.memoryUsage())
                 .up()
-                .withData("Author", "Avbravo")
-                .withData("Website", "https://avbravo.blogspot.com")
                 .build();
-    }
 
+    }
 }
