@@ -72,9 +72,7 @@ public class PaisController {
     @Inject
     PaisRepository paisRepository;
 
-    @Inject
-    @Metric(name = "counter")
-    private Counter counter;
+
 
     
 // </editor-fold>
@@ -104,9 +102,6 @@ public class PaisController {
     // <editor-fold defaultstate="collapsed" desc="findAll">
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @Timed(name = "paisesFindAll",
-            description = "Monitorea el tiempo en que se obtiene la lista de todos los paises",
-            unit = MetricUnits.MILLISECONDS, absolute = true)
     @Operation(summary = "Obtiene todos los paises", description = "Retorna todos los paises disponibles")
     @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
     @APIResponse(responseCode = "200", description = "Los paises")
@@ -130,7 +125,6 @@ public class PaisController {
     public Pais findByIdpais(
             @Parameter(description = "El idpais", required = true, example = "1", schema = @Schema(type = SchemaType.NUMBER)) @PathParam("idpais") Long idpais) {
 
-        counter.inc();
 
         return paisRepository.findByPk(idpais).orElseThrow(
                 () -> new WebApplicationException("No hay pais con idpais " + idpais, Response.Status.NOT_FOUND));
@@ -322,11 +316,6 @@ public class PaisController {
     @Path("fechagreaterthanequalandfechalessthanequalandpais")
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @Counted(unit = MetricUnits.NONE,
-            name = "findByEntreFechasAndPais",
-            absolute = true,
-            displayName = "obtiene lista de paises",
-            description = "Monitorea cuantas veces el método es invocado")
     @Operation(summary = "Obtiene los documentos entre fechas y pais ", description = "Retorna todos los paises con fechas mayor")
     @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
     @APIResponse(responseCode = "200", description = "Los paises")
@@ -338,11 +327,5 @@ public class PaisController {
     }
 
     // </editor-fold>
-// <editor-fold defaultstate="collapsed" desc="code">
-    @Gauge(name = "paisCountFindById", absolute = true, unit = MetricUnits.NONE)
-    private long count() {
-        return counter.getCount();
-    }
-// </editor-fold>
 
 }
