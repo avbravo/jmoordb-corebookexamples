@@ -77,27 +77,7 @@ public class PaisController {
     
 // </editor-fold>
 
-    // <editor-fold defaultstate="collapsed" desc="  @Path("insert")">
-    @Path("insert")
-    @GET
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 
-    public List<Pais> insert(@QueryParam("inicial") final Integer inicial) {
-
-        Integer limiteFactor = 13545;
-
-        Integer maximo = inicial + limiteFactor;
-        for (int i = inicial; i <= maximo; i++) {
-
-            Pais pais = new Pais();
-            pais.setIdpais(JmoordbCoreUtil.integerToLong(i));
-            pais.setPais("Pais - " + pais.getIdpais());
-            pais.setFecha(new Date());
-            paisRepository.save(pais);
-        }
-        return new ArrayList<>();
-    }
-// </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="findAll">
     @GET
