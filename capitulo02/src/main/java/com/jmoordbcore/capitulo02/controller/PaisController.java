@@ -30,6 +30,9 @@ import javax.ws.rs.core.Response;
 import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.metrics.Counter;
+import org.eclipse.microprofile.metrics.Histogram;
+import org.eclipse.microprofile.metrics.Metadata;
+import org.eclipse.microprofile.metrics.MetricRegistry;
 import org.eclipse.microprofile.metrics.MetricUnits;
 import org.eclipse.microprofile.metrics.annotation.Counted;
 import org.eclipse.microprofile.metrics.annotation.Gauge;
@@ -68,58 +71,54 @@ public class PaisController {
     // <editor-fold defaultstate="collapsed" desc="Inject">
     @Inject
     PaisRepository paisRepository;
-    
-     @Inject
+
+    @Inject
     @Metric(name = "counter")
     private Counter counter;
-// </editor-fold>
 
     
-    // <editor-fold defaultstate="collapsed" desc="  @Path("insert")">
+// </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="  @Path("insert")">
     @Path("insert")
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-  
-    public List<Pais> insert(@QueryParam("inicial")  final Integer inicial) {
-        
-      Integer limiteFactor =13545;
 
-Integer maximo = inicial +limiteFactor;
-       for(int i=inicial;i<=maximo ;i++){
-           
-  
-           Pais pais = new Pais();
-           pais.setIdpais(JmoordbCoreUtil.integerToLong(i));
-           pais.setPais("Pais - "+pais.getIdpais());
-           pais.setFecha(new Date());
-           paisRepository.save(pais);
-       }
+    public List<Pais> insert(@QueryParam("inicial") final Integer inicial) {
+
+        Integer limiteFactor = 13545;
+
+        Integer maximo = inicial + limiteFactor;
+        for (int i = inicial; i <= maximo; i++) {
+
+            Pais pais = new Pais();
+            pais.setIdpais(JmoordbCoreUtil.integerToLong(i));
+            pais.setPais("Pais - " + pais.getIdpais());
+            pais.setFecha(new Date());
+            paisRepository.save(pais);
+        }
         return new ArrayList<>();
     }
 // </editor-fold>
-    
-    // <editor-fold defaultstate="collapsed" desc="findAll">
 
- 
+    // <editor-fold defaultstate="collapsed" desc="findAll">
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     @Timed(name = "paisesFindAll",
             description = "Monitorea el tiempo en que se obtiene la lista de todos los paises",
-            unit = MetricUnits.MILLISECONDS,  absolute = true)
+            unit = MetricUnits.MILLISECONDS, absolute = true)
     @Operation(summary = "Obtiene todos los paises", description = "Retorna todos los paises disponibles")
     @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
     @APIResponse(responseCode = "200", description = "Los paises")
     @Tag(name = "BETA", description = "Esta api esta en desarrollo")
     @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
-    public List<Pais> findAll() {      
+    public List<Pais> findAll() {
 
-    return paisRepository.findAll();
+        return paisRepository.findAll();
     }
 // </editor-fold>
-    
-    // <editor-fold defaultstate="collapsed" desc="Pais findByIdpais">
 
+    // <editor-fold defaultstate="collapsed" desc="Pais findByIdpais">
     @GET
     @Path("{idpais}")
     @Operation(summary = "Busca un pais por el idpais", description = "Busqueda de pais por idpais")
@@ -130,16 +129,16 @@ Integer maximo = inicial +limiteFactor;
     @APIResponse(description = "El pais", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Pais.class)))
     public Pais findByIdpais(
             @Parameter(description = "El idpais", required = true, example = "1", schema = @Schema(type = SchemaType.NUMBER)) @PathParam("idpais") Long idpais) {
-        
-                 counter.inc();                
+
+        counter.inc();
+
         return paisRepository.findByPk(idpais).orElseThrow(
                 () -> new WebApplicationException("No hay pais con idpais " + idpais, Response.Status.NOT_FOUND));
 
     }
 // </editor-fold>
-    
-    // <editor-fold defaultstate="collapsed" desc="Response save">
 
+    // <editor-fold defaultstate="collapsed" desc="Response save">
     @POST
     @Metered(name = "paisSave",
             unit = MetricUnits.MILLISECONDS,
@@ -170,9 +169,8 @@ Integer maximo = inicial +limiteFactor;
         return Response.status(Response.Status.CREATED).entity(paisRepository.save(pais)).build();
     }
 // </editor-fold>
-    
-    // <editor-fold defaultstate="collapsed" desc="Response delete">
 
+    // <editor-fold defaultstate="collapsed" desc="Response delete">
     @DELETE
     @Path("{idpais}")
     @Operation(summary = "Elimina un pais por  idpais", description = "Elimina un pais por su idpais")
@@ -187,7 +185,7 @@ Integer maximo = inicial +limiteFactor;
     // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="fechahora">
 
-      @Path("fechahora")
+    @Path("fechahora")
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     @Operation(summary = "Obtiene los paises con fecha igual", description = "Retorna todos los paises con fechas mayor")
@@ -196,13 +194,12 @@ Integer maximo = inicial +limiteFactor;
     @Tag(name = "BETA", description = "Esta api esta en desarrollo")
     @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
     public List<Pais> findByFecha(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha) {
-          
+
         return paisRepository.findByFecha(fecha);
     }
     // </editor-fold>
-    
-    // <editor-fold defaultstate="collapsed" desc="code">
 
+    // <editor-fold defaultstate="collapsed" desc="code">
     @Path("fechagreaterthan")
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -211,14 +208,12 @@ Integer maximo = inicial +limiteFactor;
     @APIResponse(responseCode = "200", description = "Los paises")
     @Tag(name = "BETA", description = "Esta api esta en desarrollo")
     @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
-    public List<Pais> findByFechaGreaterThan(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha) {        
+    public List<Pais> findByFechaGreaterThan(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha) {
         return paisRepository.findByFechaGreaterThan(fecha);
     }
 // </editor-fold>
-    
-    
-// <editor-fold defaultstate="collapsed" desc="@Path("fechagreaterthanequals")">
 
+// <editor-fold defaultstate="collapsed" desc="@Path("fechagreaterthanequals")">
     @Path("fechagreaterthanequals")
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -228,15 +223,12 @@ Integer maximo = inicial +limiteFactor;
     @Tag(name = "BETA", description = "Esta api esta en desarrollo")
     @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
     public List<Pais> findByFechaGreaterThanEquals(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha) {
-        
+
         return paisRepository.findByFechaGreaterThanEquals(fecha);
     }
 // </editor-fold>
-    
-    
-    
-// <editor-fold defaultstate="collapsed" desc=" @Path("fechalessthan")">
 
+// <editor-fold defaultstate="collapsed" desc=" @Path("fechalessthan")">
     @Path("fechalessthan")
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -245,14 +237,12 @@ Integer maximo = inicial +limiteFactor;
     @APIResponse(responseCode = "200", description = "Los paises")
     @Tag(name = "BETA", description = "Esta api esta en desarrollo")
     @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
-    public List<Pais> findByFechaLessThan(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha) {        
+    public List<Pais> findByFechaLessThan(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha) {
         return paisRepository.findByFechaLessThan(fecha);
     }
 // </editor-fold>
-   
+
     // <editor-fold defaultstate="collapsed" desc=" @Path("fechalessthanequals")">
-
-
     @Path("fechalessthanequals")
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -262,14 +252,12 @@ Integer maximo = inicial +limiteFactor;
     @Tag(name = "BETA", description = "Esta api esta en desarrollo")
     @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
     public List<Pais> findByFechaLessThanEquals(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha) {
-        
+
         return paisRepository.findByFechaLessThanEquals(fecha);
     }
 // </editor-fold>
-    
+
     // <editor-fold defaultstate="collapsed" desc="@Path("fechaandpais")">
-
-
     @Path("fechaandpais")
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -279,14 +267,12 @@ Integer maximo = inicial +limiteFactor;
     @Tag(name = "BETA", description = "Esta api esta en desarrollo")
     @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
     public Optional<Pais> findByFechaAndPais(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha, @QueryParam("pais") String pais) {
-        
+
         return paisRepository.findByFechaAndPais(fecha, pais);
     }
 // </editor-fold>
-    
 
     // <editor-fold defaultstate="collapsed" desc="@Path("fechalessthanandpais")">
-
     @Path("fechalessthanandpais")
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -295,19 +281,12 @@ Integer maximo = inicial +limiteFactor;
     @APIResponse(responseCode = "200", description = "Los paises")
     @Tag(name = "BETA", description = "Esta api esta en desarrollo")
     @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
-    public List<Pais> findByFechaLessThanAndPais(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha, @QueryParam("pais") String pais) {        
+    public List<Pais> findByFechaLessThanAndPais(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha, @QueryParam("pais") String pais) {
         return paisRepository.findByFechaLessThanAndPais(fecha, pais);
     }
 // </editor-fold>
-    
-    
-    
-    
-    
-    
-    
-    // <editor-fold defaultstate="collapsed" desc="@Path("fechagreaterthanandfechalessthanwithouthours")">
 
+    // <editor-fold defaultstate="collapsed" desc="@Path("fechagreaterthanandfechalessthanwithouthours")">
     @Path("fechagreaterthanandfechalessthanwithouthours")
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -318,15 +297,13 @@ Integer maximo = inicial +limiteFactor;
     @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
     public List<Pais> findByFechaGreaterThanAndFechaLessThanWithoutHours(@QueryParam("fecha") @DateFormat final Date fecha) {
 
-       Date dateStart = JmoordbCoreDateUtil.setHourToDate(fecha, 7, 0);
-       return paisRepository.findByFechaGreaterThanEqualsAndFechaLessThanEquals(dateStart, fecha);
+        Date dateStart = JmoordbCoreDateUtil.setHourToDate(fecha, 7, 0);
+        return paisRepository.findByFechaGreaterThanEqualsAndFechaLessThanEquals(dateStart, fecha);
 
     }
 
     // </editor-fold>
-    
     // <editor-fold defaultstate="collapsed" desc="@Path("fechagreaterthanequalandfechalessthanequal")">
-
     @Path("fechagreaterthanequalandfechalessthanequal")
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -342,7 +319,6 @@ Integer maximo = inicial +limiteFactor;
 
     // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="@Path("fechagreaterthanequalandfechalessthanequalandpais")">
-
     @Path("fechagreaterthanequalandfechalessthanequalandpais")
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -362,13 +338,11 @@ Integer maximo = inicial +limiteFactor;
     }
 
     // </editor-fold>
-  
 // <editor-fold defaultstate="collapsed" desc="code">
-    @Gauge(name = "paisCountFindById", unit = MetricUnits.NONE)
+    @Gauge(name = "paisCountFindById", absolute = true, unit = MetricUnits.NONE)
     private long count() {
         return counter.getCount();
     }
 // </editor-fold>
-    
 
 }
