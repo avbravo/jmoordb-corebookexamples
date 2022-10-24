@@ -5,6 +5,7 @@
 package com.jmoordbcore.capitulo02.controller;
 
 import com.jmoordb.core.annotation.date.DateFormat;
+import com.jmoordb.core.model.Pagination;
 import com.jmoordb.core.util.JmoordbCoreDateUtil;
 import com.jmoordb.core.util.JmoordbCoreUtil;
 import com.jmoordbcore.capitulo02.model.Pais;
@@ -15,6 +16,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -33,6 +35,7 @@ import org.eclipse.microprofile.metrics.Counter;
 import org.eclipse.microprofile.metrics.Histogram;
 import org.eclipse.microprofile.metrics.Metadata;
 import org.eclipse.microprofile.metrics.MetricRegistry;
+import org.eclipse.microprofile.metrics.MetricType;
 import org.eclipse.microprofile.metrics.MetricUnits;
 import org.eclipse.microprofile.metrics.annotation.Counted;
 import org.eclipse.microprofile.metrics.annotation.Gauge;
@@ -76,9 +79,15 @@ public class PaisController {
     @Metric(name = "counter")
     private Counter counter;
 
-    
-// </editor-fold>
+    @Inject
+    @Metric(name = "idpaishistrograma", description = "Ejemplo de histograma.",
+            displayName = "Histogra de idpais con paginación")
+    private Histogram histogram;
 
+    @Inject
+    private MetricRegistry registry;
+
+// </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="  @Path("insert")">
     @Path("insert")
     @GET
@@ -338,11 +347,39 @@ public class PaisController {
     }
 
     // </editor-fold>
-// <editor-fold defaultstate="collapsed" desc="code">
+// <editor-fold defaultstate="collapsed" desc=""paisCountFindById"">
     @Gauge(name = "paisCountFindById", absolute = true, unit = MetricUnits.NONE)
     private long count() {
         return counter.getCount();
     }
 // </editor-fold>
 
+// <editor-fold defaultstate="collapsed" desc="@Path("/histogram")">
+
+    @Path("/histogram")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Histogram histogramaPais(@QueryParam("idpais") Integer idpais, @QueryParam("pagina") Integer pagina, @QueryParam("registrosporpagina") Integer registrosporpagina) {
+
+        Metadata metadata = Metadata.builder()
+                .withName("idpaishistrograma")
+                .withDisplayName("Idpais ")
+                .withType(MetricType.HISTOGRAM)
+                .withDescription("Histograma de idpais con paginación")
+                .build();
+
+        
+
+Pagination pagination = new Pagination(pagina,registrosporpagina);
+
+List<Pais> paisStream = paisRepository.findByIdpaisGreaterThanPagination(JmoordbCoreUtil.integerToLong(50), pagination);
+           Histogram metric = registry.histogram(metadata);
+
+     paisStream.forEach(p->{
+     histogram.update(p.getIdpais());
+     });
+        return histogram;
+    }
+
+// </editor-fold>
 }

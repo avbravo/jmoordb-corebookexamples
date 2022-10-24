@@ -13,6 +13,7 @@ import com.jmoordb.core.annotation.repository.Find;
 import com.jmoordb.core.annotation.repository.Ping;
 import com.jmoordb.core.annotation.repository.Query;
 import com.jmoordb.core.annotation.repository.Repository;
+import com.jmoordb.core.model.Pagination;
 import com.jmoordb.core.repository.CrudRepository;
 import com.jmoordbcore.capitulo02.model.Pais;
 import java.time.LocalDateTime;
@@ -33,6 +34,10 @@ public interface PaisRepository extends CrudRepository<Pais, Long> {
     
     @Query(where = "fecha .eq. @fecha")
     public List<Pais> queryByFecha(@IncludeTime Date fecha);
+    
+    @Find
+    public List<Pais> findByIdpaisGreaterThanPagination(Long idpais,Pagination pagination);
+    
 
     @Find
     public List<Pais> findByFecha(@IncludeTime Date fecha);
