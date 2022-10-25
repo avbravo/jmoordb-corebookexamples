@@ -29,7 +29,7 @@ import java.util.stream.Stream;
 @Repository(entity = Pais.class, jakartaSource = JakartaSource.JAVAEE_LEGACY)
 public interface PaisRepository extends CrudRepository<Pais, Long> {
 
-@Find
+    @Find
     public Stream<Pais> findByNombreAndApellidoAndEdadLessThanEquals(String nombre, String apellido, Integer edad);
     
     @Query(where = "fecha .eq. @fecha")
