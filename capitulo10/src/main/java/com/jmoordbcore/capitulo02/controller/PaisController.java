@@ -59,18 +59,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 @Tag(name = "Información del pais", description = "End-point para entidad Pais")
 public class PaisController {
 
-    @Inject
-    MongoClient mongoClient;
-    /**
-     * Microprofile Config
-     */
-    @Inject
-    Config config;
-    @Inject
-    @ConfigProperty(name = "mongodb.database")
-    String mongodbDatabase;
 
-    String mongodbCollection = "pais";
     // <editor-fold defaultstate="collapsed" desc="Inject">
     @Inject
     PaisRepository paisRepository;

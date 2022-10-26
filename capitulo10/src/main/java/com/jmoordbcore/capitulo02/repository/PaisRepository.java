@@ -29,15 +29,12 @@ import java.util.stream.Stream;
 @Repository(entity = Pais.class, jakartaSource = JakartaSource.JAVAEE_LEGACY)
 public interface PaisRepository extends CrudRepository<Pais, Long> {
 
-@Find
-    public Stream<Pais> findByNombreAndApellidoAndEdadLessThanEquals(String nombre, String apellido, Integer edad);
-    
+  
     @Query(where = "fecha .eq. @fecha")
     public List<Pais> queryByFecha(@IncludeTime Date fecha);
-    
+
     @Find
-    public List<Pais> findByIdpaisGreaterThanPagination(Long idpais,Pagination pagination);
-    
+    public List<Pais> findByIdpaisGreaterThanPagination(Long idpais, Pagination pagination);
 
     @Find
     public List<Pais> findByFecha(@IncludeTime Date fecha);
@@ -75,10 +72,8 @@ public interface PaisRepository extends CrudRepository<Pais, Long> {
     @CountBy
     public Long countByLocal(LocalDateTime local);
 
-   
     @Find
     public List<Pais> findByFechaGreaterThanEqualsAndFechaLessThanEquals(@IncludeTime Date start, Date end);
-
 
     @Find
     public List<Pais> findByFechaGreaterThanEqualAndFechaLessThanEqual(@ExcludeTime Date start, @ExcludeTime Date end);
@@ -88,6 +83,7 @@ public interface PaisRepository extends CrudRepository<Pais, Long> {
 
     @DeleteBy
     public Long deleteByFechaGreaterThan(Date fecha);
-@Ping
-public Boolean ping();
+
+    @Ping
+    public Boolean ping();
 }
