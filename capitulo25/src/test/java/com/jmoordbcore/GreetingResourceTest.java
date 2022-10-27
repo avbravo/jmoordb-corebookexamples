@@ -13,10 +13,10 @@ import static org.hamcrest.CoreMatchers.is;
 public class GreetingResourceTest {
 // <editor-fold defaultstate="collapsed" desc="Inject">
     @Inject
-    Config config;
+ public   Config config;
     @Inject
     @ConfigProperty(name = "mongodb.uri")
-    String mongodburi;
+ public   String mongodburi;
 // </editor-fold>
     @Test
     public void testHelloEndpoint() {
