@@ -24,7 +24,7 @@ public class FaultToleranceController {
         Integer count = 0;
         try {
             Date fecha = new Date();
-            count = paisRepository.findAll().stream().filter(p -> (p.getFecha().after(fecha))).map(_item -> 1).reduce(count, Integer::sum);//            paisList.forEach(action);
+            count = paisRepository.findAll().stream().filter(p -> (p.getFecha().after(fecha))).map(_item -> 1).reduce(count, Integer::sum);
         } catch (Exception e) {
             //
         }
