@@ -47,13 +47,15 @@
             <scope>test</scope>
         </dependency>
     
-        <dependency>
-            <groupId>com.github.avbravo</groupId>
-            <artifactId>jmoordb-core-processor</artifactId>
-            <version>1.0.7</version>
-    
-           
-        </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-resteasy</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-resteasy-jsonb</artifactId>
+    </dependency>
+       
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-openapi</artifactId>
@@ -90,19 +92,33 @@
             <groupId>io.opentracing.contrib</groupId>
             <artifactId>opentracing-mongo-common</artifactId>
         </dependency>
-       <dependency>
+        <!--       <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-mongodb-client</artifactId>
-        </dependency>
+        </dependency>-->
         <!--        <dependency>
             <groupId>jakarta.inject</groupId>
             <artifactId>jakarta.inject-api</artifactId>
             <version>2.0.1</version>
         </dependency>-->
         
+        <!--         <dependency>
+            <groupId>com.github.avbravo</groupId>
+            <artifactId>jmoordb-core-processor</artifactId>
+            <version>1.0.7</version>
+    
+           
+        </dependency>-->
         
-        
-        
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-resteasy-jsonb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.avbravo.jmoordb.core.processor-quarkus</groupId>
+            <artifactId>jmoordb-core-processor-quarkus</artifactId>
+            <version>1.0.7</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -176,7 +192,25 @@ solucion
                     </execution>
                 </executions>
             </plugin>
+            
+             <plugin>
+            <!-- https://github.com/wildfly/jandex-maven-plugin -->
+            <groupId>org.jboss.jandex</groupId>
+            <artifactId>jandex-maven-plugin</artifactId>
+            <version>1.2.1</version>
+            <executions>
+                <execution>
+                    <id>make-index</id>
+                    <goals>
+                        <!-- phase is 'process-classes by default' -->
+                        <goal>jandex</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+        
         </plugins>
+  
     </build>
     <profiles>
         <profile>
