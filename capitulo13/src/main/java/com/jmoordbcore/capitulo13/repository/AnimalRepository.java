@@ -5,19 +5,15 @@
 package com.jmoordbcore.capitulo13.repository;
 
 import com.jmoordb.core.annotation.enumerations.JakartaSource;
-import com.jmoordb.core.annotation.repository.Find;
 import com.jmoordb.core.annotation.repository.Repository;
 import com.jmoordb.core.repository.CrudRepository;
-import com.jmoordbcore.capitulo13.model.Oceano;
-import java.util.Optional;
- 
+import com.jmoordbcore.capitulo13.model.Animal;
+
 /**
  *
  * @author avbravo
  */
-//@Repository(entity = Oceano.class,jakartaSource = JakartaSource.JAVAEE_LEGACY)
-public interface OceanoRepository extends CrudRepository<Oceano, String> {
+@Repository(entity =Animal.class,jakartaSource = JakartaSource.JAVAEE_LEGACY) 
+public interface AnimalRepository extends CrudRepository<Animal,Long>{
     
-    @Find
-    public Optional<Oceano> findByIdoceano(String idoceano);
 }

@@ -14,7 +14,7 @@ import com.jmoordb.core.annotation.enumerations.JakartaSource;
  *
  * @author avbravo
  */
-@Entity(jakartaSource = JakartaSource.JAVAEE_LEGACY)
+//@Entity(jakartaSource = JakartaSource.JAVAEE_LEGACY)
 public class Oceano {
     @Id
     private String idoceano;
@@ -38,6 +38,11 @@ public class Oceano {
 
     public void setOceano(String oceano) {
         this.oceano = oceano;
+    }
+
+    @Override
+    public String toString() {
+        return "Oceano{" + "idoceano=" + idoceano + ", oceano=" + oceano + '}';
     }
     
     

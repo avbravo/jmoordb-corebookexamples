@@ -5,13 +5,17 @@
 package com.jmoordbcore.capitulo13.controller;
 
 import com.jmoordbcore.capitulo13.model.Oceano;
+import com.jmoordbcore.capitulo13.model.Persona;
 import com.jmoordbcore.capitulo13.repository.OceanoRepository;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 
 /**
@@ -28,9 +32,17 @@ public class OceanoController {
     public List<Oceano> findAll(){
         return oceanoRepository.findAll();
     }
-    
+    // <editor-fold defaultstate="collapsed" desc="Persona findByIdoceano">
     @GET
-    public String sayHello() {
-        return "Hello World";
+    @Path("{idoceano}")
+   
+    public Oceano findByIdoceano(@PathParam("idoceano") String idoceano) {
+
+
+        return oceanoRepository.findByIdoceano(idoceano).orElseThrow(
+                () -> new WebApplicationException("No hay oceano con idoceano " + idoceano, Response.Status.NOT_FOUND));
+
     }
+// </editor-fold>
+
 }

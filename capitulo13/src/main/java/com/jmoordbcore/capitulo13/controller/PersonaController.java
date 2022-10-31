@@ -6,12 +6,14 @@ package com.jmoordbcore.capitulo13.controller;
 
 import com.jmoordb.core.util.JmoordbCoreUtil;
 import com.jmoordbcore.capitulo13.model.Deporte;
+import com.jmoordbcore.capitulo13.model.Musica;
+import com.jmoordbcore.capitulo13.model.Oceano;
 import com.jmoordbcore.capitulo13.model.Pais;
 import com.jmoordbcore.capitulo13.model.Persona;
+import com.jmoordbcore.capitulo13.repository.OceanoRepository;
 import com.jmoordbcore.capitulo13.repository.PaisRepository;
 import com.jmoordbcore.capitulo13.repository.PersonaRepository;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import javax.inject.Inject;
@@ -26,15 +28,12 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import org.eclipse.microprofile.metrics.MetricUnits;
-import org.eclipse.microprofile.metrics.annotation.Metered;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
-import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
 /**
  *
@@ -47,6 +46,8 @@ public class PersonaController {
     PersonaRepository personaRepository;
     @Inject
     PaisRepository paisRepository;
+    @Inject 
+    OceanoRepository oceanoRepository;
 
    
 
@@ -67,11 +68,27 @@ public class PersonaController {
             Persona persona = new Persona();
             persona.setIdpersona(JmoordbCoreUtil.integerToLong(i));
             persona.setNombre("Persona - " + persona.getIdpersona());
+            
+             List<Oceano> oceanoList = new ArrayList<>();
+             
+             List<Musica> musicaList = new ArrayList<>();
             if(JmoordbCoreUtil.isPar(i)){
                  persona.setDeporte(new Deporte("baloncesto"));
+                 oceanoList.add(oceanoRepository.findByIdoceano("pacifico").get()) ;
+                 oceanoList.add(oceanoRepository.findByIdoceano("atlantico").get()) ;
+                 musicaList.add(new Musica("Rock"));
+                 musicaList.add(new Musica("Death Metal"));
             }else{
                  persona.setDeporte(new Deporte("futbol"));
+                 oceanoList.add(oceanoRepository.findByIdoceano("indico").get()) ;
+                     musicaList.add(new Musica("Salsa"));
             }
+            
+            persona.setOceano(oceanoList);
+            persona.setMusica(musicaList);
+            
+            
+            
            
            Optional<Pais> paisOptional= paisRepository.findByPk(JmoordbCoreUtil.integerToLong(i));
            if(paisOptional.isPresent()){
@@ -80,7 +97,16 @@ public class PersonaController {
                persona.setPais(new Pais());
            }
            
-            System.out.println(">>>>> Pesona >>>>>" +persona.toString());
+           
+           /**
+            * Oceano
+            * 
+            */
+          
+           
+           
+            System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+            System.out.println(">>>>> Pesona for Save >>>>>\n" +persona.toString());
             personaRepository.save(persona);
         }
         return new ArrayList<>();

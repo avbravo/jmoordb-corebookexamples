@@ -6,7 +6,6 @@ package com.jmoordbcore.capitulo13.model;
 
 import com.jmoordb.core.annotation.Column;
 import com.jmoordb.core.annotation.DocumentEmbeddable;
-import com.jmoordb.core.annotation.Id;
 import com.jmoordb.core.annotation.enumerations.JakartaSource;
 
 /**
@@ -14,46 +13,31 @@ import com.jmoordb.core.annotation.enumerations.JakartaSource;
  * @author avbravo
  */
 //@DocumentEmbeddable(jakartaSource = JakartaSource.JAVAEE_LEGACY)
-public class Deporte {
-    
-//    @Id
-//    private String iddeporte;
+public class Musica {
     @Column
-    private String deporte;
+    private String estilo;
 
-    public Deporte() {
+    public Musica() {
     }
 
-  
-
-    
-    
-    public Deporte(String deporte) {
-        this.deporte = deporte;
+    public Musica(String estilo) {
+        this.estilo = estilo;
     }
 
     
-
     
-    
-    public String getDeporte() {
-        return deporte;
+    public String getEstilo() {
+        return estilo;
     }
 
-    public void setDeporte(String deporte) {
-        this.deporte = deporte;
+    public void setEstilo(String estilo) {
+        this.estilo = estilo;
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Deporte{");
-        sb.append("deporte=").append(deporte);
-        sb.append('}');
-        return sb.toString();
+        return "Musica{" + "estilo=" + estilo + '}';
     }
-
-    
     
     
 }
