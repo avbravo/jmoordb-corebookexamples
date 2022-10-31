@@ -91,10 +91,15 @@
             <artifactId>jmoordb-core-processor</artifactId>
             <version>1.0.6</version>
         </dependency>-->
-        <dependency>
+<!--        <dependency>
             <groupId>com.github.avbravo</groupId>
             <artifactId>jmoordb-core-processor</artifactId>
             <version>1.0.7</version>
+        </dependency>-->
+        <dependency>
+            <groupId>com.avbravo.jmoordb.core.processor</groupId>
+            <artifactId>jmoordb-core-processor</artifactId>
+            <version>1.0.8</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.microprofile.health</groupId>
