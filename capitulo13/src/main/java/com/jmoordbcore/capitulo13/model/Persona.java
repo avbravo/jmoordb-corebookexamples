@@ -73,6 +73,18 @@ public class Persona {
     public void setPais(Pais pais) {
         this.pais = pais;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Persona{");
+        sb.append("idpersona=").append(idpersona);
+        sb.append(", nombre=").append(nombre);
+        sb.append(", deporte=").append(deporte);
+        sb.append(", pais=").append(pais);
+        sb.append('}');
+        return sb.toString();
+    }
     
     
     

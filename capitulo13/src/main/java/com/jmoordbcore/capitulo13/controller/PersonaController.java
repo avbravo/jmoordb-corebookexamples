@@ -58,7 +58,8 @@ public class PersonaController {
 
     public List<Persona> insert(@QueryParam("inicial") final Integer inicial) {
 
-        Integer limiteFactor = 13545;
+//   Integer limiteFactor = 13545;
+   Integer limiteFactor = 2;
 
         Integer maximo = inicial + limiteFactor;
         for (int i = inicial; i <= maximo; i++) {
@@ -66,13 +67,20 @@ public class PersonaController {
             Persona persona = new Persona();
             persona.setIdpersona(JmoordbCoreUtil.integerToLong(i));
             persona.setNombre("Persona - " + persona.getIdpersona());
-            persona.setDeporte(new Deporte("baloncesto"));
+            if(JmoordbCoreUtil.isPar(i)){
+                 persona.setDeporte(new Deporte("baloncesto"));
+            }else{
+                 persona.setDeporte(new Deporte("futbol"));
+            }
+           
            Optional<Pais> paisOptional= paisRepository.findByPk(JmoordbCoreUtil.integerToLong(i));
            if(paisOptional.isPresent()){
                persona.setPais(paisOptional.get());
            }else{
                persona.setPais(new Pais());
            }
+           
+            System.out.println(">>>>> Pesona >>>>>" +persona.toString());
             personaRepository.save(persona);
         }
         return new ArrayList<>();

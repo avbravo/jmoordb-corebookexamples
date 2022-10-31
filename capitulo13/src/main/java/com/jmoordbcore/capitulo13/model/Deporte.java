@@ -7,7 +7,6 @@ package com.jmoordbcore.capitulo13.model;
 import com.jmoordb.core.annotation.Column;
 import com.jmoordb.core.annotation.DocumentEmbeddable;
 import com.jmoordb.core.annotation.Id;
-import com.jmoordb.core.annotation.Referenced;
 import com.jmoordb.core.annotation.enumerations.JakartaSource;
 
 /**
@@ -16,15 +15,24 @@ import com.jmoordb.core.annotation.enumerations.JakartaSource;
  */
 @DocumentEmbeddable(jakartaSource = JakartaSource.JAVAEE_LEGACY)
 public class Deporte {
+    
+//    @Id
+//    private String iddeporte;
     @Column
     private String deporte;
 
     public Deporte() {
     }
 
+  
+
+    
+    
     public Deporte(String deporte) {
         this.deporte = deporte;
     }
+
+    
 
     
     
@@ -34,6 +42,15 @@ public class Deporte {
 
     public void setDeporte(String deporte) {
         this.deporte = deporte;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Deporte{");
+        sb.append("deporte=").append(deporte);
+        sb.append('}');
+        return sb.toString();
     }
 
     
