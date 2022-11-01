@@ -5,9 +5,8 @@
 package com.jmoordbcore.capitulo13.model;
 
 import com.jmoordb.core.annotation.Column;
-import com.jmoordb.core.annotation.DocumentEmbeddable;
-import com.jmoordb.core.annotation.Id;
-import com.jmoordb.core.annotation.enumerations.JakartaSource;
+import com.jmoordb.core.annotation.Referenced;
+import com.jmoordb.core.annotation.enumerations.TypeReferenced;
 
 /**
  *
@@ -20,6 +19,9 @@ public class Deporte {
 //    private String iddeporte;
     @Column
     private String deporte;
+    
+ 
+    
 
     public Deporte() {
     }

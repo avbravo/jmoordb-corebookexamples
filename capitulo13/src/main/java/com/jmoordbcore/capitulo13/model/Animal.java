@@ -34,6 +34,8 @@ public class Animal {
  @Referenced(from = "grupo",localField = "idgrupo",typeReferenced = TypeReferenced.REFERENCED)
  private Grupo grupo;
 
+ @Referenced(from="zoo",localField = "idzoo",typeReferenced = TypeReferenced.REFERENCED)
+ private List<Zoo> zoo;
  
  
  
@@ -56,12 +58,22 @@ public class Animal {
     public Animal() {
     }
 
-    public Animal(Long idanimal, String animal, Especie especie, List<Plaga> plaga, Grupo grupo) {
+    public Animal(Long idanimal, String animal, Especie especie, List<Plaga> plaga, Grupo grupo, List<Zoo> zoo) {
         this.idanimal = idanimal;
         this.animal = animal;
         this.especie = especie;
         this.plaga = plaga;
         this.grupo = grupo;
+        this.zoo = zoo;
+    }
+
+
+    public List<Zoo> getZoo() {
+        return zoo;
+    }
+
+    public void setZoo(List<Zoo> zoo) {
+        this.zoo = zoo;
     }
 
    

@@ -9,41 +9,37 @@ import com.jmoordb.core.annotation.Entity;
 import com.jmoordb.core.annotation.Id;
 import com.jmoordb.core.annotation.enumerations.JakartaSource;
 
-
 /**
  *
  * @author avbravo
  */
 @Entity(jakartaSource = JakartaSource.JAVAEE_LEGACY)
-public class Oceano {
+public class Zoo {
     @Id
-    private String idoceano;
+    private String idzoo;
+    
     @Column
-    private String oceano;
+    private String nombre;
 
-    public Oceano() {
+    public Zoo() {
     }
 
-    public String getIdoceano() {
-        return idoceano;
+    public String getIdzoo() {
+        return idzoo;
     }
 
-    public void setIdoceano(String idoceano) {
-        this.idoceano = idoceano;
+    public void setIdzoo(String idzoo) {
+        this.idzoo = idzoo;
     }
 
-    public String getOceano() {
-        return oceano;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setOceano(String oceano) {
-        this.oceano = oceano;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-
-    @Override
-    public String toString() {
-        return "Oceano{" + "idoceano=" + idoceano + ", oceano=" + oceano + '}';
-    }
+    
     
     
 }

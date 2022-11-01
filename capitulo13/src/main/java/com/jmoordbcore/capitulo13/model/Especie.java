@@ -6,7 +6,9 @@ package com.jmoordbcore.capitulo13.model;
 
 import com.jmoordb.core.annotation.Column;
 import com.jmoordb.core.annotation.DocumentEmbeddable;
+import com.jmoordb.core.annotation.Referenced;
 import com.jmoordb.core.annotation.enumerations.JakartaSource;
+import com.jmoordb.core.annotation.enumerations.TypeReferenced;
 
 /**
  *
@@ -17,6 +19,10 @@ public class Especie {
 
     @Column
     private String nombre;
+    
+   @Referenced(from="oceano", localField = "idoceano",typeReferenced = TypeReferenced.REFERENCED)
+    private Oceano oceano;
+
 
     public Especie() {
     }
@@ -31,6 +37,19 @@ public class Especie {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Especie(String nombre, Oceano oceano) {
+        this.nombre = nombre;
+        this.oceano = oceano;
+    }
+
+    public Oceano getOceano() {
+        return oceano;
+    }
+
+    public void setOceano(Oceano oceano) {
+        this.oceano = oceano;
     }
     
     
