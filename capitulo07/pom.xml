@@ -195,4 +195,12 @@ jersey
         </plugins>
     </build>
     <description>Proyecto con MongodDB java driver directo que muestra como usar para el generador en tiempo de compilación.</description>
+    
+    
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
 </project>
