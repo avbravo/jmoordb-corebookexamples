@@ -5,14 +5,14 @@
 package com.jmoordbcore.capitulo13.model;
 
 import com.jmoordb.core.annotation.Column;
-import com.jmoordb.core.annotation.Referenced;
-import com.jmoordb.core.annotation.enumerations.TypeReferenced;
+import com.jmoordb.core.annotation.DocumentEmbeddable;
+import com.jmoordb.core.annotation.enumerations.JakartaSource;
 
 /**
  *
  * @author avbravo
  */
-//@DocumentEmbeddable(jakartaSource = JakartaSource.JAVAEE_LEGACY)
+@DocumentEmbeddable(jakartaSource = JakartaSource.JAVAEE_LEGACY)
 public class Deporte {
     
 //    @Id
