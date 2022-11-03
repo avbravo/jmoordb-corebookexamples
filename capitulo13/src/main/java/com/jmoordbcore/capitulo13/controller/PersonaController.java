@@ -4,12 +4,15 @@
  */
 package com.jmoordbcore.capitulo13.controller;
 
+import com.jmoordb.core.model.Pagination;
 import com.jmoordb.core.util.JmoordbCoreUtil;
+import com.jmoordbcore.capitulo13.model.Animal;
 import com.jmoordbcore.capitulo13.model.Deporte;
 import com.jmoordbcore.capitulo13.model.Musica;
 import com.jmoordbcore.capitulo13.model.Oceano;
 import com.jmoordbcore.capitulo13.model.Pais;
 import com.jmoordbcore.capitulo13.model.Persona;
+import com.jmoordbcore.capitulo13.repository.AnimalRepository;
 import com.jmoordbcore.capitulo13.repository.OceanoRepository;
 import com.jmoordbcore.capitulo13.repository.PaisRepository;
 import com.jmoordbcore.capitulo13.repository.PersonaRepository;
@@ -48,6 +51,9 @@ public class PersonaController {
     PaisRepository paisRepository;
     @Inject 
     OceanoRepository oceanoRepository;
+    
+    @Inject 
+    AnimalRepository animalRepository;
 
    
 
@@ -59,8 +65,8 @@ public class PersonaController {
 
     public List<Persona> insert(@QueryParam("inicial") final Integer inicial) {
 
-//   Integer limiteFactor = 13545;
-   Integer limiteFactor = 2;
+   Integer limiteFactor = 13545;
+//   Integer limiteFactor = 2;
 
         Integer maximo = inicial + limiteFactor;
         for (int i = inicial; i <= maximo; i++) {
@@ -84,7 +90,11 @@ public class PersonaController {
                      musicaList.add(new Musica("Salsa"));
             }
             
-            persona.setOceano(oceanoList);
+            List<Animal> animalList = new ArrayList<>();
+            Pagination pagination = new Pagination(1, 5);
+            animalList = animalRepository.findAllPagination(pagination);
+            
+            persona.setAnimal(animalList);
             persona.setMusica(musicaList);
             
             
@@ -105,8 +115,7 @@ public class PersonaController {
           
            
            
-            System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-            System.out.println(">>>>> Pesona for Save >>>>>\n" +persona.toString());
+           
             personaRepository.save(persona);
         }
         return new ArrayList<>();
@@ -124,6 +133,11 @@ public class PersonaController {
 // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="Persona findByIdpersona">
+        /**
+         * para consultarlo http://localhost:8080/api/persona/1
+         * @param idpersona
+         * @return 
+         */
     @GET
     @Path("{idpersona}")
    

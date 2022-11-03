@@ -14,15 +14,10 @@ import com.jmoordb.core.annotation.enumerations.JakartaSource;
  */
 @DocumentEmbeddable(jakartaSource = JakartaSource.JAVAEE_LEGACY)
 public class Deporte {
-    
-//    @Id
-//    private String iddeporte;
     @Column
     private String deporte;
     
  
-    
-
     public Deporte() {
     }
 

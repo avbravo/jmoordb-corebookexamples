@@ -32,11 +32,11 @@ public class Persona {
     @Embedded
     private List<Musica> musica;
 
-    @Referenced(from = "pais", localField = "idpais", typeReferenced = TypeReferenced.REFERENCED)
+   @Referenced(from = "pais", localField = "idpais", typeReferenced = TypeReferenced.REFERENCED)
     private Pais pais;
 
-    @Referenced(from = "oceano", localField = "idoceano", typeReferenced = TypeReferenced.REFERENCED)
-    private List<Oceano> oceano;
+    @Referenced(from = "animal", localField = "idanimal", typeReferenced = TypeReferenced.REFERENCED)
+    private List<Animal> animal;
     
     
     
@@ -46,15 +46,28 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(Long idpersona, String nombre, Deporte deporte, List<Musica> musica, Pais pais, List<Oceano> oceano) {
+    public Persona(Long idpersona, String nombre, Deporte deporte, List<Musica> musica, Pais pais, List<Animal> animal) {
         this.idpersona = idpersona;
         this.nombre = nombre;
         this.deporte = deporte;
         this.musica = musica;
         this.pais = pais;
-        this.oceano = oceano;
+        this.animal = animal;
     }
 
+    
+    
+    
+    
+    public List<Animal> getAnimal() {
+        return animal;
+    }
+
+    public void setAnimal(List<Animal> animal) {
+        this.animal = animal;
+    }
+
+  
     public List<Musica> getMusica() {
         return musica;
     }
@@ -67,13 +80,7 @@ public class Persona {
     
     
 
-    public List<Oceano> getOceano() {
-        return oceano;
-    }
-
-    public void setOceano(List<Oceano> oceano) {
-        this.oceano = oceano;
-    }
+   
 
    
     public Long getIdpersona() {
@@ -117,10 +124,12 @@ public class Persona {
         sb.append(", deporte=").append(deporte);
         sb.append(", musica=").append(musica);
         sb.append(", pais=").append(pais);
-        sb.append(", oceano=").append(oceano);
+        sb.append(", animal=").append(animal);
         sb.append('}');
         return sb.toString();
     }
+
+   
 
    
 
