@@ -361,7 +361,7 @@ public class PaisController {
 
 Pagination pagination = new Pagination(pagina,registrosporpagina);
 
-List<Pais> paisStream = paisRepository.findByIdpaisGreaterThanPagination(JmoordbCoreUtil.integerToLong(50), pagination);
+List<Pais> paisStream = paisRepository.findByIdpaisGreaterThanPagination(JmoordbCoreUtil.integerToLong(idpais), pagination);
            Histogram metric = registry.histogram(metadata);
 
      paisStream.forEach(p->{
