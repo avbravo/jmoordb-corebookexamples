@@ -13,7 +13,7 @@ import com.jmoordbcore.capitulo13.model.Zoo;
  *
  * @author avbravo
  */
-@Repository(entity = Zoo.class, jakartaSource = JakartaSource.JAVAEE_LEGACY)
+@Repository(entity = Zoo.class, jakartaSource = JakartaSource.JAKARTA)
 public interface ZooRepository extends CrudRepository<Zoo, String>{
     
 }

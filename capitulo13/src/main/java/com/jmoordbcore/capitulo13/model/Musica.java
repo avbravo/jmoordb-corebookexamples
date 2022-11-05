@@ -12,7 +12,7 @@ import com.jmoordb.core.annotation.enumerations.JakartaSource;
  *
  * @author avbravo
  */
-@DocumentEmbeddable(jakartaSource = JakartaSource.JAVAEE_LEGACY)
+@DocumentEmbeddable(jakartaSource = JakartaSource.JAKARTA)
 public class Musica {
     @Column
     private String estilo;

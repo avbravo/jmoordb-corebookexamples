@@ -1,14 +1,14 @@
 package com.jmoordbcore.capitulo13.microprofile.faulttolerance;
 
 import com.jmoordbcore.capitulo13.repository.PaisRepository;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
 import java.util.Date;
 import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.faulttolerance.Timeout;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
 
 @Path("/faulttolerance")
 @ApplicationScoped

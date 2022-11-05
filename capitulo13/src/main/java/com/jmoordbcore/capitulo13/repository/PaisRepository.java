@@ -26,7 +26,7 @@ import java.util.stream.Stream;
  *
  * @author avbravo
  */
-@Repository(entity = Pais.class, jakartaSource = JakartaSource.JAVAEE_LEGACY)
+@Repository(entity = Pais.class, jakartaSource = JakartaSource.JAKARTA)
 public interface PaisRepository extends CrudRepository<Pais, Long> {
 
     @Find

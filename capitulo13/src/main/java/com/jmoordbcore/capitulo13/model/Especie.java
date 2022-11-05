@@ -14,7 +14,7 @@ import com.jmoordb.core.annotation.enumerations.TypeReferenced;
  *
  * @author avbravo
  */
-@DocumentEmbeddable(jakartaSource = JakartaSource.JAVAEE_LEGACY)
+@DocumentEmbeddable(jakartaSource = JakartaSource.JAKARTA)
 public class Especie {
 
     @Column

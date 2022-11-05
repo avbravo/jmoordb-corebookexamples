@@ -13,7 +13,7 @@ import com.jmoordbcore.capitulo13.model.Animal;
  *
  * @author avbravo
  */
-@Repository(entity =Animal.class,jakartaSource = JakartaSource.JAVAEE_LEGACY) 
+@Repository(entity =Animal.class,jakartaSource = JakartaSource.JAKARTA) 
 public interface AnimalRepository extends CrudRepository<Animal,Long>{
     
 }

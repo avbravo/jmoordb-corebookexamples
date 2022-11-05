@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author avbravo
  */
-@Repository(entity = Persona.class, jakartaSource = JakartaSource.JAVAEE_LEGACY)
+@Repository(entity = Persona.class, jakartaSource = JakartaSource.JAKARTA)
 public interface PersonaRepository extends CrudRepository<Persona, Long>{
     @Find
     public List<Persona> findByNombre(String nombre);

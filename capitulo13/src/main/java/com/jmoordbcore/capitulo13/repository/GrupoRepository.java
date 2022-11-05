@@ -13,7 +13,7 @@ import com.jmoordbcore.capitulo13.model.Grupo;
  *
  * @author avbravo
  */
-@Repository(entity = Grupo.class, jakartaSource = JakartaSource.JAVAEE_LEGACY)
+@Repository(entity = Grupo.class, jakartaSource = JakartaSource.JAKARTA)
 public interface GrupoRepository extends CrudRepository<Grupo,String>{
     
 }

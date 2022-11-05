@@ -13,7 +13,7 @@ import com.jmoordb.core.annotation.enumerations.JakartaSource;
  *
  * @author avbravo
  */
-@Entity(jakartaSource = JakartaSource.JAVAEE_LEGACY)
+@Entity(jakartaSource = JakartaSource.JAKARTA)
 public class Zoo {
     @Id
     private String idzoo;

@@ -14,7 +14,7 @@ import com.jmoordb.core.annotation.enumerations.JakartaSource;
  *
  * @author avbravo
  */
-@Entity(jakartaSource = JakartaSource.JAVAEE_LEGACY)
+@Entity(jakartaSource = JakartaSource.JAKARTA)
 public class Oceano {
     @Id
     private String idoceano;

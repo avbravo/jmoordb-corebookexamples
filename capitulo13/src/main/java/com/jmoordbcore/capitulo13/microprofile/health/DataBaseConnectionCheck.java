@@ -6,8 +6,8 @@
 package com.jmoordbcore.capitulo13.microprofile.health;
 
 import com.jmoordbcore.capitulo13.repository.PaisRepository;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
 import org.eclipse.microprofile.health.Readiness;

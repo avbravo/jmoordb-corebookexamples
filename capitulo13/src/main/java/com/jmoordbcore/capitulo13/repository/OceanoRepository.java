@@ -15,7 +15,7 @@ import java.util.Optional;
  *
  * @author avbravo
  */
-@Repository(entity = Oceano.class,jakartaSource = JakartaSource.JAVAEE_LEGACY)
+@Repository(entity = Oceano.class,jakartaSource = JakartaSource.JAKARTA)
 public interface OceanoRepository extends CrudRepository<Oceano, String> {
     
     @Find
