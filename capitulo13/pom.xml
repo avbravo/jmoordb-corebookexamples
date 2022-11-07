@@ -13,13 +13,11 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
-        <!--<jakartaee>9.0.0</jakartaee>-->
-        <!--<jakartaee>8.0.0</jakartaee>-->
         <jakartaee>10.0.0</jakartaee>
   
-        <!--<version.payara>5.2022.3</version.payara>-->
+ 
         <version.payara>6.2022.1</version.payara>
-        <!--<microprofile.version>4.0.1</microprofile.version>-->
+  
         <microprofile.version>5.0</microprofile.version>
         <final.name>capitulo13</final.name>
         <jmeter.version>2.6.0</jmeter.version>
