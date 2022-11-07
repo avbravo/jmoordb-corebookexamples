@@ -13,7 +13,7 @@ import com.jmoordbcore.capitulo02.model.Oceano;
  *
  * @author avbravo
  */
-@Repository(entity = Oceano.class,jakartaSource = JakartaSource.JAVAEE_LEGACY)
+@Repository(entity = Oceano.class,jakartaSource = JakartaSource.JAKARTA)
 public interface OceanoRepository extends CrudRepository<Oceano, String> {
     
 }

@@ -6,39 +6,29 @@ package com.jmoordbcore.capitulo02.controller;
 
 import com.jmoordb.core.annotation.date.DateFormat;
 import com.jmoordb.core.util.JmoordbCoreDateUtil;
-import com.jmoordb.core.util.JmoordbCoreUtil;
 import com.jmoordbcore.capitulo02.model.Pais;
 import com.jmoordbcore.capitulo02.repository.PaisRepository;
 import com.mongodb.client.MongoClient;
-import java.util.ArrayList;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import javax.inject.Inject;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.eclipse.microprofile.metrics.Counter;
-import org.eclipse.microprofile.metrics.Histogram;
-import org.eclipse.microprofile.metrics.Metadata;
-import org.eclipse.microprofile.metrics.MetricRegistry;
 import org.eclipse.microprofile.metrics.MetricUnits;
-import org.eclipse.microprofile.metrics.annotation.Counted;
-import org.eclipse.microprofile.metrics.annotation.Gauge;
 import org.eclipse.microprofile.metrics.annotation.Metered;
-import org.eclipse.microprofile.metrics.annotation.Metric;
-import org.eclipse.microprofile.metrics.annotation.Timed;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
@@ -56,18 +46,8 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 @Tag(name = "Información del pais", description = "End-point para entidad Pais")
 public class PaisController {
 
-    @Inject
-    MongoClient mongoClient;
-    /**
-     * Microprofile Config
-     */
-    @Inject
-    Config config;
-    @Inject
-    @ConfigProperty(name = "mongodb.database")
-    String mongodbDatabase;
 
-    String mongodbCollection = "pais";
+
     // <editor-fold defaultstate="collapsed" desc="Inject">
     @Inject
     PaisRepository paisRepository;

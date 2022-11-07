@@ -13,21 +13,14 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
-        <!--<jakartaee>9.0.0</jakartaee>-->
-        <jakartaee>8.0.0</jakartaee>
-        <version.payara>5.2022.3</version.payara>
-        <microprofile.version>4.0.1</microprofile.version>
+
+        <jakartaee>10.0.0</jakartaee>
+        <version.payara>6.2022.1</version.payara>
+        <microprofile.version>5.0</microprofile.version>
         <final.name>capitulo02</final.name>
         <jmeter.version>2.6.0</jmeter.version>
         
-        <!--TEST
-        -->
-        <!--        <payara.version>6.2022.1.Alpha3</payara.version>
-        <arquillian-payara.version>3.0.alpha6</arquillian-payara.version>
-        <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
-        <maven-failsafe-plugin.version>3.0.0-M7</maven-failsafe-plugin.version>
-        <maven-surefire-report-plugin.version>3.0.0-M7</maven-surefire-report-plugin.version>
-        <maven-dependency-plugin.version>3.3.0</maven-dependency-plugin.version>-->
+      
     </properties>
 
     <dependencies>
@@ -52,16 +45,7 @@
         
         
         
-        <!--        <dependency>
-            <groupId>com.github.avbravo</groupId>
-            <artifactId>jmoordb-core-processor</artifactId>
-            <version>1.0.1</version>
-        </dependency>-->
-        <!--        <dependency>
-            <groupId>com.avbravo.jmoordb.core.processor</groupId>
-            <artifactId>jmoordb-core-processor</artifactId>
-            <version>1.0.4</version>
-        </dependency>-->
+   
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -70,26 +54,11 @@
             <type>jar</type>
         </dependency>
         
-        <!--
-        TESTING
-        -->
-        <!--        <dependency>
-            <groupId>fish.payara.arquillian</groupId>
-            <artifactId>payara-client-ee9</artifactId>
-            <version>${arquillian-payara.version}</version>
-            <scope>test</scope>
-        </dependency>
-         Payara Server Container adaptor 
+ 
         <dependency>
-            <groupId>fish.payara.arquillian</groupId>
-            <artifactId>arquillian-payara-server-managed</artifactId>
-            <version>${arquillian-payara.version}</version>
-            <scope>test</scope>
-        </dependency>-->
-        <dependency>
-            <groupId>com.avbravo.jmoordb.core.processor</groupId>
+            <groupId>com.github.avbravo</groupId>
             <artifactId>jmoordb-core-processor</artifactId>
-            <version>1.0.6</version>
+            <version>1.0.10</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.microprofile.health</groupId>
@@ -167,26 +136,7 @@
             </plugin>
             
             
-            <!--
-            TESTING
-            -->
-<!--            <plugin>
-                <groupId>com.lazerycode.jmeter</groupId>
-                <artifactId>jmeter-maven-plugin</artifactId>
-                <version>${jmeter.version}</version>
-                <executions>
-                    <execution>
-                        <id>jmeter-tests</id>
-                        <goals>
-                            <goal>jmeter</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <testFilesDirectory>${project.basedir}/src/main/resources</testFilesDirectory>
-                    <resultsDirectory>${project.basedir}/src/main/resources</resultsDirectory>
-                </configuration>
-            </plugin>-->
+          
         
         </plugins>
     </build>
