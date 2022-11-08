@@ -14,7 +14,7 @@ import com.jmoordb.core.annotation.Id;
  *
  * @author avbravo
  */
-@Entity(collection = "oceano")
+@Entity()
 public class Oceano {
 
     @Id
