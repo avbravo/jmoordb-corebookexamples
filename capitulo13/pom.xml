@@ -14,10 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <jakartaee>10.0.0</jakartaee>
-  
- 
-        <version.payara>6.2022.1</version.payara>
-  
+        <version.payara>6.2022.1</version.payara>  
         <microprofile.version>5.0</microprofile.version>
         <final.name>capitulo13</final.name>
         <jmeter.version>2.6.0</jmeter.version>

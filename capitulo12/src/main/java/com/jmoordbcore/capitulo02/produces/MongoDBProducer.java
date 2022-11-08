@@ -13,15 +13,15 @@ import com.jmoordb.core.annotation.enumerations.JakartaSource;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import java.io.Serializable;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Disposes;
-import javax.enterprise.inject.Produces;
-import javax.inject.Inject;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Disposes;
+import jakarta.enterprise.inject.Produces;
+import jakarta.inject.Inject;
 import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 @ApplicationScoped
-@DateSupport(jakartaSource = JakartaSource.JAVAEE_LEGACY)
+@DateSupport(jakartaSource = JakartaSource.JAKARTA)
 public class MongoDBProducer implements Serializable {
 
     @Inject

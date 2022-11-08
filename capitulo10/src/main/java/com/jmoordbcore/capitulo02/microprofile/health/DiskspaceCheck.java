@@ -7,7 +7,7 @@ package com.jmoordbcore.capitulo02.microprofile.health;
 
 import com.jmoordb.core.util.JmoordbCoreUtil;
 import java.io.File;
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
 import org.eclipse.microprofile.health.Readiness;

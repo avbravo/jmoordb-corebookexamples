@@ -50,7 +50,7 @@
         <dependency>
             <groupId>com.github.avbravo</groupId>
             <artifactId>jmoordb-core-processor</artifactId>
-            <version>1.0.7</version>
+            <version>1.0.10</version>
     
            
         </dependency>
