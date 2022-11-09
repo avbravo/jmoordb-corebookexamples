@@ -58,12 +58,16 @@
             <artifactId>testcontainers</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
+<!--        <dependency>
             <groupId>com.github.avbravo</groupId>
             <artifactId>jmoordb-core-processor-quarkus</artifactId>
             <version>0.1</version>
+        </dependency>-->
+        <dependency>
+            <groupId>com.avbravo.jmoordb.core.processor</groupId>
+            <artifactId>jmoordb-core-quarkus</artifactId>
+            <version>0.1</version>
         </dependency>
-    
         <dependency>
             <groupId>jakarta.activation</groupId>
             <artifactId>jakarta.activation-api</artifactId>
