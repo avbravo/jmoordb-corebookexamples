@@ -78,16 +78,13 @@
             <version>${arquillian-payara.version}</version>
             <scope>test</scope>
         </dependency>-->
-<!--        <dependency>
-            <groupId>com.avbravo.jmoordb.core.processor</groupId>
-            <artifactId>jmoordb-core-processor</artifactId>
-            <version>1.0.10</version>
-        </dependency>-->
-        <dependency>
-            <groupId>com.avbravo.jmoordb.core.processor</groupId>
-            <artifactId>jmoordb-core</artifactId>
-            <version>0.1</version>
-        </dependency>
+
+      <dependency>
+	    <groupId>com.github.avbravo</groupId>
+	    <artifactId>jmoordb-core</artifactId>
+	    <version>0.2</version>
+	</dependency>
+    
         <dependency>
             <groupId>org.eclipse.microprofile.health</groupId>
             <artifactId>microprofile-health-api</artifactId>

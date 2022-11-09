@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.jmoordb-core-processor-javadriver</groupId>
-    <artifactId>jmoordb-core-processor-javadriver</artifactId>
+    <artifactId>capitulo07</artifactId>
     <version>0.1</version>
     <packaging>war</packaging>
     <name>capitulo07</name>
@@ -105,8 +105,8 @@ jersey
 
 <dependency>
 	    <groupId>com.github.avbravo</groupId>
-	    <artifactId>jmoordb-core-processor</artifactId>
-	    <version>1.0.10</version>
+	    <artifactId>jmoordb-core</artifactId>
+	    <version>0.2</version>
 	</dependency>
     
     </dependencies>

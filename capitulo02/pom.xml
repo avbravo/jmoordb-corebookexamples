@@ -57,8 +57,8 @@
  
         <dependency>
             <groupId>com.github.avbravo</groupId>
-            <artifactId>jmoordb-core-processor</artifactId>
-            <version>1.0.10</version>
+            <artifactId>jmoordb-core</artifactId>
+            <version>0.2</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.microprofile.health</groupId>
