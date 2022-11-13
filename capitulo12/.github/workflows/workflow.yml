@@ -15,12 +15,13 @@ jobs:
        with:
          java-version: '11'
          distribution: 'adopt'
+         architecture: x64
 #     - name: Build with Maven
 #       run: mvn -B package --file pom.xml payara-micro:bundle
 
      - run: mvn --batch-mode --update-snapshots verify payara-micro:bundle
      - run: mkdir staging && cp target/*.jar staging
-     - uses: actions/upload-artifact@v2
+     - uses: actions/upload-artifact@v3
        with:
            name: Package
            path: staging
