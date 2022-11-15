@@ -55,7 +55,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 @Tag(name = "Información del pais", description = "End-point para entidad Pais")
 public class PaisController {
 
-
+    
     // <editor-fold defaultstate="collapsed" desc="Inject">
     @Inject
     PaisRepository paisRepository;
