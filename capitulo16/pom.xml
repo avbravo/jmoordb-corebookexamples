@@ -72,10 +72,10 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-	    <groupId>com.github.avbravo</groupId>
-	    <artifactId>jmoordb-core</artifactId>
-	    <version>0.2</version>
-	</dependency>
+            <groupId>com.github.avbravo</groupId>
+            <artifactId>jmoordb-core</artifactId>
+            <version>0.2</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -107,6 +107,8 @@
                     </execution>
                 </executions>
             </plugin>
+            
+            
         </plugins>
     </build>
     
@@ -116,4 +118,36 @@
             <url>https://jitpack.io</url>
         </repository>
     </repositories>
+    
+    
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>3.0.0-M7</version>
+                <configuration>
+                  
+                     <showSuccess>true</showSuccess>
+                    <outputDirectory>target/surefire-reports</outputDirectory>
+                    <linkXRef>false</linkXRef>
+                </configuration>    
+      
+            </plugin>
+      
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>4.0.0-M3</version>
+                <configuration>
+                    <outputDirectory>${basedir}/target/surefire-reports</outputDirectory>
+                </configuration>
+            </plugin>
+<!--            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.1</version>
+            </plugin>-->
+        </plugins>
+    </reporting>
 </project>

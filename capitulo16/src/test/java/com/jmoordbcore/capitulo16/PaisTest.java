@@ -4,12 +4,13 @@
  */
 package com.jmoordbcore.capitulo16;
 
+import com.jmoordbcore.capitulo16.model.Pais;
+import com.jmoordbcore.capitulo16.repository.PaisRepository;
 import io.helidon.microprofile.tests.junit5.HelidonTest;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.client.WebTarget;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
+import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import org.junit.jupiter.api.Test;
@@ -23,21 +24,23 @@ public class PaisTest {
 
     @Inject
     private WebTarget target;
+ 
 
     @Test
     void findByPais() {
-
-        Response r = target
-                .path("pais/findbypais")
-                .queryParam("pais", "xPanamáx")
+        System.out.println("**************************************************");
+        String result = target
+               .path("pais/findbypais")
+                  .queryParam("pais", "Panamáx")
                 .request()
-                .get();
-
-        int status = r.getStatus();
-        
-        System.out.println("Voy a testing [r.getStatus()] " + r.getStatus());
-        assertThat(status, is(200));
-       // assertThat(r.getStatus(), is(200));
+               .get(String.class);
+//        String result = target
+//               .path("pais/findbypais")
+//                  .queryParam("pais", "Daniela")
+//                .request()
+//               .get(String.class);
+         assertThat(result, is("[{\"fecha\":\"2022-10-20T18:53:33.194Z[UTC]\",\"idpais\":2,\"pais\":\"Panamá\"}]"));
+      
 
     }
 }
