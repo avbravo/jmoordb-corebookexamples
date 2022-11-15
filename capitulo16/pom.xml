@@ -128,7 +128,7 @@
                 <version>3.0.0-M7</version>
                 <configuration>
                   
-                     <showSuccess>true</showSuccess>
+                    <showSuccess>true</showSuccess>
                     <outputDirectory>target/surefire-reports</outputDirectory>
                     <linkXRef>false</linkXRef>
                 </configuration>    
@@ -143,11 +143,7 @@
                     <outputDirectory>${basedir}/target/surefire-reports</outputDirectory>
                 </configuration>
             </plugin>
-<!--            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jxr-plugin</artifactId>
-                <version>2.1</version>
-            </plugin>-->
+
         </plugins>
     </reporting>
 </project>
