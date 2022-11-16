@@ -24,23 +24,17 @@ public class PaisTest {
 
     @Inject
     private WebTarget target;
- 
 
     @Test
     void findByPais() {
-        System.out.println("**************************************************");
+
         String result = target
-               .path("pais/findbypais")
-                  .queryParam("pais", "Panamáx")
+                .path("pais/findbypais")
+                .queryParam("pais", "Panamá")
                 .request()
-               .get(String.class);
-//        String result = target
-//               .path("pais/findbypais")
-//                  .queryParam("pais", "Daniela")
-//                .request()
-//               .get(String.class);
-         assertThat(result, is("[{\"fecha\":\"2022-10-20T18:53:33.194Z[UTC]\",\"idpais\":2,\"pais\":\"Panamá\"}]"));
-      
+                .get(String.class);
+
+        assertThat(result, is("[{\"fecha\":\"2022-10-20T18:53:33.194Z[UTC]\",\"idpais\":2,\"pais\":\"Panamá\"}]"));
 
     }
 }
