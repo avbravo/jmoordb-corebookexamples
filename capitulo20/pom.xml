@@ -1,34 +1,24 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.jmoordbcore</groupId>
-    <artifactId>capitulo13</artifactId>
+    <artifactId>capitulo20</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>capitulo13</name>
-    
+
+    <name>capitulo20</name>
+
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <failOnMissingWebXml>false</failOnMissingWebXml>
         <jakartaee>10.0.0</jakartaee>
-        <version.payara>6.2022.1</version.payara>  
+        <version.payara.micro>6.2022.1</version.payara.micro>
+        <version.payara>6.2022.1</version.payara>
         <microprofile.version>5.0</microprofile.version>
-        <final.name>capitulo13</final.name>
-        <jmeter.version>2.6.0</jmeter.version>
-        
-        <!--TEST
-        -->
-        <!--        <payara.version>6.2022.1.Alpha3</payara.version>
-        <arquillian-payara.version>3.0.alpha6</arquillian-payara.version>
-        <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
-        <maven-failsafe-plugin.version>3.0.0-M7</maven-failsafe-plugin.version>
-        <maven-surefire-report-plugin.version>3.0.0-M7</maven-surefire-report-plugin.version>
-        <maven-dependency-plugin.version>3.3.0</maven-dependency-plugin.version>-->
+        <final.name>capitulo20</final.name>
     </properties>
-
+    
     <dependencies>
         <dependency>
             <groupId>jakarta.platform</groupId>
@@ -48,10 +38,20 @@
             <artifactId>microprofile-config-api</artifactId>
             <version>2.0.1</version>
         </dependency>
-        
-        
-        
 
+        <dependency>
+            <groupId>com.github.avbravo</groupId>
+            <artifactId>jmoordb-core</artifactId>
+            <version>0.2</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.eclipse.microprofile.health</groupId>
+            <artifactId>microprofile-health-api</artifactId>
+            <version>3.1</version>
+            <type>jar</type>
+        </dependency> 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -59,39 +59,10 @@
             <scope>test</scope>
             <type>jar</type>
         </dependency>
-        
-        <!--
-        TESTING
-        -->
-        <!--        <dependency>
-            <groupId>fish.payara.arquillian</groupId>
-            <artifactId>payara-client-ee9</artifactId>
-            <version>${arquillian-payara.version}</version>
-            <scope>test</scope>
-        </dependency>
-         Payara Server Container adaptor 
-        <dependency>
-            <groupId>fish.payara.arquillian</groupId>
-            <artifactId>arquillian-payara-server-managed</artifactId>
-            <version>${arquillian-payara.version}</version>
-            <scope>test</scope>
-        </dependency>-->
-  
-        <dependency>
-            <groupId>com.github.avbravo</groupId>
-            <artifactId>jmoordb-core</artifactId>
-            <version>0.2</version>
-        </dependency>
+
     
-   
-        <dependency>
-            <groupId>org.eclipse.microprofile.health</groupId>
-            <artifactId>microprofile-health-api</artifactId>
-            <version>3.1</version>
-            <type>jar</type>
-        </dependency>
     </dependencies>
-    
+
     <build>
         <finalName>${final.name}</finalName>
         <plugins>
@@ -115,7 +86,7 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
-            <plugin>
+             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>3.3.0</version>
@@ -143,48 +114,29 @@
             <plugin>
                 <groupId>fish.payara.maven.plugins</groupId>
                 <artifactId>payara-micro-maven-plugin</artifactId>
+                <version>1.4.0</version>
                 <configuration>
                     <payaraVersion>${version.payara}</payaraVersion>
-                    <deployWar>false</deployWar>
+                    <artifactItem>
+                        <groupId>fish.payara.extras</groupId>
+                        <artifactId>payara-micro</artifactId>
+                        <version>${version.payara.micro}</version>
+                    </artifactItem>
                     <commandLineOptions>
                         <option>
                             <key>--autoBindHttp</key>
+                            <value>true</value>
                         </option>
                         <option>
                             <key>--deploy</key>
                             <value>${project.build.directory}/${project.build.finalName}</value>
                         </option>
                     </commandLineOptions>
+                    <deployWar>false</deployWar>
                 </configuration>
-                <version>1.4.00</version>
             </plugin>
-            
-            
-            <!--
-            TESTING
-            -->
-            <!--            <plugin>
-                <groupId>com.lazerycode.jmeter</groupId>
-                <artifactId>jmeter-maven-plugin</artifactId>
-                <version>${jmeter.version}</version>
-                <executions>
-                    <execution>
-                        <id>jmeter-tests</id>
-                        <goals>
-                            <goal>jmeter</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <testFilesDirectory>${project.basedir}/src/main/resources</testFilesDirectory>
-                    <resultsDirectory>${project.basedir}/src/main/resources</resultsDirectory>
-                </configuration>
-            </plugin>-->
-        
         </plugins>
     </build>
-    
-
     <repositories>
         <repository>
             <id>jitpack.io</id>
