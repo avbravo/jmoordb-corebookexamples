@@ -2,10 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.jmoordbcore</groupId>
-    <artifactId>capitulo13</artifactId>
+    <artifactId>capitulo19</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>capitulo13</name>
+    <name>capitulo19</name>
     
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -13,22 +13,12 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
-        <jakartaee>10.0.0</jakartaee>
+       <jakartaee>10.0.0</jakartaee>
         <version.payara>6.2022.1</version.payara>  
         <microprofile.version>5.0</microprofile.version>
-        <final.name>capitulo13</final.name>
-        <jmeter.version>2.6.0</jmeter.version>
-        
-        <!--TEST
-        -->
-        <!--        <payara.version>6.2022.1.Alpha3</payara.version>
-        <arquillian-payara.version>3.0.alpha6</arquillian-payara.version>
-        <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
-        <maven-failsafe-plugin.version>3.0.0-M7</maven-failsafe-plugin.version>
-        <maven-surefire-report-plugin.version>3.0.0-M7</maven-surefire-report-plugin.version>
-        <maven-dependency-plugin.version>3.3.0</maven-dependency-plugin.version>-->
+        <final.name>capitulo19</final.name>
     </properties>
-
+    
     <dependencies>
         <dependency>
             <groupId>jakarta.platform</groupId>
@@ -88,12 +78,10 @@
             <artifactId>jmoordb-core</artifactId>
             <version>0.2</version>
         </dependency>
-    
-   
     </dependencies>
     
     <build>
-        <finalName>${final.name}</finalName>
+             <finalName>${final.name}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -107,7 +95,7 @@
                     </compilerArguments>
                 </configuration>
             </plugin>
-            <plugin>
+             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
@@ -158,34 +146,9 @@
                 </configuration>
                 <version>1.4.0</version>
             </plugin>
-            
-            
-            <!--
-            TESTING
-            -->
-            <!--            <plugin>
-                <groupId>com.lazerycode.jmeter</groupId>
-                <artifactId>jmeter-maven-plugin</artifactId>
-                <version>${jmeter.version}</version>
-                <executions>
-                    <execution>
-                        <id>jmeter-tests</id>
-                        <goals>
-                            <goal>jmeter</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <testFilesDirectory>${project.basedir}/src/main/resources</testFilesDirectory>
-                    <resultsDirectory>${project.basedir}/src/main/resources</resultsDirectory>
-                </configuration>
-            </plugin>-->
-        
         </plugins>
     </build>
-    
-
-    <repositories>
+      <repositories>
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
