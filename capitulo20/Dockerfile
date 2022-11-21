@@ -7,3 +7,4 @@ FROM payara/micro:6.2022.1
 #COPY target/capitulo20.war $DEPLOY_DIR
 COPY target/capitulo20.war $DEPLOY_DIR
 
+# CMD ["--nocluster","--deploymentDir", "/opt/payara/deployments", "--contextroot", "capitulo20"]
