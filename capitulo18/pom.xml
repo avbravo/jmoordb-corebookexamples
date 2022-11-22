@@ -17,7 +17,7 @@
         <version.payara>6.2022.1</version.payara>  
         <microprofile.version>5.0</microprofile.version>
         <final.name>capitulo18</final.name>
-        
+          <piranha.version>22.9.0</piranha.version>
     </properties>
     
     
@@ -144,6 +144,14 @@
             <version>3.0.alpha7</version>
             <scope>test</scope>
         </dependency>
+        
+        <!--
+    
+Piranha Cloud
+-->
+
+    
+        
     </dependencies>
     <build>
         <finalName>${final.name}</finalName>

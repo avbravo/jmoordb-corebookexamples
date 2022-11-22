@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-arq-payara-micro</actionName>
+            <displayName>arq-payara-micro</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>verify</goal>
+            </goals>
+            <activatedProfiles>
+                <activatedProfile>arq-payara-micro</activatedProfile>
+            </activatedProfiles>
+        </action>
+    </actions>

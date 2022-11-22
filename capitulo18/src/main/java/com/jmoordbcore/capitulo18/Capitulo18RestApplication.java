@@ -7,7 +7,8 @@ import jakarta.ws.rs.core.Application;
 /**
  *
  */
-@ApplicationPath("/api")
+//@ApplicationPath("/api")
+@ApplicationPath("")
 @ApplicationScoped
 public class Capitulo18RestApplication extends Application {
 }
