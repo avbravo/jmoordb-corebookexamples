@@ -20,6 +20,6 @@ public class GreetingServiceUnitTest {
     public void testGreeting(){
        var message = service.buildGreetingMessage("JakartaEE");
         
-      assertEquals(message.getMessage(), "Say Hello to JatartaEE");
+      assertEquals(message.getMessage(), "Say Hello to JakartaEE");
     }
 }

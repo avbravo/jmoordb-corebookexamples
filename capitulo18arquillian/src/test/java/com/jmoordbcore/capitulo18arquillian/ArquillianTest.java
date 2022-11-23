@@ -14,14 +14,14 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 
 @RunWith(Arquillian.class)
 public class ArquillianTest {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ArquillianTest.class);
+   // private static final Logger LOGGER = LoggerFactory.getLogger(ArquillianTest.class);
 
     @Inject
     private GrupoRepository grupoRepository;
@@ -38,12 +38,13 @@ public class ArquillianTest {
 
     @Test
     public void test01() {
-        LOGGER.info("Test 01");
+//        LOGGER.info("Test 01");
+        System.out.println("Test 01");
     }
 
     @Test
     public void testInsertProducts() {
-        LOGGER.info("-- Registrando productos");
+//        LOGGER.info("-- Registrando productos");
         //insertando registros en la base de datos
 //        Product p1 = productFacade.create("Keyboard", 100, 20);
 //        Product p2 = productFacade.create("Mouse", 90, 12);
