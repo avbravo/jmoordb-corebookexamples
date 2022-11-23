@@ -3,46 +3,24 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.jmoordbcore</groupId>
-    <artifactId>capitulo18</artifactId>
+    <artifactId>capitulo18arquillian</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <properties>
         <maven.compiler.target>11</maven.compiler.target>
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <maven.compiler.source>11</maven.compiler.source>
+
+
+    
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <jakartaee>10.0.0</jakartaee>
         <version.payara>6.2022.1</version.payara>  
         <microprofile.version>5.0</microprofile.version>
-        <final.name>capitulo18</final.name>
-        <piranha.version>22.9.0</piranha.version>
-        <arquillian-bom.version>1.7.0.Alpha5</arquillian-bom.version>
-        <junit-jupiter.version>5.7.0</junit-jupiter.version>
+        <final.name>capitulo18arquillian</final.name>
     </properties>
-    
-    
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.jboss.arquillian</groupId>
-                <artifactId>arquillian-bom</artifactId>
-                <version>1.6.0.Final</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            
-            <dependency>
-                <groupId>org.junit</groupId>
-                <artifactId>junit-bom</artifactId>
-                <version>5.7.0</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>jakarta.platform</groupId>
@@ -108,11 +86,11 @@
 
         <!-- Arquillian -->
         <!-- Junit -->
-        <dependency>
+        <!--        <dependency>
             <groupId>org.jboss.arquillian.junit</groupId>
             <artifactId>arquillian-junit-container</artifactId>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
 
         <!--        <dependency>
             <groupId>junit</groupId>
@@ -123,7 +101,7 @@
       
 
         <!-- TestNG -->
-        <dependency>
+        <!--        <dependency>
             <groupId>org.jboss.arquillian.testng</groupId>
             <artifactId>arquillian-testng-container</artifactId>
             <scope>test</scope>
@@ -134,18 +112,18 @@
             <artifactId>testng</artifactId>
             <version>7.6.1</version>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
 
         <!--
         PayaraMicro
         -->
         
-        <dependency>
+        <!--        <dependency>
             <groupId>fish.payara.arquillian</groupId>
             <artifactId>payara-client-ee9</artifactId>
             <version>3.0.alpha7</version>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
 
 
         <dependency>
@@ -168,7 +146,7 @@
             <scope>test</scope>
         </dependency>
     
-        <dependency>
+        <!--        <dependency>
             <groupId>org.jboss.arquillian.junit5</groupId>
             <artifactId>arquillian-junit5-container</artifactId>
             <version>1.7.0.Alpha13</version>
@@ -193,8 +171,39 @@
             <artifactId>weld-core-impl</artifactId>
             <version>5.1.0.Final</version>
             <scope>test</scope>
+        </dependency>-->
+<dependency>
+            <groupId>org.jboss.arquillian.junit</groupId>
+            <artifactId>arquillian-junit-container</artifactId>
+            <version>1.7.0.Alpha13</version>
+            <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.jboss.arquillian.extension</groupId>
+            <artifactId>arquillian-persistence-dbunit</artifactId>
+            <version>1.0.0.Alpha7</version> 
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.container</groupId>
+            <artifactId>arquillian-glassfish-embedded-3.1</artifactId>
+            <version>1.0.1</version> 
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.junit5</groupId>
+            <artifactId>arquillian-junit5-core</artifactId>
+            <version>1.7.0.Alpha13</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
+        
+        <dependency>
+	<groupId>org.assertj</groupId>
+	<artifactId>assertj-core</artifactId>
+	<version>3.21.0</version>
+	<scope>test</scope>
+</dependency>
     </dependencies>
     <build>
         <finalName>${final.name}</finalName>
@@ -219,7 +228,7 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
-            <!--            <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>3.3.0</version>
@@ -240,63 +249,10 @@
                                     <type>jar</type>
                                 </artifactItem>
                             </artifactItems>
-                            
-                            
-                            <skip>${skipTests}</skip>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>fish.payara.extras</groupId>
-                                    <artifactId>payara-micro</artifactId>
-                                    <version>${version.payara}</version>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${session.executionRootDirectory}/target/</outputDirectory>
-                                </artifactItem>
-                            </artifactItems>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-            -->
-            
-            
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <id>unpack</id>
-                        <phase>pre-integration-test</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>fish.payara.extras</groupId>
-                                    <artifactId>payara-micro</artifactId>
-                                    <version>${version.payara}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}</outputDirectory>
-                                    <destFileName>payara-micro.jar</destFileName>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.0.0-M7</version>
-                <configuration>
-                    <systemPropertyVariables>
-                        <payara.microJar>${project.build.directory}/payara-micro.jar</payara.microJar>
-                    </systemPropertyVariables>
-                </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>fish.payara.maven.plugins</groupId>
                 <artifactId>payara-micro-maven-plugin</artifactId>
@@ -315,87 +271,43 @@
                 </configuration>
                 <version>1.4.0</version>
             </plugin>
-            
-            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>3.0.0-M7</version>
                 <configuration>
-                    <environmentVariables>
-                        <MICRO_JAR>${session.executionRootDirectory}/target/payara-micro-${version.payara}.jar</MICRO_JAR>
-                    </environmentVariables>
+                    <systemPropertyVariables>
+                        <arquillian.launch>payara-micro-managed</arquillian.launch>
+                        <payara.randomHttpPort>false</payara.randomHttpPort>
+                        <payara.autoBindHttp>false</payara.autoBindHttp>
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
+            
+            <!--
+            TESTING
+            -->
+            <!--            <plugin>
+                <groupId>com.lazerycode.jmeter</groupId>
+                <artifactId>jmeter-maven-plugin</artifactId>
+                <version>${jmeter.version}</version>
+                <executions>
+                    <execution>
+                        <id>jmeter-tests</id>
+                        <goals>
+                            <goal>jmeter</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <testFilesDirectory>${project.basedir}/src/main/resources</testFilesDirectory>
+                    <resultsDirectory>${project.basedir}/src/main/resources</resultsDirectory>
+                </configuration>
+            </plugin>-->
+        
         </plugins>
     </build>
-    <profiles>
-        <profile>
-            <id>arq-payara-micro</id>
-            <properties>
-                <skip.unit.tests>true</skip.unit.tests>
-                <skip.integration.tests>false</skip.integration.tests>
-            </properties>
-            <dependencies>
-
-                <dependency>
-                    <groupId>fish.payara.arquillian</groupId>
-                    <artifactId>payara-client-ee9</artifactId>
-                    <version>3.0.alpha7</version>
-                    <scope>test</scope>
-                </dependency>
-
-                <!-- Payara Micro Managed Container Adaptor -->
-                <dependency>
-                    <groupId>fish.payara.arquillian</groupId>
-                    <artifactId>arquillian-payara-micro-managed</artifactId>
-                    <version>3.0.alpha7</version>
-                    <scope>test</scope>
-                </dependency>
-            </dependencies>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-dependency-plugin</artifactId>
-                        <version>3.3.0</version>
-                        <executions>
-                            <execution>
-                                <id>unpack</id>
-                                <phase>pre-integration-test</phase>
-                                <goals>
-                                    <goal>copy</goal>
-                                </goals>
-                                <configuration>
-                                    <artifactItems>
-                                        <artifactItem>
-                                            <groupId>fish.payara.extras</groupId>
-                                            <artifactId>payara-micro</artifactId>
-                                            <version>${version.payara}</version>
-                                            <type>jar</type>
-                                            <overWrite>false</overWrite>
-                                            <outputDirectory>${project.build.directory}</outputDirectory>
-                                            <destFileName>payara-micro.jar</destFileName>
-                                        </artifactItem>
-                                    </artifactItems>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>3.0.0-M7</version>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <payara.microJar>${project.build.directory}/payara-micro.jar</payara.microJar>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+    
 
     <repositories>
         <repository>
@@ -403,5 +315,4 @@
             <url>https://jitpack.io</url>
         </repository>
     </repositories>
-    
 </project>
