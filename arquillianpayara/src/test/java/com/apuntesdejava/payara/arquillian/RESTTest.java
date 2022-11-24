@@ -44,48 +44,48 @@ public class RESTTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RESTTest.class);
 
-//    @ArquillianResource
-//    private URL deploymentURL; //el URL donde se desplegó el war
-//
-//    @Deployment
-//    public static WebArchive createDeployment() {
-//        return ShrinkWrap.create(WebArchive.class, "capitulo18.war")
-////                .addAsResource("test-persistence.xml", "META-INF/persistence.xml")
-//                .addClasses(GrupoController.class,
-//                    
-//                        GrupoRepository.class,
-//                                             ApplicationConfig.class,
-//                        Grupo.class);
-//    }
-//
-//    @Test
-// //   @UsingDataSet("datasets/products.yml")
-//    public void testFindGrupo() throws URISyntaxException {
-//        Client client = createClient(); //creamos el cliente
-//        WebTarget target = client.target(deploymentURL.toURI()) //registramos el servidor...
-//                .path("api/grupo") //.. el path del servicio...
-//                .queryParam("name", "DE"); //... y los parámetros
-//        LOGGER.info("--- test find product:{}", target.getUri());
-//        Response response = target.request(MediaType.APPLICATION_JSON).get(); //invocamos al servicio por GET
-//        if (response.getStatus() != HttpStatus.OK_200.getStatusCode()) { //si no es correcto..
-//            fail("Error :" + response.getStatusInfo().getReasonPhrase()); //.. lanza el error y termina
-//        }
-//        //si todo está bien, tratamos de leer el contenido como la lista de Grupoos esperado
-//        List<Grupo> data = response.readEntity(new GenericType<List<Grupo>>() {
-//        });
-//        Assert.assertFalse(data.isEmpty()); //.. no debería estar vacía la lista.
-//        data.forEach((p) -> {
-//            LOGGER.info("\tproduct:{}", p.getGrupo()); //mostramos el contenido.
-//        });
-//
-//    }
-//
-//
-//    private static Client createClient() {
-//        return ClientBuilder
-//                .newBuilder()
-//                .register(JacksonJaxbJsonProvider.class) //para procesar las peticiones como JSON
-//                .build();
-//    }
+    @ArquillianResource
+    private URL deploymentURL; //el URL donde se desplegó el war
+
+    @Deployment
+    public static WebArchive createDeployment() {
+        return ShrinkWrap.create(WebArchive.class, "capitulo18.war")
+//                .addAsResource("test-persistence.xml", "META-INF/persistence.xml")
+                .addClasses(GrupoController.class,
+                    
+                        GrupoRepository.class,
+                                             ApplicationConfig.class,
+                        Grupo.class);
+    }
+
+    @Test
+ //   @UsingDataSet("datasets/products.yml")
+    public void testFindGrupo() throws URISyntaxException {
+        Client client = createClient(); //creamos el cliente
+        WebTarget target = client.target(deploymentURL.toURI()) //registramos el servidor...
+                .path("api/grupo") //.. el path del servicio...
+                .queryParam("name", "DE"); //... y los parámetros
+        LOGGER.info("--- test find product:{}", target.getUri());
+        Response response = target.request(MediaType.APPLICATION_JSON).get(); //invocamos al servicio por GET
+        if (response.getStatus() != HttpStatus.OK_200.getStatusCode()) { //si no es correcto..
+            fail("Error :" + response.getStatusInfo().getReasonPhrase()); //.. lanza el error y termina
+        }
+        //si todo está bien, tratamos de leer el contenido como la lista de Grupoos esperado
+        List<Grupo> data = response.readEntity(new GenericType<List<Grupo>>() {
+        });
+        Assert.assertFalse(data.isEmpty()); //.. no debería estar vacía la lista.
+        data.forEach((p) -> {
+            LOGGER.info("\tproduct:{}", p.getGrupo()); //mostramos el contenido.
+        });
+
+    }
+
+
+    private static Client createClient() {
+        return ClientBuilder
+                .newBuilder()
+                .register(JacksonJaxbJsonProvider.class) //para procesar las peticiones como JSON
+                .build();
+    }
 
 }

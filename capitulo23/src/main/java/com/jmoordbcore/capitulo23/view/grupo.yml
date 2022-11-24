@@ -1,0 +1,40 @@
+## YAML Template.
+## https://stackabuse.com/reading-and-writing-yaml-files-in-java-with-jackson/
+
+## https://piranha.cloud/servlet/guides/faces/
+---
+template: WEB/INF/template.xtml
+header: 
+    - title: Grupo
+      meta: name="viewport" content="width=device-width, initial-scale=1.0"
+body: 
+    form:
+      - id: form1
+        prereinder: false
+        rendered : #{grupoView.rendered}
+      - row:
+          - label: idlabel1
+            value: idgrupo
+          - text : idgrupo
+            value: ""
+            binding: #{grupoview.grupo.idgrupo}
+            
+      - row:
+          - label: idlabel2
+            value: grupo
+          - text : grupo
+            value: ""
+            binding: #{grupoview.grupo.grupo}
+      - row:
+          - commandbutton: 
+              - id: commandButtonSave
+                value: Save
+                action: #{grupoview.save(grupo)}
+                update: form:msg
+                ajax: ""
+                
+      - growl: 
+          -id: growl
+            
+      
+     

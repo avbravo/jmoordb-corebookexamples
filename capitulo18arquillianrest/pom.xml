@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.jmoordbcore</groupId>
-    <artifactId>capitulo18arquillian</artifactId>
+    <artifactId>capitulo18arquillianrest</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <properties>
@@ -19,7 +19,7 @@
         <jakartaee>10.0.0</jakartaee>
         <version.payara>6.2022.1</version.payara>  
         <microprofile.version>5.0</microprofile.version>
-        <final.name>capitulo18arquillian</final.name>
+        <final.name>capitulo18arquillianrest</final.name>
     </properties>
     <dependencies>
         <dependency>
@@ -58,7 +58,22 @@
             <type>jar</type>
         </dependency>
         
-     
+        <!--
+        TESTING
+        -->
+        <!--        <dependency>
+            <groupId>fish.payara.arquillian</groupId>
+            <artifactId>payara-client-ee9</artifactId>
+            <version>${arquillian-payara.version}</version>
+            <scope>test</scope>
+        </dependency>
+         Payara Server Container adaptor 
+        <dependency>
+            <groupId>fish.payara.arquillian</groupId>
+            <artifactId>arquillian-payara-server-managed</artifactId>
+            <version>${arquillian-payara.version}</version>
+            <scope>test</scope>
+        </dependency>-->
   
         <dependency>
             <groupId>com.github.avbravo</groupId>
@@ -68,7 +83,18 @@
     
    
 
- 
+
+        <dependency>
+            <groupId>fish.payara.arquillian</groupId>
+            <artifactId>arquillian-payara-micro-managed</artifactId>
+            <version>3.0.alpha7</version>
+            <scope>test</scope>
+        </dependency>
+        
+        <!--
+            
+        jupiter
+        -->
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -84,16 +110,6 @@
             <version>1.7.0.Alpha13</version>
             <scope>test</scope>
         </dependency>
-        
-
-        <dependency>
-            <groupId>fish.payara.arquillian</groupId>
-            <artifactId>arquillian-payara-micro-managed</artifactId>
-            <version>3.0.alpha7</version>
-            <scope>test</scope>
-        </dependency>
-        
-        
                <dependency>
             <groupId>fish.payara.arquillian</groupId>
             <artifactId>payara-client-ee9</artifactId>
@@ -129,16 +145,6 @@
     </dependencies>
     <build>
         <finalName>${final.name}</finalName>
-         <resources>
-            <resource>
-                <directory>src/main/resources</directory>       
-            </resource>
-        </resources>
-        <testResources>
-            <testResource>
-                <directory>src/test/resources</directory>
-            </testResource>
-        </testResources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -185,7 +191,7 @@
                     </execution>
                     
                     <!-- yo -->
-<!--                    <execution>
+                    <execution>
                         <id>unpack</id>
                         <phase>pre-integration-test</phase>
                         <goals>
@@ -204,7 +210,7 @@
                                 </artifactItem>
                             </artifactItems>
                         </configuration>
-                    </execution>-->
+                    </execution>
                 </executions>
             </plugin>
 
@@ -234,14 +240,13 @@
                 <configuration>
                     <!--Yo -->
                      <environmentVariables>
-                      <MICRO_JAR>${project.build.directory}/payara-micro.jar</MICRO_JAR>
+                        <MICRO_JAR>${project.build.directory}/payara-micro.jar</MICRO_JAR>
                     </environmentVariables>
                     <systemPropertyVariables>
                         <arquillian.launch>payara-micro-managed</arquillian.launch>
                         <payara.randomHttpPort>false</payara.randomHttpPort>
                         <payara.autoBindHttp>false</payara.autoBindHttp>
                         <payara.microJar>false</payara.microJar >
-                       
                         <!--<property name="deployerContextPath">/payara-micro-deployer</property>-->
                         <!--<property name="payara.microJar">/payara-micro-deployer</property>-->
                     </systemPropertyVariables>

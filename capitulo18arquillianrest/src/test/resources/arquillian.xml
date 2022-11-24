@@ -8,8 +8,6 @@
         <configuration>
             <property name="randomHttpPort">false</property>
             <property name="autoBindHttp">false</property>
-            <!--<property name="host">test.example.com</property>-->
-<!--            <property name="port">8181</property>-->
         </configuration>
     </container>
 </arquillian>
