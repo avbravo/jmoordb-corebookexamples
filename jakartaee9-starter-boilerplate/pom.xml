@@ -46,6 +46,11 @@
         <!-- Arquillian 1.7.0 adds Jakarta EE 9 and JUnit 5 support-->
         <arquillian-bom.version>1.7.0.Alpha13</arquillian-bom.version>
         <junit-jupiter.version>5.9.1</junit-jupiter.version>
+        
+        <!--
+        
+        jmoordbcore
+        -->
         <version.jmoordbcore>0.3</version.jmoordbcore>
 
 
@@ -72,7 +77,7 @@
         <!--Jmoordbcore
         -->
         
-        <version.jmoordbcore>0.2</version.jmoordbcore>
+        <version.jmoordbcore>0.3</version.jmoordbcore>
           
 
         <!-- websockets-jsr and resteasy for client, aligned with Wildfly version. -->
@@ -222,7 +227,7 @@
             <version>2.0.1</version>
         </dependency>-->
         
-        <dependency>
+       <dependency>
             <groupId>com.github.avbravo</groupId>
             <artifactId>jmoordb-core</artifactId>
             <version>${version.jmoordbcore}</version>
