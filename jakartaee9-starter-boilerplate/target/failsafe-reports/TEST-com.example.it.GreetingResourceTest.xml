@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-failsafe-plugin/xsd/failsafe-test-report-3.0.xsd" version="3.0" name="com.example.it.GreetingResourceTest" time="16.855" tests="1" errors="1" skipped="0" failures="0">
+  <properties>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="env.TERM" value="xterm-256color"/>
+    <property name="java.specification.version" value="11"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="env.SDKMAN_CANDIDATES_API" value="https://api.sdkman.io/2"/>
+    <property name="com.ibm.vm.bitmode" value="64"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://adoptopenjdk.net/"/>
+    <property name="env.DEFAULTS_PATH" value="/usr/share/gconf/ubuntu-xorg.default.path"/>
+    <property name="sun.boot.library.path" value="/usr/local/jdk-11.0.9+11/lib/compressedrefs:/usr/local/jdk-11.0.9+11/lib"/>
+    <property name="sun.java.command" value="/home/avbravo/NetBeansProjects/j/jmoordb-corebookexamples/jakartaee9-starter-boilerplate/target/surefire/surefirebooter-20221129214814653_3.jar /home/avbravo/NetBeansProjects/j/jmoordb-corebookexamples/jakartaee9-starter-boilerplate/target/surefire 2022-11-29T21-48-14_246-jvmRun1 surefire-20221129214814653_1tmp surefire_0-20221129214814653_2tmp"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2020-10-20"/>
+    <property name="env.JAVA_HOME" value="/usr/local/jdk-11.0.9+11"/>
+    <property name="env.GDMSESSION" value="ubuntu-xorg"/>
+    <property name="java.home" value="/usr/local/jdk-11.0.9+11"/>
+    <property name="ibm.signalhandling.rs" value="false"/>
+    <property name="basedir" value="/home/avbravo/NetBeansProjects/j/jmoordb-corebookexamples/jakartaee9-starter-boilerplate"/>
+    <property name="jdk.extensions.name" value="Extensions for OpenJDK for Eclipse OpenJ9"/>
+    <property name="file.separator" value="/"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="sun.java.launcher.pid" value="23489"/>
+    <property name="env.GNOME_DESKTOP_SESSION_ID" value="this-is-deprecated"/>
+    <property name="java.awt.fonts" value=""/>
+    <property name="java.fullversion" value="11.0.9+11&#10;JRE 11 Linux amd64-64-Bit Compressed References 20201022_810 (JIT enabled, AOT enabled)&#10;OpenJ9   - 0394ef754&#10;OMR      - 582366ae5&#10;JCL      - 3b09cfd7e9 based on jdk-11.0.9+11"/>
+    <property name="java.runtime.version" value="11.0.9+11"/>
+    <property name="user.name" value="avbravo"/>
+    <property name="env.PATH" value="/home/avbravo/netbeans-15-bin/netbeans/java/maven/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/usr/local/jdk-11.0.9+11/bin"/>
+    <property name="env.LS_COLORS" value="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:"/>
+    <property name="env.LOGNAME" value="avbravo"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vendor.version" value="AdoptOpenJDK"/>
+    <property name="env._" value="/home/avbravo/netbeans-15-bin/netbeans/java/maven/bin/mvn"/>
+    <property name="env.XDG_SESSION_DESKTOP" value="ubuntu-xorg"/>
+    <property name="env.SHLVL" value="1"/>
+    <property name="ibm.signalhandling.sigchain" value="true"/>
+    <property name="localRepository" value="/home/avbravo/.m2/repository"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="11.0.9"/>
+    <property name="com.ibm.system.agent.path" value="/usr/local/jdk-11.0.9+11/lib"/>
+    <property name="env.SSH_AUTH_SOCK" value="/run/user/1000/keyring/ssh"/>
+    <property name="env.XDG_RUNTIME_DIR" value="/run/user/1000"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="env.XMODIFIERS" value="@im=ibus"/>
+    <property name="env.SSH_AGENT_LAUNCHER" value="gnome-keyring"/>
+    <property name="os.encoding" value="UTF-8"/>
+    <property name="env.GNOME_TERMINAL_SCREEN" value="/org/gnome/Terminal/screen/1fce5ccd_8ada_4685_93dd_e5108dedb736"/>
+    <property name="env.SDKMAN_DIR" value="/home/avbravo/.sdkman"/>
+    <property name="env.SDKMAN_PLATFORM" value="linuxx64"/>
+    <property name="java.library.path" value="/usr/local/jdk-11.0.9+11/lib/compressedrefs:/usr/local/jdk-11.0.9+11/lib:/usr/lib64:/usr/lib"/>
+    <property name="java.vendor" value="AdoptOpenJDK"/>
+    <property name="env.WINDOWPATH" value="2"/>
+    <property name="env.XDG_SESSION_TYPE" value="x11"/>
+    <property name="ibm.system.encoding" value="UTF-8"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="env.SDKMAN_CANDIDATES_DIR" value="/home/avbravo/.sdkman/candidates"/>
+    <property name="env.XDG_SESSION_CLASS" value="user"/>
+    <property name="env.XAUTHORITY" value="/run/user/1000/gdm/Xauthority"/>
+    <property name="env.OLDPWD" value="/home/avbravo/NetBeansProjects/j/jmoordb-corebookexamples/jakartaee9-starter-boilerplate"/>
+    <property name="sun.desktop" value="gnome"/>
+    <property name="env.PWD" value="/home/avbravo/NetBeansProjects/j/jmoordb-corebookexamples/jakartaee9-starter-boilerplate"/>
+    <property name="env.SESSION_MANAGER" value="local/avbravo:@/tmp/.ICE-unix/2442,unix/avbravo:/tmp/.ICE-unix/2442"/>
+    <property name="env.LANG" value="es_PA.UTF-8"/>
+    <property name="jdk.extensions.version" value="11.0.9.0"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="env.LESSOPEN" value="| /usr/bin/lesspipe %s"/>
+    <property name="java.class.path" value="/home/avbravo/NetBeansProjects/j/jmoordb-corebookexamples/jakartaee9-starter-boilerplate/target/test-classes:/home/avbravo/NetBeansProjects/j/jmoordb-corebookexamples/jakartaee9-starter-boilerplate/target/classes:/home/avbravo/.m2/repository/jakarta/platform/jakarta.jakartaee-api/9.1.0/jakarta.jakartaee-api-9.1.0.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/junit5/arquillian-junit5-container/1.7.0.Alpha13/arquillian-junit5-container-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/test/arquillian-test-api/1.7.0.Alpha13/arquillian-test-api-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/core/arquillian-core-api/1.7.0.Alpha13/arquillian-core-api-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/test/arquillian-test-spi/1.7.0.Alpha13/arquillian-test-spi-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/core/arquillian-core-spi/1.7.0.Alpha13/arquillian-core-spi-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/container/arquillian-container-test-api/1.7.0.Alpha13/arquillian-container-test-api-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/shrinkwrap/shrinkwrap-api/1.2.6/shrinkwrap-api-1.2.6.jar:/home/avbravo/.m2/repository/org/jboss/shrinkwrap/descriptors/shrinkwrap-descriptors-api-base/2.0.0/shrinkwrap-descriptors-api-base-2.0.0.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/container/arquillian-container-test-spi/1.7.0.Alpha13/arquillian-container-test-spi-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/core/arquillian-core-impl-base/1.7.0.Alpha13/arquillian-core-impl-base-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/test/arquillian-test-impl-base/1.7.0.Alpha13/arquillian-test-impl-base-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/container/arquillian-container-impl-base/1.7.0.Alpha13/arquillian-container-impl-base-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/config/arquillian-config-api/1.7.0.Alpha13/arquillian-config-api-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/config/arquillian-config-impl-base/1.7.0.Alpha13/arquillian-config-impl-base-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/config/arquillian-config-spi/1.7.0.Alpha13/arquillian-config-spi-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/container/arquillian-container-test-impl-base/1.7.0.Alpha13/arquillian-container-test-impl-base-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/junit5/arquillian-junit5-core/1.7.0.Alpha13/arquillian-junit5-core-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/shrinkwrap/shrinkwrap-impl-base/1.2.6/shrinkwrap-impl-base-1.2.6.jar:/home/avbravo/.m2/repository/org/jboss/shrinkwrap/shrinkwrap-spi/1.2.6/shrinkwrap-spi-1.2.6.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/protocol/arquillian-protocol-servlet-jakarta/1.7.0.Alpha13/arquillian-protocol-servlet-jakarta-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/container/arquillian-container-spi/1.7.0.Alpha13/arquillian-container-spi-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/shrinkwrap/descriptors/shrinkwrap-descriptors-spi/2.0.0/shrinkwrap-descriptors-spi-2.0.0.jar:/home/avbravo/.m2/repository/org/junit/jupiter/junit-jupiter/5.9.1/junit-jupiter-5.9.1.jar:/home/avbravo/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.1/junit-jupiter-api-5.9.1.jar:/home/avbravo/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/avbravo/.m2/repository/org/junit/platform/junit-platform-commons/1.9.1/junit-platform-commons-1.9.1.jar:/home/avbravo/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/avbravo/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.1/junit-jupiter-params-5.9.1.jar:/home/avbravo/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.1/junit-jupiter-engine-5.9.1.jar:/home/avbravo/.m2/repository/org/junit/platform/junit-platform-engine/1.9.1/junit-platform-engine-1.9.1.jar:/home/avbravo/.m2/repository/org/mockito/mockito-core/4.8.0/mockito-core-4.8.0.jar:/home/avbravo/.m2/repository/net/bytebuddy/byte-buddy/1.12.14/byte-buddy-1.12.14.jar:/home/avbravo/.m2/repository/net/bytebuddy/byte-buddy-agent/1.12.14/byte-buddy-agent-1.12.14.jar:/home/avbravo/.m2/repository/org/objenesis/objenesis/3.2/objenesis-3.2.jar:/home/avbravo/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/home/avbravo/.m2/repository/org/assertj/assertj-core/3.23.1/assertj-core-3.23.1.jar:/home/avbravo/.m2/repository/com/github/avbravo/jmoordb-core/0.2/jmoordb-core-0.2.jar:/home/avbravo/.m2/repository/org/mongodb/mongodb-driver-sync/4.6.0/mongodb-driver-sync-4.6.0.jar:/home/avbravo/.m2/repository/org/mongodb/bson/4.6.0/bson-4.6.0.jar:/home/avbravo/.m2/repository/org/mongodb/mongodb-driver-core/4.6.0/mongodb-driver-core-4.6.0.jar:/home/avbravo/.m2/repository/org/mongodb/bson-record-codec/4.6.0/bson-record-codec-4.6.0.jar:/home/avbravo/.m2/repository/org/glassfish/jersey/core/jersey-common/3.1.0-M3/jersey-common-3.1.0-M3.jar:/home/avbravo/.m2/repository/jakarta/ws/rs/jakarta.ws.rs-api/3.1.0/jakarta.ws.rs-api-3.1.0.jar:/home/avbravo/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.0.0/jakarta.annotation-api-2.0.0.jar:/home/avbravo/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/home/avbravo/.m2/repository/org/glassfish/hk2/osgi-resource-locator/1.0.3/osgi-resource-locator-1.0.3.jar:/home/avbravo/.m2/repository/com/github/avbravo/jmoordb-core-processor-genesis/0.1/jmoordb-core-processor-genesis-0.1.jar:/home/avbravo/.m2/repository/com/github/spullara/mustache/java/compiler/0.9.5/compiler-0.9.5.jar:/home/avbravo/.m2/repository/com/diogonunes/JColor/5.2.0/JColor-5.2.0.jar:/home/avbravo/.m2/repository/net/java/dev/jna/jna/5.8.0/jna-5.8.0.jar:/home/avbravo/.m2/repository/net/java/dev/jna/jna-platform/5.8.0/jna-platform-5.8.0.jar:/home/avbravo/.m2/repository/commons-beanutils/commons-beanutils/1.9.4/commons-beanutils-1.9.4.jar:/home/avbravo/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/avbravo/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar:/home/avbravo/.m2/repository/jakarta/json/bind/jakarta.json.bind-api/1.0.2/jakarta.json.bind-api-1.0.2.jar:/home/avbravo/.m2/repository/org/eclipse/microprofile/config/microprofile-config-api/2.0.1/microprofile-config-api-2.0.1.jar:/home/avbravo/.m2/repository/fish/payara/arquillian/payara-client-ee9/3.0.alpha6/payara-client-ee9-3.0.alpha6.jar:/home/avbravo/.m2/repository/org/eclipse/yasson/2.0.2/yasson-2.0.2.jar:/home/avbravo/.m2/repository/jakarta/json/jakarta.json-api/2.0.0/jakarta.json-api-2.0.0.jar:/home/avbravo/.m2/repository/org/glassfish/jakarta.json/2.0.0/jakarta.json-2.0.0-module.jar:/home/avbravo/.m2/repository/org/glassfish/tyrus/tyrus-client/2.0.0/tyrus-client-2.0.0.jar:/home/avbravo/.m2/repository/org/glassfish/tyrus/tyrus-core/2.0.0/tyrus-core-2.0.0.jar:/home/avbravo/.m2/repository/org/glassfish/tyrus/tyrus-spi/2.0.0/tyrus-spi-2.0.0.jar:/home/avbravo/.m2/repository/jakarta/websocket/jakarta.websocket-api/2.0.0/jakarta.websocket-api-2.0.0.jar:/home/avbravo/.m2/repository/org/glassfish/tyrus/tyrus-container-grizzly-client/2.0.0/tyrus-container-grizzly-client-2.0.0.jar:/home/avbravo/.m2/repository/org/glassfish/grizzly/grizzly-framework/3.0.0-M1/grizzly-framework-3.0.0-M1.jar:/home/avbravo/.m2/repository/org/glassfish/grizzly/grizzly-http-server/3.0.0-M1/grizzly-http-server-3.0.0-M1.jar:/home/avbravo/.m2/repository/org/glassfish/grizzly/grizzly-http/3.0.0-M1/grizzly-http-3.0.0-M1.jar:/home/avbravo/.m2/repository/org/glassfish/jersey/core/jersey-client/3.0.4/jersey-client-3.0.4.jar:/home/avbravo/.m2/repository/org/glassfish/jersey/inject/jersey-hk2/3.0.4/jersey-hk2-3.0.4.jar:/home/avbravo/.m2/repository/org/glassfish/hk2/hk2-locator/3.0.1/hk2-locator-3.0.1.jar:/home/avbravo/.m2/repository/org/glassfish/hk2/external/aopalliance-repackaged/3.0.1/aopalliance-repackaged-3.0.1.jar:/home/avbravo/.m2/repository/org/glassfish/hk2/hk2-api/3.0.1/hk2-api-3.0.1.jar:/home/avbravo/.m2/repository/org/glassfish/hk2/hk2-utils/3.0.1/hk2-utils-3.0.1.jar:/home/avbravo/.m2/repository/org/javassist/javassist/3.25.0-GA/javassist-3.25.0-GA.jar:/home/avbravo/.m2/repository/org/glassfish/jersey/media/jersey-media-json-jackson/3.0.4/jersey-media-json-jackson-3.0.4.jar:/home/avbravo/.m2/repository/org/glassfish/jersey/ext/jersey-entity-filtering/3.0.4/jersey-entity-filtering-3.0.4.jar:/home/avbravo/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.13.0/jackson-annotations-2.13.0.jar:/home/avbravo/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.13.0/jackson-databind-2.13.0.jar:/home/avbravo/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.13.0/jackson-core-2.13.0.jar:/home/avbravo/.m2/repository/com/fasterxml/jackson/module/jackson-module-jakarta-xmlbind-annotations/2.13.0/jackson-module-jakarta-xmlbind-annotations-2.13.0.jar:/home/avbravo/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/3.0.1/jakarta.xml.bind-api-3.0.1.jar:/home/avbravo/.m2/repository/com/sun/activation/jakarta.activation/2.0.1/jakarta.activation-2.0.1.jar:/home/avbravo/.m2/repository/org/glassfish/jersey/media/jersey-media-json-processing/3.0.4/jersey-media-json-processing-3.0.4.jar:/home/avbravo/.m2/repository/org/glassfish/jsonp-jaxrs/2.0.0/jsonp-jaxrs-2.0.0.jar:/home/avbravo/.m2/repository/org/glassfish/jersey/media/jersey-media-jaxb/3.0.4/jersey-media-jaxb-3.0.4.jar:/home/avbravo/.m2/repository/org/glassfish/jersey/media/jersey-media-sse/3.0.4/jersey-media-sse-3.0.4.jar:/home/avbravo/.m2/repository/org/glassfish/jersey/core/jersey-server/3.0.4/jersey-server-3.0.4.jar:/home/avbravo/.m2/repository/jakarta/validation/jakarta.validation-api/3.0.0/jakarta.validation-api-3.0.0.jar:/home/avbravo/.m2/repository/fish/payara/arquillian/arquillian-payara-micro-managed/3.0.alpha6/arquillian-payara-micro-managed-3.0.alpha6.jar:/home/avbravo/.m2/repository/fish/payara/arquillian/payara-container-common/3.0.alpha6/payara-container-common-3.0.alpha6.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/testenricher/arquillian-testenricher-cdi-jakarta/1.7.0.Alpha13/arquillian-testenricher-cdi-jakarta-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/testenricher/arquillian-testenricher-ejb-jakarta/1.7.0.Alpha13/arquillian-testenricher-ejb-jakarta-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/testenricher/arquillian-testenricher-resource-jakarta/1.7.0.Alpha13/arquillian-testenricher-resource-jakarta-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/testenricher/arquillian-testenricher-initialcontext/1.7.0.Alpha13/arquillian-testenricher-initialcontext-1.7.0.Alpha13.jar:"/>
+    <property name="env.HOME" value="/home/avbravo"/>
+    <property name="env.QT_IM_MODULE" value="ibus"/>
+    <property name="java.vm.vendor" value="Eclipse OpenJ9"/>
+    <property name="user.variant" value=""/>
+    <property name="com.ibm.oti.vm.library.version" value="29"/>
+    <property name="env.XDG_DATA_DIRS" value="/usr/share/ubuntu-xorg:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop"/>
+    <property name="user.timezone" value="America/Panama"/>
+    <property name="os.name" value="Linux"/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="env.DISPLAY" value=":0"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="PA"/>
+    <property name="env.QT_ACCESSIBILITY" value="1"/>
+    <property name="surefire.test.class.path" value="/home/avbravo/NetBeansProjects/j/jmoordb-corebookexamples/jakartaee9-starter-boilerplate/target/test-classes:/home/avbravo/NetBeansProjects/j/jmoordb-corebookexamples/jakartaee9-starter-boilerplate/target/classes:/home/avbravo/.m2/repository/jakarta/platform/jakarta.jakartaee-api/9.1.0/jakarta.jakartaee-api-9.1.0.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/junit5/arquillian-junit5-container/1.7.0.Alpha13/arquillian-junit5-container-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/test/arquillian-test-api/1.7.0.Alpha13/arquillian-test-api-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/core/arquillian-core-api/1.7.0.Alpha13/arquillian-core-api-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/test/arquillian-test-spi/1.7.0.Alpha13/arquillian-test-spi-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/core/arquillian-core-spi/1.7.0.Alpha13/arquillian-core-spi-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/container/arquillian-container-test-api/1.7.0.Alpha13/arquillian-container-test-api-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/shrinkwrap/shrinkwrap-api/1.2.6/shrinkwrap-api-1.2.6.jar:/home/avbravo/.m2/repository/org/jboss/shrinkwrap/descriptors/shrinkwrap-descriptors-api-base/2.0.0/shrinkwrap-descriptors-api-base-2.0.0.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/container/arquillian-container-test-spi/1.7.0.Alpha13/arquillian-container-test-spi-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/core/arquillian-core-impl-base/1.7.0.Alpha13/arquillian-core-impl-base-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/test/arquillian-test-impl-base/1.7.0.Alpha13/arquillian-test-impl-base-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/container/arquillian-container-impl-base/1.7.0.Alpha13/arquillian-container-impl-base-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/config/arquillian-config-api/1.7.0.Alpha13/arquillian-config-api-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/config/arquillian-config-impl-base/1.7.0.Alpha13/arquillian-config-impl-base-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/config/arquillian-config-spi/1.7.0.Alpha13/arquillian-config-spi-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/container/arquillian-container-test-impl-base/1.7.0.Alpha13/arquillian-container-test-impl-base-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/junit5/arquillian-junit5-core/1.7.0.Alpha13/arquillian-junit5-core-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/shrinkwrap/shrinkwrap-impl-base/1.2.6/shrinkwrap-impl-base-1.2.6.jar:/home/avbravo/.m2/repository/org/jboss/shrinkwrap/shrinkwrap-spi/1.2.6/shrinkwrap-spi-1.2.6.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/protocol/arquillian-protocol-servlet-jakarta/1.7.0.Alpha13/arquillian-protocol-servlet-jakarta-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/container/arquillian-container-spi/1.7.0.Alpha13/arquillian-container-spi-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/shrinkwrap/descriptors/shrinkwrap-descriptors-spi/2.0.0/shrinkwrap-descriptors-spi-2.0.0.jar:/home/avbravo/.m2/repository/org/junit/jupiter/junit-jupiter/5.9.1/junit-jupiter-5.9.1.jar:/home/avbravo/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.1/junit-jupiter-api-5.9.1.jar:/home/avbravo/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/avbravo/.m2/repository/org/junit/platform/junit-platform-commons/1.9.1/junit-platform-commons-1.9.1.jar:/home/avbravo/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/avbravo/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.1/junit-jupiter-params-5.9.1.jar:/home/avbravo/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.1/junit-jupiter-engine-5.9.1.jar:/home/avbravo/.m2/repository/org/junit/platform/junit-platform-engine/1.9.1/junit-platform-engine-1.9.1.jar:/home/avbravo/.m2/repository/org/mockito/mockito-core/4.8.0/mockito-core-4.8.0.jar:/home/avbravo/.m2/repository/net/bytebuddy/byte-buddy/1.12.14/byte-buddy-1.12.14.jar:/home/avbravo/.m2/repository/net/bytebuddy/byte-buddy-agent/1.12.14/byte-buddy-agent-1.12.14.jar:/home/avbravo/.m2/repository/org/objenesis/objenesis/3.2/objenesis-3.2.jar:/home/avbravo/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/home/avbravo/.m2/repository/org/assertj/assertj-core/3.23.1/assertj-core-3.23.1.jar:/home/avbravo/.m2/repository/com/github/avbravo/jmoordb-core/0.2/jmoordb-core-0.2.jar:/home/avbravo/.m2/repository/org/mongodb/mongodb-driver-sync/4.6.0/mongodb-driver-sync-4.6.0.jar:/home/avbravo/.m2/repository/org/mongodb/bson/4.6.0/bson-4.6.0.jar:/home/avbravo/.m2/repository/org/mongodb/mongodb-driver-core/4.6.0/mongodb-driver-core-4.6.0.jar:/home/avbravo/.m2/repository/org/mongodb/bson-record-codec/4.6.0/bson-record-codec-4.6.0.jar:/home/avbravo/.m2/repository/org/glassfish/jersey/core/jersey-common/3.1.0-M3/jersey-common-3.1.0-M3.jar:/home/avbravo/.m2/repository/jakarta/ws/rs/jakarta.ws.rs-api/3.1.0/jakarta.ws.rs-api-3.1.0.jar:/home/avbravo/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.0.0/jakarta.annotation-api-2.0.0.jar:/home/avbravo/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/home/avbravo/.m2/repository/org/glassfish/hk2/osgi-resource-locator/1.0.3/osgi-resource-locator-1.0.3.jar:/home/avbravo/.m2/repository/com/github/avbravo/jmoordb-core-processor-genesis/0.1/jmoordb-core-processor-genesis-0.1.jar:/home/avbravo/.m2/repository/com/github/spullara/mustache/java/compiler/0.9.5/compiler-0.9.5.jar:/home/avbravo/.m2/repository/com/diogonunes/JColor/5.2.0/JColor-5.2.0.jar:/home/avbravo/.m2/repository/net/java/dev/jna/jna/5.8.0/jna-5.8.0.jar:/home/avbravo/.m2/repository/net/java/dev/jna/jna-platform/5.8.0/jna-platform-5.8.0.jar:/home/avbravo/.m2/repository/commons-beanutils/commons-beanutils/1.9.4/commons-beanutils-1.9.4.jar:/home/avbravo/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/avbravo/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar:/home/avbravo/.m2/repository/jakarta/json/bind/jakarta.json.bind-api/1.0.2/jakarta.json.bind-api-1.0.2.jar:/home/avbravo/.m2/repository/org/eclipse/microprofile/config/microprofile-config-api/2.0.1/microprofile-config-api-2.0.1.jar:/home/avbravo/.m2/repository/fish/payara/arquillian/payara-client-ee9/3.0.alpha6/payara-client-ee9-3.0.alpha6.jar:/home/avbravo/.m2/repository/org/eclipse/yasson/2.0.2/yasson-2.0.2.jar:/home/avbravo/.m2/repository/jakarta/json/jakarta.json-api/2.0.0/jakarta.json-api-2.0.0.jar:/home/avbravo/.m2/repository/org/glassfish/jakarta.json/2.0.0/jakarta.json-2.0.0-module.jar:/home/avbravo/.m2/repository/org/glassfish/tyrus/tyrus-client/2.0.0/tyrus-client-2.0.0.jar:/home/avbravo/.m2/repository/org/glassfish/tyrus/tyrus-core/2.0.0/tyrus-core-2.0.0.jar:/home/avbravo/.m2/repository/org/glassfish/tyrus/tyrus-spi/2.0.0/tyrus-spi-2.0.0.jar:/home/avbravo/.m2/repository/jakarta/websocket/jakarta.websocket-api/2.0.0/jakarta.websocket-api-2.0.0.jar:/home/avbravo/.m2/repository/org/glassfish/tyrus/tyrus-container-grizzly-client/2.0.0/tyrus-container-grizzly-client-2.0.0.jar:/home/avbravo/.m2/repository/org/glassfish/grizzly/grizzly-framework/3.0.0-M1/grizzly-framework-3.0.0-M1.jar:/home/avbravo/.m2/repository/org/glassfish/grizzly/grizzly-http-server/3.0.0-M1/grizzly-http-server-3.0.0-M1.jar:/home/avbravo/.m2/repository/org/glassfish/grizzly/grizzly-http/3.0.0-M1/grizzly-http-3.0.0-M1.jar:/home/avbravo/.m2/repository/org/glassfish/jersey/core/jersey-client/3.0.4/jersey-client-3.0.4.jar:/home/avbravo/.m2/repository/org/glassfish/jersey/inject/jersey-hk2/3.0.4/jersey-hk2-3.0.4.jar:/home/avbravo/.m2/repository/org/glassfish/hk2/hk2-locator/3.0.1/hk2-locator-3.0.1.jar:/home/avbravo/.m2/repository/org/glassfish/hk2/external/aopalliance-repackaged/3.0.1/aopalliance-repackaged-3.0.1.jar:/home/avbravo/.m2/repository/org/glassfish/hk2/hk2-api/3.0.1/hk2-api-3.0.1.jar:/home/avbravo/.m2/repository/org/glassfish/hk2/hk2-utils/3.0.1/hk2-utils-3.0.1.jar:/home/avbravo/.m2/repository/org/javassist/javassist/3.25.0-GA/javassist-3.25.0-GA.jar:/home/avbravo/.m2/repository/org/glassfish/jersey/media/jersey-media-json-jackson/3.0.4/jersey-media-json-jackson-3.0.4.jar:/home/avbravo/.m2/repository/org/glassfish/jersey/ext/jersey-entity-filtering/3.0.4/jersey-entity-filtering-3.0.4.jar:/home/avbravo/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.13.0/jackson-annotations-2.13.0.jar:/home/avbravo/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.13.0/jackson-databind-2.13.0.jar:/home/avbravo/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.13.0/jackson-core-2.13.0.jar:/home/avbravo/.m2/repository/com/fasterxml/jackson/module/jackson-module-jakarta-xmlbind-annotations/2.13.0/jackson-module-jakarta-xmlbind-annotations-2.13.0.jar:/home/avbravo/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/3.0.1/jakarta.xml.bind-api-3.0.1.jar:/home/avbravo/.m2/repository/com/sun/activation/jakarta.activation/2.0.1/jakarta.activation-2.0.1.jar:/home/avbravo/.m2/repository/org/glassfish/jersey/media/jersey-media-json-processing/3.0.4/jersey-media-json-processing-3.0.4.jar:/home/avbravo/.m2/repository/org/glassfish/jsonp-jaxrs/2.0.0/jsonp-jaxrs-2.0.0.jar:/home/avbravo/.m2/repository/org/glassfish/jersey/media/jersey-media-jaxb/3.0.4/jersey-media-jaxb-3.0.4.jar:/home/avbravo/.m2/repository/org/glassfish/jersey/media/jersey-media-sse/3.0.4/jersey-media-sse-3.0.4.jar:/home/avbravo/.m2/repository/org/glassfish/jersey/core/jersey-server/3.0.4/jersey-server-3.0.4.jar:/home/avbravo/.m2/repository/jakarta/validation/jakarta.validation-api/3.0.0/jakarta.validation-api-3.0.0.jar:/home/avbravo/.m2/repository/fish/payara/arquillian/arquillian-payara-micro-managed/3.0.alpha6/arquillian-payara-micro-managed-3.0.alpha6.jar:/home/avbravo/.m2/repository/fish/payara/arquillian/payara-container-common/3.0.alpha6/payara-container-common-3.0.alpha6.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/testenricher/arquillian-testenricher-cdi-jakarta/1.7.0.Alpha13/arquillian-testenricher-cdi-jakarta-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/testenricher/arquillian-testenricher-ejb-jakarta/1.7.0.Alpha13/arquillian-testenricher-ejb-jakarta-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/testenricher/arquillian-testenricher-resource-jakarta/1.7.0.Alpha13/arquillian-testenricher-resource-jakarta-1.7.0.Alpha13.jar:/home/avbravo/.m2/repository/org/jboss/arquillian/testenricher/arquillian-testenricher-initialcontext/1.7.0.Alpha13/arquillian-testenricher-initialcontext-1.7.0.Alpha13.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/avbravo"/>
+    <property name="user.language" value="es"/>
+    <property name="env.MANDATORY_PATH" value="/usr/share/gconf/ubuntu-xorg.mandatory.path"/>
+    <property name="env.JRE_HOME" value="/usr/local/jdk-11.0.9+11/jre"/>
+    <property name="env.COLORTERM" value="truecolor"/>
+    <property name="env.GPG_AGENT_INFO" value="/run/user/1000/gnupg/S.gpg-agent:0:1"/>
+    <property name="java.compiler" value="j9jit29"/>
+    <property name="com.ibm.util.extralibs.properties" value=""/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="com.ibm.oti.configuration" value="scar"/>
+    <property name="env.M2" value="/home/avbravo/netbeans-15-bin/netbeans/java/maven/bin"/>
+    <property name="surefire.real.class.path" value="/home/avbravo/NetBeansProjects/j/jmoordb-corebookexamples/jakartaee9-starter-boilerplate/target/surefire/surefirebooter-20221129214814653_3.jar"/>
+    <property name="com.ibm.oti.shared.enabled" value="false"/>
+    <property name="env.XDG_MENU_PREFIX" value="gnome-"/>
+    <property name="env.LANGUAGE" value="es_PA:es"/>
+    <property name="env.DBUS_SESSION_BUS_ADDRESS" value="unix:path=/run/user/1000/bus"/>
+    <property name="com.ibm.oti.vm.bootstrap.library.path" value="/usr/local/jdk-11.0.9+11/lib/compressedrefs:/usr/local/jdk-11.0.9+11/lib"/>
+    <property name="com.ibm.cpu.endian" value="little"/>
+    <property name="payara.microJar" value="/home/avbravo/NetBeansProjects/j/jmoordb-corebookexamples/jakartaee9-starter-boilerplate/target/payara-micro.jar"/>
+    <property name="path.separator" value=":"/>
+    <property name="env.GNOME_TERMINAL_SERVICE" value=":1.103"/>
+    <property name="os.version" value="5.15.0-53-generic"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="ibm.signalhandling.sigint" value="true"/>
+    <property name="java.vm.name" value="Eclipse OpenJ9 VM"/>
+    <property name="env.SHELL" value="/bin/bash"/>
+    <property name="env.LESSCLOSE" value="/usr/bin/lesspipe %s %s"/>
+    <property name="env.GTK_MODULES" value="gail:atk-bridge"/>
+    <property name="env.M2_HOME" value="/home/avbravo/netbeans-15-bin/netbeans/java/maven"/>
+    <property name="env.MAVEN_CMD_LINE_ARGS" value=" clean verify -Parq-payara-micro"/>
+    <property name="java.vendor.url.bug" value="https://github.com/AdoptOpenJDK/openjdk-support/issues"/>
+    <property name="env.VTE_VERSION" value="6800"/>
+    <property name="env.XDG_CONFIG_DIRS" value="/etc/xdg/xdg-ubuntu-xorg:/etc/xdg"/>
+    <property name="user.dir" value="/home/avbravo/NetBeansProjects/j/jmoordb-corebookexamples/jakartaee9-starter-boilerplate"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="env.USERNAME" value="avbravo"/>
+    <property name="env.SDKMAN_VERSION" value="5.16.0"/>
+    <property name="env.DESKTOP_SESSION" value="ubuntu-xorg"/>
+    <property name="env.XDG_CURRENT_DESKTOP" value="ubuntu:GNOME"/>
+    <property name="env.MAVEN_PROJECTBASEDIR" value="/home/avbravo/NetBeansProjects/j/jmoordb-corebookexamples/jakartaee9-starter-boilerplate"/>
+    <property name="java.vm.info" value="JRE 11 Linux amd64-64-Bit Compressed References 20201022_810 (JIT enabled, AOT enabled)&#10;OpenJ9   - 0394ef754&#10;OMR      - 582366ae5&#10;JCL      - 3b09cfd7e9 based on jdk-11.0.9+11"/>
+    <property name="java.vm.version" value="openj9-0.23.0"/>
+    <property name="com.ibm.jcl.checkClassPath" value=""/>
+    <property name="env.SYSTEMD_EXEC_PID" value="4821"/>
+    <property name="env.USER" value="avbravo"/>
+    <property name="env.GNOME_SHELL_SESSION_MODE" value="ubuntu"/>
+    <property name="java.class.version" value="55.0"/>
+  </properties>
+  <testcase name="should_create_greeting" classname="com.example.it.GreetingResourceTest" time="0.806">
+    <error message="org/glassfish/jersey/internal/config/SystemPropertiesConfigurationModel.hasProperty(Ljava/lang/String;)Z (loaded from file:/home/avbravo/.m2/repository/org/glassfish/jersey/core/jersey-common/3.1.0-M3/jersey-common-3.1.0-M3.jar by jdk.internal.loader.ClassLoaders$AppClassLoader@7100b992) called from class org.glassfish.jersey.internal.config.SystemPropertiesConfigurationModel (loaded from file:/home/avbravo/.m2/repository/org/glassfish/jersey/core/jersey-common/3.1.0-M3/jersey-common-3.1.0-M3.jar by jdk.internal.loader.ClassLoaders$AppClassLoader@7100b992)." type="java.lang.NoSuchMethodError"><![CDATA[java.lang.NoSuchMethodError: org/glassfish/jersey/internal/config/SystemPropertiesConfigurationModel.hasProperty(Ljava/lang/String;)Z (loaded from file:/home/avbravo/.m2/repository/org/glassfish/jersey/core/jersey-common/3.1.0-M3/jersey-common-3.1.0-M3.jar by jdk.internal.loader.ClassLoaders$AppClassLoader@7100b992) called from class org.glassfish.jersey.internal.config.SystemPropertiesConfigurationModel (loaded from file:/home/avbravo/.m2/repository/org/glassfish/jersey/core/jersey-common/3.1.0-M3/jersey-common-3.1.0-M3.jar by jdk.internal.loader.ClassLoaders$AppClassLoader@7100b992).
+	at org.glassfish.jersey.internal.config.SystemPropertiesConfigurationModel.as(SystemPropertiesConfigurationModel.java:83)
+	at org.glassfish.jersey.internal.config.SystemPropertiesConfigurationModel.getProperties(SystemPropertiesConfigurationModel.java:119)
+	at org.glassfish.jersey.internal.config.ExternalConfigurationProviderImpl.getProperties(ExternalConfigurationProviderImpl.java:34)
+	at org.glassfish.jersey.internal.config.ExternalPropertiesConfigurationFactory.readExternalPropertiesMap(ExternalPropertiesConfigurationFactory.java:65)
+	at org.glassfish.jersey.internal.config.ExternalPropertiesConfigurationFactory.configure(ExternalPropertiesConfigurationFactory.java:95)
+	at org.glassfish.jersey.internal.config.ExternalPropertiesConfigurationFactory.configure(ExternalPropertiesConfigurationFactory.java:76)
+	at org.glassfish.jersey.internal.config.ExternalPropertiesConfigurationFeature.configure(ExternalPropertiesConfigurationFeature.java:26)
+	at org.glassfish.jersey.model.internal.CommonConfig.configureFeatures(CommonConfig.java:728)
+	at org.glassfish.jersey.model.internal.CommonConfig.configureMetaProviders(CommonConfig.java:647)
+	at org.glassfish.jersey.client.ClientConfig$State.configureMetaProviders(ClientConfig.java:392)
+	at org.glassfish.jersey.client.ClientConfig$State.initRuntime(ClientConfig.java:445)
+	at org.glassfish.jersey.client.ClientConfig$State$$Lambda$484/0x0000000014ee0060.get(Unknown Source)
+	at org.glassfish.jersey.internal.util.collection.Values$LazyValueImpl.get(Values.java:317)
+	at org.glassfish.jersey.client.ClientConfig.getRuntime(ClientConfig.java:820)
+	at org.glassfish.jersey.client.ClientRequest.getClientRuntime(ClientRequest.java:176)
+	at org.glassfish.jersey.client.ClientRequest.getInjectionManager(ClientRequest.java:567)
+	at org.glassfish.jersey.client.JerseyWebTarget.onBuilder(JerseyWebTarget.java:371)
+	at org.glassfish.jersey.client.JerseyWebTarget.request(JerseyWebTarget.java:199)
+	at org.glassfish.jersey.client.JerseyWebTarget.request(JerseyWebTarget.java:38)
+	at com.example.it.GreetingResourceTest.should_create_greeting(GreetingResourceTest.java:71)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.arquillian.junit5.ArquillianExtension$1.invoke(ArquillianExtension.java:165)
+	at org.jboss.arquillian.container.test.impl.execution.LocalTestExecuter.execute(LocalTestExecuter.java:57)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:86)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:103)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:90)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:133)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:105)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:62)
+	at org.jboss.arquillian.container.test.impl.execution.ClientTestExecuter.execute(ClientTestExecuter.java:50)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:86)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:103)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:90)
+	at org.jboss.arquillian.container.test.impl.client.ContainerEventController.createContext(ContainerEventController.java:128)
+	at org.jboss.arquillian.container.test.impl.client.ContainerEventController.createTestContext(ContainerEventController.java:118)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:86)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:95)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createTestContext(TestContextHandler.java:116)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:86)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:95)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createClassContext(TestContextHandler.java:83)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:86)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:95)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:69)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:86)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:95)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:133)
+	at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.test(EventTestRunnerAdaptor.java:139)
+	at org.jboss.arquillian.junit5.ArquillianExtension.interceptInvocation(ArquillianExtension.java:145)
+	at org.jboss.arquillian.junit5.ArquillianExtension.interceptTestMethod(ArquillianExtension.java:90)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor$$Lambda$181/0x0000000014a3f8b0.apply(Unknown Source)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall$$Lambda$182/0x0000000014a3fec0.apply(Unknown Source)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$$Lambda$385/0x0000000014d81260.apply(Unknown Source)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor$$Lambda$181/0x0000000014a3f8b0.apply(Unknown Source)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall$$Lambda$182/0x0000000014a3fec0.apply(Unknown Source)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$$Lambda$385/0x0000000014d81260.apply(Unknown Source)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:217)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor$$Lambda$410/0x0000000014d907a0.execute(Unknown Source)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$282/0x0000000014a921f0.execute(Unknown Source)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$281/0x0000000014a914f0.invoke(Unknown Source)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$280/0x0000000014a91080.execute(Unknown Source)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService$$Lambda$286/0x0000000014a39960.accept(Unknown Source)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$282/0x0000000014a921f0.execute(Unknown Source)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$281/0x0000000014a914f0.invoke(Unknown Source)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$280/0x0000000014a91080.execute(Unknown Source)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService$$Lambda$286/0x0000000014a39960.accept(Unknown Source)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$282/0x0000000014a921f0.execute(Unknown Source)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$281/0x0000000014a914f0.invoke(Unknown Source)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$280/0x0000000014a91080.execute(Unknown Source)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:147)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:127)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:90)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:55)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator$$Lambda$230/0x0000000014a560d0.accept(Unknown Source)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:102)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:55)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:223)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:175)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:139)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:456)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:169)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:595)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:581)
+]]></error>
+    <system-out><![CDATA[[2022-11-29T21:48:37.311-0500] [] [&amp#27;[1;93mADVERTENCIA&amp#27;[0m] [] [&amp#27;[1;94mPayaraMicro&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776517311] [levelValue: 900] Payara Micro Runtime directory is located in a temporary file location which can be cleaned by system processes.
+
+[2022-11-29T21:48:37.351-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [] [&amp#27;[1;94mPayaraMicro&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776517351] [levelValue: 800] Payara Micro Runtime directory is located at /tmp/payaramicro-rt7684406254149395412tmp
+
+[2022-11-29T21:48:37.366-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [] [&amp#27;[1;94mfish.payara.micro.boot.runtime.PayaraMicroRuntimeBuilder&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776517366] [levelValue: 800] Built Payara Micro Runtime
+
+[2022-11-29T21:48:39.372-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [] [&amp#27;[1;94mfish.payara.boot.runtime.BootCommand&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776519372] [levelValue: 800] [[
+  Boot Command set returned with result SUCCESS : PlainTextActionReporterSUCCESSDescription: set AdminCommandnull
+    configs.config.server-config.network-config.network-listeners.network-listener.http-listener.port-range=8563,9563
+]]
+
+[2022-11-29T21:48:39.388-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [] [&amp#27;[1;94mfish.payara.boot.runtime.BootCommand&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776519388] [levelValue: 800] [[
+  Boot Command set returned with result SUCCESS : PlainTextActionReporterSUCCESSDescription: set AdminCommandnull
+    configs.config.server-config.network-config.network-listeners.network-listener.http-listener.enabled=true
+]]
+
+[2022-11-29T21:48:39.434-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [] [&amp#27;[1;94mfish.payara.boot.runtime.BootCommand&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776519434] [levelValue: 800] [[
+  Boot Command set returned with result SUCCESS : PlainTextActionReporterSUCCESSDescription: set AdminCommandnull
+    configs.config.server-config.hazelcast-config-specific-configuration.clustering-enabled=false
+]]
+
+[2022-11-29T21:48:40.841-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [] [&amp#27;[1;94morg.glassfish.ha.store.spi.BackingStoreFactoryRegistry&amp#27;[0m] [tid: _ThreadID=34 _ThreadName=RunLevelControllerThread-1669776519450] [timeMillis: 1669776520841] [levelValue: 800] Registered fish.payara.ha.hazelcast.store.HazelcastBackingStoreFactoryProxy for persistence-type = hazelcast in BackingStoreFactoryRegistry
+
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.hazelcast.internal.metrics.metricsets.OperatingSystemMetricSet (file:/tmp/payaramicro-rt7684406254149395412tmp/runtime/hazelcast.jar) to method com.ibm.lang.management.internal.ExtendedOperatingSystemMXBeanImpl.getCommittedVirtualMemorySize()
+WARNING: Please consider reporting this to the maintainers of com.hazelcast.internal.metrics.metricsets.OperatingSystemMetricSet
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2022-11-29T21:48:44.113-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [] [&amp#27;[1;94mfish.payara.nucleus.hazelcast.HazelcastCore&amp#27;[0m] [tid: _ThreadID=32 _ThreadName=RunLevelControllerThread-1669776519443] [timeMillis: 1669776524113] [levelValue: 800] Hazelcast Instance Bound to JNDI at payara/Hazelcast
+
+[2022-11-29T21:48:44.114-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [] [&amp#27;[1;94mfish.payara.nucleus.hazelcast.HazelcastCore&amp#27;[0m] [tid: _ThreadID=32 _ThreadName=RunLevelControllerThread-1669776519443] [timeMillis: 1669776524114] [levelValue: 800] JSR107 Caching Provider Bound to JNDI at payara/CachingProvider
+
+[2022-11-29T21:48:44.114-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [] [&amp#27;[1;94mfish.payara.nucleus.hazelcast.HazelcastCore&amp#27;[0m] [tid: _ThreadID=32 _ThreadName=RunLevelControllerThread-1669776519443] [timeMillis: 1669776524114] [levelValue: 800] JSR107 Default Cache Manager Bound to JNDI at payara/CacheManager
+
+[2022-11-29T21:48:44.307-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [NCLS-CORE-00101] [&amp#27;[1;94mjavax.enterprise.system.core&amp#27;[0m] [tid: _ThreadID=31 _ThreadName=RunLevelControllerThread-1669776519441] [timeMillis: 1669776524307] [levelValue: 800] Network Listener http-listener started in: 11ms - bound to [/0.0.0.0:8563]
+
+[2022-11-29T21:48:44.308-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [NCLS-CORE-00058] [&amp#27;[1;94mjavax.enterprise.system.core&amp#27;[0m] [tid: _ThreadID=31 _ThreadName=RunLevelControllerThread-1669776519441] [timeMillis: 1669776524308] [levelValue: 800] Network listener https-listener on port 8443 disabled per domain.xml
+
+[2022-11-29T21:48:44.310-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [NCLS-CORE-00087] [&amp#27;[1;94mjavax.enterprise.system.core&amp#27;[0m] [tid: _ThreadID=31 _ThreadName=RunLevelControllerThread-1669776519441] [timeMillis: 1669776524310] [levelValue: 800] Grizzly 4.0.0 started in: 4,076ms - bound to [http-listener:8563]
+
+[2022-11-29T21:48:44.441-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [NCLS-CORE-00017] [&amp#27;[1;94mjavax.enterprise.system.core&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776524441] [levelValue: 800] Payara Micro  6.2022.1 #badassmicrofish (878) startup time : Embedded (2,065ms), startup services(5,005ms), total(7,070ms)
+
+[2022-11-29T21:48:44.445-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [] [&amp#27;[1;94mfish.payara.nucleus.cluster.PayaraCluster&amp#27;[0m] [tid: _ThreadID=79 _ThreadName=Executor-Service-2] [timeMillis: 1669776524445] [levelValue: 800] [[
+  Data Grid Status 
+Payara Data Grid State: DG Version: 5 DG Name: development DG Size: 1
+Instances: {
+ DataGrid: development Name: Sardonic-Loach Lite: false This: true UUID: 78bcf8ab-7ea8-45e5-9b31-851136d974e3 Address: /192.168.1.130:6900
+}]]
+
+[2022-11-29T21:48:44.608-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [NCLS-JMX-00006] [&amp#27;[1;94mjavax.enterprise.system.jmx&amp#27;[0m] [tid: _ThreadID=98 _ThreadName=Thread-10] [timeMillis: 1669776524608] [levelValue: 800] JMXStartupService has disabled JMXConnector system
+
+[2022-11-29T21:48:45.444-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [NCLS-SECURITY-01002] [&amp#27;[1;94mjavax.enterprise.system.core.security&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776525444] [levelValue: 800] Java security manager is disabled.
+
+[2022-11-29T21:48:45.444-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [NCLS-SECURITY-01010] [&amp#27;[1;94mjavax.enterprise.system.core.security&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776525444] [levelValue: 800] Entering Security Startup Service.
+
+[2022-11-29T21:48:45.447-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [NCLS-SECURITY-01143] [&amp#27;[1;94mjavax.enterprise.system.core.security&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776525447] [levelValue: 800] Loading policy provider fish.payara.security.jacc.provider.PolicyProviderImpl.
+
+[2022-11-29T21:48:45.498-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [NCLS-SECURITY-01011] [&amp#27;[1;94mjavax.enterprise.system.core.security&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776525498] [levelValue: 800] Security Service(s) started successfully.
+
+[2022-11-29T21:48:46.016-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [AS-WEB-GLUE-00198] [&amp#27;[1;94mjakarta.enterprise.web&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776526016] [levelValue: 800] Created HTTP listener http-listener on host/port 0.0.0.0:8563
+
+[2022-11-29T21:48:46.055-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [AS-WEB-GLUE-00200] [&amp#27;[1;94mjakarta.enterprise.web&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776526055] [levelValue: 800] Created virtual server server
+
+[2022-11-29T21:48:46.824-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [AS-WEB-GLUE-00201] [&amp#27;[1;94mjakarta.enterprise.web&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776526824] [levelValue: 800] Virtual server server loaded default web module 
+
+[2022-11-29T21:48:48.624-0500] [] [&amp#27;[1;92mINFO&amp#27;[0m] [] [&amp#27;[1;94morg.jboss.weld.Version&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776528624] [levelValue: 800] WELD-000900: 5.0.1 (Final)
+
+[2022-11-29T21:48:50.983-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [] [&amp#27;[1;94mfish.payara.micro.cdi.extension.ClusteredCDIEventBusImpl&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776530983] [levelValue: 800] Clustered CDI Event bus initialized
+
+[2022-11-29T21:48:51.216-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [] [&amp#27;[1;94mjavax.enterprise.system.core&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776531216] [levelValue: 800] 8efeb924-7b47-42f6-9a91-fe46bc1c5e1f was successfully deployed in 6,232 milliseconds.
+
+[2022-11-29T21:48:51.219-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [] [&amp#27;[1;94mPayaraMicro&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776531219] [levelValue: 800] Deployed 1 archive(s)
+
+[2022-11-29T21:48:51.272-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [AS-WEB-GLUE-00130] [&amp#27;[1;94mjakarta.enterprise.web&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776531272] [levelValue: 800] Invalid Session Management Configuration for non-distributable app [8efeb924-7b47-42f6-9a91-fe46bc1c5e1f] - defaulting to memory: persistence-type = [hazelcast] / persistenceFrequency = [web-method] / persistenceScope = [modified-session]
+
+[2022-11-29T21:48:51.332-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [] [&amp#27;[1;94morg.glassfish.soteria.servlet.SamRegistrationInstaller&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776531332] [levelValue: 800] Initializing Soteria 3.0.0 for context '/8efeb924-7b47-42f6-9a91-fe46bc1c5e1f'
+
+[2022-11-29T21:48:51.675-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [AS-WEB-GLUE-00172] [&amp#27;[1;94mjakarta.enterprise.web&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776531675] [levelValue: 800] Loading application [8efeb924-7b47-42f6-9a91-fe46bc1c5e1f] at [/8efeb924-7b47-42f6-9a91-fe46bc1c5e1f]
+
+[2022-11-29T21:48:51.705-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [] [&amp#27;[1;94mPayaraMicro&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776531705] [levelValue: 800] [[
+  {
+    "Instance Configuration": {
+        "Host": "avbravo.lan",
+        "Http Port(s)": "8563",
+        "Https Port(s)": "",
+        "Instance Name": "Sardonic-Loach",
+        "Instance Group": "MicroShoal",
+        "Hazelcast Member UUID": "78bcf8ab-7ea8-45e5-9b31-851136d974e3",
+        "Deployed": [
+            {
+                "Name": "8efeb924-7b47-42f6-9a91-fe46bc1c5e1f",
+                "Type": "war",
+                "Context Root": "/8efeb924-7b47-42f6-9a91-fe46bc1c5e1f",
+                "Mappings": {
+                    "*.jspx": "jsp",
+                    "/api/*": "com.example.JaxrsActivator",
+                    "*.jsp": "jsp",
+                    "/": "default"
+                }
+            }
+        ]
+    }
+}]]
+
+[2022-11-29T21:48:51.714-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [] [&amp#27;[1;94mPayaraMicro&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776531714] [levelValue: 800] [[
+  
+Payara Micro URLs:
+http://avbravo.lan:8563/8efeb924-7b47-42f6-9a91-fe46bc1c5e1f
+
+'8efeb924-7b47-42f6-9a91-fe46bc1c5e1f' REST Endpoints:
+GET	/8efeb924-7b47-42f6-9a91-fe46bc1c5e1f/api/application.wadl
+GET	/8efeb924-7b47-42f6-9a91-fe46bc1c5e1f/api/greeting/{name}
+
+]]
+
+[2022-11-29T21:48:51.714-0500] [] [&amp#27;[1;92mINFORMACIÓN&amp#27;[0m] [] [&amp#27;[1;94mPayaraMicro&amp#27;[0m] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1669776531714] [levelValue: 800] Payara Micro  6.2022.1 #badassmicrofish (build 878) ready in 14,498 (ms)
+
+]]></system-out>
+    <system-err><![CDATA[nov. 29, 2022 9:48:35 P. M. fish.payara.arquillian.container.payara.managed.PayaraMicroDeployableContainer deploy
+INFORMACIÓN: Starting Payara Micro using cmd: [/usr/local/jdk-11.0.9+11/bin/java, -jar, /home/avbravo/NetBeansProjects/j/jmoordb-corebookexamples/jakartaee9-starter-boilerplate/target/payara-micro.jar, --deploy, /tmp/arquillian-payara-micro1654197123596236194/deployments/8efeb924-7b47-42f6-9a91-fe46bc1c5e1f.war, --port, 8563, --autoBindHttp, --autoBindRange, 1000, --nocluster, --showServletMappings]
+nov. 29, 2022 9:48:51 P. M. fish.payara.arquillian.container.payara.managed.PayaraMicroDeployableContainer deploy
+INFORMACIÓN: Payara Micro running on host: avbravo.lan port: 8563
+nov. 29, 2022 9:48:51 P. M. fish.payara.arquillian.container.payara.managed.PayaraMicroDeployableContainer printApplicationFound
+INFORMACIÓN: Deployed application detected. Name: "8efeb924-7b47-42f6-9a91-fe46bc1c5e1f".
+nov. 29, 2022 9:48:51 P. M. fish.payara.arquillian.container.payara.managed.PayaraMicroDeployableContainer printServletFound
+INFORMACIÓN: 		Servlet found. Name: "jsp".
+nov. 29, 2022 9:48:51 P. M. fish.payara.arquillian.container.payara.managed.PayaraMicroDeployableContainer printServletFound
+INFORMACIÓN: 		Servlet found. Name: "com.example.JaxrsActivator".
+nov. 29, 2022 9:48:51 P. M. fish.payara.arquillian.container.payara.managed.PayaraMicroDeployableContainer printServletFound
+INFORMACIÓN: 		Servlet found. Name: "jsp".
+nov. 29, 2022 9:48:51 P. M. fish.payara.arquillian.container.payara.managed.PayaraMicroDeployableContainer printServletFound
+INFORMACIÓN: 		Servlet found. Name: "default".
+nov. 29, 2022 9:48:51 P. M. com.example.it.GreetingResourceTest setup
+INFORMACIÓN: call BeforeEach
+nov. 29, 2022 9:48:51 P. M. com.example.it.GreetingResourceTest should_create_greeting
+INFORMACIÓN:  client: org.glassfish.jersey.client.JerseyClient@7e7f3ae3, baseURL: http://avbravo.lan:8563/8efeb924-7b47-42f6-9a91-fe46bc1c5e1f/
+nov. 29, 2022 9:48:52 P. M. com.example.it.GreetingResourceTest teardown
+INFORMACIÓN: call AfterEach
+]]></system-err>
+  </testcase>
+</testsuite>

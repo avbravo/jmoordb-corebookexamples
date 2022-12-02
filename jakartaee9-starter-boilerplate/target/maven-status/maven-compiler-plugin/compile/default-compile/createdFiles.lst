@@ -1,0 +1,7 @@
+com/example/GreetingResource.class
+com/example/JaxrsActivator.class
+com/example/GreetingMessage.class
+com/example/produces/DateParameterConverterProvider.class
+com/example/produces/MongoDBProducer.class
+com/example/GreetingService.class
+com/example/produces/DateParameterConverter.class
