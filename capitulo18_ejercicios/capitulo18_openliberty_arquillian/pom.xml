@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.jmoordbcore</groupId>
-  <artifactId>capitulo17</artifactId>
+  <artifactId>capitulo18_openliberty_arquillian</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
   <properties>
@@ -13,7 +13,7 @@
     <jaeger.client.version>1.5.0</jaeger.client.version>
     <slf4j.jdk.version>1.7.30</slf4j.jdk.version>
     <maven.compiler.source>17</maven.compiler.source>
-    <final.name>capitulo17</final.name>
+    <final.name>capitulo18_openliberty_arquillian</final.name>
     <slf4j.api.version>1.7.30</slf4j.api.version>
     <version.jmoordbcore>0.3</version.jmoordbcore>
   </properties>
@@ -105,7 +105,7 @@
       </dependencies>
     </profile>
   </profiles>
-    <name>capitulo17</name>
+    <name>capitulo18_openliberty_arquillian</name>
     
     
      <repositories>
