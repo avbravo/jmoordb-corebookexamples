@@ -4,6 +4,9 @@
  */
 package com.jmoordbcore.capitulo23faces.faces;
 
+import com.jmoordb.core.model.Pagination;
+import com.jmoordb.core.util.JmoordbCorePageUtil;
+import com.jmoordb.core.util.JmoordbCoreUtil;
 import com.jmoordbcore.capitulo23faces.model.Persona;
 import com.jmoordbcore.capitulo23faces.repository.PersonaRepository;
 import jakarta.annotation.PostConstruct;
@@ -34,18 +37,32 @@ public class PersonaFaces implements Serializable {
      * Creates a new instance of PersonaFaces
      */
     public PersonaFaces() {
-   
+
     }
 
-     // <editor-fold defaultstate="collapsed" desc=" init">
+    // <editor-fold defaultstate="collapsed" desc=" init">
     @PostConstruct
     public void init() {
-        personaList = personaRepository.findAll();
+        findAll();
     }
 // </editor-fold>
+
     public String findAll() {
         try {
-            personaList = personaRepository.findAll();
+            Long count = personaRepository.count();
+
+            Integer numberOfPage = JmoordbCorePageUtil.numberOfPages(JmoordbCoreUtil.longToInteger(count), 25);
+
+            Pagination pagination = new Pagination(1, 25);
+
+//            pagination = JmoordbCorePageUtil.first(pagination);
+//            pagination = JmoordbCorePageUtil.last(pagination);
+//            pagination = JmoordbCorePageUtil.next(pagination);
+//            pagination = JmoordbCorePageUtil.back(pagination);
+//            personaList = personaRepository.findAll();
+
+
+            personaList = personaRepository.findAllPagination(pagination);
             if (personaList == null) {
                 System.out.println(">>>> No hay registros......");
             } else {
