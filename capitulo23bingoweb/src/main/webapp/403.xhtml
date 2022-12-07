@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:avbravo="http://xmlns.jcp.org/jsf/composite/avbravo">
+    <h:head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+
+        <avbravo:headerbootstrap/> 
+
+    </h:head>
+
+    <h:body class="sb-nav-fixed" id="bodytemplate" >
+        <f:view contentType="text/html"> 
+            <h:form id="form" prependId="false">
+                <p:growl id="growl"/>
+                <div id="layoutError">
+                    <div id="layoutError_content">
+                        <main>
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-6">
+                                        <div class="text-center mt-4">
+
+                                            <p:graphicImage name="error-404-monochrome.svg" library="images" alt="user header" class="mb-4 img-error" />
+                                            <p class="lead">This requested URL was not found on this server.</p>
+                                            <a href="index.xhtml">
+                                                <i class="fas fa-arrow-left me-1"></i>
+                                                Return to Dashboard
+                                            </a>
+
+                                            <p:commandButton value ="Dashboard" immediate="true" styleClass="ui-button-flat"
+                                                             action="index"/>
+                                            
+                                                <p:commandLink class="nav-link"  value="Dashboard"  
+                                   action="#{navigatorController.go('/faces/index.xhtml')}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    </p:commandLink>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </main>
+                    </div>
+                    <div id="layoutError_footer">
+                        <footer class="py-4 bg-light mt-auto">
+                            <div class="container-fluid px-4">
+                                <div class="d-flex align-items-center justify-content-between small">
+                                    <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                                    <div>
+                                        <a href="#">Privacy Policy</a>
+                                        &middot;
+                                        <a href="#">Terms &amp; Conditions</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                </div>
+
+
+            </h:form>
+        </f:view>
+        <avbravo:scriptbootstrap/>
+
+
+    </h:body>
+
+</html>
+

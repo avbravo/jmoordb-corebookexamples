@@ -12,21 +12,21 @@
             <h:form id="form" prependId="false">
                 <p:dataTable var="item" value="#{personaFaces.personaList}"
                              paginator="true"
-                             rows="35">
-                
+                             rows="25">
+
                     <p:column headerText="idpersona">
                         <p:outputLabel value="#{item.idpersona}"/>
-                        
+
                     </p:column>
                     <p:column headerText="nombre">
                         <p:outputLabel value="#{item.nombre}"/>
-                        
+
                     </p:column>
                     <p:column headerText="deporte">
                         <p:outputLabel value="#{item.deporte.deporte}"/>
-                        
+
                     </p:column>
-                
+
                 </p:dataTable>
 
 

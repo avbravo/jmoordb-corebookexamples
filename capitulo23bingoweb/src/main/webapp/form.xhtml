@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/layout/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jmoordbjsf="http://xmlns.jcp.org/jsf"
+                xmlns:jmoordbfaces="http://xmlns.jcp.org/jsf/composite/jmoordbfaces">
+
+    <ui:define name="titulo">Form</ui:define>
+
+    <ui:define name="contenido">
+
+        <h:form>
+            <!-- Title -->
+            <h1 class="mt-4">Form</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Form</li>
+            </ol>
+
+            <!-- 
+            -->
+
+
+
+
+            <div class="card">
+                <h5>Basic</h5>
+                <p:inputText/>
+
+                <h5>Floating Label</h5>
+                <span class="ui-float-label">
+                
+                </span>
+
+                <h5>Left Icon</h5>
+                <span class="ui-input-icon-left">
+                    <i class="pi pi-search" />
+                    <p:inputText placeholder="Search" />
+                </span>
+
+                <h5>Right Icon</h5>
+                <span class="ui-input-icon-right">
+                    <i class="pi pi-spin pi-spinner" />
+                    <p:inputText />
+                </span>
+
+                <h5>Help Text</h5>
+                <div class="p-field">
+                    <p:outputLabel for="username1" styleClass="p-d-block">Username</p:outputLabel>
+                    <p:inputText id="username1" styleClass="p-d-block"/>
+                    <small class="p-d-block">Enter your username to reset your password.</small>
+                </div>
+
+                <h5>Invalid</h5>
+                <div class="p-field">
+                    <p:outputLabel for="username2" styleClass="p-d-block">Username</p:outputLabel>
+                    <p:inputText id="username2" styleClass="p-d-block ui-state-error"/>
+                    <small class="p-d-block ui-state-error">Username is not available.</small>
+                </div>
+
+                <h5>Disabled</h5>
+                <p:inputText disabled="true" />
+            </div>
+
+        </h:form>
+
+
+    </ui:define>
+
+</ui:composition>

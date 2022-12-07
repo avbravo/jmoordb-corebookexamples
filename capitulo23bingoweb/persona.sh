@@ -1,0 +1,2 @@
+curl -H "Content-Type: application/json" -X POST -d '{"id": "7","name": "Aristides","pais":{ "code": "pa","name": "Panama"},"direccion":{ "street": "Calle 1","city": "Los Santos"}}' http://localhost:8080/microjakartanosql/api/persona/
+curl -H "Content-Type: application/json" -X POST -d '{"id": "8","name": "Ana","pais":{ "code": "cu","name": "Cuba"},"direccion":{ "street": "La habana","city": "La habana"}}' http://localhost:8080/microjakartanosql/api/persona/

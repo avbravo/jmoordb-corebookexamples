@@ -49,9 +49,23 @@ public class PersonaFaces implements Serializable {
 
     public String findAll() {
         try {
+           
+
+            personaList = personaRepository.findAll();
+         
+        } catch (Exception e) {
+            System.out.println("findAll() " + e.getLocalizedMessage());
+        }
+
+        return "";
+    }
+    public String findAllPagination() {
+        try {
             Long count = personaRepository.count();
 
             Integer numberOfPage = JmoordbCorePageUtil.numberOfPages(JmoordbCoreUtil.longToInteger(count), 25);
+
+            System.out.println("Number OfPage  "+numberOfPage);
 
             Pagination pagination = new Pagination(1, 25);
 
@@ -67,9 +81,9 @@ public class PersonaFaces implements Serializable {
                 System.out.println(">>>> No hay registros......");
             } else {
                 System.out.println("Hay registros.......");
-                for (Persona p : personaList) {
-                    System.out.println("p.getNombre():  " + p.getNombre() + " p.getIdpersona(): " + p.getIdpersona());
-                }
+//                for (Persona p : personaList) {
+//                    System.out.println("p.getNombre():  " + p.getNombre() + " p.getIdpersona(): " + p.getIdpersona());
+//                }
             }
         } catch (Exception e) {
             System.out.println("findAll() " + e.getLocalizedMessage());

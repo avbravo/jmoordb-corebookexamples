@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:avbravo="http://xmlns.jcp.org/jsf/composite/avbravo"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+
+        <avbravo:headerbootstrap/>
+
+    </h:head>
+
+    <f:metadata>
+        <f:viewParam name="token" value="#{passwordChange.token}" />
+        <f:viewParam name="transaccionid" value="#{passwordChange.transaccionId}" />
+    </f:metadata>
+    <h:body class="sb-nav-fixed" id="bodytemplate" >
+        <f:view contentType="text/html"> 
+            <h:form id="formLogin" prependId="false">
+
+                <div id="layoutAuthentication">
+                    <div id="layoutAuthentication_content">
+                        <main>
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-7">
+                                        <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                            <div class="card-header">
+                                                <h3 class="text-center font-weight-light my-4">Solicitar Cuenta
+                                                
+                                                 <i class="pi pi-user-plus" style="font-size: 2rem"></i>
+                                                </h3>
+                                            </div>
+                                            <div class="card-body">
+
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-3 mb-md-0">
+                                                            <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" />
+                                                            <label for="inputFirstName">Nombre</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" />
+                                                            <label for="inputLastName">Apellido</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
+                                                    <label for="inputEmail">Email</label>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-3 mb-md-0">
+                                                            <input class="form-control" id="inputPassword" type="password" placeholder="Create a password" />
+                                                            <label for="inputPassword">Password</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-3 mb-md-0">
+                                                            <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirm password" />
+                                                            <label for="inputPasswordConfirm">Confirmar Password</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                          <!--<p:captcha label="Captcha" />-->
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="mt-4 mb-0">
+                                                    <div class="d-grid">
+                                                        <p:commandButton value ="Solicitar Cuenta" class="btn btn-primary" />
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="card-footer text-center py-3">
+                                                <div class="small">
+                                                    <p:commandButton value ="Tiene una cuenta?, Regresar al login "  styleClass="ui-button-flat" action="login"/>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </main>
+                    </div>
+                    <div id="layoutAuthentication_footer">
+                        <footer class="py-4 bg-light mt-auto">
+                            <div class="container-fluid px-4">
+                                <div class="d-flex align-items-center justify-content-between small">
+                                    <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                                    <div>
+                                        <a href="#">Privacy Policy</a>
+                                        &middot;
+                                        <a href="#">Terms &amp; Conditions</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                </div>
+
+
+            </h:form>
+        </f:view>
+        <avbravo:scriptbootstrap/>
+
+
+    </h:body>
+
+</html>
+
