@@ -18,6 +18,8 @@
         <microprofile.version>5.0</microprofile.version>
         <final.name>capitulo23faces</final.name>
         <version.jmoordbcore>0.5</version.jmoordbcore>
+        <version.jmoordbfaces>1.3</version.jmoordbfaces>
+        <version.jmoordbutilfaces>0.1</version.jmoordbutilfaces>
         <jmeter.version>2.6.0</jmeter.version>
         
       
@@ -62,22 +64,12 @@
         
 
   
-       <dependency>
-            <groupId>com.github.avbravo</groupId>
-            <artifactId>jmoordb-core</artifactId>
-            <version>${version.jmoordbcore}</version>
-        </dependency>
+  
  
         <!--Jakarta Faces
         
         -->
-<!--      <dependency>
-            <groupId>com.avbravo.jmoordb.core.processor</groupId>
-            <artifactId>jmoordb-core</artifactId>
-            <version>0.4.300</version>
-        </dependency>-->
-            
-            
+   
         <dependency>
             <groupId>jakarta.faces</groupId>
             <artifactId>jakarta.faces-api</artifactId>
@@ -101,6 +93,36 @@
             <scope>provided</scope>
         </dependency>
     
+    
+    
+    
+        <!--
+        jmoordb-core
+        -->
+        
+              <dependency>
+            <groupId>com.github.avbravo</groupId>
+            <artifactId>jmoordb-core</artifactId>
+            <version>${version.jmoordbcore}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.avbravo</groupId>
+            <artifactId>jmoordbfaces</artifactId>
+            <version>${version.jmoordbfaces}</version>
+        </dependency>
+        
+<!--        <dependency>
+            <groupId>com.github.avbravo</groupId>
+            <artifactId>jmoordbutilfaces</artifactId>
+            <version>${version.jmoordbutilfaces}</version>
+        </dependency>-->
+        <dependency>
+            <groupId>com.avbravo</groupId>
+            <artifactId>jmoordbutilfaces</artifactId>
+            <version>0.1.100</version>
+        </dependency>
+        
+        
     </dependencies>
     
     <build>
