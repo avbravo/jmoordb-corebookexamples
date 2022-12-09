@@ -7,6 +7,7 @@ package com.jmoordbcore.capitulo23faces.faces;
 import com.jmoordb.core.model.Pagination;
 import com.jmoordb.core.util.JmoordbCorePageUtil;
 import com.jmoordb.core.util.JmoordbCoreUtil;
+import com.jmoordbcore.capitulo23faces.datamodel.PersonaDataModel;
 import com.jmoordbcore.capitulo23faces.model.Persona;
 import com.jmoordbcore.capitulo23faces.repository.PersonaRepository;
 import jakarta.annotation.PostConstruct;
@@ -22,43 +23,33 @@ import lombok.Data;
  *
  * @author avbravo
  */
-@Named(value = "personaFaces")
+@Named()
 @ViewScoped
 @Data
-public class PersonaFaces implements Serializable {
+public class PersonaPaginationFaces implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Inject
     PersonaRepository personaRepository;
 
+    private PersonaDataModel personaDataModel = new PersonaDataModel();
     List<Persona> personaList = new ArrayList<>();
 
     /**
      * Creates a new instance of PersonaFaces
      */
-    public PersonaFaces() {
+    public PersonaPaginationFaces() {
 
     }
 
     // <editor-fold defaultstate="collapsed" desc=" init">
     @PostConstruct
     public void init() {
-        findAll();
+        findAllPagination();
     }
 // </editor-fold>
 
-    public String findAll() {
-        try {
-           
-
-            personaList = personaRepository.findAll();
-         
-        } catch (Exception e) {
-            System.out.println("findAll() " + e.getLocalizedMessage());
-        }
-
-        return "";
-    }
+  
     public String findAllPagination() {
         try {
             Long count = personaRepository.count();
@@ -75,16 +66,8 @@ public class PersonaFaces implements Serializable {
 //            pagination = JmoordbCorePageUtil.back(pagination);
 //            personaList = personaRepository.findAll();
 
-
-            personaList = personaRepository.findAllPagination(pagination);
-            if (personaList == null) {
-                System.out.println(">>>> No hay registros......");
-            } else {
-                System.out.println("Hay registros.......");
-//                for (Persona p : personaList) {
-//                    System.out.println("p.getNombre():  " + p.getNombre() + " p.getIdpersona(): " + p.getIdpersona());
-//                }
-            }
+            move(pagination);
+          
         } catch (Exception e) {
             System.out.println("findAll() " + e.getLocalizedMessage());
         }
@@ -92,4 +75,19 @@ public class PersonaFaces implements Serializable {
         return "";
     }
 
+    
+    public String move(Pagination pagination){
+          personaList = personaRepository.findAllPagination(pagination);
+            if (personaList == null) {
+                System.out.println(">>>> No hay registros......");
+            } else {
+                
+                   personaDataModel = new PersonaDataModel(personaList);
+                System.out.println("Hay registros.......");
+                for (Persona p : personaList) {
+                    System.out.println("p.getNombre():  " + p.getNombre() + " p.getIdpersona(): " + p.getIdpersona());
+                }
+            }
+            return "";
+    }
 }

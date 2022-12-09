@@ -10,24 +10,29 @@
     <h:body>
         <f:view contentType="text/html">
             <h:form id="form" prependId="false">
-                <p:dataTable var="item" value="#{personaFaces.personaList}"
-                             paginator="true"
-                             rows="25">
+                <div class="row">
+                   
+               
+                </div>
+              <div class="col-xl-3 col-md-6">
+                    <p:card  class="card bg-primary text-white">
+                        <f:facet name="title">
+                           DataTable
+                        </f:facet>
+                        <p>
 
-                    <p:column headerText="idpersona">
-                        <p:outputLabel value="#{item.idpersona}"/>
+                        </p>
+                        <p>Seleccione la opcion deseada
+                        </p>
+                         <p:commandButton value="Pagination" action="pagination"/> 
 
-                    </p:column>
-                    <p:column headerText="nombre">
-                        <p:outputLabel value="#{item.nombre}"/>
-
-                    </p:column>
-                    <p:column headerText="deporte">
-                        <p:outputLabel value="#{item.deporte.deporte}"/>
-
-                    </p:column>
-
-                </p:dataTable>
+                        <f:facet name="footer">
+                          <p:commandButton value ="All (Carga todos documentos)" action="all"
+                                           
+                                           styleClass="ui-button-secondary" style="margin-left: .5em" />
+                        </f:facet>
+                    </p:card>
+                </div>
 
 
             </h:form>

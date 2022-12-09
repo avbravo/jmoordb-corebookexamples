@@ -26,18 +26,20 @@ public class PersonaDataModel extends ListDataModel<Persona> implements Selectab
     public Persona getRowData(String rowKey) {
         List<Persona> list = (List<Persona>) getWrappedData();
 
-        for (Persona personao : list) {
-            if (personao.getIdboleta().equals(rowKey)) {
-                return personao;
+        for (Persona persona_ : list) {
+            if (persona_.getIdpersona().equals(rowKey)) {
+                return persona_;
             }
         }
 
         return null;
     }
 
-    @Override
-    public Object getRowKey(Persona persona) {
-        return persona.getIdboleta();
+   @Override
+   public String getRowKey(Persona persona) {
+       return persona.getIdpersona().toString();
     }
     
+
+  
 }
