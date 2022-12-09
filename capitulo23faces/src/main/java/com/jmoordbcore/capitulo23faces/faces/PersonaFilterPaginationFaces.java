@@ -8,7 +8,7 @@ import com.avbravo.jmoordbutils.paginator.IPaginator;
 import com.avbravo.jmoordbutils.paginator.Paginator;
 import com.jmoordb.core.model.Pagination;
 import com.jmoordb.core.util.DocumentUtil;
-import com.jmoordb.core.util.MessagesUtil;
+import com.avbravo.jmoordbutils.FacesUtil;
 import com.jmoordbcore.capitulo23faces.model.Deporte;
 import com.jmoordbcore.capitulo23faces.model.Persona;
 import com.jmoordbcore.capitulo23faces.repository.PersonaRepository;
@@ -38,7 +38,7 @@ import org.primefaces.model.SortMeta;
 @Named()
 @ViewScoped
 @Data
-public class PersonaPaginationFaces implements Serializable, IPaginator {
+public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
 
     private static final long serialVersionUID = 1L;
 
@@ -50,7 +50,9 @@ public class PersonaPaginationFaces implements Serializable, IPaginator {
 // <editor-fold defaultstate="collapsed" desc="Fields">
     List<Persona> personaList = new ArrayList<>();
     
-   
+        private String nombre;
+        
+       private Deporte deporte;
         
 // </editor-fold>
 
@@ -84,7 +86,7 @@ public class PersonaPaginationFaces implements Serializable, IPaginator {
     /**
      * Creates a new instance of PersonaFaces
      */
-    public PersonaPaginationFaces() {
+    public PersonaFilterPaginationFaces() {
 
     }
 
@@ -97,39 +99,53 @@ public class PersonaPaginationFaces implements Serializable, IPaginator {
         this.personaLazyDataModel = new LazyDataModel<Persona>() {
             @Override
             public List<Persona> load(int offset, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
-               
+                System.out.println("Load.....");
                 Integer totalRecords = personaRepository.count().intValue();
-               
+                System.out.println(" [] load 1 " + totalRecords);
 
                 List<Paginator> list = processLazyDataModel(paginator, paginatorOld, offset, rowPage.get(), totalRecords, sortBy);
-               
+                System.out.println(" [] load 2 ");
                 paginator = list.get(0);
                 paginatorOld = list.get(1);
                 paginator.setNumberOfPage(numberOfPages(totalRecords, rowPage.get()));
-               
+                System.out.println(" [] load 3 ");
 
                 Pagination pagination = new Pagination(paginator.getPage(), rowPage.get());
-               
-                List<Persona> result = personaRepository.findAllPagination(pagination);
-               
-                personaLazyDataModel.setRowCount(totalRecords);
-              
-                PrimeFaces.current().executeScript("setDataTableWithPageStart()");
+                System.out.println(" [] load 4 ");
+//                System.out.println("-->Pagintation  paginator.getPage() ["+paginator.getPage()+"]  [paginator.getNumberOfPage()] " + paginator.getNumberOfPage());
+                System.out.println("-->Pagintation  paginator.getPage() [" + paginator.getPage() + "]  [paginator.getNumberOfPage()] " + paginator.getNumberOfPage());
 
+                List<Persona> result = personaRepository.findAllPagination(pagination);
+                System.out.println(" [] load 5 ");
+                personaLazyDataModel.setRowCount(totalRecords);
+                System.out.println(" [] load 6 ");
+                PrimeFaces.current().executeScript("setDataTableWithPageStart()");
+                System.out.println(" [] load 7 ");
                 return result;
             }
 
             @Override
             public int count(Map<String, FilterMeta> map) {
-              
+                System.out.println("----------------------Metodo count");
                 Integer totalRecords2 = personaRepository.count().intValue();
-              
+                System.out.println("----------------Total records 2 " + totalRecords2);
                 return totalRecords2;
             }
 
         };
 
-
+        //  Long count = personaRepository.count();
+//            Integer numberOfPage = JmoordbCorePageUtil.numberOfPages(JmoordbCoreUtil.longToInteger(count), 25);
+//
+//            System.out.println("Number OfPage  " + numberOfPage);
+//
+//            Pagination pagination = new Pagination(1, 25);
+//            pagination = JmoordbCorePageUtil.first(pagination);
+//            pagination = JmoordbCorePageUtil.last(pagination);
+//            pagination = JmoordbCorePageUtil.next(pagination);
+//            pagination = JmoordbCorePageUtil.back(pagination);
+//            personaList = personaRepository.findAll();
+//            move(pagination);
     }
 // </editor-fold>
 
@@ -153,12 +169,63 @@ public class PersonaPaginationFaces implements Serializable, IPaginator {
                             .title("Filtro basico")
                             .build();
 
+            FacesUtil.successMessage("findAllPagination() metodo");
         } catch (Exception e) {
-            System.out.println("findAll() " + e.getLocalizedMessage());
+FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : "+e.getLocalizedMessage());
         }
 
         return "";
     }
 
-  
+    
+    // <editor-fold defaultstate="collapsed" desc="findByPersonaPaginacion">
+    public String findByPersonaPaginacion(){
+        try {
+     //           Bson filter
+//                    = DocumentUtil.createBsonBetweenDateWithoutHours(
+//                            "fechahora", startDate, "fechahora", endDate);
+//                
+          Bson filter = new Document("deporte.deporte",deporte);
+
+            Document sort = new Document("idpersona", -1);
+            paginator
+                    = new Paginator.Builder()
+                            .page(1)
+                            .query(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)))
+                            .query(new Document())
+                            .sort(new Document())
+                            .title("Filtro basico")
+                            .build();
+
+        } catch (Exception e) {
+            FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : "+e.getLocalizedMessage());
+        }
+           return "";
+    }
+// </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="findByPersonaPaginacion">
+    public String findByDeportePaginacion(){
+        try {
+     //           Bson filter
+//                    = DocumentUtil.createBsonBetweenDateWithoutHours(
+//                            "fechahora", startDate, "fechahora", endDate);
+//                
+          Bson filter = new Document("deporte.deporte",deporte);
+
+            Document sort = new Document("idpersona", -1);
+            paginator
+                    = new Paginator.Builder()
+                            .page(1)
+                            .query(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)))
+                            .query(new Document())
+                            .sort(new Document())
+                            .title("Filtro basico")
+                            .build();
+
+        } catch (Exception e) {
+            FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : "+e.getLocalizedMessage());
+        }
+           return "";
+    }
+// </editor-fold>
 }

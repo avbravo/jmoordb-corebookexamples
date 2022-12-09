@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:jmoordbjsf="http://jmoordbjsf.com/taglib">
+      xmlns:jmoordbfaces="http://jmoordbfaces.com/taglib">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -13,6 +13,10 @@
             <h:form id="form" prependId="false">
                 <h1>Pagination</h1>
                 <p:commandButton value="Index" action="index"/>
+     
+
+
+
 
                 <div></div>
                 <p:dataTable var="item" value="#{personaPaginationFaces.personaLazyDataModel}"
@@ -31,14 +35,14 @@
                              class="responsive-table display dataTable tablaajustada"
 
                              >
-<f:facet name="paginatorTopLeft">
-                <p:commandButton type="button" icon="pi pi-refresh"/>
-            </f:facet>
+                    <f:facet name="paginatorTopLeft">
+                        <p:commandButton type="button" icon="pi pi-refresh"/>
+                    </f:facet>
 
-            <f:facet name="paginatorBottomRight">
-                <p:commandButton type="button" icon="pi pi-cloud-upload"/>
-            </f:facet>
-                    
+                    <f:facet name="paginatorBottomRight">
+                        <p:commandButton type="button" icon="pi pi-cloud-upload"/>
+                    </f:facet>
+
                     <f:facet name="header">
                         <p:outputLabel value=""/>
 
