@@ -7,12 +7,13 @@ package com.jmoordbcore.capitulo23faces.repository;
 import com.jmoordb.core.annotation.enumerations.JakartaSource;
 import com.jmoordb.core.annotation.repository.Count;
 import com.jmoordb.core.annotation.repository.Find;
-import com.jmoordb.core.annotation.repository.Query;
+import com.jmoordb.core.annotation.repository.Lookup;
 import com.jmoordb.core.annotation.repository.Repository;
 import com.jmoordb.core.model.Pagination;
 import com.jmoordb.core.model.Search;
 import com.jmoordb.core.model.Sorted;
 import com.jmoordb.core.repository.CrudRepository;
+import com.jmoordbcore.capitulo23faces.model.Oceano;
 import com.jmoordbcore.capitulo23faces.model.Persona;
 import java.util.List;
 
@@ -28,15 +29,10 @@ public interface PersonaRepository extends CrudRepository<Persona, Long> {
     @Find
     public List<Persona> findByNombrePagination(String nombre, Pagination pagination);
     
-    @Find
-    public List<Persona> findByDeporte_deportePagination(String deporte, Pagination pagination);
+   @Lookup
+    public List<Persona> lookup(Search search);
 
 
-//@Query(where = "nombre .eq. @nombre .limit. pagination .skip. @pagination")
-//public List<Persona> queryByNombrePagination(String nombre, Pagination pagination);
-
-//@Query(where = "pagination .skip. @pagination")
-//public List<Persona> queryAllPagination(Pagination pagination);
 
 
     @Find

@@ -101,11 +101,12 @@
         jmoordb-core
         -->
         
-        <dependency>
+      <dependency>
             <groupId>com.github.avbravo</groupId>
             <artifactId>jmoordb-core</artifactId>
             <version>${version.jmoordbcore}</version>
         </dependency>
+      
         <dependency>
             <groupId>com.github.avbravo</groupId>
             <artifactId>jmoordbfaces</artifactId>
