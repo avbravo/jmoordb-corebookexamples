@@ -113,17 +113,23 @@
             <version>${version.jmoordbfaces}</version>
         </dependency>
         
- 
-        <dependency>
+
+<!--        <dependency>
             <groupId>com.github.avbravo</groupId>
             <artifactId>jmoordbutilfaces</artifactId>
             <version>${version.jmoordbutilfaces}</version>
-        </dependency>
+        </dependency>-->
+        
         
         
         <!--
         
         -->
+      <dependency>
+            <groupId>com.avbravo</groupId>
+            <artifactId>jmoordbutilfaces</artifactId>
+            <version>0.3.100</version>
+        </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>

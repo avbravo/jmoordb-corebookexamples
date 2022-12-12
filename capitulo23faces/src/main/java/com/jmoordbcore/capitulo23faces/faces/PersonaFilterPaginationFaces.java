@@ -9,6 +9,7 @@ import com.avbravo.jmoordbutils.paginator.Paginator;
 import com.jmoordb.core.model.Pagination;
 import com.jmoordb.core.util.DocumentUtil;
 import com.avbravo.jmoordbutils.FacesUtil;
+import com.jmoordb.core.model.Search;
 import com.jmoordbcore.capitulo23faces.model.Deporte;
 import com.jmoordbcore.capitulo23faces.model.Persona;
 import com.jmoordbcore.capitulo23faces.repository.PersonaRepository;
@@ -53,6 +54,7 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
         private String nombre;
         
        private Deporte deporte;
+       Search search = new Search();
         
 // </editor-fold>
 
@@ -100,7 +102,20 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
             @Override
             public List<Persona> load(int offset, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
                 System.out.println("Load.....");
-                Integer totalRecords = personaRepository.count().intValue();
+                  Integer totalRecords = 0;
+                 switch(paginator.getTitle()){
+                    
+                    case "findAll":
+                       totalRecords = personaRepository.count().intValue();
+                    break;
+                    case "findByNombre":
+                        Search search = new Search();
+                         totalRecords = personaRepository.count(search).intValue();
+                        break;
+                    case "findByDeporte":
+                        break;
+                }
+            
                 System.out.println(" [] load 1 " + totalRecords);
 
                 List<Paginator> list = processLazyDataModel(paginator, paginatorOld, offset, rowPage.get(), totalRecords, sortBy);
@@ -114,8 +129,21 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
                 System.out.println(" [] load 4 ");
 //                System.out.println("-->Pagintation  paginator.getPage() ["+paginator.getPage()+"]  [paginator.getNumberOfPage()] " + paginator.getNumberOfPage());
                 System.out.println("-->Pagintation  paginator.getPage() [" + paginator.getPage() + "]  [paginator.getNumberOfPage()] " + paginator.getNumberOfPage());
-
-                List<Persona> result = personaRepository.findAllPagination(pagination);
+                
+                List<Persona> result = new ArrayList<>();
+                switch(paginator.getTitle()){
+                    
+                    case "findAll":
+                        result = personaRepository.findAllPagination(pagination);
+                    break;
+                    case "findByNombre":
+                        result = personaRepository.findByNombrePagination(nombre,pagination);
+                        break;
+                    case "findByDeporte":
+                        break;
+                }
+              
+                
                 System.out.println(" [] load 5 ");
                 personaLazyDataModel.setRowCount(totalRecords);
                 System.out.println(" [] load 6 ");
@@ -163,10 +191,10 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
             paginator
                     = new Paginator.Builder()
                             .page(1)
-                            .query(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)))
+                           // .query(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)))
                             .query(new Document())
                             .sort(new Document())
-                            .title("Filtro basico")
+                            .title("findAll")
                             .build();
 
             FacesUtil.successMessage("findAllPagination() metodo");
@@ -186,6 +214,37 @@ FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : "+e.getLocalizedMessage(
 //                            "fechahora", startDate, "fechahora", endDate);
 //                
           Bson filter = new Document("deporte.deporte",deporte);
+
+            Document sort = new Document("idpersona", -1);
+            paginator
+                    = new Paginator.Builder()
+                            .page(1)
+                            .query(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)))
+                            .query(new Document())
+                            .sort(new Document())
+                            .title("Filtro basico")
+                            .build();
+
+        } catch (Exception e) {
+            FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : "+e.getLocalizedMessage());
+        }
+           return "";
+    }
+// </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="String  findByNombrePaginacion()">
+    public String findByNombrePaginacion(){
+        try {
+     //           Bson filter
+//                    = DocumentUtil.createBsonBetweenDateWithoutHours(
+//                            "fechahora", startDate, "fechahora", endDate);
+//                
+          Bson filter = new Document("deporte.deporte",deporte);
+          search
+                    = new Search.Builder()
+                            .page(1)
+                          
+                            .title("findAll")
+                            .build();
 
             Document sort = new Document("idpersona", -1);
             paginator
