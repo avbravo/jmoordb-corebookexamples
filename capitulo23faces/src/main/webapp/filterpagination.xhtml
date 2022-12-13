@@ -43,7 +43,8 @@
 
                          <p:panelGrid columns="3">
                              <p:outputLabel value="Deporte"/>
-                             <p:inputText value=""/>
+                             <p:inputText value="#{personaFilterPaginationFaces.deporte.deporte}"/>
+                             
                                <p:commandButton value="Buscar" action="index"
                                                 update=":form:dataTable, :form:growl"
                                              styleClass="ui-button-outlined"/>
