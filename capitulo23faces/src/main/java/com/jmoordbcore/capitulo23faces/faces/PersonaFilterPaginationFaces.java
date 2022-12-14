@@ -10,6 +10,7 @@ import com.jmoordb.core.model.Pagination;
 import com.jmoordb.core.util.DocumentUtil;
 import com.avbravo.jmoordbutils.FacesUtil;
 import com.jmoordb.core.model.Search;
+import com.jmoordb.core.model.Sorted;
 import com.jmoordbcore.capitulo23faces.model.Deporte;
 import com.jmoordbcore.capitulo23faces.model.Persona;
 import com.jmoordbcore.capitulo23faces.repository.PersonaRepository;
@@ -109,11 +110,14 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
                         totalRecords = personaRepository.count().intValue();
                         break;
                     case "findByNombrePagination":
-                        search = new Search();
-                        search.setFilter(paginator.getQuery());
-                        totalRecords = personaRepository.count(search).intValue();
+                        /**
+                         * Cuando es una atributo normela
+                         */
+                        totalRecords = personaRepository.countByNombre(nombre).intValue();
                         break;
                     case "findByDeportePaginacion":
+                       
+                        totalRecords = personaRepository.count(search).intValue();
                         break;
                 }
 
@@ -141,6 +145,9 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
                         result = personaRepository.findByNombrePagination(nombre, pagination);
                         break;
                     case "findByDeportePaginacion":
+                        
+                        Aqui tomar el numero de pagina que viebe del paginator.
+                         result = personaRepository.lookup(search);
                         break;
                 }
 
@@ -249,6 +256,8 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
             Document sort = new Document("idpersona", -1);
 
             search.setFilter(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)));
+            search.setPagination(new Pagination(1, rowPage.get()));
+            search.setSorted(new Sorted(sort));
             paginator
                     = new Paginator.Builder()
                             .page(1)
