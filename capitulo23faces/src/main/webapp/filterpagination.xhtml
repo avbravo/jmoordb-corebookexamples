@@ -13,50 +13,48 @@
             <h:form id="form" prependId="false">
                 <h1>Pagination Filter</h1>
                 <p:growl id="growl" />
-               <p:commandButton value="Index" action="index"/>
+                <p:commandButton value="Index" action="index"/>
                 <div class="row">
                     <div class="col-xl-3 col-md-3">
                         <p:card  class="card bg-primary text-white">
                             <f:facet name="title">
-                              Filtros
+                                Filtros
                             </f:facet>
-                          
-                                <p:panelGrid columns="3">
-                                    <p:outputLabel value="Nombre"/>
-                                    <p:inputText value="#{personaFilterPaginationFaces.nombre}"/>
-                                        <p:commandButton value="Buscar" action="#{personaFilterPaginationFaces.findByNombrePaginacion()}"
-                                                         update=":form:dataTable, :form:growl"
-                                             styleClass="ui-button-outlined"/>
 
-                                </p:panelGrid>
-                         
-                                <p:panelGrid columns="1">
-                                    
-                                
-                                        <p:commandButton value="findAllPagination()"
-                                                         action="#{personaFilterPaginationFaces.findAllPagination()}"
-                                                         update=":form:dataTable, :form:growl"
-                                             styleClass="ui-button-outlined"/>
+                            <p:panelGrid columns="3" id="panelGridSearch">
 
-                                </p:panelGrid>
-                         
+                                <p:outputLabel value="Nombre"/>
 
-                         <p:panelGrid columns="3">
-                             <p:outputLabel value="Deporte"/>
-                             <p:inputText value="#{personaFilterPaginationFaces.deporte.deporte}"/>
-                             
-                               <p:commandButton value="Buscar" action="index"
-                                                update=":form:dataTable, :form:growl"
-                                             styleClass="ui-button-outlined"/>
+                                <p:inputText value="#{personaFilterPaginationFaces.nombre}"/>
 
-                         </p:panelGrid>
+                                <p:commandButton value="Buscar" action="#{personaFilterPaginationFaces.findByNombrePaginacion()}"
+                                                 update=":form:dataTable, :form:growl, :form:panelGridSearch"
+                                                 styleClass="ui-button-outlined"/>
+
+                                <p:outputLabel value="Nombre de Deporte Referenciado como embebido"/>
+                                <p:inputText value="#{personaFilterPaginationFaces.nombreDeporte}"/>
+
+                                <p:commandButton value="Buscar" action="#{personaFilterPaginationFaces.findByDeportePaginacion()}"
+                                                 update=":form:dataTable, :form:growl,:form:panelGridSearch"
+                                                 styleClass="ui-button-outlined"/>
+
+
+                                <f:facet name="footer">
+                                    <p:commandButton value="findAllPagination()"
+                                                     action="#{personaFilterPaginationFaces.findAllPagination()}"
+                                                     update=":form:dataTable, :form:growl, :form:panelGridSearch"
+                                                     styleClass="ui-button-outlined"/>
+                                </f:facet>
+
+                            </p:panelGrid>
+
 
                             <f:facet name="footer">
                                 <p:outputLabel value="Pendientes "/>
                             </f:facet>
                         </p:card>
                     </div>
-            
+
                 </div>
 
 
@@ -93,9 +91,9 @@
                     </f:facet>
 
                     <f:facet name="footer">
-                        <p:outputLabel value="#{app['label.totalRecords']} (#{personaFilterPaginationFaces.paginator.totalRecords})"/>
+                        <p:outputLabel value="Total (#{personaFilterPaginationFaces.paginator.totalRecords})"/>
                         <p:outputLabel value="|"/>
-                        <p:outputLabel value="#{app['label.filtro']} = #{personaFilterPaginationFaces.paginator.title} "/>
+                        <p:outputLabel value="Filtro = #{personaFilterPaginationFaces.paginator.title} "/>
 
                     </f:facet>
 
@@ -109,6 +107,10 @@
                     </p:column>
                     <p:column headerText="deporte">
                         <p:outputLabel value="#{item.deporte.deporte}"/>
+
+                    </p:column>
+                    <p:column headerText="Pais">
+                        <p:outputLabel value="#{item.pais.pais}"/>
 
                     </p:column>
 

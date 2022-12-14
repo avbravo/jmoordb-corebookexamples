@@ -54,7 +54,9 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
 
     private String nombre;
 
-    private Deporte deporte;
+//    private Deporte deporte;
+    private String nombreDeporte = "";
+
     Search search = new Search();
 
 // </editor-fold>
@@ -101,37 +103,53 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
         this.personaLazyDataModel = new LazyDataModel<Persona>() {
             @Override
             public List<Persona> load(int offset, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
-                System.out.println("Load.....");
+                System.out.println("[...........................Load().....]");
                 Integer totalRecords = 0;
-                
+
                 switch (paginator.getName()) {
 
                     case "findAllPagination":
+
                         totalRecords = personaRepository.count().intValue();
+                        System.out.println("\t(*)----->count...findAllPagination totalRecords " + totalRecords);
                         break;
                     case "findByNombrePagination":
                         /**
                          * Cuando es una atributo normela
                          */
+
                         totalRecords = personaRepository.countByNombre(nombre).intValue();
+                        System.out.println("\t(*)----->count...findByNombrePagination totalRecords " + totalRecords);
                         break;
                     case "findByDeportePaginacion":
-                       
+
                         totalRecords = personaRepository.count(search).intValue();
+                        System.out.println("\t(*)----->count...findByDeportePaginacion totalRecords " + totalRecords);
                         break;
                 }
 
-                System.out.println(" [] load 1 " + totalRecords);
+                System.out.println("  \t[-----]totalRecords  [" + totalRecords + "]");
 
                 List<Paginator> list = processLazyDataModel(paginator, paginatorOld, offset, rowPage.get(), totalRecords, sortBy);
-                System.out.println(" [] load 2 ");
+                System.out.println("__________________________________________________");
+                System.out.println("[]-->() from load processLazyDataMode ");
+                System.out.println("--{paginator}   :-->>  " + paginator.toString());
+                System.out.println("--{paginatorOld}:-->> " + paginatorOld.toString());
+                System.out.println("__________________________________________________");
                 paginator = list.get(0);
                 paginatorOld = list.get(1);
+
+                System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                System.out.println("[]-->() step new change load processLazyDataMode ");
+                System.out.println("--{paginator}   :-->>  " + paginator.toString());
+                System.out.println("--{paginatorOld}:-->> " + paginatorOld.toString());
+                System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
                 paginator.setNumberOfPage(numberOfPages(totalRecords, rowPage.get()));
-                System.out.println(" [] load 3 ");
+                System.out.println(" [] new NumberOfPage paginator.getNumberOfPage() " + paginator.getNumberOfPage());
 
                 Pagination pagination = new Pagination(paginator.getPage(), rowPage.get());
-                System.out.println(" [] load 4 ");
+                System.out.println(" [] set to Pagination " + pagination.toString());
 //                System.out.println("-->Pagintation  paginator.getPage() ["+paginator.getPage()+"]  [paginator.getNumberOfPage()] " + paginator.getNumberOfPage());
                 System.out.println("-->Pagintation  paginator.getPage() [" + paginator.getPage() + "]  [paginator.getNumberOfPage()] " + paginator.getNumberOfPage());
 
@@ -139,23 +157,34 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
                 switch ((paginator.getName())) {
 
                     case "findAllPagination":
+
                         result = personaRepository.findAllPagination(pagination);
+                        System.out.println("\t#############################################################");
+                        System.out.println("  case \"findAllPagination\" result.size "+result.size());
+                        System.out.println("\t#############################################################");
+
                         break;
-                    case "findByNombrePaginacion":
+                    case "findByNombrePagination":
                         result = personaRepository.findByNombrePagination(nombre, pagination);
+                        System.out.println("\t#############################################################");
+                        System.out.println("  case \"\"findByNombrePagination\"\" result.size "+result.size());
+                        System.out.println("\t#############################################################");
+
                         break;
                     case "findByDeportePaginacion":
-                        
-                        Aqui tomar el numero de pagina que viebe del paginator.
-                         result = personaRepository.lookup(search);
+                        search.setPagination(pagination);
+                        result = personaRepository.lookup(search);
+                        System.out.println("\t#############################################################");
+                        System.out.println("  case \"\"findByDeportePaginacion\"\" result.size "+result.size());
+                        System.out.println("\t#############################################################");
+
                         break;
                 }
 
-                System.out.println(" [] load 5 ");
                 personaLazyDataModel.setRowCount(totalRecords);
-                System.out.println(" [] load 6 ");
+                System.out.println(" \t[] personaLazyDataModel.getRowCount() RowCount " + personaLazyDataModel.getRowCount());
                 PrimeFaces.current().executeScript("setDataTableWithPageStart()");
-                System.out.println(" [] load 7 ");
+
                 return result;
             }
 
@@ -163,7 +192,7 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
             public int count(Map<String, FilterMeta> map) {
                 System.out.println("----------------------Metodo count");
                 Integer totalRecords2 = personaRepository.count().intValue();
-                System.out.println("----------------Total records 2 " + totalRecords2);
+                System.out.println("----------------Total records 2 = " + totalRecords2);
                 return totalRecords2;
             }
 
@@ -207,7 +236,12 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
                             .name("findAllPagination")
                             .build();
 
-            FacesUtil.successMessage("findAllPagination() metodo");
+        /**
+         * Limpiar los elementos
+         */
+        nombre="";
+        nombreDeporte="";
+            
         } catch (Exception e) {
             FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : " + e.getLocalizedMessage());
         }
@@ -237,6 +271,12 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
                             .title("Nombre")
                             .build();
 
+                 /**
+         * Limpiar los elementos
+         */
+       // nombre="";
+        nombreDeporte="";
+            
         } catch (Exception e) {
             FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : " + e.getLocalizedMessage());
         }
@@ -251,7 +291,7 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
 //                    = DocumentUtil.createBsonBetweenDateWithoutHours(
 //                            "fechahora", startDate, "fechahora", endDate);
 //                
-            Bson filter = new Document("deporte.deporte", deporte);
+            Bson filter = new Document("deporte.deporte", nombreDeporte);
 
             Document sort = new Document("idpersona", -1);
 
@@ -267,6 +307,12 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
                             .title("Deporte")
                             .build();
 
+                 /**
+         * Limpiar los elementos
+         */
+        nombre="";
+     //   nombreDeporte="";
+            
         } catch (Exception e) {
             FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : " + e.getLocalizedMessage());
         }
