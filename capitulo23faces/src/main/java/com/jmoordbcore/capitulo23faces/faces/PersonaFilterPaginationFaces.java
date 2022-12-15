@@ -11,10 +11,10 @@ import com.jmoordb.core.util.DocumentUtil;
 import com.avbravo.jmoordbutils.FacesUtil;
 import com.jmoordb.core.model.Search;
 import com.jmoordb.core.model.Sorted;
-import com.jmoordbcore.capitulo23faces.model.Deporte;
 import com.jmoordbcore.capitulo23faces.model.Persona;
 import com.jmoordbcore.capitulo23faces.repository.PersonaRepository;
 import jakarta.annotation.PostConstruct;
+import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -29,6 +29,7 @@ import org.bson.conversions.Bson;
 import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.primefaces.PrimeFaces;
+import org.primefaces.component.datatable.DataTable;
 import org.primefaces.model.FilterMeta;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortMeta;
@@ -41,6 +42,7 @@ import org.primefaces.model.SortMeta;
 @ViewScoped
 @Data
 public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
+private DataTable dataTable;
 
     private static final long serialVersionUID = 1L;
 
@@ -185,6 +187,9 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
                 System.out.println(" \t[] personaLazyDataModel.getRowCount() RowCount " + personaLazyDataModel.getRowCount());
                 PrimeFaces.current().executeScript("setDataTableWithPageStart()");
 
+//      final DataTable d = (DataTable) FacesContext.getCurrentInstance().getViewRoot()
+//            .findComponent("detailsTable:webTemplateUpdateTable");
+//      pageTableField = (d.getPageCount() - 1);
                 return result;
             }
 
@@ -241,7 +246,7 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
          */
         nombre="";
         nombreDeporte="";
-            
+             setPageDataTable();
         } catch (Exception e) {
             FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : " + e.getLocalizedMessage());
         }
@@ -276,7 +281,7 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
          */
        // nombre="";
         nombreDeporte="";
-            
+             setPageDataTable();
         } catch (Exception e) {
             FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : " + e.getLocalizedMessage());
         }
@@ -312,11 +317,23 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
          */
         nombre="";
      //   nombreDeporte="";
-            
+             setPageDataTable();
         } catch (Exception e) {
             FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : " + e.getLocalizedMessage());
         }
         return "";
     }
 // </editor-fold>
+    
+    public void setPageDataTable() {
+    int first = 1;
+//    if (dataTable.getRowCount() % ROWS_DATATABLE == 0) {
+//        first = (dataTable.getRowCount() - ROWS_DATATABLE);
+//    }
+//    else 
+//    {
+//        first = (dataTable.getRowCount()/ROWS_DATATABLE)*ROWS_DATATABLE;
+//    }
+    dataTable.setFirst(first);
+}
 }
