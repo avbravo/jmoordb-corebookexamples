@@ -227,7 +227,7 @@ private DataTable dataTable;
 //                
             Bson filter = new Document();
 
-            Document sort = new Document("idpersona", -1);
+            Document sort = new Document("idpersona", 1);
 
             search = new Search();
             search.setFilter(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)));
@@ -246,7 +246,7 @@ private DataTable dataTable;
          */
         nombre="";
         nombreDeporte="";
-             setPageDataTable();
+            setFirstPageDataTable();
         } catch (Exception e) {
             FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : " + e.getLocalizedMessage());
         }
@@ -261,7 +261,7 @@ private DataTable dataTable;
 //                    = DocumentUtil.createBsonBetweenDateWithoutHours(
 //                            "fechahora", startDate, "fechahora", endDate);
 //                
-            Document sort = new Document("idpersona", -1);
+            Document sort = new Document("idpersona", 1);
             Bson filter = new Document("nombre", nombre);
 
             search = new Search();
@@ -281,7 +281,7 @@ private DataTable dataTable;
          */
        // nombre="";
         nombreDeporte="";
-             setPageDataTable();
+          setFirstPageDataTable();
         } catch (Exception e) {
             FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : " + e.getLocalizedMessage());
         }
@@ -298,7 +298,7 @@ private DataTable dataTable;
 //                
             Bson filter = new Document("deporte.deporte", nombreDeporte);
 
-            Document sort = new Document("idpersona", -1);
+            Document sort = new Document("idpersona", 1);
 
             search.setFilter(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)));
             search.setPagination(new Pagination(1, rowPage.get()));
@@ -317,7 +317,7 @@ private DataTable dataTable;
          */
         nombre="";
      //   nombreDeporte="";
-             setPageDataTable();
+             setFirstPageDataTable();
         } catch (Exception e) {
             FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : " + e.getLocalizedMessage());
         }
@@ -325,15 +325,12 @@ private DataTable dataTable;
     }
 // </editor-fold>
     
-    public void setPageDataTable() {
-    int first = 1;
-//    if (dataTable.getRowCount() % ROWS_DATATABLE == 0) {
-//        first = (dataTable.getRowCount() - ROWS_DATATABLE);
-//    }
-//    else 
-//    {
-//        first = (dataTable.getRowCount()/ROWS_DATATABLE)*ROWS_DATATABLE;
-//    }
-    dataTable.setFirst(first);
+    
+    
+   // <editor-fold defaultstate="collapsed" desc="setFirstPageDataTable()">
+    public void setFirstPageDataTable() {
+    
+    dataTable.setFirst(1);
 }
+    // </editor-fold>
 }
