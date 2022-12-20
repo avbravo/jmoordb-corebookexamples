@@ -225,18 +225,18 @@ private DataTable dataTable;
 //                    = DocumentUtil.createBsonBetweenDateWithoutHours(
 //                            "fechahora", startDate, "fechahora", endDate);
 //                
-            Bson filter = new Document();
-
-            Document sort = new Document("idpersona", 1);
-
-            search = new Search();
-            search.setFilter(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)));
+//            Bson filter = new Document();
+//
+//            Document sort = new Document("idpersona", 1);
+//
+//            search = new Search();
+//            search.setFilter(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)));
 
             paginator
                     = new Paginator.Builder()
                             .page(1)
-                            .query(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)))
-                            .sort(new Document())
+                         //   .query(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)))
+                           .sorted(new Sorted(new Document("idpersona",1)))
                             .title("Todos")
                             .name("findAllPagination")
                             .build();
@@ -261,17 +261,18 @@ private DataTable dataTable;
 //                    = DocumentUtil.createBsonBetweenDateWithoutHours(
 //                            "fechahora", startDate, "fechahora", endDate);
 //                
-            Document sort = new Document("idpersona", 1);
-            Bson filter = new Document("nombre", nombre);
-
-            search = new Search();
-            search.setFilter(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)));
+//            Document sort = new Document("idpersona", 1);
+//            Bson filter = new Document("nombre", nombre);
+//
+//            search = new Search();
+//            search.setFilter(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)));
 
             paginator
                     = new Paginator.Builder()
                             .page(1)
-                            .query(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)))
-                            .sort(new Document())
+                          //  .query(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)))
+                            //.sort(new Document())
+                        .sorted(new Sorted(new Document("idpersona",1)))
                             .name("findByNombrePagination")
                             .title("Nombre")
                             .build();
@@ -295,7 +296,11 @@ private DataTable dataTable;
             //           Bson filter
 //                    = DocumentUtil.createBsonBetweenDateWithoutHours(
 //                            "fechahora", startDate, "fechahora", endDate);
-//                
+//           
+
+/**
+ * Como se usa una busqueda en un documento embebido se usa el search..
+*/
             Bson filter = new Document("deporte.deporte", nombreDeporte);
 
             Document sort = new Document("idpersona", 1);
@@ -306,8 +311,9 @@ private DataTable dataTable;
             paginator
                     = new Paginator.Builder()
                             .page(1)
-                            .query(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)))
-                            .sort(new Document())
+//                            .query(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)))
+//                            .sort(new Document())
+                             .sorted(new Sorted(new Document("idpersona",1)))
                             .name("findByDeportePaginacion")
                             .title("Deporte")
                             .build();
