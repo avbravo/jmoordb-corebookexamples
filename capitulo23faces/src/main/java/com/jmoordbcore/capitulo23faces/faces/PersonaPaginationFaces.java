@@ -7,6 +7,7 @@ package com.jmoordbcore.capitulo23faces.faces;
 import com.avbravo.jmoordbutils.paginator.IPaginator;
 import com.avbravo.jmoordbutils.paginator.Paginator;
 import com.jmoordb.core.model.Pagination;
+import com.jmoordb.core.model.Sorted;
 import com.jmoordb.core.util.DocumentUtil;
 import com.jmoordb.core.util.MessagesUtil;
 import com.jmoordbcore.capitulo23faces.model.Deporte;
@@ -148,8 +149,9 @@ public class PersonaPaginationFaces implements Serializable, IPaginator {
                     = new Paginator.Builder()
                             .page(1)
 //                            .query(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)))
-                            .query(new Document())
-                            .sort(new Document())
+                         //   .query(new Document())
+                      //     .sort(new Document())
+                               .sorted(new Sorted(new Document("idpersona",1)))
                             .title("Filtro basico")
                             .build();
 
