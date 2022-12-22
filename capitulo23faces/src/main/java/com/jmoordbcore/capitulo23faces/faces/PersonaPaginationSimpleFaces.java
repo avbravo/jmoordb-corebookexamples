@@ -39,7 +39,7 @@ import org.primefaces.model.SortMeta;
 @Named()
 @ViewScoped
 @Data
-public class PersonaPaginationFaces implements Serializable, IPaginator {
+public class PersonaPaginationSimpleFaces implements Serializable, IPaginator {
 
     private static final long serialVersionUID = 1L;
 
@@ -85,7 +85,7 @@ public class PersonaPaginationFaces implements Serializable, IPaginator {
     /**
      * Creates a new instance of PersonaFaces
      */
-    public PersonaPaginationFaces() {
+    public PersonaPaginationSimpleFaces() {
 
     }
 

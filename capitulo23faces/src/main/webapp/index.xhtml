@@ -24,21 +24,23 @@
                         </p>
                         <p>Seleccione la opcion deseada
                         </p>
-                        <p:panelGrid columns="1">
+                        <p:panelGrid  columns="1">
                                        
-                         <p:commandButton value="Paginacion Simple" action="paginationsimple"/> 
+                         <p:commandButton value="Persona Paginacion Simple" action="personapaginationsimple"/> 
                          
-                         <p:commandButton value="Paginacion con Filtro y Ordenación" action="paginacionfiltro"/> 
+                         <p:commandButton value="Persona Paginacion con Filtro y Ordenación" action="personapaginacionfiltroordenacion"/> 
                          
                          
-                          <p:commandButton value ="All (Carga todos documentos)" action="all"
+                          <p:commandButton value ="Persona All (Carga todos documentos)" action="personaall"
                                            
                                            styleClass="ui-button-secondary" style="margin-left: .5em" />
                         </p:panelGrid>
                       
 
                         <f:facet name="footer">
-                         
+                           <p:commandButton value ="Pais CRUD " action="paiscrud"
+                                           
+                                           styleClass="ui-button-secondary" style="margin-left: .5em" />
                         </f:facet>
                     </p:card>
                 </div>
