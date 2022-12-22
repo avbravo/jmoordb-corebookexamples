@@ -100,8 +100,8 @@ private DataTable dataTable;
     @PostConstruct
     public void init() {
 
-        findAllPagination();
-      //  findAllPaginationSorted();
+      //  findAllPagination();
+       findAllPaginationSorted();
 
         this.personaLazyDataModel = new LazyDataModel<Persona>() {
             @Override
@@ -119,7 +119,7 @@ private DataTable dataTable;
                     case "findAllPaginationSorted":
 
                         totalRecords = personaRepository.count().intValue();
-                        System.out.println("\t(*)----->count...findAllPagination totalRecords " + totalRecords);
+                        System.out.println("\t(*)----->count...findAllPaginationSorted totalRecords " + totalRecords);
                         break;
                     case "findByNombrePagination":
                         /**
@@ -183,9 +183,10 @@ private DataTable dataTable;
                     case "findAllPaginationSorted":
 
                         result = personaRepository.findAllPaginationSorted(pagination,paginator.getSorted());
-                        System.out.println("\t#############################################################");
-                        System.out.println("  case \"findAllPagination\" result.size "+result.size());
-                        System.out.println("\t#############################################################");
+                        System.out.println("\t??????????????????????????????????????????????????????????????");
+                        System.out.println("  case \"findAllPaginatioSorterdn\" result.size "+result.size());
+                        System.out.println(">>> paginator.getSorted() "+paginator.getSorted());
+                        System.out.println("\t??????????????????????????????????????????????????????????????");
 
                         break;
                     case "findByNombrePagination":

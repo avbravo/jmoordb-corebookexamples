@@ -53,6 +53,10 @@
                                 
 
                                 <f:facet name="footer">
+                                    <p:commandButton value="findAllPaginationSorted()"
+                                                     action="#{personaFilterPaginationFaces.findAllPaginationSorted()}"
+                                                     update=":form:dataTable, :form:growl, :form:panelGridSearch"
+                                                     styleClass="ui-button-outlined"/>
                                     <p:commandButton value="findAllPagination()"
                                                      action="#{personaFilterPaginationFaces.findAllPagination()}"
                                                      update=":form:dataTable, :form:growl, :form:panelGridSearch"
