@@ -24,11 +24,15 @@ import java.util.List;
 @Repository(entity = Persona.class, jakartaSource = JakartaSource.JAKARTA)
 public interface PersonaRepository extends CrudRepository<Persona, Long> {
 
+
     @Find
     public List<Persona> findByNombre(String nombre);
 
     @Find
     public List<Persona> findByNombrePagination(String nombre, Pagination pagination);
+    
+    @Find
+    public List<Persona> findByNombrePaginationSorted(String nombre, Pagination pagination, Sorted sorted);
 
     /*
     Para consultas complejas

@@ -148,9 +148,6 @@ public class PersonaPaginationFaces implements Serializable, IPaginator {
             paginator
                     = new Paginator.Builder()
                             .page(1)
-//                            .query(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)))
-                         //   .query(new Document())
-                      //     .sort(new Document())
                                .sorted(new Sorted(new Document("idpersona",1)))
                             .title("Filtro basico")
                             .build();

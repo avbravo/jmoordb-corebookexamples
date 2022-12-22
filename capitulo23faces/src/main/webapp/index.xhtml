@@ -24,14 +24,21 @@
                         </p>
                         <p>Seleccione la opcion deseada
                         </p>
-                         <p:commandButton value="Pagination" action="pagination"/> 
+                        <p:panelGrid columns="1">
+                                       
+                         <p:commandButton value="Paginacion Simple" action="paginationsimple"/> 
                          
-                         <p:commandButton value="Filter Pagination" action="filterpagination"/> 
-
-                        <f:facet name="footer">
+                         <p:commandButton value="Paginacion con Filtro" action="paginacionfiltro"/> 
+                         
+                         
                           <p:commandButton value ="All (Carga todos documentos)" action="all"
                                            
                                            styleClass="ui-button-secondary" style="margin-left: .5em" />
+                        </p:panelGrid>
+                      
+
+                        <f:facet name="footer">
+                         
                         </f:facet>
                     </p:card>
                 </div>

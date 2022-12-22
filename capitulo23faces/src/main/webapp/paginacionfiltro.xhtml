@@ -15,7 +15,7 @@
                 
               
                 
-                <h1>Pagination Filter</h1>
+                <h1>Paginación con Filtro</h1>
                 <p:growl id="growl" />
                 <p:commandButton value="Index" action="index"/>
                 <div class="row">
@@ -34,6 +34,11 @@
                                 <p:commandButton value="Buscar" action="#{personaFilterPaginationFaces.findByNombrePaginacion()}"
                                                  update=":form:dataTable, :form:growl, :form:panelGridSearch"
                                                  styleClass="ui-button-outlined"/>
+                                
+                             
+                                
+                                
+                                
 
                                 <p:outputLabel value="Nombre de Deporte Referenciado como embebido"/>
                                 <p:inputText value="#{personaFilterPaginationFaces.nombreDeporte}"/>
@@ -42,6 +47,10 @@
                                                  update=":form:dataTable, :form:growl,:form:panelGridSearch"
                                                  styleClass="ui-button-outlined"/>
 
+                                
+                               
+                                
+                                
 
                                 <f:facet name="footer">
                                     <p:commandButton value="findAllPagination()"
@@ -102,15 +111,15 @@
 
                     </f:facet>
 
-                    <p:column headerText="idpersona">
+                    <p:column headerText="idpersona" sortable="true" sortBy="#{item.idpersona}">
                         <p:outputLabel value="#{item.idpersona}"/>
 
                     </p:column>
-                    <p:column headerText="nombre">
+                    <p:column headerText="nombre" sortable="true" sortBy="#{item.nombre}">
                         <p:outputLabel value="#{item.nombre}"/>
 
                     </p:column>
-                    <p:column headerText="deporte">
+                    <p:column headerText="deporte" sortable="true" sortBy="#{item.deporte.deporte}">
                         <p:outputLabel value="#{item.deporte.deporte}"/>
 
                     </p:column>

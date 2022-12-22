@@ -101,6 +101,7 @@ private DataTable dataTable;
     public void init() {
 
         findAllPagination();
+      //  findAllPaginationSorted();
 
         this.personaLazyDataModel = new LazyDataModel<Persona>() {
             @Override
@@ -115,7 +116,20 @@ private DataTable dataTable;
                         totalRecords = personaRepository.count().intValue();
                         System.out.println("\t(*)----->count...findAllPagination totalRecords " + totalRecords);
                         break;
+                    case "findAllPaginationSorted":
+
+                        totalRecords = personaRepository.count().intValue();
+                        System.out.println("\t(*)----->count...findAllPagination totalRecords " + totalRecords);
+                        break;
                     case "findByNombrePagination":
+                        /**
+                         * Cuando es una atributo normela
+                         */
+
+                        totalRecords = personaRepository.countByNombre(nombre).intValue();
+                        System.out.println("\t(*)----->count...findByNombrePagination totalRecords " + totalRecords);
+                        break;
+                    case "findByNombrePaginationSorted":
                         /**
                          * Cuando es una atributo normela
                          */
@@ -166,6 +180,14 @@ private DataTable dataTable;
                         System.out.println("\t#############################################################");
 
                         break;
+                    case "findAllPaginationSorted":
+
+                        result = personaRepository.findAllPaginationSorted(pagination,paginator.getSorted());
+                        System.out.println("\t#############################################################");
+                        System.out.println("  case \"findAllPagination\" result.size "+result.size());
+                        System.out.println("\t#############################################################");
+
+                        break;
                     case "findByNombrePagination":
                         result = personaRepository.findByNombrePagination(nombre, pagination);
                         System.out.println("\t#############################################################");
@@ -173,8 +195,11 @@ private DataTable dataTable;
                         System.out.println("\t#############################################################");
 
                         break;
+                
                     case "findByDeportePaginacion":
                         search.setPagination(pagination);
+                        search.setSorted(paginator.getSorted());
+                        
                         result = personaRepository.lookup(search);
                         System.out.println("\t#############################################################");
                         System.out.println("  case \"\"findByDeportePaginacion\"\" result.size "+result.size());
@@ -221,24 +246,35 @@ private DataTable dataTable;
     public String findAllPagination() {
         try {
 
-//                Bson filter
-//                    = DocumentUtil.createBsonBetweenDateWithoutHours(
-//                            "fechahora", startDate, "fechahora", endDate);
-//                
-//            Bson filter = new Document();
-//
-//            Document sort = new Document("idpersona", 1);
-//
-//            search = new Search();
-//            search.setFilter(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)));
+            paginator
+                    = new Paginator.Builder()
+                            .page(1)
+                            .sorted(new Sorted(new Document("idpersona",1)))
+                            .title("Todos")
+                            .name("findAllPagination")
+                            .build();
+
+        /**
+         * Limpiar los elementos
+         */
+        nombre="";
+        nombreDeporte="";
+            setFirstPageDataTable();
+        } catch (Exception e) {
+            FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : " + e.getLocalizedMessage());
+        }
+
+        return "";
+    }
+    public String findAllPaginationSorted() {
+        try {
 
             paginator
                     = new Paginator.Builder()
                             .page(1)
-                         //   .query(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)))
-                           .sorted(new Sorted(new Document("idpersona",1)))
+                            .sorted(new Sorted(new Document("idpersona",1)))
                             .title("Todos")
-                            .name("findAllPagination")
+                            .name("findAllPaginationSorted")
                             .build();
 
         /**
@@ -257,16 +293,6 @@ private DataTable dataTable;
     // <editor-fold defaultstate="collapsed" desc="String  findByNombrePaginacion()">
     public String findByNombrePaginacion() {
         try {
-            //           Bson filter
-//                    = DocumentUtil.createBsonBetweenDateWithoutHours(
-//                            "fechahora", startDate, "fechahora", endDate);
-//                
-//            Document sort = new Document("idpersona", 1);
-//            Bson filter = new Document("nombre", nombre);
-//
-//            search = new Search();
-//            search.setFilter(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)));
-
             paginator
                     = new Paginator.Builder()
                             .page(1)
@@ -289,15 +315,37 @@ private DataTable dataTable;
         return "";
     }
 // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="String  findByNombrePaginacionSorted()">
+    public String findByNombrePaginacionSorted() {
+        try {
+            paginator
+                    = new Paginator.Builder()
+                            .page(1)
+                          //  .query(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)))
+                            //.sort(new Document())
+                        .sorted(new Sorted(new Document("nombre",1)))
+                            .name("findByNombrePaginationSorted")
+                            .title("Nombre con Sorted")
+                            .build();
+
+                 /**
+         * Limpiar los elementos
+         */
+       // nombre="";
+        nombreDeporte="";
+          setFirstPageDataTable();
+        } catch (Exception e) {
+            FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : " + e.getLocalizedMessage());
+        }
+        return "";
+    }
+// </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="findByDeportePaginacion">
 
     public String findByDeportePaginacion() {
         try {
-            //           Bson filter
-//                    = DocumentUtil.createBsonBetweenDateWithoutHours(
-//                            "fechahora", startDate, "fechahora", endDate);
-//           
 
+            
 /**
  * Como se usa una busqueda en un documento embebido se usa el search..
 */
@@ -311,8 +359,6 @@ private DataTable dataTable;
             paginator
                     = new Paginator.Builder()
                             .page(1)
-//                            .query(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)))
-//                            .sort(new Document())
                              .sorted(new Sorted(new Document("idpersona",1)))
                             .name("findByDeportePaginacion")
                             .title("Deporte")
@@ -322,7 +368,6 @@ private DataTable dataTable;
          * Limpiar los elementos
          */
         nombre="";
-     //   nombreDeporte="";
              setFirstPageDataTable();
         } catch (Exception e) {
             FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : " + e.getLocalizedMessage());

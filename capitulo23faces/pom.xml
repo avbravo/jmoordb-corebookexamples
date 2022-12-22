@@ -20,7 +20,7 @@
         <final.name>capitulo23faces</final.name>
         <version.jmoordbcore>0.5</version.jmoordbcore>
         <version.jmoordbfaces>1.3</version.jmoordbfaces>
-        <version.jmoordbutilfaces>0.3</version.jmoordbutilfaces>
+        <version.jmoordbutilfaces>0.4</version.jmoordbutilfaces>
         
         
       
@@ -114,22 +114,18 @@
         </dependency>
         
 
-<!--        <dependency>
+       <dependency>
             <groupId>com.github.avbravo</groupId>
             <artifactId>jmoordbutilfaces</artifactId>
             <version>${version.jmoordbutilfaces}</version>
-        </dependency>-->
+        </dependency>
         
         
         
         <!--
         
         -->
-      <dependency>
-            <groupId>com.avbravo</groupId>
-            <artifactId>jmoordbutilfaces</artifactId>
-            <version>0.3.100</version>
-        </dependency>
+
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
