@@ -7,13 +7,13 @@ package com.jmoordbcore.capitulo23faces.faces;
 import com.avbravo.jmoordbutils.paginator.IPaginator;
 import com.avbravo.jmoordbutils.paginator.Paginator;
 import com.jmoordb.core.model.Pagination;
+import com.jmoordb.core.util.DocumentUtil;
 import com.avbravo.jmoordbutils.FacesUtil;
 import com.jmoordb.core.model.Search;
 import com.jmoordb.core.model.Sorted;
 import com.jmoordbcore.capitulo23faces.model.Pais;
 import com.jmoordbcore.capitulo23faces.repository.PaisRepository;
 import jakarta.annotation.PostConstruct;
-import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 import lombok.Data;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.primefaces.PrimeFaces;
@@ -40,7 +41,7 @@ import org.primefaces.model.SortMeta;
 @Named()
 @ViewScoped
 @Data
-public class PaisCrudFaces implements Serializable, IPaginator {
+public class PaisCrudFaces1 implements Serializable, IPaginator {
 private DataTable dataTable;
 
     private static final long serialVersionUID = 1L;
@@ -59,13 +60,6 @@ private DataTable dataTable;
 
 
     Search search = new Search();
-    
-    
-    /**
-     * Para los datatable
-     */
-      private Pais selectedPais;
-    private List<Pais> selectedPaises;
 
 // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="LazyDataModel>
@@ -98,7 +92,7 @@ private DataTable dataTable;
     /**
      * Creates a new instance of PaisFaces
      */
-    public PaisCrudFaces() {
+    public PaisCrudFaces1() {
 
     }
 
@@ -120,12 +114,12 @@ private DataTable dataTable;
                     case "findAllPagination":
 
                         totalRecords = paisRepository.count().intValue();
-                      
+                        System.out.println("\t(*)----->count...findAllPagination totalRecords " + totalRecords);
                         break;
                     case "findAllPaginationSorted":
 
                         totalRecords = paisRepository.count().intValue();
-                      
+                        System.out.println("\t(*)----->count...findAllPaginationSorted totalRecords " + totalRecords);
                         break;
                     case "findByNombrePaisPagination":
                         /**
@@ -133,46 +127,70 @@ private DataTable dataTable;
                          */
 
                         totalRecords = paisRepository.countByPais(nombrePais).intValue();
-                      
+                        System.out.println("\t(*)----->count...findByNombrePagination totalRecords " + totalRecords);
                         break;
                     
                   
                 }
 
-                
+                System.out.println("  \t[-----]totalRecords  [" + totalRecords + "]");
 
                 List<Paginator> list = processLazyDataModel(paginator, paginatorOld, offset, rowPage.get(), totalRecords, sortBy);
-                
+                System.out.println("__________________________________________________");
+                System.out.println("[]-->() from load processLazyDataMode ");
+                System.out.println("--{paginator}   :-->>  " + paginator.toString());
+                System.out.println("--{paginatorOld}:-->> " + paginatorOld.toString());
+                System.out.println("__________________________________________________");
                 paginator = list.get(0);
                 paginatorOld = list.get(1);
 
+                System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                System.out.println("[]-->() step new change load processLazyDataMode ");
+                System.out.println("--{paginator}   :-->>  " + paginator.toString());
+                System.out.println("--{paginatorOld}:-->> " + paginatorOld.toString());
+                System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
                 paginator.setNumberOfPage(numberOfPages(totalRecords, rowPage.get()));
+                System.out.println(" [] new NumberOfPage paginator.getNumberOfPage() " + paginator.getNumberOfPage());
 
                 Pagination pagination = new Pagination(paginator.getPage(), rowPage.get());
-                
+                System.out.println(" [] set to Pagination " + pagination.toString());
+//                System.out.println("-->Pagintation  paginator.getPage() ["+paginator.getPage()+"]  [paginator.getNumberOfPage()] " + paginator.getNumberOfPage());
+                System.out.println("-->Pagintation  paginator.getPage() [" + paginator.getPage() + "]  [paginator.getNumberOfPage()] " + paginator.getNumberOfPage());
+
                 List<Pais> result = new ArrayList<>();
                 switch ((paginator.getName())) {
 
                     case "findAllPagination":
 
                         result = paisRepository.findAllPagination(pagination);
-                
+                        System.out.println("\t#############################################################");
+                        System.out.println("  case \"findAllPagination\" result.size "+result.size());
+                        System.out.println("\t#############################################################");
+
                         break;
                     case "findAllPaginationSorted":
 
                         result = paisRepository.findAllPaginationSorted(pagination,paginator.getSorted());
-                
+                        System.out.println("\t??????????????????????????????????????????????????????????????");
+                        System.out.println("  case \"findAllPaginatioSorterdn\" result.size "+result.size());
+                        System.out.println(">>> paginator.getSorted() "+paginator.getSorted());
+                        System.out.println("\t??????????????????????????????????????????????????????????????");
+
                         break;
                     case "findByNombrePaisPagination":
                         result = paisRepository.findByPaisPagination(nombrePais, pagination);
-                
+                        System.out.println("\t#############################################################");
+                        System.out.println("  case \"\"findByNombrePagination\"\" result.size "+result.size());
+                        System.out.println("\t#############################################################");
+
                         break;
                 
                    
                 }
 
                 paisLazyDataModel.setRowCount(totalRecords);
-              
+                System.out.println(" \t[] paisLazyDataModel.getRowCount() RowCount " + paisLazyDataModel.getRowCount());
                 PrimeFaces.current().executeScript("setDataTableWithPageStart()");
 
 //      final DataTable d = (DataTable) FacesContext.getCurrentInstance().getViewRoot()
@@ -183,9 +201,9 @@ private DataTable dataTable;
 
             @Override
             public int count(Map<String, FilterMeta> map) {
-              
+                System.out.println("----------------------Metodo count");
                 Integer totalRecords2 = paisRepository.count().intValue();
-     
+                System.out.println("----------------Total records 2 = " + totalRecords2);
                 return totalRecords2;
             }
 
@@ -288,39 +306,4 @@ private DataTable dataTable;
     dataTable.setFirst(1);
 }
     // </editor-fold>
-    
-    
-     public void deletePais() {
-//        this.products.remove(this.selectedPais);
-//        this.selectedPaiss.remove(this.selectedPais);
-        this.selectedPais = null;
-        paisRepository.deleteByPk(selectedPais.getIdpais());
-        
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pais Removed"));
-        PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
-    }
-     
-     
-     
-     public String getDeleteButtonMessage() {
-        if (hasSelectedPaises()) {
-            int size = this.selectedPaises.size();
-            return size > 1 ? size + " products selected" : "1 product selected";
-        }
-
-        return "Delete";
-    }
-     
-       public boolean hasSelectedPaises() {
-        return this.selectedPaises != null && !this.selectedPaises.isEmpty();
-    }
-
-       
-         public void deleteSelectedPaises() {
-       // this.paises.removeAll(this.selectedPaises);
-        this.selectedPaises = null;
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Products Removed"));
-        PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
-        PrimeFaces.current().executeScript("PF('dtProducts').clearFilters()");
-    }
 }

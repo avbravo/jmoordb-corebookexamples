@@ -10,25 +10,11 @@
     </h:head>
     <h:body>
         <f:view contentType="text/html">
-
+             
             <h:form id="form" prependId="false">
-
-                <p:toolbar>
-                    <p:toolbarGroup>
- <p:commandButton id="delete-pais-button" value="#{paisCrudFaces.deleteButtonMessage}"
-                    icon="pi pi-trash" actionListener="#{paisCrudFaces.deleteSelectedPaises}"
-                    styleClass="ui-button-danger" disabled="#{!paisCrudFaces.hasSelectedPaises()}" update="@this">
-                    <p:confirm header="Confirmation" message="Delete the selected paises?"
-                        icon="pi pi-exclamation-triangle" />
-                </p:commandButton>
-                    </p:toolbarGroup>
-                    <p:toolbarGroup align="right">
-                        <p:fileUpload mode="simple" skinSimple="true" label="Import" chooseIcon="pi pi-download" />
-                        <p:commandButton value="Export" icon="pi pi-upload" styleClass="ui-button-help" ajax="false">
-                            <p:dataExporter type="pdf" target="dataTable" fileName="pais" />
-                        </p:commandButton>
-                    </p:toolbarGroup>
-                </p:toolbar>
+                
+              
+                
                 <h1>Pais Crud</h1>
                 <p:growl id="growl" />
                 <p:commandButton value="Index" action="index"/>
@@ -41,8 +27,21 @@
 
                             <p:panelGrid columns="3" id="panelGridSearch">
 
+                                <p:outputLabel value="Pais"/>
 
+                                <p:inputText value="#{paisCrudFaces.nombrePais}"/>
 
+                                <p:commandButton value="Buscar" action="#{paisCrudFaces.findByNombrePaisPaginacion()}"
+                                                 update=":form:dataTable, :form:growl, :form:panelGridSearch"
+                                                 styleClass="ui-button-outlined"/>
+                                
+                             
+                                
+                                
+                                
+
+                                
+                                
 
                                 <f:facet name="footer">
                                     <p:commandButton value="findAllPaginationSorted()"
@@ -85,10 +84,6 @@
 
                              reflow="true"
                              class="responsive-table display dataTable tablaajustada"
-                             rowKey="#{item.idpais}"
-
-                             selection="#{paisCrudFaces.selectedPaises}"
-                             rowSelectMode="add"
 
                              >
                     <f:facet name="paginatorTopLeft">
@@ -100,20 +95,7 @@
                     </f:facet>
 
                     <f:facet name="header">
-                        <div class="products-table-header">
-                            <span style="font-weight: bold">PAISES</span>
-                            <span class="filter-container ui-input-icon-left"> <i class="pi pi-search"></i>
-
-
-                                <p:inputText value="#{paisCrudFaces.nombrePais}"/>
-
-                                <p:commandButton value="Buscar" action="#{paisCrudFaces.findByNombrePaisPaginacion()}"
-                                                 update=":form:dataTable, :form:growl, :form:panelGridSearch"
-                                                 styleClass="ui-button-outlined"/>
-
-                            </span>
-                        </div>
-
+                        <p:outputLabel value=""/>
 
                     </f:facet>
 
@@ -123,9 +105,6 @@
                         <p:outputLabel value="Filtro = #{paisCrudFaces.paginator.title} "/>
 
                     </f:facet>
-                    
-                          <p:column selectionMode="multiple" exportable="false"></p:column>
-                          
 
                     <p:column headerText="idpais" sortable="true" sortBy="#{item.idpais}">
                         <p:outputLabel value="#{item.idpais}"/>
@@ -135,19 +114,10 @@
                         <p:outputLabel value="#{item.pais}"/>
 
                     </p:column>
-
+                  
                     <p:column headerText="fecha">
                         <p:outputLabel value="#{item.fecha}"/>
 
-                    </p:column>
-
-                    <p:column exportable="false">
-
-                        <p:commandButton class="ui-button-warning rounded-button" icon="pi pi-trash"
-                                         process="@this"
-                                         oncomplete="PF('deletePaisDialog').show()">
-                            <f:setPropertyActionListener value="#{item}" target="#{paisCrudFaces.selectedPais}" />
-                        </p:commandButton>
                     </p:column>
 
                 </p:dataTable>
@@ -155,23 +125,7 @@
 
             </h:form>
 
-            <h:form id="dialogs">
 
-                <p:confirmDialog widgetVar="deletePaisDialog" showEffect="fade" width="300"
-                                 message="Delete the pais?" header="Confirm" severity="warn">
-                    <p:commandButton value="Yes" icon="pi pi-check" actionListener="#{crudView.deletePais}"
-                                     process="@this" update=":form:delete-pais-button"
-                                     oncomplete="PF('deletePaisDialog').hide()" />
-                    <p:commandButton value="No" type="button" styleClass="ui-button-secondary" icon="pi pi-times"
-                                     onclick="PF('deletePaisDialog').hide()" />
-                </p:confirmDialog>
-
-                <p:confirmDialog global="true" showEffect="fade" width="300">
-                    <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-secondary"
-                                     icon="pi pi-times" />
-                </p:confirmDialog>
-            </h:form>
 
         </f:view>
 
