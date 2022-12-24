@@ -293,7 +293,7 @@ private DataTable dataTable;
      public void deletePais() {
 //        this.products.remove(this.selectedPais);
 //        this.selectedPaiss.remove(this.selectedPais);
-        this.selectedPais = null;
+    
         paisRepository.deleteByPk(selectedPais.getIdpais());
         
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pais Removed"));
@@ -319,8 +319,36 @@ private DataTable dataTable;
          public void deleteSelectedPaises() {
        // this.paises.removeAll(this.selectedPaises);
         this.selectedPaises = null;
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Products Removed"));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pais Removed"));
         PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
-        PrimeFaces.current().executeScript("PF('dtProducts').clearFilters()");
+        PrimeFaces.current().executeScript("PF('dtPais').clearFilters()");
+    }
+         
+         
+         public void savePais() {
+             System.out.println("==========================================================");
+             System.out.println("MEtodo:|-->>> savePais()===>>>>");
+             System.out.println("selectedPais) "+ selectedPais.toString());
+        if (this.selectedPais.getIdpais()== null) {
+//            this.selectedPais.setCode(UUID.randomUUID().toString().replaceAll("-", "").substring(0, 9));
+//            this.products.add(this.selectedPais);
+          if( paisRepository.save(selectedPais).isPresent()){
+              FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pais Added"));
+          }else{
+              FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("No se añadio Pais"));
+          }
+            
+        }
+        else {
+               if(  paisRepository.update(selectedPais)){
+                   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pais Updated"));
+               }else{
+                   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("No se actualizo pais"));
+               }
+            
+        }
+
+        PrimeFaces.current().executeScript("PF('managePaisDialog').hide()");
+        PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
     }
 }

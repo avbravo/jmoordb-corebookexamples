@@ -15,12 +15,12 @@
 
                 <p:toolbar>
                     <p:toolbarGroup>
- <p:commandButton id="delete-pais-button" value="#{paisCrudFaces.deleteButtonMessage}"
-                    icon="pi pi-trash" actionListener="#{paisCrudFaces.deleteSelectedPaises}"
-                    styleClass="ui-button-danger" disabled="#{!paisCrudFaces.hasSelectedPaises()}" update="@this">
-                    <p:confirm header="Confirmation" message="Delete the selected paises?"
-                        icon="pi pi-exclamation-triangle" />
-                </p:commandButton>
+                        <p:commandButton id="delete-pais-button" value="#{paisCrudFaces.deleteButtonMessage}"
+                                         icon="pi pi-trash" actionListener="#{paisCrudFaces.deleteSelectedPaises}"
+                                         styleClass="ui-button-danger" disabled="#{!paisCrudFaces.hasSelectedPaises()}" update="@this">
+                            <p:confirm header="Confirmation" message="Delete the selected paises?"
+                                       icon="pi pi-exclamation-triangle" />
+                        </p:commandButton>
                     </p:toolbarGroup>
                     <p:toolbarGroup align="right">
                         <p:fileUpload mode="simple" skinSimple="true" label="Import" chooseIcon="pi pi-download" />
@@ -123,9 +123,9 @@
                         <p:outputLabel value="Filtro = #{paisCrudFaces.paginator.title} "/>
 
                     </f:facet>
-                    
-                          <p:column selectionMode="multiple" exportable="false"></p:column>
-                          
+
+                    <!--<p:column selectionMode="multiple" exportable="false"></p:column>-->
+
 
                     <p:column headerText="idpais" sortable="true" sortBy="#{item.idpais}">
                         <p:outputLabel value="#{item.idpais}"/>
@@ -143,6 +143,13 @@
 
                     <p:column exportable="false">
 
+                        <p:commandButton icon="pi pi-pencil" update=":dialogs:manage-pais-content"
+                                         oncomplete="PF('managePaisDialog').show()"
+                                         styleClass="edit-button rounded-button ui-button-success" process="@this">
+                            <f:setPropertyActionListener value="#{item}" target="#{paisCrudFaces.selectedPais}" />
+                            <p:resetInput target=":dialogs:manage-pais-content" />
+                        </p:commandButton>
+
                         <p:commandButton class="ui-button-warning rounded-button" icon="pi pi-trash"
                                          process="@this"
                                          oncomplete="PF('deletePaisDialog').show()">
@@ -159,8 +166,8 @@
 
                 <p:confirmDialog widgetVar="deletePaisDialog" showEffect="fade" width="300"
                                  message="Delete the pais?" header="Confirm" severity="warn">
-                    <p:commandButton value="Yes" icon="pi pi-check" actionListener="#{crudView.deletePais}"
-                                     process="@this" update=":form:delete-pais-button"
+                    <p:commandButton value="Yes" icon="pi pi-check" actionListener="#{paisCrudFaces.deletePais}"
+                                     process="@this" update=":form:delete-pais-button, :form:dataTable"
                                      oncomplete="PF('deletePaisDialog').hide()" />
                     <p:commandButton value="No" type="button" styleClass="ui-button-secondary" icon="pi pi-times"
                                      onclick="PF('deletePaisDialog').hide()" />
@@ -171,6 +178,44 @@
                     <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-secondary"
                                      icon="pi pi-times" />
                 </p:confirmDialog>
+                
+                
+                
+                <p:dialog header="Pais Details" showEffect="fade" modal="true" widgetVar="managePaisDialog"
+            responsive="true">
+            <p:outputPanel id="manage-pais-content" class="ui-fluid">
+                <p:outputPanel rendered="#{not empty paisCrudFaces.selectedPais}">
+                    
+                    <div class="field">
+                        <p:outputLabel for="idpais">idpais</p:outputLabel>
+                        <p:inputText id="idpais" value="#{paisCrudFaces.selectedPais.idpais}" required="true" />
+                    </div>
+                    <div class="field">
+                        <p:outputLabel for="pais">Pais</p:outputLabel>
+                        <p:inputTextarea id="pais" value="#{paisCrudFaces.selectedPais.pais}" />
+                    </div>
+                   
+                    <div class="formgrid grid">
+                        <div class="field col">
+                            <p:outputLabel for="fecha">Fecha</p:outputLabel>
+                            <p:datePicker id="fecha" value="#{paisCrudFaces.selectedPais.fecha}" 
+                                />
+                        </div>
+                        <div class="field col">
+                            
+                        </div>
+                    </div>
+                </p:outputPanel>
+            </p:outputPanel>
+
+            <f:facet name="footer">
+                <p:commandButton value="Save" icon="pi pi-check" actionListener="#{paisCrudFaces.savePais}"
+                    update="manage-pais-content, :form:growl, :form:dataTable" process="manage-pais-content @this" />
+                <p:commandButton value="Cancel" icon="pi pi-times" onclick="PF('managePaisDialog').hide()"
+                    class="ui-button-secondary" type="button" />
+            </f:facet>
+        </p:dialog>
+
             </h:form>
 
         </f:view>
