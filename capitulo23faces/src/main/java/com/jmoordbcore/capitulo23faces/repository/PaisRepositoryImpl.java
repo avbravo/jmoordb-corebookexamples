@@ -683,15 +683,16 @@ Filters.lte("local",JmoordbCoreDateUtil.dateToLocalDateTimeLastHourOfDay(local))
             filter = Filters.eq("idpais",pais.getIdpais());
 
 
-
-   Bson updates = Updates.combine(
-                    Updates.set("idpais", pais.getIdpais()),
-                    Updates.set("pais", pais.getPais()),
-                    Updates.set("fecha",pais.getFecha()));
+//
+//   Bson updates = Updates.combine(
+//                    Updates.set("idpais", pais.getIdpais()),
+//                    Updates.set("pais", pais.getPais()),
+//                    Updates.set("fecha",pais.getFecha()));
                     //Updates.currentTimestamp("lastUpdated"));
 //             UpdateOptions options = new UpdateOptions().upsert(true);
              UpdateOptions options = new UpdateOptions().upsert(false);
-             UpdateResult result = collection.updateOne(filter, updates, options);
+//             UpdateResult result = collection.updateOne(filter, updates, options);
+             UpdateResult result = collection.updateOne(filter, paisSupplier.toUpdate(pais), options);
                     
        System.out.println("[][][] paso 3");
                if (result.getModifiedCount() > 0) {
@@ -704,6 +705,43 @@ Filters.lte("local",JmoordbCoreDateUtil.dateToLocalDateTimeLastHourOfDay(local))
          return Boolean.FALSE;
      }
 // </editor-fold>
+//    @Override
+//    public Boolean update(Pais pais) {
+//        try {
+//               MongoDatabase database = mongoClient.getDatabase(mongodbDatabase);
+//               MongoCollection<Document> collection = database.getCollection(mongodbCollection);
+//               if (!findByPk(pais.getIdpais()).isPresent()) { 
+//                   MessagesUtil.warning("Not found a record with that id");
+//                    return Boolean.FALSE;
+//               }
+//               System.out.println("[][][] paso 1");
+//               
+//               System.out.println("[][] pais.toString "+pais.toString());
+//               Bson filter = Filters.empty();
+//            filter = Filters.eq("idpais",pais.getIdpais());
+//
+//
+//
+//   Bson updates = Updates.combine(
+//                    Updates.set("idpais", pais.getIdpais()),
+//                    Updates.set("pais", pais.getPais()),
+//                    Updates.set("fecha",pais.getFecha()));
+//                    //Updates.currentTimestamp("lastUpdated"));
+////             UpdateOptions options = new UpdateOptions().upsert(true);
+//             UpdateOptions options = new UpdateOptions().upsert(false);
+//             UpdateResult result = collection.updateOne(filter, updates, options);
+//                    
+//       System.out.println("[][][] paso 3");
+//               if (result.getModifiedCount() > 0) {
+//                  return Boolean.TRUE;
+//               }
+//               System.out.println("[][][] paso 4");
+//         } catch (Exception e) {
+//              MessagesUtil.error(MessagesUtil.nameOfClassAndMethod() + " " + e.getLocalizedMessage());
+//         }
+//         return Boolean.FALSE;
+//     }
+//// </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="public List<Pais> findAllPaginationSorted(Pagination pagination, Sorted sorted)">
 
     @Override

@@ -27,6 +27,9 @@ import com.jmoordb.core.annotation.enumerations.TypeReferenced;
 import org.bson.Document;
 import com.jmoordbcore.capitulo23faces.model.Pais;
 import com.jmoordbcore.capitulo23faces.model.*;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+import org.bson.conversions.Bson;
 
 
 // </editor-fold>
@@ -86,5 +89,24 @@ public class PaisSupplier  implements Serializable{
          return documentList_;
      }
 // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc=" public Document toDocument (Pais pais) ">
+
+    public Bson toUpdate(Pais pais) {
+        Bson update_ = Filters.empty();
+        try {
+	 update_ = Updates.combine(
+                    Updates.set("idpais", pais.getIdpais()),
+                    Updates.set("pais", pais.getPais()),
+                    Updates.set("fecha",pais.getFecha()));
+                
+                  
+	
+
+         } catch (Exception e) {
+              MessagesUtil.error(MessagesUtil.nameOfClassAndMethod() + " " + e.getLocalizedMessage());
+         }
+         return update_;
+     }
 
 }

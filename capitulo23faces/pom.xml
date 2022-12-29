@@ -100,13 +100,18 @@
         <!--
         jmoordb-core
         -->
-        
+<!--        
       <dependency>
             <groupId>com.github.avbravo</groupId>
             <artifactId>jmoordb-core</artifactId>
             <version>${version.jmoordbcore}</version>
         </dependency>
-      
+      -->
+        <dependency>
+            <groupId>com.avbravo.jmoordb.core.processor</groupId>
+            <artifactId>jmoordb-core</artifactId>
+            <version>0.5.200</version>
+        </dependency>
         <dependency>
             <groupId>com.github.avbravo</groupId>
             <artifactId>jmoordbfaces</artifactId>
