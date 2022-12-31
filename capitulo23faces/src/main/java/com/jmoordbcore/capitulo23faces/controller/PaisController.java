@@ -10,6 +10,7 @@ import com.jmoordb.core.util.JmoordbCoreDateUtil;
 import com.jmoordb.core.util.JmoordbCoreUtil;
 import com.jmoordbcore.capitulo23faces.model.Pais;
 import com.jmoordbcore.capitulo23faces.repository.PaisRepository;
+import com.jmoordbcore.capitulo23faces.repository.PersonaRepository;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -59,6 +60,8 @@ public class PaisController {
     // <editor-fold defaultstate="collapsed" desc="Inject">
     @Inject
     PaisRepository paisRepository;
+    
+ 
 
     @Inject
     @Metric(name = "counter")

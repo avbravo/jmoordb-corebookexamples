@@ -11,7 +11,9 @@ import com.avbravo.jmoordbutils.FacesUtil;
 import com.jmoordb.core.model.Search;
 import com.jmoordb.core.model.Sorted;
 import com.jmoordbcore.capitulo23faces.model.Pais;
+import com.jmoordbcore.capitulo23faces.model.Persona;
 import com.jmoordbcore.capitulo23faces.repository.PaisRepository;
+import com.jmoordbcore.capitulo23faces.repository.PersonaRepository;
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
@@ -23,6 +25,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import lombok.Data;
 import org.bson.Document;
 import org.eclipse.microprofile.config.Config;
@@ -48,6 +51,9 @@ private DataTable dataTable;
     // <editor-fold defaultstate="collapsed" desc="@Inject">
     @Inject
     PaisRepository paisRepository;
+    
+       @Inject
+    PersonaRepository personaRepository;
 // </editor-fold>
 
 // <editor-fold defaultstate="collapsed" desc="Fields">
@@ -340,12 +346,27 @@ private DataTable dataTable;
             
         }
         else {
+            
+            
                if(  paisRepository.update(selectedPais)){
                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pais Updated"));
                }else{
                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("No se actualizo pais"));
                }
-            
+            System.out.println("****************--> Persona");
+            Optional<Persona> optional = personaRepository.findByPk(5L);
+            if(optional.isPresent()){
+            Persona persona = optional.get();
+                System.out.println("****************---> camiabdo pais");
+            persona.setPais(selectedPais);
+            if(personaRepository.update(persona)){
+                System.out.println("************* se acutalizo la persona");
+            }else{
+                System.out.println("no  ser actualizo la persona **************************");
+            }
+            }else{
+                System.out.println("************---> No hay persona con ese id ");
+            }
         }
 
         PrimeFaces.current().executeScript("PF('managePaisDialog').hide()");
