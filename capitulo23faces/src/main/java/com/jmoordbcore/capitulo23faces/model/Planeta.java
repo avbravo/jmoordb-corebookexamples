@@ -7,9 +7,9 @@ package com.jmoordbcore.capitulo23faces.model;
 import com.jmoordb.core.annotation.Column;
 import com.jmoordb.core.annotation.Embedded;
 import com.jmoordb.core.annotation.Entity;
-import com.jmoordb.core.annotation.Referenced;
+import com.jmoordb.core.annotation.Id;
 import com.jmoordb.core.annotation.enumerations.JakartaSource;
-import com.jmoordb.core.annotation.enumerations.TypeReferenced;
+import java.util.List;
 
 /**
  *
@@ -17,47 +17,56 @@ import com.jmoordb.core.annotation.enumerations.TypeReferenced;
  */
 @Entity(jakartaSource = JakartaSource.JAKARTA)
 public class Planeta {
-
+@Id
+private String idplaneta;
     @Column
-    private String nombre;
+    private String planeta;
     
-   @Referenced(from="oceano", localField = "idoceano",typeReferenced = TypeReferenced.REFERENCED)
-    private Oceano oceano;
+//   @Referenced(from="oceano", localField = "idoceano",typeReferenced = TypeReferenced.REFERENCED)
+//    private Oceano oceano;
 
 @Embedded 
-private Universo universo;
+private List<Universo> universo;
+@Embedded 
+private List<Especie> especie;
 
     public Planeta() {
     }
 
-    public Planeta(String nombre) {
-        this.nombre = nombre;
+    public String getIdplaneta() {
+        return idplaneta;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void setIdplaneta(String idplaneta) {
+        this.idplaneta = idplaneta;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getPlaneta() {
+        return planeta;
     }
 
-    public Universo getUniverso() {
+    public void setPlaneta(String planeta) {
+        this.planeta = planeta;
+    }
+
+    public List<Universo> getUniverso() {
         return universo;
     }
 
-    public void setUniverso(Universo universo) {
+    public void setUniverso(List<Universo> universo) {
         this.universo = universo;
     }
 
-   
-    public Oceano getOceano() {
-        return oceano;
+    public List<Especie> getEspecie() {
+        return especie;
     }
 
-    public void setOceano(Oceano oceano) {
-        this.oceano = oceano;
+    public void setEspecie(List<Especie> especie) {
+        this.especie = especie;
     }
+
+  
+   
     
     
     

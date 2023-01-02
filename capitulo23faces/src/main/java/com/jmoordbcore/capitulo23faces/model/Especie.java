@@ -51,6 +51,16 @@ public class Especie {
     public void setOceano(Oceano oceano) {
         this.oceano = oceano;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Especie{");
+        sb.append("nombre=").append(nombre);
+        sb.append(", oceano=").append(oceano.toString());
+        sb.append('}');
+        return sb.toString();
+    }
     
     
     

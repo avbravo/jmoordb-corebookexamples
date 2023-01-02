@@ -24,6 +24,13 @@ public class Oceano {
     public Oceano() {
     }
 
+    public Oceano(String idoceano, String oceano) {
+        this.idoceano = idoceano;
+        this.oceano = oceano;
+    }
+    
+    
+
     public String getIdoceano() {
         return idoceano;
     }
