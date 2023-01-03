@@ -18,7 +18,8 @@
         <microprofile.version>5.0</microprofile.version>
         <jmeter.version>2.6.0</jmeter.version>
         <final.name>capitulo23faces</final.name>
-        <version.jmoordbcore>0.5</version.jmoordbcore>
+        
+        <version.jmoordbcore>0.6</version.jmoordbcore>
         <version.jmoordbfaces>1.3</version.jmoordbfaces>
         <version.jmoordbutilfaces>0.4</version.jmoordbutilfaces>
         
@@ -100,18 +101,14 @@
         <!--
         jmoordb-core
         -->
-<!--        
+        
       <dependency>
             <groupId>com.github.avbravo</groupId>
             <artifactId>jmoordb-core</artifactId>
             <version>${version.jmoordbcore}</version>
         </dependency>
-      -->
-        <dependency>
-            <groupId>com.avbravo.jmoordb.core.processor</groupId>
-            <artifactId>jmoordb-core</artifactId>
-            <version>0.5.300</version>
-        </dependency>
+   
+   
         <dependency>
             <groupId>com.github.avbravo</groupId>
             <artifactId>jmoordbfaces</artifactId>
