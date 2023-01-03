@@ -11,6 +11,7 @@ import com.avbravo.jmoordbutils.FacesUtil;
 import com.jmoordb.core.model.Search;
 import com.jmoordb.core.model.Sorted;
 import com.jmoordbcore.capitulo23faces.model.Grupo;
+import com.jmoordbcore.capitulo23faces.model.Musica;
 import com.jmoordbcore.capitulo23faces.model.Pais;
 import com.jmoordbcore.capitulo23faces.model.Persona;
 import com.jmoordbcore.capitulo23faces.model.Planeta;
@@ -414,17 +415,24 @@ public class PaisCrudFaces implements Serializable, IPaginator {
             Optional<Persona> optional = personaRepository.findByPk(5L);
             if (optional.isPresent()) {
                 Persona persona = optional.get();
-                System.out.println("****************---> camiabdo pais");
+           
                 persona.setPais(selectedPais);
+                
+                persona.getMusica().add(new Musica("bolero"));
+
+                persona.getMusica().forEach(m -> {
+                    System.out.println(""+m.getEstilo());
+                });
+                
                 if (personaRepository.update(persona)) {
-                    System.out.println("************* se acutalizo la persona");
+     
                     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Persona Updated"));
                 } else {
                     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Persona No Updated"));
-                    System.out.println("no  ser actualizo la persona **************************");
+                   
                 }
             } else {
-                System.out.println("************---> No hay persona con ese id ");
+ FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("No hay persona con ese id"));
             }
        }
 
