@@ -8,7 +8,9 @@ import com.jmoordb.core.annotation.Column;
 import com.jmoordb.core.annotation.Embedded;
 import com.jmoordb.core.annotation.Entity;
 import com.jmoordb.core.annotation.Id;
+import com.jmoordb.core.annotation.Referenced;
 import com.jmoordb.core.annotation.enumerations.JakartaSource;
+import com.jmoordb.core.annotation.enumerations.TypeReferenced;
 import java.util.List;
 
 /**
@@ -17,22 +19,50 @@ import java.util.List;
  */
 @Entity(jakartaSource = JakartaSource.JAKARTA)
 public class Planeta {
-@Id
-private String idplaneta;
+
+    @Id
+    private String idplaneta;
     @Column
     private String planeta;
-    
+
 //   @Referenced(from="oceano", localField = "idoceano",typeReferenced = TypeReferenced.REFERENCED)
 //    private Oceano oceano;
+    @Embedded
+    private List<Universo> universo;
+    @Embedded
+    private List<Especie> especie;
 
-@Embedded 
-private List<Universo> universo;
-@Embedded 
-private List<Especie> especie;
-
+    
+    
+     @Referenced(from = "grupo",localField = "idgrupo",typeReferenced = TypeReferenced.REFERENCED)
+ private Grupo grupo;
+     
+     
+      @Referenced(from="zoo",localField = "idzoo",typeReferenced = TypeReferenced.REFERENCED)
+ private List<Zoo> zoo;
+      
     public Planeta() {
     }
 
+    public Grupo getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
+    }
+
+    public List<Zoo> getZoo() {
+        return zoo;
+    }
+
+    public void setZoo(List<Zoo> zoo) {
+        this.zoo = zoo;
+    }
+
+    
+    
+    
     public String getIdplaneta() {
         return idplaneta;
     }
@@ -65,9 +95,4 @@ private List<Especie> especie;
         this.especie = especie;
     }
 
-  
-   
-    
-    
-    
 }

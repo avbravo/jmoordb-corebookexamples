@@ -10,11 +10,11 @@ import com.jmoordb.core.model.Pagination;
 import com.avbravo.jmoordbutils.FacesUtil;
 import com.jmoordb.core.model.Search;
 import com.jmoordb.core.model.Sorted;
-import com.jmoordbcore.capitulo23faces.model.Especie;
-import com.jmoordbcore.capitulo23faces.model.Oceano;
+import com.jmoordbcore.capitulo23faces.model.Grupo;
 import com.jmoordbcore.capitulo23faces.model.Pais;
+import com.jmoordbcore.capitulo23faces.model.Persona;
 import com.jmoordbcore.capitulo23faces.model.Planeta;
-import com.jmoordbcore.capitulo23faces.model.Universo;
+import com.jmoordbcore.capitulo23faces.repository.GrupoRepository;
 import com.jmoordbcore.capitulo23faces.repository.PaisRepository;
 import com.jmoordbcore.capitulo23faces.repository.PersonaRepository;
 import com.jmoordbcore.capitulo23faces.repository.PlanetaRepository;
@@ -27,9 +27,9 @@ import jakarta.inject.Named;
 import jakarta.inject.Provider;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import lombok.Data;
 import org.bson.Document;
 import org.eclipse.microprofile.config.Config;
@@ -62,6 +62,10 @@ public class PaisCrudFaces implements Serializable, IPaginator {
 
     @Inject
     PlanetaRepository planetaRepository;
+    
+    
+    @Inject
+    GrupoRepository grupoRepository;
 // </editor-fold>
 
 // <editor-fold defaultstate="collapsed" desc="Fields">
@@ -357,19 +361,19 @@ public class PaisCrudFaces implements Serializable, IPaginator {
    * Estatus:
    */  
 //planeta.getUniverso().get(0).setNombre(selectedPais.getPais());
-planeta.getUniverso().add( new Universo(selectedPais.getPais()));
-
-            System.out.println("Cambiando el oceano");
-Especie especie = new Especie();
-especie.setNombre("especie "+ new Date());
-Oceano oceano = new Oceano("pacifico",
-  "Oceano  "+new Date());
-especie.setOceano(oceano);
-//planeta.getEspecie().get(0).setOceano(oceano);
-planeta.getEspecie().add(especie);
-
-            System.out.println("---Oceano a cambiar en especie es");
-            System.out.println("-->planeta.getEspecie().toString() [] ="+planeta.getEspecie().toString());
+//planeta.getUniverso().add( new Universo(selectedPais.getPais()));
+//
+//            System.out.println("Cambiando el oceano");
+//Especie especie = new Especie();
+//especie.setNombre("especie "+ new Date());
+//Oceano oceano = new Oceano("pacifico",
+//  "Oceano  "+new Date());
+//especie.setOceano(oceano);
+////planeta.getEspecie().get(0).setOceano(oceano);
+//planeta.getEspecie().add(especie);
+//
+//            System.out.println("---Oceano a cambiar en especie es");
+//            System.out.println("-->planeta.getEspecie().toString() [] ="+planeta.getEspecie().toString());
 
 //planeta.getUniverso().remove(new Universo("ejecutado Sun Jan 01 21:15:42 EST 2023"));
 /**
@@ -388,28 +392,41 @@ planeta.getEspecie().add(especie);
 //                    new Universo("FEcha "+new Date()));
            // planeta.setUniverso(universoList);
 //        
-            if(planetaRepository.update(planeta)){
-                   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Planeta Updated"));
-            }else{
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Planeta NOT Updated"));
-            }            
+
+
+/**
+ * Actualiza el grupo
+ */
+
+//List<Grupo> grupoList = grupoRepository.findAll();
+//planeta.setGrupo(grupoList.get(1));
+//            if(planetaRepository.update(planeta)){
+//                   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Planeta Updated"));
+//            }else{
+//                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Planeta NOT Updated"));
+//            }     
             
+            
+                 
+//            
             System.out.println("[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]");
-//            System.out.println("****************--> Persona");
-//            Optional<Persona> optional = personaRepository.findByPk(5L);
-//            if (optional.isPresent()) {
-//                Persona persona = optional.get();
-//                System.out.println("****************---> camiabdo pais");
-//                persona.setPais(selectedPais);
-//                if (personaRepository.update(persona)) {
-//                    System.out.println("************* se acutalizo la persona");
-//                } else {
-//                    System.out.println("no  ser actualizo la persona **************************");
-//                }
-//            } else {
-//                System.out.println("************---> No hay persona con ese id ");
-//            }
-        }
+            System.out.println("****************--> Persona");
+            Optional<Persona> optional = personaRepository.findByPk(5L);
+            if (optional.isPresent()) {
+                Persona persona = optional.get();
+                System.out.println("****************---> camiabdo pais");
+                persona.setPais(selectedPais);
+                if (personaRepository.update(persona)) {
+                    System.out.println("************* se acutalizo la persona");
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Persona Updated"));
+                } else {
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Persona No Updated"));
+                    System.out.println("no  ser actualizo la persona **************************");
+                }
+            } else {
+                System.out.println("************---> No hay persona con ese id ");
+            }
+       }
 
         PrimeFaces.current().executeScript("PF('managePaisDialog').hide()");
         PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
