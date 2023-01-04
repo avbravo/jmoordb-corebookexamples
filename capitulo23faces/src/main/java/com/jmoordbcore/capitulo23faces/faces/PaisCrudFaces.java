@@ -322,7 +322,7 @@ public class PaisCrudFaces implements Serializable, IPaginator {
     public void deleteSelectedPaises() {
         this.selectedPaises = null;
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pais Removed"));
-        PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
+        PrimeFaces.current().ajax().update("form:messages", "form:dt-pais");
         PrimeFaces.current().executeScript("PF('dtPais').clearFilters()");
     }
 
