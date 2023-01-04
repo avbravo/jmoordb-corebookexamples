@@ -299,8 +299,6 @@ public class PaisCrudFaces implements Serializable, IPaginator {
     // </editor-fold>
 
     public void deletePais() {
-//        this.products.remove(this.selectedPais);
-//        this.selectedPaiss.remove(this.selectedPais);
 
         paisRepository.deleteByPk(selectedPais.getIdpais());
 
@@ -322,7 +320,6 @@ public class PaisCrudFaces implements Serializable, IPaginator {
     }
 
     public void deleteSelectedPaises() {
-        // this.paises.removeAll(this.selectedPaises);
         this.selectedPaises = null;
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pais Removed"));
         PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
@@ -330,12 +327,9 @@ public class PaisCrudFaces implements Serializable, IPaginator {
     }
 
     public void savePais() {
-        System.out.println("==========================================================");
-        System.out.println("MEtodo:|-->>> savePais()===>>>>");
-        System.out.println("selectedPais) " + selectedPais.toString());
+     
         if (this.selectedPais.getIdpais() == null) {
 //            this.selectedPais.setCode(UUID.randomUUID().toString().replaceAll("-", "").substring(0, 9));
-//            this.products.add(this.selectedPais);
             if (paisRepository.save(selectedPais).isPresent()) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pais Added"));
             } else {
@@ -349,94 +343,18 @@ public class PaisCrudFaces implements Serializable, IPaginator {
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("No se actualizo pais"));
             }
-            System.out.println("[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]");
             Planeta planeta = planetaRepository.findByIdplaneta("marte").get();
-            /*
-            caso 1-1
-            */
+          
 
-//    planeta.setUniverso(new Universo("Cambiado a "+selectedPais.getPais()));
-  /**
-   * caso 1-2
-   * Actauliza el primer elemento el segbundo lo deja intancto
-   * Estatus:
-   */  
-//planeta.getUniverso().get(0).setNombre(selectedPais.getPais());
-//planeta.getUniverso().add( new Universo(selectedPais.getPais()));
-//
-//            System.out.println("Cambiando el oceano");
-//Especie especie = new Especie();
-//especie.setNombre("especie "+ new Date());
-//Oceano oceano = new Oceano("pacifico",
-//  "Oceano  "+new Date());
-//especie.setOceano(oceano);
-////planeta.getEspecie().get(0).setOceano(oceano);
-//planeta.getEspecie().add(especie);
-//
-//            System.out.println("---Oceano a cambiar en especie es");
-//            System.out.println("-->planeta.getEspecie().toString() [] ="+planeta.getEspecie().toString());
-
-//planeta.getUniverso().remove(new Universo("ejecutado Sun Jan 01 21:15:42 EST 2023"));
-/**
- * +
- */
-
-//planeta.getUniverso().removeAll(planeta.getUniverso());
- /**
-   * caso 1-2
-   * Crea una nueva lista
-   * Estatus: no probado
-   */  
-
-//                    new Universo("FEcha "+new Date()));
-//    List<Universo> universoList = Arrays.asList(new Universo(selectedPais.getPais()),
-//                    new Universo("FEcha "+new Date()));
-           // planeta.setUniverso(universoList);
-//        
-
-
-/**
- * Actualiza el grupo
- */
-
-//List<Grupo> grupoList = grupoRepository.findAll();
-//planeta.setGrupo(grupoList.get(1));
-//            if(planetaRepository.update(planeta)){
-//                   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Planeta Updated"));
-//            }else{
-//                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Planeta NOT Updated"));
-//            }     
-            
-            
-                 
-//            
-            System.out.println("[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]");
-            System.out.println("****************--> Persona");
-            Optional<Persona> optional = personaRepository.findByPk(5L);
-            if (optional.isPresent()) {
-                Persona persona = optional.get();
-           
-                persona.setPais(selectedPais);
-                
-                persona.getMusica().add(new Musica("bolero"));
-
-                persona.getMusica().forEach(m -> {
-                    System.out.println(""+m.getEstilo());
-                });
-                
-                if (personaRepository.update(persona)) {
-     
-                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Persona Updated"));
-                } else {
-                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Persona No Updated"));
-                   
-                }
-            } else {
- FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("No hay persona con ese id"));
-            }
        }
 
         PrimeFaces.current().executeScript("PF('managePaisDialog').hide()");
         PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
+    }
+    
+    
+
+    public void openNew() {
+        this.selectedPais = new Pais();
     }
 }
