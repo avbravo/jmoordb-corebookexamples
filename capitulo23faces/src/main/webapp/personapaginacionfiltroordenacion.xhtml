@@ -33,19 +33,28 @@
 
                                 <p:commandButton value="Buscar" action="#{personaFilterPaginationFaces.findByNombrePaginacion()}"
                                                  update=":form:dataTable, :form:growl, :form:panelGridSearch"
-                                                 styleClass="ui-button-outlined"/>
+                                                 
+                                                 icon="pi pi-search" styleClass="rounded-button ui-button-success" 
+                                                 />
                                 
-                             
+                               
                                 
                                 
                                 
 
-                                <p:outputLabel value="Nombre de Deporte Referenciado como embebido"/>
+                                <p:outputLabel value="Nombre de Deporte (Referenciado)"/>
                                 <p:inputText value="#{personaFilterPaginationFaces.nombreDeporte}"/>
 
                                 <p:commandButton value="Buscar" action="#{personaFilterPaginationFaces.findByDeportePaginacion()}"
                                                  update=":form:dataTable, :form:growl,:form:panelGridSearch"
-                                                 styleClass="ui-button-outlined"/>
+                                                 icon="pi pi-search" styleClass="rounded-button ui-button-outlined"/>
+                            
+                                <p:outputLabel value="Nombre de Pais (Referenciado)"/>
+                                <p:inputText value="#{personaFilterPaginationFaces.nombrePais}"/>
+
+                                <p:commandButton value="Buscar" action="#{personaFilterPaginationFaces.findByPaisPaginacion()}"
+                                                 update=":form:dataTable, :form:growl,:form:panelGridSearch"
+                                             icon="pi pi-search" styleClass="rounded-button ui-button-outlined"/>
 
                                 
                                
@@ -56,7 +65,7 @@
                                     <p:commandButton value="findAllPaginationSorted()"
                                                      action="#{personaFilterPaginationFaces.findAllPaginationSorted()}"
                                                      update=":form:dataTable, :form:growl, :form:panelGridSearch"
-                                                     styleClass="ui-button-outlined"/>
+                                                     styleClass="ui-button-success"/>
                                     <p:commandButton value="findAllPagination()"
                                                      action="#{personaFilterPaginationFaces.findAllPagination()}"
                                                      update=":form:dataTable, :form:growl, :form:panelGridSearch"

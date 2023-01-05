@@ -28,20 +28,16 @@ public class Persona {
 
     @Embedded
     private Deporte deporte;
-    
+
     @Embedded
     private List<Musica> musica;
 
-   @Referenced(from = "pais", localField = "idpais", typeReferenced = TypeReferenced.REFERENCED)
+    @Referenced(from = "pais", localField = "idpais", typeReferenced = TypeReferenced.REFERENCED)
+
     private Pais pais;
 
     @Referenced(from = "animal", localField = "idanimal", typeReferenced = TypeReferenced.REFERENCED)
     private List<Animal> animal;
-    
-    
-    
-    
-    
 
     public Persona() {
     }
@@ -55,10 +51,6 @@ public class Persona {
         this.animal = animal;
     }
 
-    
-    
-    
-    
     public List<Animal> getAnimal() {
         return animal;
     }
@@ -67,7 +59,6 @@ public class Persona {
         this.animal = animal;
     }
 
-  
     public List<Musica> getMusica() {
         return musica;
     }
@@ -75,14 +66,7 @@ public class Persona {
     public void setMusica(List<Musica> musica) {
         this.musica = musica;
     }
-    
-    
-    
-    
 
-   
-
-   
     public Long getIdpersona() {
         return idpersona;
     }
@@ -128,9 +112,5 @@ public class Persona {
         sb.append('}');
         return sb.toString();
     }
-
-   
-
-   
 
 }

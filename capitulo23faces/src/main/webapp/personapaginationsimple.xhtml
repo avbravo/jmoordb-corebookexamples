@@ -15,12 +15,8 @@
                 <p:commandButton value="Index" action="index"/>
      
 
-
-
-
                 <div></div>
                 <p:dataTable var="item" value="#{personaPaginationSimpleFaces.personaLazyDataModel}"
-
 
                              id="dataTable"
                              widgetVar="widgetVardataTable"
@@ -28,7 +24,7 @@
                              lazy="true"
                              paginator="true"
                              rows="#{personaPaginationSimpleFaces.rowPage.get()}"
-                             paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                             
                              paginatorPosition="both"
 
                              reflow="true"
@@ -49,9 +45,9 @@
                     </f:facet>
 
                     <f:facet name="footer">
-                        <p:outputLabel value="#{app['label.totalRecords']} (#{personaPaginationSimpleFaces.paginator.totalRecords})"/>
+                        <p:outputLabel value="Total doc. = (#{personaPaginationSimpleFaces.paginator.totalRecords})"/>
                         <p:outputLabel value="|"/>
-                        <p:outputLabel value="#{app['label.filtro']} = #{personaPaginationSimpleFaces.paginator.title} "/>
+                        <p:outputLabel value="Filtro = #{personaPaginationSimpleFaces.paginator.title} "/>
 
                     </f:facet>
 

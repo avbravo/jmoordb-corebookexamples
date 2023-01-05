@@ -50,7 +50,7 @@ import org.primefaces.model.SortMeta;
 @Data
 public class PaisCrudFaces implements Serializable, IPaginator {
 
-    private DataTable dataTable;
+
 
     private static final long serialVersionUID = 1L;
 
@@ -70,6 +70,9 @@ public class PaisCrudFaces implements Serializable, IPaginator {
 // </editor-fold>
 
 // <editor-fold defaultstate="collapsed" desc="Fields">
+    
+        private DataTable dataTable;
+     Integer totalRecords = 0;
     List<Pais> paisList = new ArrayList<>();
 
     private String nombrePais;
@@ -129,25 +132,16 @@ public class PaisCrudFaces implements Serializable, IPaginator {
             @Override
             public List<Pais> load(int offset, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
         
-                Integer totalRecords = 0;
+             
 
                 switch (paginator.getName()) {
-
                     case "findAllPagination":
-
                         totalRecords = paisRepository.count().intValue();
-
                         break;
                     case "findAllPaginationSorted":
-
                         totalRecords = paisRepository.count().intValue();
-
                         break;
                     case "findByNombrePaisPagination":
-                        /**
-                         * Cuando es una atributo normela
-                         */
-
                         totalRecords = paisRepository.countByPais(nombrePais).intValue();
 
                         break;
@@ -165,24 +159,17 @@ public class PaisCrudFaces implements Serializable, IPaginator {
 
                 List<Pais> result = new ArrayList<>();
                 switch ((paginator.getName())) {
-
                     case "findAllPagination":
-
                         result = paisRepository.findAllPagination(pagination);
-
                         break;
                     case "findAllPaginationSorted":
-
                         result = paisRepository.findAllPaginationSorted(pagination, paginator.getSorted());
-
                         break;
                     case "findByNombrePaisPagination":
                         result = paisRepository.findByPaisPagination(nombrePais, pagination);
-
                         break;
 
                 }
-
                 paisLazyDataModel.setRowCount(totalRecords);
 
                 PrimeFaces.current().executeScript("setDataTableWithPageStart()");
@@ -194,9 +181,9 @@ public class PaisCrudFaces implements Serializable, IPaginator {
             @Override
             public int count(Map<String, FilterMeta> map) {
 
-                Integer totalRecords2 = paisRepository.count().intValue();
+    
 
-                return totalRecords2;
+                return totalRecords;
             }
 
         };
@@ -264,8 +251,6 @@ public class PaisCrudFaces implements Serializable, IPaginator {
             paginator
                     = new Paginator.Builder()
                             .page(1)
-                            //  .query(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)))
-                            //.sort(new Document())
                             .sorted(new Sorted(new Document("idpais", 1)))
                             .name("findByNombrePaisPagination")
                             .title("Pais")

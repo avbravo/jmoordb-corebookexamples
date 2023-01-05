@@ -42,7 +42,7 @@ import org.primefaces.model.SortMeta;
 public class PersonaPaginationSimpleFaces implements Serializable, IPaginator {
 
     private static final long serialVersionUID = 1L;
-
+Integer totalRecords=0;
     // <editor-fold defaultstate="collapsed" desc="@Inject">
     @Inject
     PersonaRepository personaRepository;
@@ -50,11 +50,8 @@ public class PersonaPaginationSimpleFaces implements Serializable, IPaginator {
 
 // <editor-fold defaultstate="collapsed" desc="Fields">
     List<Persona> personaList = new ArrayList<>();
-    
-   
-        
-// </editor-fold>
 
+// </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="LazyDataModel>
     private LazyDataModel<Persona> personaLazyDataModel;
 // </editor-fold>
@@ -98,23 +95,22 @@ public class PersonaPaginationSimpleFaces implements Serializable, IPaginator {
         this.personaLazyDataModel = new LazyDataModel<Persona>() {
             @Override
             public List<Persona> load(int offset, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
-               
-                Integer totalRecords = personaRepository.count().intValue();
-               
+
+//                Integer totalRecords = personaRepository.count().intValue();
+                 totalRecords = personaRepository.count().intValue();
 
                 List<Paginator> list = processLazyDataModel(paginator, paginatorOld, offset, rowPage.get(), totalRecords, sortBy);
-               
+
                 paginator = list.get(0);
                 paginatorOld = list.get(1);
                 paginator.setNumberOfPage(numberOfPages(totalRecords, rowPage.get()));
-               
 
                 Pagination pagination = new Pagination(paginator.getPage(), rowPage.get());
-               
+
                 List<Persona> result = personaRepository.findAllPagination(pagination);
-               
+
                 personaLazyDataModel.setRowCount(totalRecords);
-              
+
                 PrimeFaces.current().executeScript("setDataTableWithPageStart()");
 
                 return result;
@@ -122,14 +118,13 @@ public class PersonaPaginationSimpleFaces implements Serializable, IPaginator {
 
             @Override
             public int count(Map<String, FilterMeta> map) {
-              
-                Integer totalRecords2 = personaRepository.count().intValue();
-              
-                return totalRecords2;
+
+//                Integer totalRecords2 = personaRepository.count().intValue();
+
+                return totalRecords;
             }
 
         };
-
 
     }
 // </editor-fold>
@@ -137,24 +132,17 @@ public class PersonaPaginationSimpleFaces implements Serializable, IPaginator {
     public String findAllPagination() {
         try {
 
-
-              
-//            Bson filter = new Document();
-//
-//            Document sort = new Document("idpersona", -1);
-            paginator
-                    = new Paginator.Builder()
+            paginator = new Paginator.Builder()
                             .page(1)
-                               .sorted(new Sorted(new Document("idpersona",1)))
-                            .title("Filtro basico")
+                            .sorted(new Sorted(new Document("idpersona", 1)))
+                            .title("Filtro básico")
                             .build();
 
         } catch (Exception e) {
-            System.out.println("findAll() " + e.getLocalizedMessage());
+            System.out.println("findAllPagination() " + e.getLocalizedMessage());
         }
 
         return "";
     }
 
-  
 }

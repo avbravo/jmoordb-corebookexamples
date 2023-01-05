@@ -42,7 +42,6 @@ import org.primefaces.model.SortMeta;
 @ViewScoped
 @Data
 public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
-private DataTable dataTable;
 
     private static final long serialVersionUID = 1L;
 
@@ -52,12 +51,14 @@ private DataTable dataTable;
 // </editor-fold>
 
 // <editor-fold defaultstate="collapsed" desc="Fields">
+    private DataTable dataTable;
+    Integer totalRecords = 0;
     List<Persona> personaList = new ArrayList<>();
 
     private String nombre;
 
-//    private Deporte deporte;
     private String nombreDeporte = "";
+    private String nombrePais = "";
 
     Search search = new Search();
 
@@ -100,26 +101,24 @@ private DataTable dataTable;
     @PostConstruct
     public void init() {
 
-      //  findAllPagination();
-       findAllPaginationSorted();
+        //  findAllPagination();
+        findAllPaginationSorted();
 
         this.personaLazyDataModel = new LazyDataModel<Persona>() {
             @Override
             public List<Persona> load(int offset, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
-    
-                Integer totalRecords = 0;
 
                 switch (paginator.getName()) {
 
                     case "findAllPagination":
 
                         totalRecords = personaRepository.count().intValue();
-                        System.out.println("\t(*)----->count...findAllPagination totalRecords " + totalRecords);
+
                         break;
                     case "findAllPaginationSorted":
 
                         totalRecords = personaRepository.count().intValue();
-                        System.out.println("\t(*)----->count...findAllPaginationSorted totalRecords " + totalRecords);
+
                         break;
                     case "findByNombrePagination":
                         /**
@@ -127,7 +126,7 @@ private DataTable dataTable;
                          */
 
                         totalRecords = personaRepository.countByNombre(nombre).intValue();
-                        System.out.println("\t(*)----->count...findByNombrePagination totalRecords " + totalRecords);
+
                         break;
                     case "findByNombrePaginationSorted":
                         /**
@@ -135,27 +134,28 @@ private DataTable dataTable;
                          */
 
                         totalRecords = personaRepository.countByNombre(nombre).intValue();
-                        
+
                         break;
                     case "findByDeportePaginacion":
 
                         totalRecords = personaRepository.count(search).intValue();
-                      
+
+                        break;
+                    case "findByPaisPaginacion":
+
+                        totalRecords = personaRepository.count(search).intValue();
+
                         break;
                 }
 
-                System.out.println("  \t[-----]totalRecords  [" + totalRecords + "]");
-
                 List<Paginator> list = processLazyDataModel(paginator, paginatorOld, offset, rowPage.get(), totalRecords, sortBy);
-                
+
                 paginator = list.get(0);
                 paginatorOld = list.get(1);
 
                 paginator.setNumberOfPage(numberOfPages(totalRecords, rowPage.get()));
-                
 
                 Pagination pagination = new Pagination(paginator.getPage(), rowPage.get());
-                
 
                 List<Persona> result = new ArrayList<>();
                 switch ((paginator.getName())) {
@@ -163,30 +163,36 @@ private DataTable dataTable;
                     case "findAllPagination":
 
                         result = personaRepository.findAllPagination(pagination);
-                
+
                         break;
                     case "findAllPaginationSorted":
 
-                        result = personaRepository.findAllPaginationSorted(pagination,paginator.getSorted());
-                
+                        result = personaRepository.findAllPaginationSorted(pagination, paginator.getSorted());
+
                         break;
                     case "findByNombrePagination":
                         result = personaRepository.findByNombrePagination(nombre, pagination);
-                
+
                         break;
-                
+
                     case "findByDeportePaginacion":
                         search.setPagination(pagination);
                         search.setSorted(paginator.getSorted());
-                        
+
                         result = personaRepository.lookup(search);
-                       
+
+                        break;
+                    case "findByPaisPaginacion":
+                        search.setPagination(pagination);
+                        search.setSorted(paginator.getSorted());
+
+                        result = personaRepository.lookup(search);
 
                         break;
                 }
 
                 personaLazyDataModel.setRowCount(totalRecords);
-                
+
                 PrimeFaces.current().executeScript("setDataTableWithPageStart()");
 
                 return result;
@@ -194,14 +200,11 @@ private DataTable dataTable;
 
             @Override
             public int count(Map<String, FilterMeta> map) {
-                System.out.println("----------------------Metodo count");
-                Integer totalRecords2 = personaRepository.count().intValue();
-                System.out.println("----------------Total records 2 = " + totalRecords2);
-                return totalRecords2;
+
+                return totalRecords;
             }
 
         };
-
 
     }
 // </editor-fold>
@@ -212,16 +215,16 @@ private DataTable dataTable;
             paginator
                     = new Paginator.Builder()
                             .page(1)
-                            .sorted(new Sorted(new Document("idpersona",1)))
+                            .sorted(new Sorted(new Document("idpersona", 1)))
                             .title("Todos")
                             .name("findAllPagination")
                             .build();
 
-        /**
-         * Limpiar los elementos
-         */
-        nombre="";
-        nombreDeporte="";
+            /**
+             * Limpiar los elementos
+             */
+            nombre = "";
+            nombreDeporte = "";
             setFirstPageDataTable();
         } catch (Exception e) {
             FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : " + e.getLocalizedMessage());
@@ -229,22 +232,23 @@ private DataTable dataTable;
 
         return "";
     }
+
     public String findAllPaginationSorted() {
         try {
 
             paginator
                     = new Paginator.Builder()
                             .page(1)
-                            .sorted(new Sorted(new Document("idpersona",1)))
+                            .sorted(new Sorted(new Document("idpersona", 1)))
                             .title("Todos")
                             .name("findAllPaginationSorted")
                             .build();
 
-        /**
-         * Limpiar los elementos
-         */
-        nombre="";
-        nombreDeporte="";
+            /**
+             * Limpiar los elementos
+             */
+            nombre = "";
+            nombreDeporte = "";
             setFirstPageDataTable();
         } catch (Exception e) {
             FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : " + e.getLocalizedMessage());
@@ -259,19 +263,13 @@ private DataTable dataTable;
             paginator
                     = new Paginator.Builder()
                             .page(1)
-                          //  .query(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)))
-                            //.sort(new Document())
-                        .sorted(new Sorted(new Document("idpersona",1)))
+                            .sorted(new Sorted(new Document("idpersona", 1)))
                             .name("findByNombrePagination")
                             .title("Nombre")
                             .build();
 
-                 /**
-         * Limpiar los elementos
-         */
-       // nombre="";
-        nombreDeporte="";
-          setFirstPageDataTable();
+            nombreDeporte = "";
+            setFirstPageDataTable();
         } catch (Exception e) {
             FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : " + e.getLocalizedMessage());
         }
@@ -279,39 +277,39 @@ private DataTable dataTable;
     }
 // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="String  findByNombrePaginacionSorted()">
+
     public String findByNombrePaginacionSorted() {
         try {
             paginator
                     = new Paginator.Builder()
                             .page(1)
-                          //  .query(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)))
-                            //.sort(new Document())
-                        .sorted(new Sorted(new Document("nombre",1)))
+                            .sorted(new Sorted(new Document("nombre", 1)))
                             .name("findByNombrePaginationSorted")
                             .title("Nombre con Sorted")
                             .build();
 
-                 /**
-         * Limpiar los elementos
-         */
-       // nombre="";
-        nombreDeporte="";
-          setFirstPageDataTable();
+            /**
+             * Limpiar los elementos
+             */
+            // nombre="";
+            nombreDeporte = "";
+            nombrePais = "";
+            setFirstPageDataTable();
         } catch (Exception e) {
             FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : " + e.getLocalizedMessage());
         }
         return "";
     }
 // </editor-fold>
-    // <editor-fold defaultstate="collapsed" desc="findByDeportePaginacion">
+    // <editor-fold defaultstate="collapsed" desc="findByDeportePaginacion()">
 
     public String findByDeportePaginacion() {
         try {
 
-            
-/**
- * Como se usa una busqueda en un documento embebido se usa el search..
-*/
+            /**
+             * Como se usa una busqueda en un documento embebido se usa el
+             * search..
+             */
             Bson filter = new Document("deporte.deporte", nombreDeporte);
 
             Document sort = new Document("idpersona", 1);
@@ -322,29 +320,64 @@ private DataTable dataTable;
             paginator
                     = new Paginator.Builder()
                             .page(1)
-                             .sorted(new Sorted(new Document("idpersona",1)))
+                            .sorted(new Sorted(new Document("idpersona", 1)))
                             .name("findByDeportePaginacion")
                             .title("Deporte")
                             .build();
 
-                 /**
-         * Limpiar los elementos
-         */
-        nombre="";
-             setFirstPageDataTable();
+            /**
+             * Limpiar los elementos
+             */
+            nombre = "";
+            nombrePais = "";
+            setFirstPageDataTable();
         } catch (Exception e) {
             FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : " + e.getLocalizedMessage());
         }
         return "";
     }
 // </editor-fold>
-    
-    
-    
-   // <editor-fold defaultstate="collapsed" desc="setFirstPageDataTable()">
+
+    // <editor-fold defaultstate="collapsed" desc="findByDeportePaginacion()">
+    public String findByPaisPaginacion() {
+        try {
+
+            /**
+             * Como se usa una busqueda en un documento embebido se usa el
+             * search..
+             */
+            Bson filter = new Document("pais.pais", nombrePais);
+
+            Document sort = new Document("idpersona", 1);
+
+            search.setFilter(DocumentUtil.jsonToDocument(DocumentUtil.bsonToJson(filter)));
+            search.setPagination(new Pagination(1, rowPage.get()));
+            search.setSorted(new Sorted(sort));
+            paginator
+                    = new Paginator.Builder()
+                            .page(1)
+                            .sorted(new Sorted(sort))
+                            .name("findByPaisPaginacion")
+                            .title("Pais")
+                            .build();
+
+            /**
+             * Limpiar los elementos
+             */
+            nombre = "";
+            nombreDeporte = "";
+            setFirstPageDataTable();
+        } catch (Exception e) {
+            FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : " + e.getLocalizedMessage());
+        }
+        return "";
+    }
+// </editor-fold>
+
+    // <editor-fold defaultstate="collapsed" desc="setFirstPageDataTable()">
     public void setFirstPageDataTable() {
-    
-    dataTable.setFirst(1);
-}
+
+        dataTable.setFirst(1);
+    }
     // </editor-fold>
 }
