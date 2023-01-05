@@ -138,13 +138,10 @@ public class PersonaPaginationSimpleFaces implements Serializable, IPaginator {
         try {
 
 
-//                Bson filter
-//                    = DocumentUtil.createBsonBetweenDateWithoutHours(
-//                            "fechahora", startDate, "fechahora", endDate);
-//                
-            Bson filter = new Document();
-
-            Document sort = new Document("idpersona", -1);
+              
+//            Bson filter = new Document();
+//
+//            Document sort = new Document("idpersona", -1);
             paginator
                     = new Paginator.Builder()
                             .page(1)

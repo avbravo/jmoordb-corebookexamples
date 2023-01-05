@@ -4,6 +4,7 @@
  */
 package com.jmoordbcore.capitulo23faces.faces;
 
+import com.avbravo.jmoordbutils.paginator.Paginator;
 import com.jmoordb.core.model.Pagination;
 import com.jmoordb.core.util.JmoordbCorePageUtil;
 import com.jmoordb.core.util.JmoordbCoreUtil;
@@ -49,9 +50,9 @@ public class PersonaAllFaces implements Serializable {
 
     public String findAll() {
         try {
-           
 
             personaList = personaRepository.findAll();
+
          
         } catch (Exception e) {
             System.out.println("findAll() " + e.getLocalizedMessage());
