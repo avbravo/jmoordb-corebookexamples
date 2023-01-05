@@ -106,7 +106,7 @@ private DataTable dataTable;
         this.personaLazyDataModel = new LazyDataModel<Persona>() {
             @Override
             public List<Persona> load(int offset, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
-                System.out.println("[...........................Load().....]");
+    
                 Integer totalRecords = 0;
 
                 switch (paginator.getName()) {
@@ -135,39 +135,27 @@ private DataTable dataTable;
                          */
 
                         totalRecords = personaRepository.countByNombre(nombre).intValue();
-                        System.out.println("\t(*)----->count...findByNombrePagination totalRecords " + totalRecords);
+                        
                         break;
                     case "findByDeportePaginacion":
 
                         totalRecords = personaRepository.count(search).intValue();
-                        System.out.println("\t(*)----->count...findByDeportePaginacion totalRecords " + totalRecords);
+                      
                         break;
                 }
 
                 System.out.println("  \t[-----]totalRecords  [" + totalRecords + "]");
 
                 List<Paginator> list = processLazyDataModel(paginator, paginatorOld, offset, rowPage.get(), totalRecords, sortBy);
-                System.out.println("__________________________________________________");
-                System.out.println("[]-->() from load processLazyDataMode ");
-                System.out.println("--{paginator}   :-->>  " + paginator.toString());
-                System.out.println("--{paginatorOld}:-->> " + paginatorOld.toString());
-                System.out.println("__________________________________________________");
+                
                 paginator = list.get(0);
                 paginatorOld = list.get(1);
 
-                System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-                System.out.println("[]-->() step new change load processLazyDataMode ");
-                System.out.println("--{paginator}   :-->>  " + paginator.toString());
-                System.out.println("--{paginatorOld}:-->> " + paginatorOld.toString());
-                System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-
                 paginator.setNumberOfPage(numberOfPages(totalRecords, rowPage.get()));
-                System.out.println(" [] new NumberOfPage paginator.getNumberOfPage() " + paginator.getNumberOfPage());
+                
 
                 Pagination pagination = new Pagination(paginator.getPage(), rowPage.get());
-                System.out.println(" [] set to Pagination " + pagination.toString());
-//                System.out.println("-->Pagintation  paginator.getPage() ["+paginator.getPage()+"]  [paginator.getNumberOfPage()] " + paginator.getNumberOfPage());
-                System.out.println("-->Pagintation  paginator.getPage() [" + paginator.getPage() + "]  [paginator.getNumberOfPage()] " + paginator.getNumberOfPage());
+                
 
                 List<Persona> result = new ArrayList<>();
                 switch ((paginator.getName())) {
@@ -175,26 +163,16 @@ private DataTable dataTable;
                     case "findAllPagination":
 
                         result = personaRepository.findAllPagination(pagination);
-                        System.out.println("\t#############################################################");
-                        System.out.println("  case \"findAllPagination\" result.size "+result.size());
-                        System.out.println("\t#############################################################");
-
+                
                         break;
                     case "findAllPaginationSorted":
 
                         result = personaRepository.findAllPaginationSorted(pagination,paginator.getSorted());
-                        System.out.println("\t??????????????????????????????????????????????????????????????");
-                        System.out.println("  case \"findAllPaginatioSorterdn\" result.size "+result.size());
-                        System.out.println(">>> paginator.getSorted() "+paginator.getSorted());
-                        System.out.println("\t??????????????????????????????????????????????????????????????");
-
+                
                         break;
                     case "findByNombrePagination":
                         result = personaRepository.findByNombrePagination(nombre, pagination);
-                        System.out.println("\t#############################################################");
-                        System.out.println("  case \"\"findByNombrePagination\"\" result.size "+result.size());
-                        System.out.println("\t#############################################################");
-
+                
                         break;
                 
                     case "findByDeportePaginacion":
@@ -202,20 +180,15 @@ private DataTable dataTable;
                         search.setSorted(paginator.getSorted());
                         
                         result = personaRepository.lookup(search);
-                        System.out.println("\t#############################################################");
-                        System.out.println("  case \"\"findByDeportePaginacion\"\" result.size "+result.size());
-                        System.out.println("\t#############################################################");
+                       
 
                         break;
                 }
 
                 personaLazyDataModel.setRowCount(totalRecords);
-                System.out.println(" \t[] personaLazyDataModel.getRowCount() RowCount " + personaLazyDataModel.getRowCount());
+                
                 PrimeFaces.current().executeScript("setDataTableWithPageStart()");
 
-//      final DataTable d = (DataTable) FacesContext.getCurrentInstance().getViewRoot()
-//            .findComponent("detailsTable:webTemplateUpdateTable");
-//      pageTableField = (d.getPageCount() - 1);
                 return result;
             }
 
@@ -229,18 +202,7 @@ private DataTable dataTable;
 
         };
 
-        //  Long count = personaRepository.count();
-//            Integer numberOfPage = JmoordbCorePageUtil.numberOfPages(JmoordbCoreUtil.longToInteger(count), 25);
-//
-//            System.out.println("Number OfPage  " + numberOfPage);
-//
-//            Pagination pagination = new Pagination(1, 25);
-//            pagination = JmoordbCorePageUtil.first(pagination);
-//            pagination = JmoordbCorePageUtil.last(pagination);
-//            pagination = JmoordbCorePageUtil.next(pagination);
-//            pagination = JmoordbCorePageUtil.back(pagination);
-//            personaList = personaRepository.findAll();
-//            move(pagination);
+
     }
 // </editor-fold>
 

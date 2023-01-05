@@ -128,7 +128,7 @@ public class PaisCrudFaces implements Serializable, IPaginator {
         this.paisLazyDataModel = new LazyDataModel<Pais>() {
             @Override
             public List<Pais> load(int offset, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
-                System.out.println("[...........................Load().....]");
+        
                 Integer totalRecords = 0;
 
                 switch (paginator.getName()) {
@@ -187,9 +187,7 @@ public class PaisCrudFaces implements Serializable, IPaginator {
 
                 PrimeFaces.current().executeScript("setDataTableWithPageStart()");
 
-//      final DataTable d = (DataTable) FacesContext.getCurrentInstance().getViewRoot()
-//            .findComponent("detailsTable:webTemplateUpdateTable");
-//      pageTableField = (d.getPageCount() - 1);
+
                 return result;
             }
 
@@ -203,21 +201,12 @@ public class PaisCrudFaces implements Serializable, IPaginator {
 
         };
 
-        //  Long count = paisRepository.count();
-//            Integer numberOfPage = JmoordbCorePageUtil.numberOfPages(JmoordbCoreUtil.longToInteger(count), 25);
-//
-//            System.out.println("Number OfPage  " + numberOfPage);
-//
-//            Pagination pagination = new Pagination(1, 25);
-//            pagination = JmoordbCorePageUtil.first(pagination);
-//            pagination = JmoordbCorePageUtil.last(pagination);
-//            pagination = JmoordbCorePageUtil.next(pagination);
-//            pagination = JmoordbCorePageUtil.back(pagination);
-//            paisList = paisRepository.findAll();
-//            move(pagination);
+
     }
 // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="String findAllPagination()">
+    
     public String findAllPagination() {
         try {
 
@@ -241,6 +230,8 @@ public class PaisCrudFaces implements Serializable, IPaginator {
 
         return "";
     }
+// </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="String findAllPaginationSorted()">
 
     public String findAllPaginationSorted() {
         try {
@@ -265,7 +256,8 @@ public class PaisCrudFaces implements Serializable, IPaginator {
 
         return "";
     }
-
+// </editor-fold>
+    
     // <editor-fold defaultstate="collapsed" desc="String  findByNombrePaginacion()">
     public String findByNombrePaisPaginacion() {
         try {
@@ -297,6 +289,7 @@ public class PaisCrudFaces implements Serializable, IPaginator {
         dataTable.setFirst(1);
     }
     // </editor-fold>
+// <editor-fold defaultstate="collapsed" desc="deletePais()">
 
     public void deletePais() {
 
@@ -306,6 +299,10 @@ public class PaisCrudFaces implements Serializable, IPaginator {
         PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
     }
 
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="String getDeleteButtonMessage()">
+    
     public String getDeleteButtonMessage() {
         if (hasSelectedPaises()) {
             int size = this.selectedPaises.size();
@@ -314,10 +311,15 @@ public class PaisCrudFaces implements Serializable, IPaginator {
 
         return "Delete";
     }
-
+// </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="hasSelectedPaises()">
     public boolean hasSelectedPaises() {
         return this.selectedPaises != null && !this.selectedPaises.isEmpty();
     }
+
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="void deleteSelectedPaises()">
 
     public void deleteSelectedPaises() {
         this.selectedPaises = null;
@@ -325,11 +327,13 @@ public class PaisCrudFaces implements Serializable, IPaginator {
         PrimeFaces.current().ajax().update("form:messages", "form:dt-pais");
         PrimeFaces.current().executeScript("PF('dtPais').clearFilters()");
     }
-
+    // </editor-fold>   
+    
+    // <editor-fold defaultstate="collapsed" desc="void savePais()">
     public void savePais() {
      
         if (this.selectedPais.getIdpais() == null) {
-//            this.selectedPais.setCode(UUID.randomUUID().toString().replaceAll("-", "").substring(0, 9));
+
             if (paisRepository.save(selectedPais).isPresent()) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pais Added"));
             } else {
@@ -351,10 +355,14 @@ public class PaisCrudFaces implements Serializable, IPaginator {
         PrimeFaces.current().executeScript("PF('managePaisDialog').hide()");
         PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
     }
+    // </editor-fold>
     
     
+    // <editor-fold defaultstate="collapsed" desc="void openNew() ">
+  
 
     public void openNew() {
         this.selectedPais = new Pais();
     }
+      // </editor-fold>
 }
