@@ -23,7 +23,7 @@
                     styleClass="ui-button-success" style="margin-right: .5rem">
                     <p:resetInput target=":dialogs:manage-pais-content" />
                 </p:commandButton>
-                        <p:commandButton id="delete-pais-button" value="#{paisCrudFaces.deleteButtonMessage}"
+               <p:commandButton id="delete-pais-button" value="#{paisCrudFaces.deleteButtonMessage}"
                                          icon="pi pi-trash" actionListener="#{paisCrudFaces.deleteSelectedPaises}"
                                          styleClass="ui-button-danger" disabled="#{!paisCrudFaces.hasSelectedPaises()}" update="@this">
                             <p:confirm header="Confirmation" message="Delete the selected paises?"
@@ -33,10 +33,7 @@
                           <p:commandButton value="Index" action="index"/>
                     </p:toolbarGroup>
                     <p:toolbarGroup align="right">
-                        <p:fileUpload mode="simple" skinSimple="true" label="Import" chooseIcon="pi pi-download" />
-                        <p:commandButton value="Export" icon="pi pi-upload" styleClass="ui-button-help" ajax="false">
-                            <p:dataExporter type="pdf" target="dataTable" fileName="pais" />
-                        </p:commandButton>
+
                     </p:toolbarGroup>
                 </p:toolbar>
              
