@@ -23,7 +23,12 @@
                     styleClass="ui-button-success" style="margin-right: .5rem">
                     <p:resetInput target=":dialogs:manage-pais-content" />
                 </p:commandButton>
-              
+               <p:commandButton id="delete-pais-button" value="#{paisCrudFaces.deleteButtonMessage}"
+                                         icon="pi pi-trash" actionListener="#{paisCrudFaces.deleteSelectedPaises}"
+                                         styleClass="ui-button-danger" disabled="#{!paisCrudFaces.hasSelectedPaises()}" update="@this">
+                            <p:confirm header="Confirmation" message="Delete the selected paises?"
+                                       icon="pi pi-exclamation-triangle" />
+                        </p:commandButton>
                         
                           <p:commandButton value="Index" action="index"/>
                     </p:toolbarGroup>
@@ -169,7 +174,7 @@
                 <p:confirmDialog widgetVar="deletePaisDialog" showEffect="fade" width="300"
                                  message="Delete the pais?" header="Confirm" severity="warn">
                     <p:commandButton value="Yes" icon="pi pi-check" actionListener="#{paisCrudFaces.deletePais}"
-                                     process="@this" update=" :form:dataTable"
+                                     process="@this" update=":form:delete-pais-button, :form:dataTable"
                                      oncomplete="PF('deletePaisDialog').hide()" />
                     <p:commandButton value="No" type="button" styleClass="ui-button-secondary" icon="pi pi-times"
                                      onclick="PF('deletePaisDialog').hide()" />
