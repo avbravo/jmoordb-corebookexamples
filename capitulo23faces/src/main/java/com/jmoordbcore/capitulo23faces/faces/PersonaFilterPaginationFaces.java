@@ -43,14 +43,13 @@ import org.primefaces.model.SortMeta;
 @Data
 public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
 
-    private static final long serialVersionUID = 1L;
-
     // <editor-fold defaultstate="collapsed" desc="@Inject">
     @Inject
     PersonaRepository personaRepository;
 // </editor-fold>
 
 // <editor-fold defaultstate="collapsed" desc="Fields">
+    private static final long serialVersionUID = 1L;
     private DataTable dataTable;
     Integer totalRecords = 0;
     List<Persona> personaList = new ArrayList<>();
@@ -260,15 +259,15 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
     // <editor-fold defaultstate="collapsed" desc="String  findByNombrePaginacion()">
     public String findByNombrePaginacion() {
         try {
-            paginator
-                    = new Paginator.Builder()
-                            .page(1)
-                            .sorted(new Sorted(new Document("idpersona", 1)))
-                            .name("findByNombrePagination")
-                            .title("Nombre")
-                            .build();
+            paginator = new Paginator.Builder()
+                    .page(1)
+                    .sorted(new Sorted(new Document("idpersona", 1)))
+                    .name("findByNombrePagination")
+                    .title("Nombre")
+                    .build();
 
             nombreDeporte = "";
+             nombrePais = "";
             setFirstPageDataTable();
         } catch (Exception e) {
             FacesUtil.errorMessage(FacesUtil.nameOfMethod() + "() : " + e.getLocalizedMessage());
@@ -280,13 +279,12 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
 
     public String findByNombrePaginacionSorted() {
         try {
-            paginator
-                    = new Paginator.Builder()
-                            .page(1)
-                            .sorted(new Sorted(new Document("nombre", 1)))
-                            .name("findByNombrePaginationSorted")
-                            .title("Nombre con Sorted")
-                            .build();
+            paginator = new Paginator.Builder()
+                    .page(1)
+                    .sorted(new Sorted(new Document("nombre", 1)))
+                    .name("findByNombrePaginationSorted")
+                    .title("Nombre con Sorted")
+                    .build();
 
             /**
              * Limpiar los elementos
@@ -320,7 +318,7 @@ public class PersonaFilterPaginationFaces implements Serializable, IPaginator {
             paginator
                     = new Paginator.Builder()
                             .page(1)
-                            .sorted(new Sorted(new Document("idpersona", 1)))
+                            .sorted(new Sorted(sort))
                             .name("findByDeportePaginacion")
                             .title("Deporte")
                             .build();

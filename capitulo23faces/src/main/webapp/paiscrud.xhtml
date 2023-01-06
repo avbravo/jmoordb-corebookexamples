@@ -12,40 +12,32 @@
         <f:view contentType="text/html">
 
             <h:form id="form" prependId="false">
-   <h1>Pais Crud</h1>
+                <h1>Pais Crud</h1>
                 <p:toolbar>
                     <p:toolbarGroup>
-                        
-                                        
                         <p:commandButton value="New" icon="pi pi-plus" actionListener="#{paisCrudFaces.openNew}"
-                   update=":dialogs:manage-pais-content"
-                   oncomplete="PF('managePaisDialog').show()"
-                    styleClass="ui-button-success" style="margin-right: .5rem">
-                    <p:resetInput target=":dialogs:manage-pais-content" />
-                </p:commandButton>
-              
-                        
-                          <p:commandButton value="Index" action="index"/>
+                                         update=":dialogs:manage-pais-content"
+                                         oncomplete="PF('managePaisDialog').show()"
+                                         styleClass="ui-button-success" style="margin-right: .5rem">
+                            <p:resetInput target=":dialogs:manage-pais-content" />
+                        </p:commandButton>
+
+                        <p:commandButton value="Index" action="index"/>
                     </p:toolbarGroup>
                     <p:toolbarGroup align="right">
 
                     </p:toolbarGroup>
                 </p:toolbar>
-             
+
                 <p:growl id="growl" />
-              
+
                 <div class="row">
                     <div class="col-xl-3 col-md-3">
                         <p:card  class="card bg-primary text-white">
                             <f:facet name="title">
                                 Filtros
                             </f:facet>
-
                             <p:panelGrid columns="3" id="panelGridSearch">
-
-
-
-
                                 <f:facet name="footer">
                                     <p:commandButton value="findAllPaginationSorted()"
                                                      action="#{paisCrudFaces.findAllPaginationSorted()}"
@@ -56,16 +48,13 @@
                                                      update=":form:dataTable, :form:growl, :form:panelGridSearch"
                                                      styleClass="ui-button-outlined"/>
                                 </f:facet>
-
                             </p:panelGrid>
-
 
                             <f:facet name="footer">
                                 <p:outputLabel value="Pendientes "/>
                             </f:facet>
                         </p:card>
                     </div>
-
                 </div>
 
 
@@ -73,22 +62,17 @@
 
                 <div></div>
                 <p:dataTable var="item" value="#{paisCrudFaces.paisLazyDataModel}"
-
                              binding="#{paisCrudFaces.dataTable}"
-
                              id="dataTable"
                              widgetVar="widgetVardataTable"
-
                              lazy="true"
                              paginator="true"
                              rows="#{paisCrudFaces.rowPage.get()}"
                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                              paginatorPosition="both"
-
                              reflow="true"
                              class="responsive-table display dataTable tablaajustada"
                              rowKey="#{item.idpais}"
-
                              selection="#{paisCrudFaces.selectedPaises}"
                              rowSelectMode="add"
 
@@ -106,9 +90,7 @@
                             <span style="font-weight: bold">PAISES</span>
                             <span class="filter-container ui-input-icon-left"> <i class="pi pi-search"></i>
 
-
                                 <p:inputText value="#{paisCrudFaces.nombrePais}"/>
-
                                 <p:commandButton value="Buscar" action="#{paisCrudFaces.findByNombrePaisPaginacion()}"
                                                  update=":form:dataTable, :form:growl, :form:panelGridSearch"
                                                  styleClass="ui-button-outlined"/>
@@ -125,9 +107,6 @@
                         <p:outputLabel value="Filtro = #{paisCrudFaces.paginator.title} "/>
 
                     </f:facet>
-
-<!--                    <p:column selectionMode="multiple" exportable="false"></p:column>-->
-
 
                     <p:column headerText="idpais" sortable="true" sortBy="#{item.idpais}">
                         <p:outputLabel value="#{item.idpais}"/>
@@ -180,44 +159,43 @@
                     <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-secondary"
                                      icon="pi pi-times" />
                 </p:confirmDialog>
-                
-                
-                
-                <p:dialog header="Pais Details" showEffect="fade" modal="true" widgetVar="managePaisDialog"
-            responsive="true">
-            <p:outputPanel id="manage-pais-content" class="ui-fluid">
-                <p:outputPanel rendered="#{not empty paisCrudFaces.selectedPais}">
-                    
-                    <div class="field">
-                        <p:outputLabel for="idpais">idpais</p:outputLabel>
-                        <!--<p:inputText id="idpais" value="#{paisCrudFaces.selectedPais.idpais}" required="true" />-->
-                        <p:outputLabel id="idpais" value="#{paisCrudFaces.selectedPais.idpais}"  />
-                    </div>
-                    <div class="field">
-                        <p:outputLabel for="pais">Pais</p:outputLabel>
-                        <p:inputTextarea id="pais" value="#{paisCrudFaces.selectedPais.pais}" />
-                    </div>
-                   
-                    <div class="formgrid grid">
-                        <div class="field col">
-                            <p:outputLabel for="fecha">Fecha</p:outputLabel>
-                            <p:datePicker id="fecha" value="#{paisCrudFaces.selectedPais.fecha}" 
-                                />
-                        </div>
-                        <div class="field col">
-                            
-                        </div>
-                    </div>
-                </p:outputPanel>
-            </p:outputPanel>
 
-            <f:facet name="footer">
-                <p:commandButton value="Save" icon="pi pi-check" actionListener="#{paisCrudFaces.savePais}"
-                    update="manage-pais-content, :form:growl, :form:dataTable" process="manage-pais-content @this" />
-                <p:commandButton value="Cancel" icon="pi pi-times" onclick="PF('managePaisDialog').hide()"
-                    class="ui-button-secondary" type="button" />
-            </f:facet>
-        </p:dialog>
+
+
+                <p:dialog header="Pais Detalles" showEffect="fade" modal="true" widgetVar="managePaisDialog"
+                          responsive="true">
+                    <p:outputPanel id="manage-pais-content" class="ui-fluid">
+                        <p:outputPanel rendered="#{not empty paisCrudFaces.selectedPais}">
+
+                            <div class="field">
+                                <p:outputLabel for="idpais">idpais</p:outputLabel>
+                                <p:outputLabel id="idpais" value="#{paisCrudFaces.selectedPais.idpais}"  />
+                            </div>
+                            <div class="field">
+                                <p:outputLabel for="pais">Pais</p:outputLabel>
+                                <p:inputTextarea id="pais" value="#{paisCrudFaces.selectedPais.pais}" />
+                            </div>
+
+                            <div class="formgrid grid">
+                                <div class="field col">
+                                    <p:outputLabel for="fecha">Fecha</p:outputLabel>
+                                    <p:datePicker id="fecha" value="#{paisCrudFaces.selectedPais.fecha}" 
+                                                  />
+                                </div>
+                                <div class="field col">
+
+                                </div>
+                            </div>
+                        </p:outputPanel>
+                    </p:outputPanel>
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Save" icon="pi pi-check" actionListener="#{paisCrudFaces.savePais}"
+                                         update="manage-pais-content, :form:growl, :form:dataTable" process="manage-pais-content @this" />
+                        <p:commandButton value="Cancel" icon="pi pi-times" onclick="PF('managePaisDialog').hide()"
+                                         class="ui-button-secondary" type="button" />
+                    </f:facet>
+                </p:dialog>
 
             </h:form>
 

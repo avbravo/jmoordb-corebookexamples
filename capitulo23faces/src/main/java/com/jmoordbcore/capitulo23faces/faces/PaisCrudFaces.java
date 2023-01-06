@@ -50,29 +50,15 @@ import org.primefaces.model.SortMeta;
 @Data
 public class PaisCrudFaces implements Serializable, IPaginator {
 
-
-
-    private static final long serialVersionUID = 1L;
-
     // <editor-fold defaultstate="collapsed" desc="@Inject">
     @Inject
     PaisRepository paisRepository;
 
-    @Inject
-    PersonaRepository personaRepository;
-
-    @Inject
-    PlanetaRepository planetaRepository;
-    
-    
-    @Inject
-    GrupoRepository grupoRepository;
 // </editor-fold>
-
 // <editor-fold defaultstate="collapsed" desc="Fields">
-    
-        private DataTable dataTable;
-     Integer totalRecords = 0;
+    private static final long serialVersionUID = 1L;
+    private DataTable dataTable;
+    Integer totalRecords = 0;
     List<Pais> paisList = new ArrayList<>();
 
     private String nombrePais;
@@ -125,14 +111,12 @@ public class PaisCrudFaces implements Serializable, IPaginator {
     @PostConstruct
     public void init() {
 
-        //  findAllPagination();
+
         findAllPaginationSorted();
 
         this.paisLazyDataModel = new LazyDataModel<Pais>() {
             @Override
             public List<Pais> load(int offset, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
-        
-             
 
                 switch (paginator.getName()) {
                     case "findAllPagination":
@@ -174,26 +158,21 @@ public class PaisCrudFaces implements Serializable, IPaginator {
 
                 PrimeFaces.current().executeScript("setDataTableWithPageStart()");
 
-
                 return result;
             }
 
             @Override
             public int count(Map<String, FilterMeta> map) {
 
-    
-
                 return totalRecords;
             }
 
         };
 
-
     }
 // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="String findAllPagination()">
-    
     public String findAllPagination() {
         try {
 
@@ -244,7 +223,7 @@ public class PaisCrudFaces implements Serializable, IPaginator {
         return "";
     }
 // </editor-fold>
-    
+
     // <editor-fold defaultstate="collapsed" desc="String  findByNombrePaginacion()">
     public String findByNombrePaisPaginacion() {
         try {
@@ -285,9 +264,7 @@ public class PaisCrudFaces implements Serializable, IPaginator {
     }
 
     // </editor-fold>
-    
     // <editor-fold defaultstate="collapsed" desc="String getDeleteButtonMessage()">
-    
     public String getDeleteButtonMessage() {
         if (hasSelectedPaises()) {
             int size = this.selectedPaises.size();
@@ -298,25 +275,24 @@ public class PaisCrudFaces implements Serializable, IPaginator {
     }
 // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="hasSelectedPaises()">
+
     public boolean hasSelectedPaises() {
         return this.selectedPaises != null && !this.selectedPaises.isEmpty();
     }
 
     // </editor-fold>
-    
     // <editor-fold defaultstate="collapsed" desc="void deleteSelectedPaises()">
-
     public void deleteSelectedPaises() {
         this.selectedPaises = null;
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pais Removed"));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pais Eliminado"));
         PrimeFaces.current().ajax().update("form:messages", "form:dt-pais");
         PrimeFaces.current().executeScript("PF('dtPais').clearFilters()");
     }
     // </editor-fold>   
-    
+
     // <editor-fold defaultstate="collapsed" desc="void savePais()">
     public void savePais() {
-     
+
         if (this.selectedPais.getIdpais() == null) {
 
             if (paisRepository.save(selectedPais).isPresent()) {
@@ -332,22 +308,17 @@ public class PaisCrudFaces implements Serializable, IPaginator {
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("No se actualizo pais"));
             }
-            Planeta planeta = planetaRepository.findByIdplaneta("marte").get();
-          
 
-       }
+        }
 
         PrimeFaces.current().executeScript("PF('managePaisDialog').hide()");
         PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
     }
     // </editor-fold>
-    
-    
-    // <editor-fold defaultstate="collapsed" desc="void openNew() ">
-  
 
+    // <editor-fold defaultstate="collapsed" desc="void openNew() ">
     public void openNew() {
         this.selectedPais = new Pais();
     }
-      // </editor-fold>
+    // </editor-fold>
 }

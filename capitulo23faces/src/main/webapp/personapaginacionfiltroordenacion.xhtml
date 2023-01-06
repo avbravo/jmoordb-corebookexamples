@@ -37,10 +37,6 @@
                                                  icon="pi pi-search" styleClass="rounded-button ui-button-success" 
                                                  />
                                 
-                               
-                                
-                                
-                                
 
                                 <p:outputLabel value="Nombre de Deporte (Referenciado)"/>
                                 <p:inputText value="#{personaFilterPaginationFaces.nombreDeporte}"/>
@@ -58,8 +54,6 @@
 
                                 
                                
-                                
-                                
 
                                 <f:facet name="footer">
                                     <p:commandButton value="findAllPaginationSorted()"
@@ -88,21 +82,16 @@
 
                 <div></div>
                 <p:dataTable var="item" value="#{personaFilterPaginationFaces.personaLazyDataModel}"
-
                              binding="#{personaFilterPaginationFaces.dataTable}"
-
                              id="dataTable"
                              widgetVar="widgetVardataTable"
-
                              lazy="true"
                              paginator="true"
                              rows="#{personaFilterPaginationFaces.rowPage.get()}"
                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                              paginatorPosition="both"
-
                              reflow="true"
                              class="responsive-table display dataTable tablaajustada"
-
                              >
                     <f:facet name="paginatorTopLeft">
                         <p:commandButton type="button" icon="pi pi-refresh"/>
