@@ -20,7 +20,7 @@ public class Especie {
     @Column
     private String nombre;
     
-   @Referenced(from="oceano", localField = "idoceano",typeReferenced = TypeReferenced.REFERENCED)
+    @Referenced(from="oceano", localField = "idoceano",typeReferenced = TypeReferenced.REFERENCED)
     private Oceano oceano;
 
 

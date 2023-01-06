@@ -25,6 +25,7 @@ public class Animal {
  @Column
  private String animal;
  
+ 
  @Embedded
  private Especie especie;
  

@@ -33,7 +33,6 @@ public class Persona {
     private List<Musica> musica;
 
     @Referenced(from = "pais", localField = "idpais", typeReferenced = TypeReferenced.REFERENCED)
-
     private Pais pais;
 
     @Referenced(from = "animal", localField = "idanimal", typeReferenced = TypeReferenced.REFERENCED)
