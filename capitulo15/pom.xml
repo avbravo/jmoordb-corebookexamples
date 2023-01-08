@@ -34,7 +34,13 @@
     </properties>
 
     <dependencies>
-        
+        <!--
+        Para encriptacion
+        -->
+    
+    
+    
+    
           <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
@@ -98,8 +104,11 @@
             <artifactId>jmoordb-core</artifactId>
             <version>${version.jmoordbcore}</version>
         </dependency>
-    
-   
+        <dependency>
+            <groupId>com.jmoordbcoreencripter</groupId>
+            <artifactId>jmoordbencripter</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     
     <build>

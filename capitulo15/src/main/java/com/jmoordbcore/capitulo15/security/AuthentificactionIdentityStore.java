@@ -55,9 +55,9 @@ public class AuthentificactionIdentityStore implements IdentityStore {
             
             System.out.println("-------------------------------------------------");
             System.out.println("-->>> validando "+userSecurity.get() + " passwortd "+passwordSecurity.get());
-            userAutentification = Encriptador.decrypted(userSecurity.get(),"frase");
-            passwordAutentification = Encriptador.decrypted(passwordSecurity.get(),"frase");
-            
+//            userAutentification = Encryptor.decrypt(userSecurity.get(),"frase");
+//            passwordAutentification = Encryptor.decrypt(passwordSecurity.get(),"frase");
+//            
             System.out.println("-->desencriptado "+userAutentification + " : "+ passwordAutentification);
 
             if (usernamePasswordCredential.compareTo(userAutentification, passwordAutentification)) {

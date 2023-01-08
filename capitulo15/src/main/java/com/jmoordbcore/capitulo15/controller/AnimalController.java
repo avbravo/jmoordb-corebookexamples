@@ -8,7 +8,8 @@ import com.jmoordb.core.util.JmoordbCoreUtil;
 import com.jmoordbcore.capitulo15.model.Animal;
 import com.jmoordbcore.capitulo15.model.Pais;
 import com.jmoordbcore.capitulo15.repository.AnimalRepository;
-import com.jmoordbcore.capitulo15.security.Encriptador;
+import com.jmoordbcoreencripter.jmoordbencripter.Encryptor;
+import com.jmoordbcoreencripter.jmoordbencripter.JWTInfo;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -18,6 +19,8 @@ import jakarta.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,24 +28,51 @@ import java.util.List;
  */
 @Path("animal")
 public class AnimalController {
-   
+
     @Inject
     AnimalRepository animalRepository;
-    
+
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Animal> findAll(){
-        System.out.println("encriptando :E$g3t1.q4@n5");
-        System.out.println(" "+Encriptador.encrypter("E$g3t1.q4@n5", "AES"));
-        System.out.println("___________________________________________________");
-        System.out.println("encriptando :s7_$4wnT1den4=/pana1e1");
-        System.out.println(" "+Encriptador.encrypter("s7_$4wnT1den4=/pana1e1", "T$xmo1$ormtaDJ$3m"));
-        
+    public List<Animal> findAll() {
+
+        try {
+
+            //Create the token from user details.
+            /**
+             * Funciona para cifrar pàssword con fecha de caducidad en base a un JWT
+             */
+            int EXPIRY_DAYS =90;
+            Integer STATUS =0;
+            String USER ="avbravo";
+            String PASSWORD="s7_$4wnT1den4=/pana1e1";
+            String SECRET_KEY="mi llave secreta para JWT";
+            String GROUP="admin";
+          String token =  Encryptor.encryptJWT(EXPIRY_DAYS, STATUS, GROUP, 
+                 PASSWORD, USER,SECRET_KEY);
+          
+            System.out.println("[Token encriptado ] "+token);
+            
+         JWTInfo jWTInfo = Encryptor.decryptJWT(token,SECRET_KEY);
+            System.out.println("[Desencriptado]");
+            System.out.println("jWTInfo.getGroup()"+jWTInfo.getGroup());
+            System.out.println("jWTInfo.getPassword()"+jWTInfo.getPassword());
+            System.out.println("jWTInfo.getSubject()"+jWTInfo.getSubject());
+            System.out.println("jWTInfo.getIsValid())"+jWTInfo.getIsValid());
+            
+            
+            
+         
+//            
+//            
+        } catch (Exception ex) {
+            Logger.getLogger(AnimalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         return animalRepository.findAll();
-        
-   
+
     }
-    
+
     // <editor-fold defaultstate="collapsed" desc="  @Path("insert")">
     @Path("insert")
     @GET
@@ -59,7 +89,7 @@ public class AnimalController {
             pais.setIdpais(JmoordbCoreUtil.integerToLong(i));
             pais.setPais("Pais - " + pais.getIdpais());
             pais.setFecha(new Date());
-           // paisRepository.save(pais);
+            // paisRepository.save(pais);
         }
         return new ArrayList<>();
     }
