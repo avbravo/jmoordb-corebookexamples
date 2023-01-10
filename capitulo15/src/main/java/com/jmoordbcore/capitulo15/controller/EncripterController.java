@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  */
 @Path("encripter")
 public class EncripterController {
-//final String secretKey = "ssshhhhhhhhhhh!!!!";
+
 
     /**
      * Generar token Encripta
