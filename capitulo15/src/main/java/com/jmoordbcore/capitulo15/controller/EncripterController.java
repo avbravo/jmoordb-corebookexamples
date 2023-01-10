@@ -44,7 +44,6 @@ public class EncripterController {
         JWTToken jWTToken = new JWTToken();
         String token = "";
         try {
-
             String encryptedString = Encryptor.encrypt(password, secretKey);
 
             JWTEntity jWTEntity = new JWTEntity.Builder()
@@ -57,14 +56,11 @@ public class EncripterController {
 
             token = JWTEncrypter.encrypt(jWTEntity);
 
-            jWTToken.setToken(token);
-
-       
+            jWTToken.setToken(token);      
 
         } catch (Exception ex) {
             Logger.getLogger(EncripterController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         return jWTToken;
 
     }
@@ -84,17 +80,13 @@ public class EncripterController {
 
     public JWTEntity decript(@QueryParam("token") final String token,
             @QueryParam("secretKey") final String secretKey) {
-
         JWTEntity jWTEntity = new JWTEntity();
         try {
-    
             jWTEntity = JWTEncrypter.decrypt(token, secretKey);
            
             String decryptedString = Encryptor.decrypt(jWTEntity.getPassword(), secretKey);
-
-           
+          
             jWTEntity.setPassword(decryptedString);
-
            
         } catch (Exception e) {
             System.out.println("decript() " + e.getLocalizedMessage());
