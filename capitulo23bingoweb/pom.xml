@@ -20,7 +20,7 @@
         <!--<version.payara>6.2022.1</version.payara>-->
         <final.name>bingoweb</final.name>
         <!--<jakarta.nosql.version>1.0.0-b2</jakarta.nosql.version>-->
-             <version.jmoordbcore>0.5</version.jmoordbcore>
+             <version.jmoordbcore>0.7</version.jmoordbcore>
              
     </properties>
     
