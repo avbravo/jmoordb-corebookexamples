@@ -62,7 +62,7 @@
        <dependency>
     <groupId>com.github.avbravo</groupId>
     <artifactId>jmoordb-core-quarkus</artifactId>
-    <version>0.8</version>
+    <version>0.10</version>
  </dependency>
         <dependency>
             <groupId>jakarta.activation</groupId>

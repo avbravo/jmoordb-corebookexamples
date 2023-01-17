@@ -17,7 +17,7 @@
         <version.payara>6.2022.1</version.payara>  
         <microprofile.version>5.0</microprofile.version>
         <final.name>capitulo15</final.name>
-        <version.jmoordbcore>0.7</version.jmoordbcore>
+        <version.jmoordbcore>0.10</version.jmoordbcore>
         <jmeter.version>2.6.0</jmeter.version>
         <version.jmoordbencripter>1.0</version.jmoordbencripter>
         
