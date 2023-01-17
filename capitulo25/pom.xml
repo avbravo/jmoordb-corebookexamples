@@ -15,6 +15,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <assertj.version>3.22.0</assertj.version>
+        <version.jmoordbcore>0.11</version.jmoordbcore>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -62,7 +63,7 @@
        <dependency>
     <groupId>com.github.avbravo</groupId>
     <artifactId>jmoordb-core-quarkus</artifactId>
-    <version>0.10</version>
+    <version>${version.jmoordbcore}</version>
  </dependency>
         <dependency>
             <groupId>jakarta.activation</groupId>

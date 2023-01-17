@@ -17,6 +17,7 @@
         <version.payara>6.2022.1</version.payara>
         <microprofile.version>5.0</microprofile.version>
         <final.name>capitulo20</final.name>
+        <version.jmoordbcore>0.11</version.jmoordbcore>
     </properties>
     
     <dependencies>
@@ -42,7 +43,7 @@
         <dependency>
             <groupId>com.github.avbravo</groupId>
             <artifactId>jmoordb-core</artifactId>
-            <version>0.10</version>
+            <version>${version.jmoordbcore}</version>
         </dependency>
 
 

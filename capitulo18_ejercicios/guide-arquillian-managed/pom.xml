@@ -24,7 +24,7 @@
         <arquillian.war.name>arquillian-managed</arquillian.war.name>
         <!-- end::ArquillianWarName[] -->
         
-           <version.jmoordbcore>0.5</version.jmoordbcore>
+           <version.jmoordbcore>0.11s</version.jmoordbcore>
     </properties>
 
     <dependencyManagement>

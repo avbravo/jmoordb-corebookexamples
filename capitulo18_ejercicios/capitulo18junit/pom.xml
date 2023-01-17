@@ -17,8 +17,9 @@
         <version.payara>6.2022.1</version.payara>  
         <microprofile.version>5.0</microprofile.version>
         <final.name>capitulo18junit</final.name>
-        <version.jmoordbcore>0.5</version.jmoordbcore>
+
         <jmeter.version>2.6.0</jmeter.version>
+        <version.jmoordbcore>0.11</version.jmoordbcore>
         
         <!--TEST
         -->

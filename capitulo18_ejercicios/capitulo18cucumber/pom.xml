@@ -19,6 +19,7 @@
         <final.name>capitulo18cucumber</final.name>
         <jmeter.version>2.6.0</jmeter.version>
         <version.cucumber>7.9.0</version.cucumber>
+        <version.jmoordbcore>0.11</version.jmoordbcore>
         
         <!--TEST
         -->
@@ -87,7 +88,7 @@
         <dependency>
             <groupId>com.github.avbravo</groupId>
             <artifactId>jmoordb-core</artifactId>
-            <version>0.2</version>
+            <version>${version.jmoordbcore}</version>
         </dependency>
     
         <!--

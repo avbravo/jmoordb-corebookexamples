@@ -14,12 +14,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
 
-  <jakartaee>10.0.0</jakartaee>
+        <jakartaee>10.0.0</jakartaee>
         <version.payara>6.2022.1</version.payara>  
         <microprofile.version>5.0</microprofile.version>
         <final.name>capitulo12</final.name>
         <jmeter.version>2.6.0</jmeter.version>
-        
+        <version.jmoordbcore>0.11</version.jmoordbcore>
    
     </properties>
 
@@ -54,11 +54,11 @@
         </dependency>
         
     
-      <dependency>
-	    <groupId>com.github.avbravo</groupId>
-	    <artifactId>jmoordb-core</artifactId>
-	    <version>0.10</version>
-	</dependency>
+        <dependency>
+            <groupId>com.github.avbravo</groupId>
+            <artifactId>jmoordb-core</artifactId>
+            <version>${version.jmoordbcore}</version>
+        </dependency>
     
         <dependency>
             <groupId>org.eclipse.microprofile.health</groupId>
