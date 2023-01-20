@@ -45,7 +45,7 @@
         <sonar.organization>stephan-mueller</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         
-        <version.jmoordbcore>0.11</version.jmoordbcore>
+        <version.jmoordbcore>0.12</version.jmoordbcore>
     </properties>
 
     <build>

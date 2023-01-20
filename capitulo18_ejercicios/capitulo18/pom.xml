@@ -20,7 +20,7 @@
         <piranha.version>22.9.0</piranha.version>
         <arquillian-bom.version>1.7.0.Alpha5</arquillian-bom.version>
         <junit-jupiter.version>5.7.0</junit-jupiter.version>
-                <version.jmoordbcore>0.11</version.jmoordbcore>
+                <version.jmoordbcore>0.12</version.jmoordbcore>
     </properties>
     
     
