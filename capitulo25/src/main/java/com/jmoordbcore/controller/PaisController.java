@@ -71,7 +71,7 @@ public class PaisController {
     public Response update(  Pais pais) {
 
         pais.setFecha(new Date());
-        return Response.status(Response.Status.CREATED).entity(paisRepository.save(pais)).build();
+        return Response.status(Response.Status.CREATED).entity(paisRepository.update(pais)).build();
     }
 // </editor-fold>
 

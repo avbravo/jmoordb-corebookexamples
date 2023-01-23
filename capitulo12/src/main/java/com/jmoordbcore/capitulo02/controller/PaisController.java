@@ -87,27 +87,7 @@ public class PaisController {
     private MetricRegistry registry;
 
 // </editor-fold>
-    // <editor-fold defaultstate="collapsed" desc="  @Path("insert")">
-    @Path("insert")
-    @GET
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-
-    public List<Pais> insert(@QueryParam("inicial") final Integer inicial) {
-
-        Integer limiteFactor = 13545;
-
-        Integer maximo = inicial + limiteFactor;
-        for (int i = inicial; i <= maximo; i++) {
-
-            Pais pais = new Pais();
-            pais.setIdpais(JmoordbCoreUtil.integerToLong(i));
-            pais.setPais("Pais - " + pais.getIdpais());
-            pais.setFecha(new Date());
-            paisRepository.save(pais);
-        }
-        return new ArrayList<>();
-    }
-// </editor-fold>
+    
 
     // <editor-fold defaultstate="collapsed" desc="findAll">
     @GET
@@ -174,7 +154,7 @@ public class PaisController {
             @RequestBody(description = "Crea un nuevo pais.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Pais.class))) Pais pais) {
 
         pais.setFecha(new Date());
-        return Response.status(Response.Status.CREATED).entity(paisRepository.save(pais)).build();
+        return Response.status(Response.Status.CREATED).entity(paisRepository.update(pais)).build();
     }
 // </editor-fold>
 

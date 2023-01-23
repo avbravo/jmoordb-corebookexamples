@@ -29,6 +29,7 @@ import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
+import org.jboss.resteasy.reactive.DateFormat;
 
 /**
  *
@@ -89,7 +90,7 @@ public class PaisController {
             @RequestBody(description = "Crea un nuevo pais.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Pais.class))) Pais pais) {
 
         pais.setFecha(new Date());
-        return Response.status(Response.Status.CREATED).entity(paisRepository.save(pais)).build();
+        return Response.status(Response.Status.CREATED).entity(paisRepository.update(pais)).build();
     }
 // </editor-fold>
 

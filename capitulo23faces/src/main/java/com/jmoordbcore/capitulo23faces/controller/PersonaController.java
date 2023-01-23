@@ -59,61 +59,7 @@ public class PersonaController {
     AnimalRepository animalRepository;
 
 // </editor-fold>
-    // <editor-fold defaultstate="collapsed" desc="  @Path("insert")">
-    @Path("insert")
-    @GET
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 
-    public List<Persona> insert(@QueryParam("inicial") final Integer inicial) {
-
-        Integer limiteFactor = 13545;
-//   Integer limiteFactor = 2;
-
-        Integer maximo = inicial + limiteFactor;
-        for (int i = inicial; i <= maximo; i++) {
-
-            Persona persona = new Persona();
-            persona.setIdpersona(JmoordbCoreUtil.integerToLong(i));
-            persona.setNombre("Persona - " + persona.getIdpersona());
-
-            List<Oceano> oceanoList = new ArrayList<>();
-
-            List<Musica> musicaList = new ArrayList<>();
-            if (JmoordbCoreUtil.isPar(i)) {
-                persona.setDeporte(new Deporte("baloncesto"));
-                oceanoList.add(oceanoRepository.findByIdoceano("pacifico").get());
-                oceanoList.add(oceanoRepository.findByIdoceano("atlantico").get());
-                musicaList.add(new Musica("Rock"));
-                musicaList.add(new Musica("Death Metal"));
-            } else {
-                persona.setDeporte(new Deporte("futbol"));
-                oceanoList.add(oceanoRepository.findByIdoceano("indico").get());
-                musicaList.add(new Musica("Salsa"));
-            }
-
-            List<Animal> animalList = new ArrayList<>();
-            Pagination pagination = new Pagination(1, 5);
-            animalList = animalRepository.findAllPagination(pagination);
-
-            persona.setAnimal(animalList);
-            persona.setMusica(musicaList);
-
-            Optional<Pais> paisOptional = paisRepository.findByPk(JmoordbCoreUtil.integerToLong(i));
-            if (paisOptional.isPresent()) {
-                persona.setPais(paisOptional.get());
-            } else {
-                persona.setPais(new Pais());
-            }
-
-            /**
-             * Oceano
-             *
-             */
-            personaRepository.save(persona);
-        }
-        return new ArrayList<>();
-    }
-// </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="findAll">
     @GET
@@ -160,7 +106,7 @@ public class PersonaController {
 
     public Response update(
             @RequestBody(description = "Crea un nuevo persona.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Persona.class))) Persona persona) {
-        return Response.status(Response.Status.CREATED).entity(personaRepository.save(persona)).build();
+        return Response.status(Response.Status.CREATED).entity(personaRepository.update(persona)).build();
     }
 // </editor-fold>
 
