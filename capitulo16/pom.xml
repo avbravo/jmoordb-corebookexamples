@@ -14,7 +14,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-                <version.jmoordbcore>0.12</version.jmoordbcore>
+                <version.jmoordbcore>0.3</version.jmoordbcore>
     </properties>
 
     <dependencies>
