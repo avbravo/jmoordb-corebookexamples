@@ -14,13 +14,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
        <jakartaee>9.1.0</jakartaee>
-        <!--<jakartaee>10.0.0</jakartaee>-->
 
         <version.payara>6.2021.1.Alpha1</version.payara>
-        <!--<version.payara>6.2022.1</version.payara>-->
         <final.name>bingoweb</final.name>
-        <!--<jakarta.nosql.version>1.0.0-b2</jakarta.nosql.version>-->
-             <version.jmoordbcore>0.13</version.jmoordbcore>
+             <version.jmoordbcore>0.16</version.jmoordbcore>
              
     </properties>
     

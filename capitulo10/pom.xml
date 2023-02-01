@@ -22,7 +22,7 @@
         <final.name>capitulo10</final.name>
         <jmeter.version>2.6.0</jmeter.version>
         
-        <version.jmoordbcore>0.13</version.jmoordbcore>
+        <version.jmoordbcore>0.17</version.jmoordbcore>
     </properties>
 
     <dependencies>
