@@ -77,7 +77,7 @@
         <!--Jmoordbcore
         -->
         
-        <version.jmoordbcore>0.16</version.jmoordbcore>
+        <version.jmoordbcore>0.18</version.jmoordbcore>
           
 
         <!-- websockets-jsr and resteasy for client, aligned with Wildfly version. -->

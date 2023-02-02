@@ -15,7 +15,7 @@
     <maven.compiler.source>17</maven.compiler.source>
     <final.name>capitulo18_openliberty_arquillian</final.name>
     <slf4j.api.version>1.7.30</slf4j.api.version>
-    <version.jmoordbcore>0.16</version.jmoordbcore>
+    <version.jmoordbcore>0.18</version.jmoordbcore>
   </properties>
   <dependencies>
     <dependency>
