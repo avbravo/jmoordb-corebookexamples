@@ -73,7 +73,7 @@ public class PaisCrudFaces implements Serializable, IPaginator {
     private List<Pais> selectedPaises;
 
 // </editor-fold>
-    // <editor-fold defaultstate="collapsed" desc="LazyDataModel>
+    // <editor-fold defaultstate="collapsed" desc="LazyDataModel">
     private LazyDataModel<Pais> paisLazyDataModel;
 // </editor-fold>
 
