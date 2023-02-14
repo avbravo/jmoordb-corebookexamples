@@ -19,7 +19,7 @@
         <jmeter.version>2.6.0</jmeter.version>
         <final.name>capitulo23faces</final.name>
         
-        <version.jmoordbcore>0.18</version.jmoordbcore>
+        <version.jmoordbcore>0.24</version.jmoordbcore>
         <version.jmoordbfaces>1.4</version.jmoordbfaces>
         <version.jmoordbutilfaces>0.7</version.jmoordbutilfaces>
         

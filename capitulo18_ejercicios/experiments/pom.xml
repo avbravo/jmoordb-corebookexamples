@@ -31,7 +31,7 @@
         
         jmoordbcore
         -->
-        <version.jmoordbcore>0.18</version.jmoordbcore>
+        <version.jmoordbcore>0.24</version.jmoordbcore>
         
     </properties>
     <dependencies>

@@ -19,7 +19,7 @@
         <version.payara>6.2022.1</version.payara>  
         <microprofile.version>5.0</microprofile.version>
         <final.name>capitulo18</final.name>
-                <version.jmoordbcore>0.18</version.jmoordbcore>
+                <version.jmoordbcore>0.24</version.jmoordbcore>
     </properties>
     <dependencyManagement>
         <dependencies>

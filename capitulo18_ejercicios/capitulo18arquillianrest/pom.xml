@@ -21,7 +21,7 @@
         <microprofile.version>5.0</microprofile.version>
         <final.name>capitulo18arquillianrest</final.name>
         
-        <version.jmoordbcore>0.18</version.jmoordbcore>
+        <version.jmoordbcore>0.24</version.jmoordbcore>
     </properties>
     <dependencies>
         <dependency>
