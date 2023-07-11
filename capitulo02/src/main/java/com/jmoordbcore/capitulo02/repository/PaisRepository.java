@@ -28,9 +28,9 @@ import java.util.stream.Stream;
 @Repository(entity = Pais.class, jakartaSource = JakartaSource.JAKARTA)
 public interface PaisRepository extends CrudRepository<Pais, Long> {
 
-@Find
+    @Find
     public Stream<Pais> findByNombreAndApellidoAndEdadLessThanEquals(String nombre, String apellido, Integer edad);
-    
+
     @Query(where = "fecha .eq. @fecha")
     public List<Pais> queryByFecha(@IncludeTime Date fecha);
 
@@ -61,19 +61,14 @@ public interface PaisRepository extends CrudRepository<Pais, Long> {
     @Find
     public List<Pais> findByPaisAndFechaLessThan(@ExcludeTime Date fecha, String pais);
 
-////    
-//    
     @Find
     public List<Pais> findByLocal(@ExcludeTime LocalDateTime local);
-//    
 
     @CountBy
     public Long countByLocal(LocalDateTime local);
 
-   
     @Find
     public List<Pais> findByFechaGreaterThanEqualsAndFechaLessThanEquals(@IncludeTime Date start, Date end);
-
 
     @Find
     public List<Pais> findByFechaGreaterThanEqualAndFechaLessThanEqual(@ExcludeTime Date start, @ExcludeTime Date end);
@@ -83,6 +78,7 @@ public interface PaisRepository extends CrudRepository<Pais, Long> {
 
     @DeleteBy
     public Long deleteByFechaGreaterThan(Date fecha);
-@Ping
-public Boolean ping();
+
+    @Ping
+    public Boolean ping();
 }
