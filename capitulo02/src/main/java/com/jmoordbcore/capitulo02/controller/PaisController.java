@@ -8,7 +8,6 @@ import com.jmoordb.core.annotation.date.DateFormat;
 import com.jmoordb.core.util.JmoordbCoreDateUtil;
 import com.jmoordbcore.capitulo02.model.Pais;
 import com.jmoordbcore.capitulo02.repository.PaisRepository;
-import com.mongodb.client.MongoClient;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -25,10 +24,6 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import org.eclipse.microprofile.config.Config;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.eclipse.microprofile.metrics.MetricUnits;
-import org.eclipse.microprofile.metrics.annotation.Metered;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
@@ -94,11 +89,7 @@ public class PaisController {
 
     // <editor-fold defaultstate="collapsed" desc="Response save">
     @POST
-    @Metered(name = "paisSave",
-            unit = MetricUnits.MILLISECONDS,
-            description = "Monitor la rata de eventos ocurridos al insertar pais",
-            absolute = true)
-    @Operation(summary = "Inserta un nuevo pais", description = "Inserta un nuevo pais")
+   @Operation(summary = "Inserta un nuevo pais", description = "Inserta un nuevo pais")
     @APIResponse(responseCode = "201", description = "Cuanoo se crea un  pais")
     @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
     @Tag(name = "BETA", description = "Esta api esta en desarrollo")
