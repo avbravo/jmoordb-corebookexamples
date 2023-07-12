@@ -139,7 +139,7 @@ public class PaisController {
     @Tag(name = "BETA", description = "Esta api esta en desarrollo")
     @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
     public List<Pais> findByFecha(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha) {
-
+        
         return paisRepository.findByFecha(fecha);
     }
     // </editor-fold>
