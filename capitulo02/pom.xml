@@ -146,6 +146,15 @@
                             <value>${project.build.directory}/${project.build.finalName}</value>
                         </option>
                     </commandLineOptions>
+                     <!--
+                        JDK 17+ Soluciona error con EJB
+                        -->                         
+                        <javaCommandLineOptions>
+                            <option>
+                                <key>--add-opens</key>
+                                <value>java.base/java.io=ALL-UNNAMED</value>
+                            </option>
+                        </javaCommandLineOptions>    
                 </configuration>
                 <version>2.0</version>
             </plugin>
