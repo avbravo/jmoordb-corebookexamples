@@ -85,11 +85,11 @@
             <artifactId>jnosql-mongodb</artifactId>
             <version>${jnosql-mongodb.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.eclipse.jnosql.communication</groupId>
-            <artifactId>communication-document</artifactId>
-            <version>1.0.0-b4</version>
-        </dependency>
+     <dependency>
+    <groupId>jakarta.nosql</groupId>
+    <artifactId>nosql-document</artifactId>
+    <version>1.0.0-b7</version>
+</dependency>
         
         
         
