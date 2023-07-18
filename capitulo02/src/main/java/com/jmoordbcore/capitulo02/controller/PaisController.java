@@ -212,7 +212,7 @@ public class PaisController {
     @Tag(name = "BETA", description = "Esta api esta en desarrollo")
     @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
     public Optional<Pais> findByFechaAndPais(@QueryParam("fecha") @DateFormat("dd-MM-yyyy") final Date fecha, @QueryParam("pais") String pais) {
-
+   
         return paisRepository.findByFechaAndPais(fecha, pais);
     }
 // </editor-fold>
@@ -242,8 +242,8 @@ public class PaisController {
     @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
     public List<Pais> findByFechaGreaterThanAndFechaLessThanWithoutHours(@QueryParam("fecha") @DateFormat final Date fecha) {
 
-        Date dateStart = JmoordbCoreDateUtil.setHourToDate(fecha, 7, 0);
-        return paisRepository.findByFechaGreaterThanEqualsAndFechaLessThanEquals(dateStart, fecha);
+        Date date= JmoordbCoreDateUtil.setHourToDate(fecha, 7, 0);
+        return paisRepository.findByFechaGreaterThanEqualsAndFechaLessThanEquals(date, fecha);
 
     }
 
