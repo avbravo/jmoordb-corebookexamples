@@ -69,7 +69,7 @@ public interface PaisRepository extends CrudRepository<Pais, Long> {
     public Long countByLocal(LocalDateTime local);
 
     @Find
-    public List<Pais> findByFechaGreaterThanEqualsAndFechaLessThanEquals(@IncludeTime Date start, Date end);
+    public List<Pais> findByFechaGreaterThanEqualsAndFechaLessThanEquals(@IncludeTime LocalDateTime start, Date end);
 
     @Find
     public List<Pais> findByFechaGreaterThanEqualAndFechaLessThanEqual(@ExcludeTime Date start, @ExcludeTime Date end);

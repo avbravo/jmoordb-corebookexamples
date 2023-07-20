@@ -20,6 +20,7 @@ import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -240,10 +241,9 @@ public class PaisController {
     @APIResponse(responseCode = "200", description = "Los paises")
     @Tag(name = "BETA", description = "Esta api esta en desarrollo")
     @APIResponse(description = "Los paises", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los paises", required = true, name = "paises")))
-    public List<Pais> findByFechaGreaterThanAndFechaLessThanWithoutHours(@QueryParam("fecha") @DateFormat final Date fecha) {
-
-        Date date= JmoordbCoreDateUtil.setHourToDate(fecha, 7, 0);
-        return paisRepository.findByFechaGreaterThanEqualsAndFechaLessThanEquals(date, fecha);
+    public List<Pais> findByFechaGreaterThanAndFechaLessThanWithoutHours(@QueryParam("fecha") @DateFormat final Date fecha,@QueryParam("fechafinal") @DateFormat final Date fechafinal) {
+       LocalDateTime  start =JmoordbCoreDateUtil.dateToLocalDateTimeFirstHourOfDay(fecha);
+        return paisRepository.findByFechaGreaterThanEqualsAndFechaLessThanEquals(start, fechafinal);
 
     }
 
