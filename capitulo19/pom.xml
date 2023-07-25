@@ -14,10 +14,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
        <jakartaee>10.0.0</jakartaee>
-        <version.payara>6.2022.1</version.payara>  
-        <microprofile.version>5.0</microprofile.version>
+        <version.payara>6.2023.7</version.payara>  
+      <microprofile.version>6.0</microprofile.version>
+        <microprofile-config-api.version>3.0</microprofile-config-api.version>
+        <microprofile-metrics-api.version>5.0.0</microprofile-metrics-api.version>
+        <microprofile-health-api.version>4.0</microprofile-health-api.version>
         <final.name>capitulo19</final.name>
-        <version.jmoordbcore>0.24</version.jmoordbcore>
+        <version.jmoordbcore>0.32</version.jmoordbcore>
     </properties>
     
     <dependencies>
@@ -37,14 +40,14 @@
         <dependency>
             <groupId>org.eclipse.microprofile.config</groupId>
             <artifactId>microprofile-config-api</artifactId>
-            <version>2.0.1</version>
+            <version>${microprofile-config-api.version}</version>
+            
         </dependency>
-        
         
         <dependency>
             <groupId>org.eclipse.microprofile.health</groupId>
             <artifactId>microprofile-health-api</artifactId>
-            <version>3.1</version>
+            <version>${microprofile-health-api.version}</version>
             <type>jar</type>
         </dependency>
         
@@ -114,7 +117,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
+          <plugin>
                 <groupId>fish.payara.maven.plugins</groupId>
                 <artifactId>payara-micro-maven-plugin</artifactId>
                 <configuration>
@@ -124,13 +127,29 @@
                         <option>
                             <key>--autoBindHttp</key>
                         </option>
+                        <!-- desabilita Hazelcas -->
+                        <option>
+                            <key>--noHazelcast</key>
+                        </option>
+                        <option>
+                            <key>--logo</key>
+                        </option>
                         <option>
                             <key>--deploy</key>
                             <value>${project.build.directory}/${project.build.finalName}</value>
                         </option>
                     </commandLineOptions>
+                     <!--
+                        JDK 17+ Soluciona error con EJB
+                        -->                         
+                        <javaCommandLineOptions>
+                            <option>
+                                <key>--add-opens</key>
+                                <value>java.base/java.io=ALL-UNNAMED</value>
+                            </option>
+                        </javaCommandLineOptions>    
                 </configuration>
-                <version>1.4.0</version>
+                <version>2.0</version>
             </plugin>
         </plugins>
     </build>
