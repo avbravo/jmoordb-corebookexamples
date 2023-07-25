@@ -7,6 +7,7 @@ package com.avbravo.mongodbatlasdriver.model;
 import com.jmoordb.core.annotation.Column;
 import com.jmoordb.core.annotation.Entity;
 import com.jmoordb.core.annotation.Id;
+import java.util.Date;
 
 
 
@@ -21,10 +22,31 @@ public class Oceano {
     private String idoceano;
     @Column
     private String oceano;
+    
+    @Column
+    private Date fecha;
 
     public Oceano() {
     }
 
+    public Oceano(String idoceano, String oceano, Date fecha) {
+        this.idoceano = idoceano;
+        this.oceano = oceano;
+        this.fecha = fecha;
+    }
+    
+    
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    
+    
     public String getIdoceano() {
         return idoceano;
     }
