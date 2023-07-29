@@ -33,10 +33,10 @@ public class Animal {
  private Date fechaalimentacion;
  
  @Embedded
- private Especie especie;
+ private Alimentacion alimentacion;
  
  @Embedded
- private List<Plaga> plaga;
+ private List<Enfermedad> enfermedad;
  
  @Referenced(from = "grupo",localField = "idgrupo",typeReferenced = TypeReferenced.REFERENCED)
  private Grupo grupo;
@@ -50,48 +50,16 @@ public class Animal {
     public Animal() {
     }
 
-    public Animal(Long idanimal, String animal, Especie especie, List<Plaga> plaga, Grupo grupo, List<Zoo> zoo) {
+    public Animal(Long idanimal, String animal, String color, Long edad, Date fechaalimentacion, Alimentacion alimentacion, List<Enfermedad> enfermedad, Grupo grupo, List<Zoo> zoo) {
         this.idanimal = idanimal;
         this.animal = animal;
-        this.especie = especie;
-        this.plaga = plaga;
+        this.color = color;
+        this.edad = edad;
+        this.fechaalimentacion = fechaalimentacion;
+        this.alimentacion = alimentacion;
+        this.enfermedad = enfermedad;
         this.grupo = grupo;
         this.zoo = zoo;
-    }
-
-
-    public List<Zoo> getZoo() {
-        return zoo;
-    }
-
-    public void setZoo(List<Zoo> zoo) {
-        this.zoo = zoo;
-    }
-
-    public Especie getEspecie() {
-        return especie;
-    }
-
-    public void setEspecie(Especie especie) {
-        this.especie = especie;
-    }
-
-    public Grupo getGrupo() {
-        return grupo;
-    }
-
-    public void setGrupo(Grupo grupo) {
-        this.grupo = grupo;
-    }
-
-   
-    
-    
-    
-    
-    public Animal(Long idanimal, String animal) {
-        this.idanimal = idanimal;
-        this.animal = animal;
     }
 
     public Long getIdanimal() {
@@ -110,13 +78,64 @@ public class Animal {
         this.animal = animal;
     }
 
-    public List<Plaga> getPlaga() {
-        return plaga;
+    public String getColor() {
+        return color;
     }
 
-    public void setPlaga(List<Plaga> plaga) {
-        this.plaga = plaga;
+    public void setColor(String color) {
+        this.color = color;
     }
+
+    public Long getEdad() {
+        return edad;
+    }
+
+    public void setEdad(Long edad) {
+        this.edad = edad;
+    }
+
+    public Date getFechaalimentacion() {
+        return fechaalimentacion;
+    }
+
+    public void setFechaalimentacion(Date fechaalimentacion) {
+        this.fechaalimentacion = fechaalimentacion;
+    }
+
+    public Alimentacion getAlimentacion() {
+        return alimentacion;
+    }
+
+    public void setAlimentacion(Alimentacion alimentacion) {
+        this.alimentacion = alimentacion;
+    }
+
+    public List<Enfermedad> getEnfermedad() {
+        return enfermedad;
+    }
+
+    public void setEnfermedad(List<Enfermedad> enfermedad) {
+        this.enfermedad = enfermedad;
+    }
+
+    public Grupo getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
+    }
+
+    public List<Zoo> getZoo() {
+        return zoo;
+    }
+
+    public void setZoo(List<Zoo> zoo) {
+        this.zoo = zoo;
+    }
+
+   
+    
  
  
  

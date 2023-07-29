@@ -13,14 +13,14 @@ import com.jmoordb.core.annotation.enumerations.JakartaSource;
  * @author avbravo
  */
 @DocumentEmbeddable(jakartaSource = JakartaSource.JAKARTA)
-public class Plaga {
+public class Enfermedad {
     @Column
     private String nombre;
 
-    public Plaga() {
+    public Enfermedad() {
     }
 
-    public Plaga(String nombre) {
+    public Enfermedad(String nombre) {
         this.nombre = nombre;
     }
 
