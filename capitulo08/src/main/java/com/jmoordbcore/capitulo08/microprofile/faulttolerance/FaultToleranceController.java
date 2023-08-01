@@ -1,6 +1,6 @@
 package com.jmoordbcore.capitulo08.microprofile.faulttolerance;
 
-import com.jmoordbcore.capitulo08.repository.PaisRepository;
+import com.jmoordbcore.capitulo08.repository.AnimalRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
@@ -15,7 +15,7 @@ import org.eclipse.microprofile.faulttolerance.Timeout;
 public class FaultToleranceController {
 
     @Inject
-    PaisRepository paisRepository;
+    AnimalRepository animalRepository;
 
     @Fallback(fallbackMethod = "fallback") // better use FallbackHandler
     @Timeout(500)
@@ -24,7 +24,8 @@ public class FaultToleranceController {
         Integer count = 0;
         try {
             Date fecha = new Date();
-            count = paisRepository.findAll().stream().filter(p -> (p.getFecha().after(fecha))).map(_item -> 1).reduce(count, Integer::sum);//            paisList.forEach(action);
+            count = animalRepository.findAll().stream().filter(p -> (p.getFechaalimentacion().after(fecha))).map(_item -> 1).reduce(count, Integer::sum);
+
         } catch (Exception e) {
             //
         }

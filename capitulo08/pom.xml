@@ -19,7 +19,7 @@
         <microprofile-config-api.version>3.0</microprofile-config-api.version>
         <microprofile-metrics-api.version>5.0.0</microprofile-metrics-api.version>
         <microprofile-health-api.version>4.0</microprofile-health-api.version>
-        <final.name>capitulo13</final.name>
+        <final.name>capitulo08</final.name>
           <version.jmoordbcore>0.32</version.jmoordbcore>
         <jmeter.version>2.6.0</jmeter.version>
   
