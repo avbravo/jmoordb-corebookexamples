@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.jmoordbcore.capitulo19.model;
+package com.jmoordbcore.capitulo10.model;
 
 import com.jmoordb.core.annotation.Column;
 import com.jmoordb.core.annotation.DocumentEmbeddable;
@@ -12,18 +12,15 @@ import com.jmoordb.core.annotation.DocumentEmbeddable;
  * @author avbravo
  */
 @DocumentEmbeddable()
-public class Autor {
+public class Deportes {
     @Column
     private String nombre;
-    @Column
-    private String email;
-
-    public Autor() {
+    
+    public Deportes() {
     }
 
-    public Autor(String nombre, String email) {
+    public Deportes(String nombre) {
         this.nombre = nombre;
-        this.email = email;
     }
 
     public String getNombre() {
@@ -32,14 +29,6 @@ public class Autor {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
   
