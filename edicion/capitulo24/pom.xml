@@ -10,7 +10,7 @@
         <relativePath/>
     </parent>
     <groupId>com.jmoordbcore</groupId>
-    <artifactId>capitulo16</artifactId>
+    <artifactId>capitulo24</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
