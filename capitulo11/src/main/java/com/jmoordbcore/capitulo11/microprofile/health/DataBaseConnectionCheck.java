@@ -5,7 +5,7 @@
  */
 package com.jmoordbcore.capitulo11.microprofile.health;
 
-import com.jmoordbcore.capitulo11.repository.PaisRepository;
+import com.jmoordbcore.capitulo11.repository.EstudianteRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.eclipse.microprofile.health.HealthCheck;
@@ -21,12 +21,12 @@ import org.eclipse.microprofile.health.Readiness;
 public class DataBaseConnectionCheck implements HealthCheck {
 
     @Inject
-    PaisRepository paisRepository;
+    EstudianteRepository estudianteRepository;
 
     @Override
     public HealthCheckResponse call() {
 
-        if (paisRepository.ping()) {
+        if (estudianteRepository.ping()) {
             return HealthCheckResponse.up("Base de datos esta en ejecución");
         } else {
             return HealthCheckResponse.down("Base de datos esta detenida");

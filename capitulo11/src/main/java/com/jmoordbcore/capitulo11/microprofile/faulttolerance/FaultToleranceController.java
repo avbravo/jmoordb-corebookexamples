@@ -1,14 +1,11 @@
 package com.jmoordbcore.capitulo11.microprofile.faulttolerance;
 
-import com.jmoordbcore.capitulo11.repository.PaisRepository;
+import com.jmoordbcore.capitulo11.repository.EstudianteRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.faulttolerance.Timeout;
 
@@ -18,7 +15,7 @@ import org.eclipse.microprofile.faulttolerance.Timeout;
 public class FaultToleranceController {
 
     @Inject
-    PaisRepository paisRepository;
+    EstudianteRepository estudianteRepository;
 
     @Fallback(fallbackMethod = "fallback") // better use FallbackHandler
     @Timeout(500)
@@ -27,7 +24,7 @@ public class FaultToleranceController {
         Integer count = 0;
         try {
             Date fecha = new Date();
-            count = paisRepository.findAll().stream().filter(p -> (p.getFecha().after(fecha))).map(_item -> 1).reduce(count, Integer::sum);
+            count = estudianteRepository.findAll().stream().filter(p -> (p.getEdad() > 18)).map(_item -> 1).reduce(count, Integer::sum);
         } catch (Exception e) {
             //
         }
