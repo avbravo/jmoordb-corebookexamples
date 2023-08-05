@@ -146,7 +146,7 @@ public class EstudianteController {
     }
     // </editor-fold>
 
-// <editor-fold defaultstate="collapsed" desc=""estudianteCountFindById"">
+// <editor-fold defaultstate="collapsed" desc="estudianteCountFindById">
     @Gauge(name = "estudianteCountFindByEmail", absolute = true, unit = MetricUnits.NONE)
     private long count() {
         return counter.getCount();

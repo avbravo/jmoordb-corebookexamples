@@ -5,7 +5,6 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
-import java.util.Date;
 import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.faulttolerance.Timeout;
 
@@ -22,13 +21,12 @@ public class FaultToleranceController {
     @GET
     public String contadorPaises() {
         Integer count = 0;
-        try {
-            Date fecha = new Date();
+        try {         
             count = estudianteRepository.findAll().stream().filter(p -> (p.getEdad() > 18)).map(_item -> 1).reduce(count, Integer::sum);
         } catch (Exception e) {
             //
         }
-        return "Total de paises creados despues son " + String.valueOf(count);
+        return "Total de estudiantes mayores de 18 años: " + String.valueOf(count);
     }
 
     public String fallback() {
