@@ -68,14 +68,14 @@ public class EstudianteController {
     // <editor-fold defaultstate="collapsed" desc="findAll">
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @Timed(name = "estudianteesFindAll",
-            description = "Monitorea el tiempo en que se obtiene la lista de todos los estudiantees",
+    @Timed(name = "estudiantesFindAll", 
+            description = "Monitorea el tiempo en que obtiene la lista de todos los estudiantes",
             unit = MetricUnits.MILLISECONDS, absolute = true)
-    @Operation(summary = "Obtiene todos los estudiantees", description = "Retorna todos los estudiantees disponibles")
+    @Operation(summary = "Obtiene todos los estudiantes", description = "Retorna todos los estudiantes disponibles")
     @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
-    @APIResponse(responseCode = "200", description = "Los estudiantees")
+    @APIResponse(responseCode = "200", description = "Los estudiantes")
     @Tag(name = "BETA", description = "Esta api esta en desarrollo")
-    @APIResponse(description = "Los estudiantees", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los estudiantees", required = true, name = "estudiantees")))
+    @APIResponse(description = "Los estudiantes", responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Collection.class, readOnly = true, description = "los estudiantes", required = true, name = "estudiantes")))
     public List<Estudiante> findAll() {
 
         return estudianteRepository.findAll();
