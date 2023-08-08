@@ -39,6 +39,7 @@ import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import com.jmoordbcore.capitulo11.repository.EstudianteRepository;
+import org.eclipse.microprofile.metrics.annotation.Counted;
 
 /**
  *
@@ -68,7 +69,7 @@ public class EstudianteController {
     // <editor-fold defaultstate="collapsed" desc="findAll">
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @Timed(name = "estudiantesFindAll", 
+    @Timed(name = "estudiantesFindAll",
             description = "Monitorea el tiempo en que obtiene la lista de todos los estudiantes",
             unit = MetricUnits.MILLISECONDS, absolute = true)
     @Operation(summary = "Obtiene todos los estudiantes", description = "Retorna todos los estudiantes disponibles")
@@ -104,10 +105,10 @@ public class EstudianteController {
 
     // <editor-fold defaultstate="collapsed" desc="Response save">
     @POST
-    @Metered(name = "estudianteSave",
-            unit = MetricUnits.MILLISECONDS,
-            description = "Monitor la rata de eventos ocurridos al insertar estudiante",
-            absolute = true)
+    @Counted(name = "estudianteSave",
+            absolute = true,
+            displayName = "contador de estudiantes guardados",
+            description = "Monitorea cuantas veces el método es invocado")
     @Operation(summary = "Inserta un nuevo estudiante", description = "Inserta un nuevo estudiante")
     @APIResponse(responseCode = "201", description = "Cuanoo se crea un  estudiante")
     @APIResponse(responseCode = "500", description = "Servidor inalcanzable")
@@ -145,6 +146,26 @@ public class EstudianteController {
         return Response.status(Response.Status.NO_CONTENT).build();
     }
     // </editor-fold>
+    
+    
+    
+    
+    @GET
+    @Path("findbynombre")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+        @Counted(unit = MetricUnits.NONE,
+            name = "findByNombre",
+            absolute = true,
+            displayName = "obtiene la cantidad de veces que se ejecuto",
+            description = "Monitorea cuantas veces el método es invocado")
+    public List<Estudiante> findByNombre(@QueryParam("nombre") String nombre) {
+        return estudianteRepository.findByNombre(nombre);
+
+    }
+    
+    
+    
+    
 
 // <editor-fold defaultstate="collapsed" desc="estudianteCountFindById">
     @Gauge(name = "estudianteCountFindByEmail", absolute = true, unit = MetricUnits.NONE)
@@ -168,7 +189,7 @@ public class EstudianteController {
 
         Pagination pagination = new Pagination(pagina, registrosporpagina);
 
-        List<Estudiante> estudianteStream = estudianteRepository.findByNombrePagination(nombre, pagination);
+        List<Estudiante> estudianteStream = estudianteRepository.findByNombre(nombre);
         Histogram metric = registry.histogram(metadata);
 
         estudianteStream.forEach(p -> {
@@ -178,4 +199,6 @@ public class EstudianteController {
     }
 
 // </editor-fold>
+ 
+    
 }

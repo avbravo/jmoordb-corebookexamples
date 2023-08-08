@@ -21,5 +21,5 @@ public interface EstudianteRepository extends CrudRepository<Estudiante, String>
       @Ping
     public Boolean ping();
     @Find
-    public List<Estudiante> findByNombrePagination(String nombre, Pagination pagination);
+    public List<Estudiante> findByNombre(String nombre);
 }
