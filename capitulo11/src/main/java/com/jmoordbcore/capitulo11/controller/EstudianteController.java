@@ -59,7 +59,7 @@ public class EstudianteController {
 
     @Inject
     @Metric(name = "idestudiantehistrograma", description = "Ejemplo de histograma.",
-            displayName = "Histogra de idestudiante con paginación")
+            displayName = "Histograma de estudiante con paginación")
     private Histogram histogram;
 
     
@@ -177,21 +177,21 @@ public class EstudianteController {
 
 
 // <editor-fold defaultstate="collapsed" desc="@Path("/histogram")">
-    @Path("/histogram")
+    @Path("histogram")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Histogram histogramaEstudiante(@QueryParam("nombre") String nombre, @QueryParam("pagina") Integer pagina, @QueryParam("registrosporpagina") Integer registrosporpagina) {
+    public Histogram histogramaEstudiante(@QueryParam("edad") Integer edad, @QueryParam("pagina") Integer pagina, @QueryParam("registrosporpagina") Integer registrosporpagina) {
 
         Metadata metadata = Metadata.builder()
                 .withName("idestudiantehistrograma")
-                .withDisplayName("Idestudiante ")
+                .withDisplayName("estudiante con edad mayor")
                 .withType(MetricType.HISTOGRAM)
                 .withDescription("Histograma de idestudiante con paginación")
                 .build();
 
         Pagination pagination = new Pagination(pagina, registrosporpagina);
 
-        List<Estudiante> estudianteStream = estudianteRepository.findByNombre(nombre);
+        List<Estudiante> estudianteStream = estudianteRepository.findByEdadGreaterThanPagination(edad,pagination);
         Histogram metric = registry.histogram(metadata);
 
         estudianteStream.forEach(p -> {
