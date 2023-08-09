@@ -5,6 +5,7 @@
 package com.jmoordbcore.capitulo11.controller;
 
 import com.jmoordb.core.model.Pagination;
+import com.jmoordb.core.util.ConsoleUtil;
 import com.jmoordbcore.capitulo11.model.Estudiante;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.DELETE;
@@ -27,7 +28,6 @@ import org.eclipse.microprofile.metrics.MetricRegistry;
 import org.eclipse.microprofile.metrics.MetricType;
 import org.eclipse.microprofile.metrics.MetricUnits;
 import org.eclipse.microprofile.metrics.annotation.Gauge;
-import org.eclipse.microprofile.metrics.annotation.Metered;
 import org.eclipse.microprofile.metrics.annotation.Metric;
 import org.eclipse.microprofile.metrics.annotation.Timed;
 import org.eclipse.microprofile.openapi.annotations.Operation;
@@ -40,6 +40,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import com.jmoordbcore.capitulo11.repository.EstudianteRepository;
 import org.eclipse.microprofile.metrics.annotation.Counted;
+import org.eclipse.microprofile.metrics.annotation.RegistryType;
 
 /**
  *
@@ -58,11 +59,9 @@ public class EstudianteController {
     private Counter counter;
 
     @Inject
-    @Metric(name = "idestudiantehistrograma", description = "Ejemplo de histograma.",
-            displayName = "Histograma de estudiante con paginación")
+    @Metric(name = "edades", description = "Histograma de edades",
+            displayName = "Histograma de edades de estudiantes")
     private Histogram histogram;
-
-    
 
     @Inject
     private MetricRegistry registry;
@@ -148,14 +147,11 @@ public class EstudianteController {
         return Response.status(Response.Status.NO_CONTENT).build();
     }
     // </editor-fold>
-    
-    
-    
-    
+
     @GET
     @Path("findbynombre")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-        @Counted(unit = MetricUnits.NONE,
+    @Counted(unit = MetricUnits.NONE,
             name = "findByNombre",
             absolute = true,
             displayName = "obtiene la cantidad de veces que se ejecuto",
@@ -164,43 +160,33 @@ public class EstudianteController {
         return estudianteRepository.findByNombre(nombre);
 
     }
-    
-    
-    
-    
-
 
     @Gauge(name = "estudianteCountFindByIdestudiante", absolute = true, unit = MetricUnits.NONE)
     private long count() {
         return counter.getCount();
     }
 
-
 // <editor-fold defaultstate="collapsed" desc="@Path("/histogram")">
     @Path("histogram")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Histogram histogramaEstudiante(@QueryParam("edad") Integer edad, @QueryParam("pagina") Integer pagina, @QueryParam("registrosporpagina") Integer registrosporpagina) {
+    public Histogram histogramaEstudiante() {
+        try {
+            var edad = 20;
+            var pagina = 1;
+            var registrosPorPagina = 25;
+            Pagination pagination = new Pagination(pagina, registrosPorPagina);
 
-        Metadata metadata = Metadata.builder()
-                .withName("idestudiantehistrograma")
-                .withDisplayName("estudiante con edad mayor")
-                .withType(MetricType.HISTOGRAM)
-                .withDescription("Histograma de idestudiante con paginación")
-                .build();
+            List<Estudiante> estudianteStream = estudianteRepository.findByEdadGreaterThanPagination(edad, pagination);
+            estudianteStream.forEach(p -> {
+                histogram.update(p.getEdad());
+            });
+        } catch (Exception e) {
+            ConsoleUtil.error("error " + e.getLocalizedMessage());
+        }
 
-        Pagination pagination = new Pagination(pagina, registrosporpagina);
-
-        List<Estudiante> estudianteStream = estudianteRepository.findByEdadGreaterThanPagination(edad,pagination);
-        Histogram metric = registry.histogram(metadata);
-
-        estudianteStream.forEach(p -> {
-            histogram.update(p.getEdad());
-        });
         return histogram;
     }
 
 // </editor-fold>
- 
-    
 }
