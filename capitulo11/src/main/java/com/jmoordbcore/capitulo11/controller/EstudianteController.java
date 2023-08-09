@@ -62,6 +62,8 @@ public class EstudianteController {
             displayName = "Histogra de idestudiante con paginación")
     private Histogram histogram;
 
+    
+
     @Inject
     private MetricRegistry registry;
 
@@ -167,12 +169,12 @@ public class EstudianteController {
     
     
 
-// <editor-fold defaultstate="collapsed" desc="estudianteCountFindById">
-    @Gauge(name = "estudianteCountFindByEmail", absolute = true, unit = MetricUnits.NONE)
+
+    @Gauge(name = "estudianteCountFindByIdestudiante", absolute = true, unit = MetricUnits.NONE)
     private long count() {
         return counter.getCount();
     }
-// </editor-fold>
+
 
 // <editor-fold defaultstate="collapsed" desc="@Path("/histogram")">
     @Path("/histogram")
