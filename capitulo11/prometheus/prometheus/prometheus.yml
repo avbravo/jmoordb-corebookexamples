@@ -37,9 +37,3 @@ scrape_configs:
     static_configs:
       - targets: ["localhost:9090"]
 
-groups:
-  - name: Alertas
-    rules:
-      - alert: InstanceDown 
-        expr: up{job="services"} < 1 
-        for: 5m 
