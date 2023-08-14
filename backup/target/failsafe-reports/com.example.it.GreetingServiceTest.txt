@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.example.it.GreetingServiceTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.155 s - in com.example.it.GreetingServiceTest
