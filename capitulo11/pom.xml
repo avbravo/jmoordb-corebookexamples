@@ -7,13 +7,13 @@
     <packaging>war</packaging>
     <name>capitulo11</name>
     
-   <properties>
+    <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
-       <jakartaee>10.0.0</jakartaee>
+        <jakartaee>10.0.0</jakartaee>
         <version.payara>6.2023.7</version.payara>  
-      <microprofile.version>6.0</microprofile.version>
+        <microprofile.version>6.0</microprofile.version>
         <microprofile-config-api.version>3.0</microprofile-config-api.version>
         <microprofile-metrics-api.version>5.0.0</microprofile-metrics-api.version>
         <microprofile-health-api.version>4.0</microprofile-health-api.version>
@@ -74,7 +74,7 @@
     </dependencies>
     
     <build>
-             <finalName>${final.name}</finalName>
+        <finalName>${final.name}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -88,7 +88,7 @@
                     </compilerArguments>
                 </configuration>
             </plugin>
-             <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
@@ -121,7 +121,7 @@
                     </execution>
                 </executions>
             </plugin>
-          <plugin>
+            <plugin>
                 <groupId>fish.payara.maven.plugins</groupId>
                 <artifactId>payara-micro-maven-plugin</artifactId>
                 <configuration>
@@ -142,27 +142,28 @@
                             <key>--deploy</key>
                             <value>${project.build.directory}/${project.build.finalName}</value>
                         </option>
+                      
                     </commandLineOptions>
-                     <!--
-                        JDK 17+ Soluciona error con EJB
-                        -->                         
-                        <javaCommandLineOptions>
-                            <option>
-                                <key>--add-opens</key>
-                                <value>java.base/java.io=ALL-UNNAMED</value>
-                            </option>
-                            <option>
-                                <key></key>
-                                <value>-Djdk.util.zip.disableZip64ExtraFieldValidation=true</value>
-                            </option>
+                    <!--
+                    JDK 17+ Soluciona error con EJB
+                    -->                         
+                    <javaCommandLineOptions>
+                        <option>
+                            <key>--add-opens</key>
+                            <value>java.base/java.io=ALL-UNNAMED</value>
+                        </option>
+                        <option>
+                            <key></key>
+                            <value>-Djdk.util.zip.disableZip64ExtraFieldValidation=true</value>
+                        </option>
                          
-                        </javaCommandLineOptions>    
+                    </javaCommandLineOptions>    
                 </configuration>
                 <version>2.0</version>
             </plugin>
         </plugins>
     </build>
-      <repositories>
+    <repositories>
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
