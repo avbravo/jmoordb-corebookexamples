@@ -3,13 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
  */
 
-package com.jmoordbcore.capitulo22;
+package com.jmoordbcore.capitulo13;
 
 /**
  *
  * @author avbravo
  */
-public class Capitulo09 {
+public class Capitulo13 {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
