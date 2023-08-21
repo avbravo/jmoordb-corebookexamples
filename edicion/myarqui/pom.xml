@@ -60,6 +60,13 @@
        <artifactId>arquillian-payara-micro-5-managed</artifactId>
        <version>1.1</version>
        <scope>test</scope>
+       
+       <dependency>
+        <groupId>org.jboss.arquillian.core</groupId>
+        <artifactId>arquillian-core-api</artifactId>
+        <version>1.1.4.Final</version>
+        <scope>test</scope>
+</dependency>
 </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
