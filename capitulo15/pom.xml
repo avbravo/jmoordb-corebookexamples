@@ -25,6 +25,7 @@
         <microprofile.version>6.0</microprofile.version>
         <microprofile-config-api.version>3.0</microprofile-config-api.version>
           <version.jmoordb-core-annotations>1.3</version.jmoordb-core-annotations>
+          <maven-failsafe-plugin.version>3.0.0</maven-failsafe-plugin.version>
     </properties>
 
     <dependencies>
@@ -54,6 +55,25 @@
             <artifactId>jmoordb-core-annotations</artifactId>
             <version>${version.jmoordb-core-annotations}</version>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.6.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>5.6.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.6.0</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -124,6 +144,20 @@
                     </javaCommandLineOptions>    
                 </configuration>
                 <version>2.0</version>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven-failsafe-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
