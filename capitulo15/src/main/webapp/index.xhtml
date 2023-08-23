@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+
+      xmlns:p="http://primefaces.org/ui"
+      lang="en"
+      xmlns:f="jakarta.faces.core">
+    <h:head>
+        <title>MicroProfile RestClient</title>
+    </h:head>
+    <h:body>
+        <f:view contentType="text/html">
+            <p>
+                <a href="https://jakarta.ee"><img width="10%" src="images/jakartaee_logo.jpg"/></a>
+            </p>
+            <h:form>
+                <p:growl/>
+                <p:dataTable var="item" value="#{estudianteFaces.estudianteList}"   paginator="true" rows="25">
+                    <f:facet name="header">
+                        <p:outputLabel value="Listado de estudiantes"/>
+                    </f:facet>
+
+                    <p:column headerText="idestudiante">
+                        <p:outputLabel value="#{item.idestudiante}"/>
+                    </p:column>
+
+                    <p:column headerText="nombre">
+                        <p:outputLabel value="#{item.nombre}"/>
+                    </p:column>
+
+                    <p:column headerText="edad">
+                        <p:outputLabel value="#{item.edad}"/>
+                    </p:column>
+
+                </p:dataTable>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>

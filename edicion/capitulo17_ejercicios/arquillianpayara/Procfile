@@ -1,1 +1,0 @@
-web: java -jar target/payara-arquillian-heroku-1.0.jar  --port $PORT
