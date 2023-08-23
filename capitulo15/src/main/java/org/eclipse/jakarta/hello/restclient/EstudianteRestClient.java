@@ -27,7 +27,7 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
  *
  * @author avbravo
  */
-@RegisterRestClient()
+@RegisterRestClient(baseUri ="http://localhost:8080/api/estudiante" )
 @Path("/estudiante")
 public interface EstudianteRestClient {
 
