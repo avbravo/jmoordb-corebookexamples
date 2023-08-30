@@ -16,10 +16,19 @@ import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import java.util.Collection;
 import java.util.List;
+import org.eclipse.microprofile.metrics.MetricRegistry;
+import org.eclipse.microprofile.metrics.MetricUnits;
+import org.eclipse.microprofile.metrics.annotation.Timed;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import com.jmoordbcore.model.Estudiante;
 import com.jmoordbcore.repository.EstudianteRepository;
 
@@ -30,52 +39,69 @@ import com.jmoordbcore.repository.EstudianteRepository;
 @Path("estudiante")
 public class EstudianteController {
 
+    // <editor-fold defaultstate="collapsed" desc="Inject">
     @Inject
-    EstudianteRepository estudianteRepository; 
+    EstudianteRepository estudianteRepository;
 
 
+// </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="findAll">
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-
-    public List<Estudiante> findAll() {
+       public List<Estudiante> findAll() {
 
         return estudianteRepository.findAll();
     }
+// </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="Estudiante findByIdestudiante">
     @GET
     @Path("{idestudiante}")
+ 
     public Estudiante findByIdestudiante(@PathParam("idestudiante") String idestudiante) {
+
+  
+
         return estudianteRepository.findByPk(idestudiante).orElseThrow(
                 () -> new WebApplicationException("No hay estudiante con idestudiante " + idestudiante, Response.Status.NOT_FOUND));
 
     }
+// </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="Response save">
     @POST
-    public Response save(@RequestBody(description = "Crea un nuevo estudiante.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Estudiante.class))) Estudiante estudiante) {
+    public Response save(Estudiante estudiante) {
 
         return Response.status(Response.Status.CREATED).entity(estudianteRepository.save(estudiante)).build();
     }
+// </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="Response update">
 
     @PUT
-    public Response update(
-            @RequestBody(description = "Crea un nuevo estudiante.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Estudiante.class))) Estudiante estudiante) {
+  
+    public Response update(Estudiante estudiante) {
 
         return Response.status(Response.Status.CREATED).entity(estudianteRepository.update(estudiante)).build();
     }
+// </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="Response delete">
     @DELETE
     @Path("{idestudiante}")
-    public Response delete(@PathParam("idestudiante") String idestudiante) {
+        public Response delete( @PathParam("idestudiante") String idestudiante) {
         estudianteRepository.deleteByPk(idestudiante);
         return Response.status(Response.Status.NO_CONTENT).build();
     }
+    // </editor-fold>
 
     @GET
     @Path("findbynombre")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Estudiante> findByNombre(@QueryParam("nombre") String nombre) {
+     public List<Estudiante> findByNombre(@QueryParam("nombre") String nombre) {
         return estudianteRepository.findByNombre(nombre);
 
     }
+
+   
 
 }
