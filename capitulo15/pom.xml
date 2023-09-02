@@ -27,7 +27,7 @@
         <version.jmoordb-core-annotations>1.3</version.jmoordb-core-annotations>
         <maven-failsafe-plugin.version>3.0.0</maven-failsafe-plugin.version>
         <primefaces.version>13.0.0</primefaces.version>
-         <version.jmoordbutilfaces>1.9</version.jmoordbutilfaces>
+         <version.jmoordbutilfaces>2.0.0.b-2</version.jmoordbutilfaces>
     <version.jmoordb-core-annotations>1.3</version.jmoordb-core-annotations>
     </properties>
 
