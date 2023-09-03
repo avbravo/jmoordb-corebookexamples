@@ -18,6 +18,8 @@ import java.util.List;
  */
 @Repository(entity=Estudiante.class)
 public interface EstudianteRepository extends CrudRepository<Estudiante, String>{
+      @Ping
+    public Boolean ping();
     @Find
     public List<Estudiante> findByNombre(String nombre);
     @Find

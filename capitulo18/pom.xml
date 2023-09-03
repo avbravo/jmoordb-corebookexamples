@@ -52,12 +52,24 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-openapi</artifactId>
         </dependency>
+<!--        <dependency>
+            <groupId>com.github.avbravo</groupId>
+            <artifactId>jmoordb-core</artifactId>
+            <version>${version.jmoordbcore}</version>
+        </dependency>-->
         <dependency>
             <groupId>com.github.avbravo</groupId>
             <artifactId>jmoordb-core-quarkus</artifactId>
             <version>${version.jmoordbcore}</version>
         </dependency>
-
+        
+        
+        
+ <dependency>
+            <groupId>org.eclipse.microprofile.config</groupId>
+            <artifactId>microprofile-config-api</artifactId>
+            <version>3.1-RC2</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
