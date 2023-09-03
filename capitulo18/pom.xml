@@ -54,7 +54,7 @@
         </dependency>
         <dependency>
             <groupId>com.github.avbravo</groupId>
-            <artifactId>jmoordb-core</artifactId>
+            <artifactId>jmoordb-core-quarkus</artifactId>
             <version>${version.jmoordbcore}</version>
         </dependency>
 
