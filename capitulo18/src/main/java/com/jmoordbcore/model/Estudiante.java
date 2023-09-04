@@ -58,6 +58,11 @@ public class Estudiante {
         this.edad = edad;
     }
 
+    @Override
+    public String toString() {
+        return "Estudiante{" + "idestudiante=" + idestudiante + ", nombre=" + nombre + ", edad=" + edad + '}';
+    }
+
    
     
     
