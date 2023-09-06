@@ -61,9 +61,8 @@ public class EstudianteController {
 
         return Response.status(Response.Status.CREATED).entity(estudianteRepository.save(estudiante)).build();
     }
-
+  
     @PUT
-
     public Response update(
             @RequestBody(description = "Crea un nuevo estudiante.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Estudiante.class))) Estudiante estudiante) {
 
