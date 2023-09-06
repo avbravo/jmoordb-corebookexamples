@@ -4,18 +4,19 @@
  */
 package com.jmoordb.capitulo18.model;
 
+import jakarta.nosql.Column;
+import jakarta.nosql.Entity;
 import jakarta.nosql.Id;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+
 
 /**
  *
  * @author avbravo
  */
-@Entity()
+@Entity(value = "estudiante")
 public class Estudiante {
 
-    @Id
+    @Id("idestudiante")
     private String idestudiante;
     @Column
     private String nombre;
@@ -54,6 +55,11 @@ public class Estudiante {
 
     public void setEdad(Integer edad) {
         this.edad = edad;
+    }
+
+    @Override
+    public String toString() {
+        return "Estudiante{" + "idestudiante=" + idestudiante + ", nombre=" + nombre + ", edad=" + edad + '}';
     }
 
    

@@ -4,7 +4,7 @@
  */
 package com.jmoordb.capitulo18.repository;
 
-import com.jmoordbcore.model.Estudiante;
+import com.jmoordb.capitulo18.model.Estudiante;
 import jakarta.data.repository.CrudRepository;
 import jakarta.data.repository.OrderBy;
 import jakarta.data.repository.Repository;
@@ -16,7 +16,7 @@ import java.util.List;
  * @author avbravo
  */
 @Repository
-public interface EstudianteRepository extends CrudRepository<Estudiante, Long>{
+public interface EstudianteRepository extends CrudRepository<Estudiante, String>{
 List<Estudiante> findByNombre(String nombre);
 
   @OrderBy("edad")
