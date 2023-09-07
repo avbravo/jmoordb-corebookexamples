@@ -15,7 +15,7 @@
         <quarkus.platform.version>2.13.3.Final</quarkus.platform.version>
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
-                <version.jmoordbcore>1.0.0.b-1</version.jmoordbcore>
+        <version.jmoordbcore>1.0.0.b-3</version.jmoordbcore>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -55,10 +55,10 @@
     
            
         </dependency>
-         <dependency>
-                <groupId>io.quarkus</groupId>
-                <artifactId>quarkus-smallrye-openapi</artifactId>
-            </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-smallrye-openapi</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.eclipse.microprofile.metrics</groupId>
             <artifactId>microprofile-metrics-api</artifactId>
