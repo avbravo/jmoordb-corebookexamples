@@ -25,7 +25,7 @@ import org.eclipse.microprofile.openapi.annotations.servers.Server;
                 url = "https://avbravo.blogspot.com")
 ),
         servers = {
-            @Server(url = "http://localhost:8080/", description = "Local Development Server "),}
+            @Server(url = "http://localhost:8080/", description = "Local Server "),}
 )
 public class JakartaRestConfiguration extends Application {
     
