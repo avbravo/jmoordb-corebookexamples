@@ -10,13 +10,10 @@ import org.eclipse.microprofile.openapi.annotations.info.Contact;
 import org.eclipse.microprofile.openapi.annotations.info.Info;
 import org.eclipse.microprofile.openapi.annotations.servers.Server;
 
-/**
- * Configures Jakarta RESTful Web Services for the application.
- * @author Juneau
- */
+
 @ApplicationPath("api")
 @OpenAPIDefinition(info = @Info(
-        title = "RESTful API",
+        title = "Jmoordbcore",
         description = "capitulo 02",
         version = "1.0.0-Snapshot",
         contact = @Contact(
@@ -25,7 +22,7 @@ import org.eclipse.microprofile.openapi.annotations.servers.Server;
                 url = "https://avbravo.blogspot.com")
 ),
         servers = {
-            @Server(url = "http://localhost:8080/", description = "Local Server "),}
+            @Server(url = "http://localhost:8080/", description = "Servidor Local "),}
 )
 public class JakartaRestConfiguration extends Application {
     

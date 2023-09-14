@@ -17,4 +17,13 @@
                 <goal>payara-micro:start</goal>
             </goals>
         </action>
+        <action>
+            <actionName>CUSTOM-clean verify payara-micro:start</actionName>
+            <displayName>clean verify payara-micro:start</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>verify</goal>
+                <goal>payara-micro:start</goal>
+            </goals>
+        </action>
     </actions>
