@@ -47,7 +47,7 @@ import org.eclipse.microprofile.metrics.annotation.RegistryType;
  * @author avbravo
  */
 @Path("estudiante")
-@Tag(name = "Información del estudiante", description = "End-point para entidad Estudiante")
+@Tag(name = "Información del estudiante", description = "Endpoint para entidad Estudiante")
 public class EstudianteController {
 
     // <editor-fold defaultstate="collapsed" desc="Inject">

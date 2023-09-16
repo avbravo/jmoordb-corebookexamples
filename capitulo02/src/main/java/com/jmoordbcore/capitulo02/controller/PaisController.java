@@ -39,7 +39,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
  * @author avbravo
  */
 @Path("pais")
-@Tag(name = "Información del pais", description = "End-point para entidad Pais")
+@Tag(name = "Información del pais", description = "Endpoint para entidad Pais")
 public class PaisController {
 
 

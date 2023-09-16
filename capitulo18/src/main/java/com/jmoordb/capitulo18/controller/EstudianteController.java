@@ -31,7 +31,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
  * @author avbravo
  */
 @Path("estudiante")
-@Tag(name = "Información del estudiante", description = "End-point para entidad Estudiante")
+@Tag(name = "Información del estudiante", description = "Endpoint para entidad Estudiante")
 public class EstudianteController {
 
     @Inject
