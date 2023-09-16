@@ -15,5 +15,6 @@ import com.jmoordbcore.capitulo02.model.Oceano;
  */
 @Repository(entity = Oceano.class,jakartaSource = JakartaSource.JAKARTA)
 public interface OceanoRepository extends CrudRepository<Oceano, String> {
+
     
 }
