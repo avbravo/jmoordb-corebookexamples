@@ -15,7 +15,7 @@
         <failOnMissingWebXml>false</failOnMissingWebXml>
 
         <jakartaee>10.0.0</jakartaee>
-        <version.payara>6.2023.8</version.payara>
+        <version.payara>6.2023.9</version.payara>
 
         <microprofile.version>6.0</microprofile.version>
         <microprofile-config-api.version>3.0</microprofile-config-api.version>
