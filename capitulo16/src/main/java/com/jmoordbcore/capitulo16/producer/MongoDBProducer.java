@@ -4,10 +4,6 @@
  */
 package com.jmoordbcore.capitulo16.producer;
 
-/**
- *
- * @author avbravo
- */
 import com.jmoordb.core.annotation.DateSupport;
 import com.jmoordb.core.annotation.enumerations.JakartaSource;
 import com.mongodb.client.MongoClient;
@@ -21,9 +17,15 @@ import java.io.Serializable;
 import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
+/**
+ *
+ * @author avbravo
+ */
 @ApplicationScoped
 @DateSupport(jakartaSource = JakartaSource.JAKARTA)
 public class MongoDBProducer implements Serializable {
+
+
 
     @Inject
     private Config config;
@@ -34,12 +36,16 @@ public class MongoDBProducer implements Serializable {
     @Produces
     @ApplicationScoped
     public MongoClient mongoClient() {
+
+
         MongoClient mongoClient = MongoClients.create(mongodburi);
        return mongoClient;
 
     }
 
     public void close(@Disposes final MongoClient mongoClient) {
+
+
         mongoClient.close();
     }
 

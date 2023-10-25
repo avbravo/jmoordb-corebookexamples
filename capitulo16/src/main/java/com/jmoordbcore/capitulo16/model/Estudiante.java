@@ -12,9 +12,10 @@ import com.jmoordb.core.annotation.Id;
  *
  * @author avbravo
  */
+
 @Entity()
 public class Estudiante {
-
+    
     @Id
     private String idestudiante;
     @Column
@@ -55,10 +56,7 @@ public class Estudiante {
     public void setEdad(Integer edad) {
         this.edad = edad;
     }
-
-   
     
     
     
-
 }

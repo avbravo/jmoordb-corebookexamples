@@ -1,14 +1,11 @@
 
 package com.jmoordbcore.capitulo16;
 
-import java.util.Collections;
-
 import org.eclipse.microprofile.metrics.MetricUnits;
 import org.eclipse.microprofile.metrics.annotation.Counted;
 import org.eclipse.microprofile.metrics.annotation.Timed;
 import jakarta.ws.rs.PathParam;
 
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;

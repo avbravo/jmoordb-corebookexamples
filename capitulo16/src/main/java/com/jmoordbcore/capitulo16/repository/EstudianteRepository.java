@@ -5,7 +5,6 @@
 package com.jmoordbcore.capitulo16.repository;
 
 import com.jmoordb.core.annotation.repository.Find;
-import com.jmoordb.core.annotation.repository.Ping;
 import com.jmoordb.core.annotation.repository.Repository;
 import com.jmoordb.core.model.Pagination;
 import com.jmoordb.core.repository.CrudRepository;
@@ -18,8 +17,8 @@ import java.util.List;
  */
 @Repository(entity=Estudiante.class)
 public interface EstudianteRepository extends CrudRepository<Estudiante, String>{
-      @Ping
-    public Boolean ping();
+
+
     @Find
     public List<Estudiante> findByNombre(String nombre);
     @Find

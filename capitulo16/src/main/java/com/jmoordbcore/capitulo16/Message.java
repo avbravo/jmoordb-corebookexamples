@@ -1,6 +1,5 @@
 package com.jmoordbcore.capitulo16;
 
-
 public class Message {
 
     private String message;

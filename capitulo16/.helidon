@@ -1,6 +1,6 @@
 #Helidon Project Configuration
-#Fri Aug 25 02:14:20 UTC 2023
+#Wed Oct 25 03:06:33 UTC 2023
 schema.version=1.1.0
-helidon.version=3.2.2
+helidon.version=4.0.0
 project.flavor=mp
 project.archetype=quickstart
