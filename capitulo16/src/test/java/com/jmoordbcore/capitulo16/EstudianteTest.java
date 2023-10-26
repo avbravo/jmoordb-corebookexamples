@@ -32,7 +32,7 @@ class EstudianteTest {
 
         String result = target
                 .path("estudiante/findbynombre")
-                .queryParam("nombre", "Ana")
+                .queryParam("nombre", "Maria")
                 .request()
                 .get(String.class);
         assertThat(result, is("[{\"edad\":25,\"idestudiante\":\"7-8-5\",\"nombre\":\"Maria\"}]"));
