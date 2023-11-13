@@ -28,7 +28,7 @@ import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
  * @author avbravo
  */
 
-    @Path("estudiante")
+@Path("estudiante")
 public class EstudianteController {
 
 
