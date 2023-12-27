@@ -148,7 +148,8 @@
                     </commandLineOptions>
                      <!--
                         JDK 17+ Soluciona error con EJB
-                        -->                         
+                        -->   
+                                              
                         <javaCommandLineOptions>
                             <option>
                                 <key>--add-opens</key>
