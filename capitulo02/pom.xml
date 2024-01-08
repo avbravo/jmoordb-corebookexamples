@@ -23,7 +23,7 @@
         <microprofile-health-api.version>4.0</microprofile-health-api.version>
         <final.name>capitulo02</final.name>
         
-        <version.jmoordbcore>1.0.0.b-7</version.jmoordbcore>
+        <version.jmoordbcore>1.0.0.b-8</version.jmoordbcore>
     </properties>
 
     <dependencies>
