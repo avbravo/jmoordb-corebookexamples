@@ -21,8 +21,8 @@
         <compiler-plugin.version>3.11.0</compiler-plugin.version>
         <war-plugin.version>3.3.2</war-plugin.version>
         <cargo.version>1.10.7</cargo.version>
-           <microprofile.version>6.0</microprofile.version>
-        <microprofile-config-api.version>3.0</microprofile-config-api.version>
+           <microprofile.version>6.1</microprofile.version>
+        <microprofile-config-api.version>3.1</microprofile-config-api.version>
         <version.jmoordb-core-annotations>1.3</version.jmoordb-core-annotations>
         <maven-failsafe-plugin.version>3.0.0</maven-failsafe-plugin.version>
         <primefaces.version>13.0.0</primefaces.version>

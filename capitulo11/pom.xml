@@ -13,10 +13,10 @@
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <jakartaee>10.0.0</jakartaee>
         <version.payara>6.2024.1</version.payara>  
-        <microprofile.version>6.0</microprofile.version>
-        <microprofile-config-api.version>3.0</microprofile-config-api.version>
-        <microprofile-metrics-api.version>5.0.0</microprofile-metrics-api.version>
-        <microprofile-health-api.version>4.0</microprofile-health-api.version>
+        <microprofile.version>6.1</microprofile.version>
+        <microprofile-config-api.version>3.1</microprofile-config-api.version>
+        <microprofile-metrics-api.version>5.1.0</microprofile-metrics-api.version>
+        <microprofile-health-api.version>4.0.1</microprofile-health-api.version>
         <final.name>capitulo11</final.name>
         <version.jmoordbcore>1.0.0.b-4</version.jmoordbcore>
     </properties>
