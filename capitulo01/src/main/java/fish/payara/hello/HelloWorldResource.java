@@ -43,9 +43,11 @@ public class HelloWorldResource {
                 .build();
     }
 
-    public String fallbackMethod() {
-        // Fallback logic when the getData method fails or exceeds retries
-        return "Fallback data";
+    public Response fallbackMethod(@QueryParam("name") String name) {
+        // Fallback logic when the hello method fails or exceeds retries
+        return Response
+                .ok("Fallback data")
+                .build();
     }
-        
+
 }
