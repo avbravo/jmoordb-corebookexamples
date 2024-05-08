@@ -2,7 +2,7 @@
 # Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 # Click nbfs://nbhost/SystemFileSystem/Templates/Other/Dockerfile to edit this template
 
-FROM payara/micro:6.2024.4-jdk17
+FROM payara/micro:6.2024.5-jdk17
 
 COPY target/capitulo11.war $DEPLOY_DIR
 
