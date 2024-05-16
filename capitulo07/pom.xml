@@ -19,7 +19,7 @@
         <microprofile.version>5.0</microprofile.version>
         <final.version>mongodbatlasdriver</final.version>
         <jmh.version>1.35</jmh.version>
-    <version.jmoordbcore>1.2.0</version.jmoordbcore>
+    <version.jmoordbcore>1.4.0</version.jmoordbcore>
     </properties>
     
     <dependencies>
