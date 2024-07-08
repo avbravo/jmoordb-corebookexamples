@@ -1,0 +1,87 @@
+{
+  "_id" : ObjectId("65c82e751ad6fe4ab761bef8"),
+  "idtarjeta" : NumberLong(757),
+  "tarjeta" : "Con Error Realizar ajustes en formulario de acceso\n",
+  "descripcion" : "sfdsfsdf",
+  "user" : [{
+      "iduser" : NumberLong(8)
+    }, {
+      "iduser" : NumberLong(42)
+    }],
+  "fechainicial" : ISODate("2024-02-11T02:35:00.000Z"),
+  "fechafinal" : ISODate("2024-02-11T02:35:00.000Z"),
+  "icono" : {
+    "idicono" : NumberLong(1)
+  },
+  "tipotarjeta" : {
+    "idtipotarjeta" : NumberLong(23)
+  },
+  "idsprint" : NumberLong(79),
+  "idproyecto" : NumberLong(3),
+  "backlog" : false,
+  "prioridad" : "Media",
+  "estimacion" : "[0] 0 :0",
+  "columna" : "progreso",
+  "active" : true,
+  "tarea" : [{
+      "tarea" : "wewwsr",
+      "completado" : false,
+      "active" : true,
+      "orden" : 0,
+      "user" : {
+        "iduser" : NumberLong(8)
+      }
+    }, {
+      "tarea" : "xfsdf",
+      "completado" : false,
+      "active" : true,
+      "orden" : 0,
+      "user" : {
+        "iduser" : NumberLong(8)
+      }
+    }, {
+      "tarea" : "adhjkada",
+      "completado" : false,
+      "active" : true,
+      "orden" : 0,
+      "user" : {
+        "iduser" : NumberLong(8)
+      }
+    }],
+  "comentario" : [],
+  "etiqueta" : [],
+  "archivo" : [],
+  "impedimento" : [],
+  "foreaneo" : false,
+  "actionHistory" : [{
+      "fecha" : ISODate("2024-02-11T02:18:29.709Z"),
+      "iduser" : NumberLong(8),
+      "evento" : "tarjeta creada a partir de una clonación",
+      "clase" : "BacklogFaces",
+      "metodo" : "clonar"
+    }, {
+      "fecha" : ISODate("2024-02-11T02:35:24.150Z"),
+      "iduser" : NumberLong(8),
+      "evento" : "agregar tarea",
+      "clase" : "BacklogFaces",
+      "metodo" : "addTarea"
+    }, {
+      "fecha" : ISODate("2024-02-11T02:35:43.086Z"),
+      "iduser" : NumberLong(8),
+      "evento" : "editar",
+      "clase" : "BacklogFaces",
+      "metodo" : "pasarAlSprint"
+    }, {
+      "fecha" : ISODate("2024-02-12T02:58:40.682Z"),
+      "iduser" : NumberLong(8),
+      "evento" : "editar",
+      "clase" : "TableroFaces",
+      "metodo" : "editar"
+    }, {
+      "fecha" : ISODate("2024-02-15T01:50:09.047Z"),
+      "iduser" : NumberLong(8),
+      "evento" : "movido a progreso",
+      "clase" : "TableroFaces",
+      "metodo" : "nextProgreso"
+    }]
+}
