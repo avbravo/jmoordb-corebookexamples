@@ -15,7 +15,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <final.name>capitulo17</final.name>
         <slf4j.api.version>1.7.30</slf4j.api.version>
-        <version.jmoordbcore>1.13.0</version.jmoordbcore>
+        <version.jmoordbcore>1.15.0</version.jmoordbcore>
     </properties>
     <dependencies>
         <dependency>
