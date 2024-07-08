@@ -28,14 +28,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
-import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
-import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import com.capitulo19.model.Venta;
 import com.capitulo19.repository.VentaRepository;
+import com.jmoordb.core.util.ConsoleUtil;
 
 /**
  *
@@ -45,7 +43,7 @@ import com.capitulo19.repository.VentaRepository;
 @RequestScoped
 public class VentaController implements Serializable {
 
-    private String nameOfCollection = "venta_";
+    private String nameOfCollection = "venta_empresa_";
     // <editor-fold defaultstate="collapsed" desc="Inject">
     @Inject
     VentaRepository ventaRepository;
@@ -74,16 +72,17 @@ public class VentaController implements Serializable {
 
         Boolean conIsoDate = Boolean.TRUE;
         if (conIsoDate) {
-
+            
             Date dateconverter = JmoordbCoreDateUtil.dateToiSODateToDate(venta.getFechaHora());
-
-            ventaRepository.setDynamicDatabase("lecturas_" + JmoordbCoreDateUtil.anioDeUnaFecha(dateconverter).toString().trim() + "db");
+            
+            ventaRepository.setDynamicDatabase("transaccion_" + JmoordbCoreDateUtil.anioDeUnaFecha(dateconverter).toString().trim() + "db");
             Integer numeroMes = JmoordbCoreDateUtil.mesDeUnaFechaStartEneroWith0(dateconverter);
+        
             ventaRepository.setDynamicCollection(nameOfCollection + venta.getIdempresa().toString().trim() + "_" + JmoordbCoreDateUtil.getNombreMes(numeroMes).toLowerCase());
 
         } else {
 
-            ventaRepository.setDynamicDatabase("lecturas_" + JmoordbCoreDateUtil.anioDeUnaFecha(venta.getFechaHora()).toString().trim() + "db");
+            ventaRepository.setDynamicDatabase("transaccion_" + JmoordbCoreDateUtil.anioDeUnaFecha(venta.getFechaHora()).toString().trim() + "db");
             Integer numeroMes = JmoordbCoreDateUtil.mesDeUnaFechaStartEneroWith0(venta.getFechaHora());
             ventaRepository.setDynamicCollection(nameOfCollection + venta.getIdempresa().toString().trim() + "_" + JmoordbCoreDateUtil.getNombreMes(numeroMes).toLowerCase());
 
@@ -108,13 +107,13 @@ public class VentaController implements Serializable {
         if (conIsoDate) {
             Date dateconverter = JmoordbCoreDateUtil.dateToiSODateToDate(venta.getFechaHora());
 
-            ventaRepository.setDynamicDatabase("lecturas_" + JmoordbCoreDateUtil.anioDeUnaFecha(dateconverter).toString().trim() + "db");
+            ventaRepository.setDynamicDatabase("transaccion_" + JmoordbCoreDateUtil.anioDeUnaFecha(dateconverter).toString().trim() + "db");
             Integer numeroMes = JmoordbCoreDateUtil.mesDeUnaFechaStartEneroWith0(dateconverter);
             ventaRepository.setDynamicCollection(nameOfCollection + venta.getIdempresa().toString().trim() + "_" + JmoordbCoreDateUtil.getNombreMes(numeroMes).toLowerCase());
 
         } else {
 
-            ventaRepository.setDynamicDatabase("lecturas_" + JmoordbCoreDateUtil.anioDeUnaFecha(venta.getFechaHora()).toString().trim() + "db");
+            ventaRepository.setDynamicDatabase("transaccion_" + JmoordbCoreDateUtil.anioDeUnaFecha(venta.getFechaHora()).toString().trim() + "db");
             Integer numeroMes = JmoordbCoreDateUtil.mesDeUnaFechaStartEneroWith0(venta.getFechaHora());
             ventaRepository.setDynamicCollection(nameOfCollection + venta.getIdempresa().toString().trim() + "_" + JmoordbCoreDateUtil.getNombreMes(numeroMes).toLowerCase());
 
@@ -136,7 +135,7 @@ public class VentaController implements Serializable {
     @Path("idventaanio")
     public Response delete(@QueryParam("idventa") Long idventa, @QueryParam("anio") Integer anio, @QueryParam("mes") Integer mes) {
 
-        ventaRepository.setDynamicDatabase("lecturas_" + anio.toString().trim() + "db");
+        ventaRepository.setDynamicDatabase("transaccion_" + anio.toString().trim() + "db");
         Integer numeroMes = mes;
         ventaRepository.setDynamicCollection(nameOfCollection + idventa.toString().trim() + "_" + JmoordbCoreDateUtil.getNombreMes(numeroMes).toLowerCase());
 
@@ -152,7 +151,7 @@ public class VentaController implements Serializable {
     @DELETE
     @Path("deletemany")
     public Response deleteMany(@QueryParam("filter") String filter, @QueryParam("idempresa") Long idempresa, @QueryParam("anio") Integer anio, @QueryParam("mes") Integer mes) {
-        ventaRepository.setDynamicDatabase("lecturas_" + anio.toString().trim() + "db");
+        ventaRepository.setDynamicDatabase("transaccion_" + anio.toString().trim() + "db");
         Integer numeroMes = mes;
         ventaRepository.setDynamicCollection(nameOfCollection + idempresa.toString().trim() + "_" + JmoordbCoreDateUtil.getNombreMes(numeroMes).toLowerCase());
 
@@ -173,7 +172,7 @@ public class VentaController implements Serializable {
         List<Venta> suggestions = new ArrayList<>();
         try {
 
-            ventaRepository.setDynamicDatabase("lecturas_" + anio.toString().trim() + "db");
+            ventaRepository.setDynamicDatabase("transaccion_" + anio.toString().trim() + "db");
             Integer numeroMes = mes;
             ventaRepository.setDynamicCollection(nameOfCollection + idempresa.toString().trim() + "_" + JmoordbCoreDateUtil.getNombreMes(numeroMes).toLowerCase());
 
@@ -197,7 +196,7 @@ public class VentaController implements Serializable {
     public Long count(@QueryParam("filter") String filter, @QueryParam("sort") String sort, @QueryParam("page") Integer page, @QueryParam("size") Integer size, @QueryParam("idempresa") Long idempresa, @QueryParam("anio") Integer anio, @QueryParam("mes") Integer mes) {
         Long result = 0L;
         try {
-            ventaRepository.setDynamicDatabase("lecturas_" + anio.toString().trim() + "db");
+            ventaRepository.setDynamicDatabase("transaccion_" + anio.toString().trim() + "db");
             Integer numeroMes = mes;
             ventaRepository.setDynamicCollection(nameOfCollection + idempresa.toString().trim() + "_" + JmoordbCoreDateUtil.getNombreMes(numeroMes).toLowerCase());
 
@@ -222,7 +221,7 @@ public class VentaController implements Serializable {
         try {
             Integer numeroMes = mes;
 
-            ventaRepository.setDynamicDatabase("lecturas_" + anio.toString().trim() + "db");
+            ventaRepository.setDynamicDatabase("transaccion_" + anio.toString().trim() + "db");
             ventaRepository.setDynamicCollection(nameOfCollection + idempresa.toString().trim() + "_" + JmoordbCoreDateUtil.getNombreMes(numeroMes).toLowerCase());
             Search search = DocumentUtil.convertForLookup(filter, sort, 1, 1);
 
@@ -251,7 +250,7 @@ public class VentaController implements Serializable {
 
             for (int index = 1; index <= countEstaciones; index++) {
 
-                ventaRepository.setDynamicDatabase("lecturas_" + anio.toString().trim() + "db");
+                ventaRepository.setDynamicDatabase("transaccion_" + anio.toString().trim() + "db");
                 ventaRepository.setDynamicCollection(nameOfCollection + String.valueOf(index) + "_" + JmoordbCoreDateUtil.getNombreMes(numeroMes).toLowerCase());
                 Search search = DocumentUtil.convertForLookup(filter, sort, 1, 1);
 
@@ -276,7 +275,7 @@ public class VentaController implements Serializable {
 
         List<Venta> suggestions = new ArrayList<>();
         try {
-            ventaRepository.setDynamicDatabase("lecturas_" + anio.toString().trim() + "db");
+            ventaRepository.setDynamicDatabase("transaccion_" + anio.toString().trim() + "db");
             Integer numeroMes = mes;
             ventaRepository.setDynamicCollection(nameOfCollection + idempresa.toString().trim() + "_" + JmoordbCoreDateUtil.getNombreMes(numeroMes).toLowerCase());
 

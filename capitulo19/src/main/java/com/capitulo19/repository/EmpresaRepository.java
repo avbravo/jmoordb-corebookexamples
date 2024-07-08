@@ -5,7 +5,6 @@
 package com.capitulo19.repository;
 
 import com.capitulo19.model.Empresa;
-import com.jmoordb.core.annotation.date.ExcludeTime;
 import com.jmoordb.core.annotation.enumerations.CaseSensitive;
 import com.jmoordb.core.annotation.enumerations.LikeByType;
 import com.jmoordb.core.annotation.enumerations.TypeOrder;
@@ -20,7 +19,6 @@ import com.jmoordb.core.annotation.repository.SearchLikeBy;
 import com.jmoordb.core.model.Pagination;
 import com.jmoordb.core.model.Search;
 import com.jmoordb.core.repository.CrudRepository;
-import java.util.Date;
 import java.util.List;
 
 /**
