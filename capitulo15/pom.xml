@@ -23,11 +23,11 @@
         <cargo.version>1.10.7</cargo.version>
            <microprofile.version>6.1</microprofile.version>
         <microprofile-config-api.version>3.1</microprofile-config-api.version>
-        <version.jmoordb-core-annotations>1.3</version.jmoordb-core-annotations>
+        <version.jmoordb-core-annotations>1.7.0</version.jmoordb-core-annotations>
         <maven-failsafe-plugin.version>3.0.0</maven-failsafe-plugin.version>
         <primefaces.version>13.0.0</primefaces.version>
          <version.jmoordbutilfaces>3.4</version.jmoordbutilfaces>
-    <version.jmoordb-core-annotations>1.3</version.jmoordb-core-annotations>
+    <version.jmoordb-core-annotations>1.7.0</version.jmoordb-core-annotations>
     </properties>
 
     <dependencies>
