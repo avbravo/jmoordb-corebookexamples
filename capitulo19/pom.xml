@@ -12,7 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <jakartaee>10.0.0</jakartaee>
-        <payara.version>6.2024.6</payara.version>
+        <payara.version>6.2024.7</payara.version>
         <microprofile.version>6.1</microprofile.version>
         <!--<microprofile.version>6.0</microprofile.version>-->
         <microprofile-config-api.version>3.0</microprofile-config-api.version>
