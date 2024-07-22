@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-clean install</actionName>
+            <displayName>clean install</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-payara-micro:start</actionName>
+            <displayName>payara-micro:start</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
+                <goal>payara-micro:start</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-clean verify payara-micro:bundle payara-micro:start</actionName>
+            <displayName>clean verify payara-micro:bundle payara-micro:start</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>verify</goal>
+                <goal>payara-micro:bundle</goal>
+                <goal>payara-micro:start</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-clean verify payara-micro:start</actionName>
+            <displayName>clean verify payara-micro:start</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>verify</goal>
+                <goal>payara-micro:start</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-clean verify</actionName>
+            <displayName>clean verify</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>verify</goal>
+            </goals>
+        </action>
+    </actions>
