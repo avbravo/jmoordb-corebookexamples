@@ -28,7 +28,6 @@ import org.bson.types.ObjectId;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
-import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import com.capitulo20.repository.PersonaRepository;
 import com.jmoordb.core.annotation.date.DateFormat;
 import java.util.Date;
@@ -64,24 +63,18 @@ public class PersonaController implements Serializable {
      @GET
     @Path("fechatimestamp")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Persona> lookup(@QueryParam("fechainicial") @DateFormat("yyyy-MM-ddThh:mm:ssZ[UTC]") final Date fechainicial,@QueryParam("timestamp") Integer timestamp) {
+    public Persona fechatimestamp(@QueryParam("fecha") @DateFormat("yyyy-MM-ddThh:mm:ssZ[UTC]") final Date fecha,@QueryParam("timestamp") Integer timestamp) {
      
-        List<Persona> suggestions = new ArrayList<>();
-        try {
 
-    Long f=2l;
+         System.out.println("\tfecha "+fecha);
+         System.out.println("\ttimestamp "+timestamp);
+
             ObjectId id = new ObjectId();
             
-            Search search = DocumentUtil.convertForLookup(filter, sort, page, size);
-          
-            suggestions = medicionRepository.lookup(search);
+   return medicionRepository.findByPk(new ObjectId(id.toString())).orElseThrow(
+                () -> new WebApplicationException("No hay medicion con idmedicion " + id, Response.Status.NOT_FOUND));
 
-        } catch (Exception e) {
-
-            MessagesUtil.error(MessagesUtil.nameOfClassAndMethod() + "error: " + e.getLocalizedMessage());
-        }
-        System.out.println("Resultado: " + suggestions);
-        return suggestions;
+      
     }
     
     
