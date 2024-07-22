@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.accreditation.microprofile.health;
+package com.capitulo20.microprofile.health;
 
-import com.jmoordb.core.util.JmoordbCoreUtil;
 import jakarta.enterprise.context.ApplicationScoped;
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
@@ -17,15 +16,16 @@ import org.eclipse.microprofile.health.Readiness;
  */
 @Readiness
 @ApplicationScoped
-public class DiskspaceCheck implements HealthCheck {
+public class AuthorCheck implements HealthCheck {
 
-       
     @Override
     public HealthCheckResponse call() {
-        return HealthCheckResponse.named("Espacio en disco")
-                .withData("MB", JmoordbCoreUtil.freeSpaceOfDisk())
+        return HealthCheckResponse.named("información")
                 .up()
+                .withData("Author", "Avbravo")
+                .withData("Website", "https://avbravo.blogspot.com")
+                .withData("Country", "Panamá")
                 .build();
-
     }
+
 }

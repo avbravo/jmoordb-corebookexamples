@@ -178,10 +178,7 @@
                         </option>
        
                         <!--puerto 9002 -->
-                        <option>
-                            <key>--port</key>
-                            <value>9000</value>
-                        </option>
+
                         <!-- desabilita Hazelcas -->
                         <option>
                             <key>--noHazelcast</key>

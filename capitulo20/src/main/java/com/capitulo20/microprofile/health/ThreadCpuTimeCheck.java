@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.accreditation.microprofile.health;
+package com.capitulo20.microprofile.health;
 
 import com.jmoordb.core.util.JmoordbCoreUtil;
 import jakarta.enterprise.context.ApplicationScoped;

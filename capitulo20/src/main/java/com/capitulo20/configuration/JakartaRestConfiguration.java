@@ -1,4 +1,4 @@
-package com.accreditation.configuration;
+package com.capitulo20.configuration;
 
 
 import jakarta.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
@@ -22,7 +22,7 @@ import org.eclipse.microprofile.openapi.annotations.servers.Server;
         servers = {
             @Server(url = "http://localhost:8080/", description = "Local Development Server "),}
 )
-@BasicAuthenticationMechanismDefinition(realmName = "admin-realm")
+
 public class JakartaRestConfiguration extends Application {
     
 }

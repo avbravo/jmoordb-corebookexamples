@@ -8,7 +8,6 @@ import com.jmoordb.core.annotation.Column;
 import com.jmoordb.core.annotation.Entity;
 import com.jmoordb.core.annotation.Id;
 import com.jmoordb.core.annotation.enumerations.GenerationType;
-import java.util.Date;
 import java.util.Objects;
 import org.bson.types.ObjectId;
 
@@ -40,7 +39,7 @@ public class Persona {
     }
 
     public String getNombre() {
-        return nombre;
+        return  nombre;
     }
 
     public void setNombre(String nombre) {

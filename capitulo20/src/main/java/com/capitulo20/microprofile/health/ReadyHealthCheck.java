@@ -1,4 +1,4 @@
-package com.accreditation.microprofile.health;
+package com.capitulo20.microprofile.health;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import org.eclipse.microprofile.health.HealthCheck;
