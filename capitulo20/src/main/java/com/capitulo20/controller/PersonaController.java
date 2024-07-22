@@ -7,7 +7,7 @@ package com.capitulo20.controller;
 import com.jmoordb.core.model.Search;
 import com.jmoordb.core.util.DocumentUtil;
 import com.jmoordb.core.util.MessagesUtil;
-import com.estacionesserver.model.Persona;
+import com.capitulo20.model.Persona;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.DELETE;
