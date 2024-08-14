@@ -10,7 +10,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jakartaee>10.0.0</jakartaee>
-        <version.payara>6.2024.7</version.payara>
+        <version.payara>6.2024.8</version.payara>
         <microprofile.version>6.1</microprofile.version>
         <microprofile-config-api.version>3.1</microprofile-config-api.version>
         <microprofile-metrics-api.version>5.1.0</microprofile-metrics-api.version>
