@@ -1,4 +1,4 @@
-package fish.payara.hello;
+package fish.payara.resource;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;

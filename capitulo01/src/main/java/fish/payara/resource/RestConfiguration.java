@@ -1,4 +1,4 @@
-package fish.payara.hello;
+package fish.payara.resource;
 
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;

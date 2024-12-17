@@ -1,5 +1,7 @@
 package fish.payara.hello;
 
+import fish.payara.resource.HelloWorldResource;
+import fish.payara.resource.RestConfiguration;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
@@ -19,7 +21,6 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Arquillian.class)
 @RunAsClient
 public class HelloWorldResourceTest {
-
 
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
@@ -42,7 +43,6 @@ public class HelloWorldResourceTest {
                 .queryParam("name", "John")
                 .request(MediaType.TEXT_PLAIN)
                 .get();
-
 
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
         String responseBody = response.readEntity(String.class);
