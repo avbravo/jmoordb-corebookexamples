@@ -17,7 +17,7 @@
         <project.report.sourceEncoding>UTF-8</project.report.sourceEncoding>
         <maven.compiler.release>17</maven.compiler.release>
         <jakartaee-api.version>10.0.0</jakartaee-api.version>
-        <payara.version>6.2024.8</payara.version>
+        <payara.version>6.2024.11</payara.version>
         <compiler-plugin.version>3.11.0</compiler-plugin.version>
         <war-plugin.version>3.3.2</war-plugin.version>
         <cargo.version>1.10.7</cargo.version>
