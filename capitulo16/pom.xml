@@ -15,7 +15,7 @@
 
     <properties>
 
-        <version.jmoordbcore>2.0.0</version.jmoordbcore>
+        <version.jmoordbcore>2.0.2</version.jmoordbcore>
     </properties>
 
     <dependencies>

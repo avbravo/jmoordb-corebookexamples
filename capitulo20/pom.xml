@@ -21,7 +21,7 @@
         <jmeter.version>2.6.0</jmeter.version>
         <final.name>capitulo20</final.name>
         
-        <version.jmoordbcore>2.0.0</version.jmoordbcore>
+        <version.jmoordbcore>2.0.2</version.jmoordbcore>
         <version.jmoordbfaces>1.3</version.jmoordbfaces>
         <version.jmoordbutilfaces>0.7</version.jmoordbutilfaces>
         <version.jmoordbencripter>2.0</version.jmoordbencripter>
