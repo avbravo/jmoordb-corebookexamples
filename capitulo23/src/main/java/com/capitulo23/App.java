@@ -1,15 +1,18 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-package com.avbravo.capitulo23;
+package com.capitulo23;
 
-import com.avbravo.capitulo23.clases.*;
-import com.avbravo.capitulo23.clases.Deporte;
-import com.avbravo.capitulo23.clases.People;
-import com.avbravo.capitulo23.records.Celular;
-import com.avbravo.capitulo23.records.CelularBuilder;
-import com.avbravo.capitulo23.records.CelularViewModel;
-import com.avbravo.capitulo23.records.CelularViewModelBuilder;
+import com.capitulo23.clases.Car;
+import com.capitulo23.clases.Deporte;
+import com.capitulo23.clases.People;
+import com.capitulo23.records.Celular;
+import com.capitulo23.clases.CarBuilder;
+import com.capitulo23.clases.DeporteBuilder;
+import com.capitulo23.clases.PeopleBuilder;
+import com.capitulo23.records.CelularBuilder;
+import com.capitulo23.records.CelularViewModel;
+import com.capitulo23.records.CelularViewModelBuilder;
 
 /**
  *
@@ -23,6 +26,7 @@ public class App {
         Car car = new CarBuilder()
                 .withName("Toyota")
                 .build();
+        
 
         People p = new PeopleBuilder()
                 .withId(3L)
